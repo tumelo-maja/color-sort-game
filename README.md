@@ -180,6 +180,22 @@ Other goals:
   Add Help section to display shortcuts for desktop screens
 
 
+- **Submit Feedback and Report Bugs (could-have)**
+
+  - Story: 
+  As a player, I want the ability to submit feedback related to my gaming experience or report issues so that it can be improved, and problems are fixed.
+
+  - Acceptance Criteria:
+  Users can submit a feedback form to share their experience, report bugs or offer suggestions.
+  Form fields are validated and users get error messages to inform them about invalid inputs or missing fields
+  Users receive feedback to thank and confirm their submission was successful.
+
+  - Tasks:
+  Implement HTML/CSS code to style a form modal
+  Implement JavaScript code to listen for keyboard inputs and validate user's inputs.
+  Show players a thank you message after feedback submission is completed.
+
+
 ### Wireframes
 
 ## Testing 
