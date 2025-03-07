@@ -129,7 +129,7 @@ Other goals:
   Ensure the 'undo' button becomes inactive after being used until a new move is made
 
 
-- **Add Slot (should-have)**
+- **Add Extra Slot/Rod (should-have)**
 
   - Story: 
   As a player, I want be able to add an additional slot to a rod so I can have more slots to place nut items.
