@@ -36,19 +36,18 @@ footer {
 
 .game-container {
   border: 2px solid red;
-  justify-items: center;
-  align-items: center;
   height: 80%;
   background-color: navajowhite;
+  justify-items: center;
+
 }
 
 .game-area {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 100px;
-  align-items: end;
-  margin: 20px 0;
+  display: flex;
   border: 2px solid red;
+  justify-content: center;
+  width: 80%;
+  padding: 10px;
 
 }
 
@@ -57,10 +56,11 @@ footer {
   width: 80%;
   height: 40px;
   padding: 10px;
+  justify-self: center;
+  margin: 20px 0;
 }
 
 
 .game-controls {
-  display: flex;
-  justify-items: space-around;
+  margin: 20px;
 }
