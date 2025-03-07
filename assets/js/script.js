@@ -12,8 +12,15 @@ document.addEventListener("DOMContentLoaded", function() {
      * Raise the top nut when clicked
      * and return to normal state
      */
-    function raiseNut() {
-        console.log('Nut was clicked')
+    function raiseNut(e) {
+        let selectedNut = e.target;
+        //console.log(selectedNut);
+
+        selectedNut.classList.toggle("raise-nut");
+        
+        console.log(selectedNut);
+
+
     }
     
 })
