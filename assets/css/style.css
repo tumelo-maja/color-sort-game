@@ -43,8 +43,8 @@ footer {
 
 .game-container {
   border: 2px solid red;
-  height: 600px;
-  background-color: navajowhite;
+  height: 700px;
+  background-color: #091152;
   justify-items: center;
 }
 
@@ -52,8 +52,8 @@ footer {
   display: flex;
   flex-wrap: wrap;
   border: 2px solid green;
-  justify-content: space-around;
-  height: 350px;
+  justify-content: space-between;
+  height: 450px;
   padding: 20px;
 }
 
@@ -62,7 +62,7 @@ footer {
   height: 165px;
   background-color: silver;
   border: 1px dotted black;
-  margin: 20px;
+  margin: 30px;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -78,6 +78,11 @@ footer {
   justify-self: end;
   text-align: center;
 }
+
+.orange { background-color: var(--orange);}
+.yellow { background-color: var(--yellow);}
+.blue { background-color: var(--blue);}
+.whitesilver { background-color: var(--whitesilver);}
 
 .game-statistics {
   border: 2px solid black;
