@@ -1,15 +1,15 @@
 /*------------- CSS variables --*/
 :root {
-  --orange: #F25029;
-  --yellow: #F9B723;
-  --blue: #26A1EE;
-  --whitesilver: #C2B3D4;
+  --orange: #f25029;
+  --yellow: #f9b723;
+  --blue: #26a1ee;
+  --whitesilver: #c2b3d4;
 }
 
 body {
   background-color: #777bac;
   margin: 0;
-  padding: 0; 
+  padding: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -30,7 +30,7 @@ footer {
   position: relative;
   bottom: 0;
 }
- 
+
 .top-section {
   display: flex;
   border: 2px solid black;
@@ -58,11 +58,25 @@ footer {
 }
 
 .rod {
-  width: 30px;
-  height: 100px;
+  width: 20px;
+  height: 165px;
   background-color: silver;
   border: 1px dotted black;
   margin: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.nut {
+  width: 35px;
+  height: 12px;
+  margin: 2px;
+  border-radius: 5px;
+  border: 2px solid black;
+  align-self: center;
+  justify-self: end;
+  text-align: center;
 }
 
 .game-statistics {
@@ -76,4 +90,4 @@ footer {
 
 .game-controls {
   margin: 20px;
-} 
+}
