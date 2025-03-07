@@ -1,12 +1,7 @@
 body {
-  display: flex;
   background-color: #777bac;
-  /* justify-content: center;
-  align-items: center; */
-  height: 100vh;
-  width: 100%;
-  flex-direction: column;
   margin: 0;
+  padding: 0; 
 }
 
 header {
@@ -23,7 +18,7 @@ footer {
   position: relative;
   bottom: 0;
 }
-
+ 
 .top-section {
   display: flex;
   border: 2px solid black;
@@ -39,28 +34,34 @@ footer {
   height: 80%;
   background-color: navajowhite;
   justify-items: center;
-
 }
 
 .game-area {
   display: flex;
-  border: 2px solid red;
-  justify-content: center;
-  width: 80%;
-  padding: 10px;
+  border: 2px solid green;
+  justify-content: space-around;
+  width: 300px;
+  height: 500px;
+  padding: 20px 80px;
+}
 
+.rod {
+  width: 30px;
+  height: 200px;
+  background-color: silver;
+  border: 1px dotted black;
+  margin: 20px;
 }
 
 .game-statistics {
   border: 2px solid black;
-  width: 80%;
+  width: 300px;
   height: 40px;
   padding: 10px;
   justify-self: center;
   margin: 20px 0;
 }
 
-
 .game-controls {
   margin: 20px;
-}
+} 
