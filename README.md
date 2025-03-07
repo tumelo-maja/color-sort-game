@@ -31,6 +31,19 @@ Other goals:
 
 ### User stories
 
+- **Engaging and Interactive Game layout (must-have)**
+
+  - Story: 
+  As a player, I want to have enjoyable and easy gameplay which lets me know how and what I should do to play the game.
+
+  - Acceptance Criteria:
+  The game layout is intuitive and has instructions making it easier for players to understand how to play.
+  The website is fully responsive and accessible on various devices with different screen sizes
+
+  - Tasks:
+  Implement HTML/CSS code to create an engaging gameplay layout
+  Use the appropirate color contrast that pass the accessibility requirements
+
 ### Wireframes
 
 ## Testing 
