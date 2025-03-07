@@ -1,11 +1,10 @@
 body {
-  display: grid;
+  display: flex;
   background-color: #777bac;
-  /* width: 100%; */
-  min-height: 100vh;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  /* gap: 10px; */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
   margin: 0;
 }
 
@@ -60,12 +59,11 @@ footer {
 }
 
 .game-area {
-  display: flex;
-  height: 250px;
-  grid-row: span 2;
-  border: 2px solid black;
-  padding: 10px;
-  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 100px;
+  align-items: end;
+  position: relative;
 
 }
 
