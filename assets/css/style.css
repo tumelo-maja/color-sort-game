@@ -78,12 +78,17 @@ footer {
   justify-self: end;
   text-align: center;
   cursor: pointer;
+  transition: transform 0.5s ease-in-out;
 }
 
 .orange { background-color: var(--orange);}
 .yellow { background-color: var(--yellow);}
 .blue { background-color: var(--blue);}
 .whitesilver { background-color: var(--whitesilver);}
+
+.raise-nut {
+  transform: translateY(-50px);
+}
 
 .game-statistics {
   border: 2px solid black;
