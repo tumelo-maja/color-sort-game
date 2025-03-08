@@ -96,7 +96,10 @@ footer {
 .raise-nut {
   /* transform: translateY(-5px) 0.5s ease-in-out; */
   position: absolute;
-  top: -25px;
+  top: 0; 
+  left: -10px;
+  transition: transform 1s ease;
+  transform : translateY(-20px) ;
 }
 
 .game-statistics {
