@@ -49,12 +49,18 @@ footer {
 }
 
 .game-area {
+  border: 2px solid green;
+  height: 450px;
+  width: 240px;
+  padding: 20px;
+}
+
+.rod-container {
   display: flex;
   flex-wrap: wrap;
-  border: 2px solid green;
   justify-content: space-between;
-  height: 450px;
   padding: 20px;
+
 }
 
 .rod {
@@ -62,10 +68,11 @@ footer {
   height: 165px;
   background-color: silver;
   border: 1px dotted black;
-  margin: 30px;
+  margin: 10px;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
+  position: relative;
 }
 
 .nut {
@@ -87,7 +94,9 @@ footer {
 .whitesilver { background-color: var(--whitesilver);}
 
 .raise-nut {
-  transform: translateY(-50px);
+  /* transform: translateY(-5px) 0.5s ease-in-out; */
+  position: absolute;
+  top: -25px;
 }
 
 .game-statistics {
