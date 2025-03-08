@@ -14,9 +14,14 @@ document.addEventListener("DOMContentLoaded", function() {
      */
     function raiseNut(e) {
         let selectedNut = e.target;
-         
+        let selectedNutWrap = selectedNut.parentElement;
+        let currentRod = selectedNutWrap.parentElement;
+        
+        console.log(selectedNut);
+        console.log(selectedNutWrap);
+        console.log(currentRod);
+        // only raise the top nut
         selectedNut.classList.toggle("raise-nut");
-
     }
     
 })
