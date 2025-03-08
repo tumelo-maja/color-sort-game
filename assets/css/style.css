@@ -64,14 +64,14 @@ footer {
 }
 
 .rod {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
   width: 20px;
   height: 165px;
   background-color: silver;
   border: 1px dotted black;
   margin: 10px;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
   position: relative;
 }
 
