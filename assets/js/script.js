@@ -14,22 +14,29 @@ document.addEventListener("DOMContentLoaded", function() {
      */
     function raiseNut(e) {
         let selectedNut = e.target;
-        let selectedNutWrap = selectedNut.parentElement;
-        let currentRod = selectedNutWrap.parentElement;
+        let currentNutWrap = selectedNut.parentElement;
+        let currentRod = currentNutWrap.parentElement;
         
-        console.log(selectedNut);
-        console.log(selectedNutWrap);
-        console.log(currentRod);
+        // console.log(selectedNut);
+        // console.log(currentNutWrap);
+        // console.log(currentRod);
         // only raise the top nut
-        if (currentRod.lastElementChild === selectedNutWrap) {
-            selectedNut.classList.toggle("raise-nut");
-            console.log("Definitelly last born!");
+        if (currentRod.lastElementChild === currentNutWrap) {
+
+            // selectedNut.classList.toggle("raise-nut");
+            console.log("Definitely last born!");
+
+            currentNutWrap.style.position = 'absolute';
+            currentNutWrap.style.top = '-20px';
+            const wrapperRect = currentNutWrap.getBoundingClientRect();
+            console.log(wrapperRect);
+
+            const wrapperStyle = getComputedStyle(currentNutWrap);;
+            console.log(wrapperStyle.left);
 
         } else {
             console.log("Not the last child");
         }
-
-            
 
     }
     
