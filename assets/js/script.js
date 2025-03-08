@@ -21,7 +21,16 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(selectedNutWrap);
         console.log(currentRod);
         // only raise the top nut
-        selectedNut.classList.toggle("raise-nut");
+        if (currentRod.lastElementChild === selectedNutWrap) {
+            selectedNut.classList.toggle("raise-nut");
+            console.log("Definitelly last born!");
+
+        } else {
+            console.log("Not the last child");
+        }
+
+            
+
     }
     
 })
