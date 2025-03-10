@@ -94,12 +94,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (currentRod !== raisedRod) {
             console.log('Lets move it')
 
-            const targetRod = e.target;
+            const targetRod = e.target.parentElement.parentElement;
             // console.log(currentRod);
             console.log(currentRod);
             console.log(raisedNutWrapper);
-
-            // currentRod.appendChild(raisedNutWrapper);
 
             // calcukate distance between the raised nut and the target rod 
             const raisedNutWrapperPosition = raisedNutWrapper.getBoundingClientRect();
@@ -108,13 +106,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const nutStyle = window.getComputedStyle(raisedNut);
             const rodStyle = window.getComputedStyle(targetRod);
 
-
-            // get the object centeres
-            const raisedNutWrapperCenterX = (raisedNutWrapperPosition.left + raisedNutWrapperPosition.width) / 2;
+            // get the .rod object centeres
             const targetRodCenterX = (targetRodPosition.left + targetRodPosition.width) / 2;
             const currentRodCenterX = (currentRodPosition.left + currentRodPosition.width) / 2;
-            // const distanceX = (targetRodCenterX - raisedNutWrapperCenterX) -(parseFloat(rodStyle.width)-parseFloat(rodStyle.marginLeft)*2);
-            const distanceX = (targetRodCenterX - currentRodCenterX) - parseFloat(rodStyle.width) / 2;
+            const distanceX = (targetRodCenterX - currentRodCenterX); //- parseFloat(rodStyle.width) / 2;
 
             console.log(`distancex: ${distanceX}`);
             console.log(`width: ${rodStyle.marginLeft}`);
@@ -132,8 +127,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // targetRod.appendChild(raisedNutWrapper);
 
-            console.log(`source: ${raisedNutWrapperCenterX}`);
-            console.log(`target: ${targetRodCenterX}`);
+            raisedNutWrapper.addEventListener('animationend', function () {
+                raisedNut.style.animation = 'none';
+                raisedNutWrapper.style.animation = 'none';
+                raisedNutWrapper.appendChild(raisedNut);
+                targetRod.appendChild(raisedNutWrapper);
+            });
+            lowerNut();
 
         } else {
             lowerNut();
