@@ -43,11 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function lowerNut() {
         // remove the .raise-nut class if it exist
-        const raisedNuts = document.querySelectorAll(".raise-nut");
-        console.log(raisedNuts)
+        const raisedNut = document.querySelector(".raise-nut");
+        console.log(raisedNut)
 
-        if (raisedNuts.length) {
+        if (raisedNut) {
             console.log("There is a raised nut!");
+            raisedNut.classList.remove("raise-nut");
         } else {
             console.log("all nuts are lowered");
         }
