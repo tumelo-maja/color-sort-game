@@ -64,7 +64,11 @@ document.addEventListener("DOMContentLoaded", function () {
      * Move raised nut to another rod
      */
     function moveNut() {
-        
+        // Get raised nut
+        const raisedNut = document.querySelector(".raise-nut");
+        const raisedNutWrapper = raisedNut.parentElement;
+        const raisedNutRod = raisedNutWrapper.parentElement;
+
     }
 
 })
