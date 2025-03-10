@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let lowerButton = document.getElementById('test');
     lowerButton.addEventListener('click',lowerNut);
 
+    let moveButton = document.getElementById('rod4');
+    moveButton.addEventListener('click',moveNut);
+
     // Test end 
 
 
@@ -63,11 +66,21 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Move raised nut to another rod
      */
-    function moveNut() {
+    function moveNut(e) {
         // Get raised nut
         const raisedNut = document.querySelector(".raise-nut");
         const raisedNutWrapper = raisedNut.parentElement;
         const raisedNutRod = raisedNutWrapper.parentElement;
+
+        console.log("Its moving!");
+
+        const currentRod = e.target;
+        // console.log(currentRod);
+        console.log(currentRod);
+        console.log(raisedNutWrapper);
+
+        currentRod.appendChild(raisedNutWrapper);
+
 
     }
 
