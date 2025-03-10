@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Raise the top nut when clicked
+     * Raise the top nut &wrapper  above the rod when clicked
      */
     function raiseNut(e) {
         let selectedNut = e.target;
@@ -58,6 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("all nuts are lowered");
         }
 
+    }
+
+    /**
+     * Move raised nut to another rod
+     */
+    function moveNut() {
+        
     }
 
 })
