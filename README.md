@@ -249,6 +249,7 @@ This section provides the steps to follow when deploying the project.
 Alternatively the site's live link can be found here - ()
 
 ## Credits 
+Youtube video on using getBoundingClientRect() - (https://www.youtube.com/watch?v=MKpZadkuT-0)
 
 ### Game inspiration
 
