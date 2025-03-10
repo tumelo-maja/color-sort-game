@@ -25,9 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentNutWrap = selectedNut.parentElement;
         let currentRod = currentNutWrap.parentElement;
 
-        // console.log(selectedNut);
-        // console.log(currentNutWrap);
-        // console.log(currentRod);
         // only raise the top nut
         if (currentRod.lastElementChild === currentNutWrap) {
 
@@ -35,6 +32,24 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Definitely last born!");
         } else {
             console.log("Not the last child");
+        }
+
+    }
+
+    let lowerButton = document.getElementById('test');
+    lowerButton.addEventListener('click',lowerNut);
+    /**
+     * Lower nut to the base if it cannot be moved
+     */
+    function lowerNut() {
+        // remove the .raise-nut class if it exist
+        const raisedNuts = document.querySelectorAll(".raise-nut");
+        console.log(raisedNuts)
+
+        if (raisedNuts.length) {
+            console.log("There is a raised nut!");
+        } else {
+            console.log("all nuts are lowered");
         }
 
     }
