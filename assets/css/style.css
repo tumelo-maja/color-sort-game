@@ -68,7 +68,7 @@ footer {
   flex-direction: column-reverse;
   align-items: center;
   width: 20px;
-  height: 165px;
+  height: 175px;
   background-color: silver;
   border: 1px dotted black;
   margin: 10px;
@@ -76,9 +76,9 @@ footer {
 }
 
 .nut {
-  width: 35px;
-  height: 12px;
-  margin: 2px;
+  width: 40px;
+  height: 17px;
+  margin: 1px;
   border-radius: 5px;
   border: 2px solid black;
   align-self: center;
@@ -86,6 +86,7 @@ footer {
   text-align: center;
   cursor: pointer;
   transition: transform 0.5s ease-in-out;
+  box-sizing: border-box;
 }
 
 .orange { background-color: var(--orange);}
@@ -128,6 +129,13 @@ footer {
 }
 
 @keyframes moveNut-X {
-  from { transform: translateX(0); }
-  to { transform: translateX(20px); }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(20px); }
+  100% { transform: translateX(var(--distanceX)); }
+}
+
+@keyframes moveNut-Y {
+  0% { transform: translateY(-65px); }
+  50% { transform: translateY(-80px); }
+  100% { transform: translateY(var(--distanceY)); }
 }

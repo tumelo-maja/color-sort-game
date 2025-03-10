@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Testing purposes
     let lowerButton = document.getElementById('test');
-    lowerButton.addEventListener('click',lowerNut);
+    lowerButton.addEventListener('click', lowerNut);
 
     let moveButton = document.getElementById('rod4');
-    moveButton.addEventListener('click',moveNut);
+    moveButton.addEventListener('click', moveNut);
 
     // Test end 
 
@@ -70,17 +70,50 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get raised nut
         const raisedNut = document.querySelector(".raise-nut");
         const raisedNutWrapper = raisedNut.parentElement;
-        const raisedNutRod = raisedNutWrapper.parentElement;
+        const currentRod = raisedNutWrapper.parentElement;
 
         console.log("Its moving!");
 
-        const currentRod = e.target;
+        const targetRod = e.target;
         // console.log(currentRod);
         console.log(currentRod);
         console.log(raisedNutWrapper);
 
-        currentRod.appendChild(raisedNutWrapper);
+        // currentRod.appendChild(raisedNutWrapper);
 
+        // calcukate distance between the raised nut and the target rod 
+        const raisedNutWrapperPosition = raisedNutWrapper.getBoundingClientRect();
+        const currentRodPosition = currentRod.getBoundingClientRect();
+        const targetRodPosition = targetRod.getBoundingClientRect();
+        const nutStyle = window.getComputedStyle(raisedNut);
+        const rodStyle = window.getComputedStyle(targetRod);
+
+
+        // get the object centeres
+        const raisedNutWrapperCenterX = (raisedNutWrapperPosition.left + raisedNutWrapperPosition.width) / 2;
+        const targetRodCenterX = (targetRodPosition.left + targetRodPosition.width) / 2;
+        const currentRodCenterX = (currentRodPosition.left + currentRodPosition.width) / 2;
+        // const distanceX = (targetRodCenterX - raisedNutWrapperCenterX) -(parseFloat(rodStyle.width)-parseFloat(rodStyle.marginLeft)*2);
+        const distanceX = (targetRodCenterX - currentRodCenterX) - parseFloat(rodStyle.width)/2;
+
+        console.log(`distancex: ${distanceX}`);
+        console.log(`width: ${rodStyle.marginLeft}`);
+
+        // height: 12px; margin: 2px; 0 nuts in test rod
+        const distanceY = targetRodPosition.top - raisedNutWrapperPosition.top;
+
+        raisedNut.style.setProperty('--distanceX',`${distanceX}px`);
+        raisedNutWrapper.style.setProperty('--distanceY', `${distanceY}px`);
+
+        raisedNutWrapper.style.zIndex = '1';
+
+        raisedNut.style.animation = 'moveNut-X 1.5s ease forwards';
+        raisedNutWrapper.style.animation = 'moveNut-Y 1.5s ease forwards';
+
+        // targetRod.appendChild(raisedNutWrapper);
+
+        console.log(`source: ${raisedNutWrapperCenterX}`);
+        console.log(`target: ${targetRodCenterX}`);
 
     }
 

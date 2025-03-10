@@ -251,6 +251,11 @@ Alternatively the site's live link can be found here - ()
 ## Credits 
 Youtube video on using getBoundingClientRect() - (https://www.youtube.com/watch?v=MKpZadkuT-0)
 
+Link to Stackoverflow method to appendChild with animation - (https://stackoverflow.com/questions/52129197/how-to-appendchild-with-animation-in-javascript)
+
+link to using 'animate' in JS for keyframes  - (https://developer.mozilla.org/en-US/docs/Web/API/Element/animate)
+link to example of animate in JS - (https://stackoverflow.com/questions/59573722/how-can-i-set-a-css-keyframes-in-javascript)
+
 ### Game inspiration
 
 ### Images
