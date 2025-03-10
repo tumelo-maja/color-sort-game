@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run game to load default game setup with level=1 and score=0
     runGame();
 
+    // Testing purposes
+    let lowerButton = document.getElementById('test');
+    lowerButton.addEventListener('click',lowerNut);
+
+    // Test end 
+
 
     /**
      * initialize the game play
@@ -36,8 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    let lowerButton = document.getElementById('test');
-    lowerButton.addEventListener('click',lowerNut);
+
     /**
      * Lower nut to the base if it cannot be moved
      */
