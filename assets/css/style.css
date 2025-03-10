@@ -94,19 +94,17 @@ footer {
 .whitesilver { background-color: var(--whitesilver);}
 
 .raise-nut {
-  /* transform: translateY(-5px) 0.5s ease-in-out; */
   position: absolute;
   top: 0; 
   left: -10px;
-  transition: transform 0.5s ease;
+  transition: transform 0.25s ease-in;
   transform : translateY(-20px) ;
-  animation: 2s infinite nut-anime;
+  /* animation: 2s infinite nut-anime; */
 
 }
 
 .game-statistics {
   border: 2px solid black;
-  /* width: 300px; */ 
   height: 40px;
   padding: 10px;
   justify-self: center;
@@ -127,4 +125,9 @@ footer {
     transform: scale(1.1) translateY(-20px);
     box-shadow: 1px 1px 5px red;
   }
+}
+
+@keyframes moveNut-X {
+  from { transform: translateX(0); }
+  to { transform: translateX(20px); }
 }
