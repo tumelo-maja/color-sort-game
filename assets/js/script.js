@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (raisedNut) {
             moveNut(e);
+            console.log("Time to move");
         } else {
             console.log('Lets raise it')
             raiseNut(e);
@@ -96,9 +97,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const raisedNutWrapperRect = raisedNutWrapper.getBoundingClientRect();
             const currentRodRect = currentRod.getBoundingClientRect();
-            currentRodRect.appendChild(raisedNutWrapperRect);
+
             raisedNutWrapper.style.left = (raisedNutWrapperRect.left - currentRodRect.left) + "px";
             raisedNutWrapper.style.top = (raisedNutWrapperRect.top - currentRodRect.top) + "px";
+
+            // raisedNutWrapper.offsetHeight; 
+            raisedNut.style.animation = 'moveNutToLid 0.5s ease forwards';
+            raisedNutWrapper.style.animation = 'moveNutToLid 0.5s ease forwards';
+
+            raisedNutWrapper.appendChild(raisedNut);
+            currentRod.appendChild(raisedNutWrapper);
+
+
+            // raisedNut.style.animation = "none";
+            // square.removeEventListener("animationend", handler);
+
+            raisedNutWrapper.addEventListener('animationend', function () {
+                raisedNut.style.animation = 'none';
+                raisedNutWrapper.style.animation = 'none';
+                raisedNut.style.animation = 'moveNutDownRod 0.5s ease forwards';
+                raisedNutWrapper.style.animation = 'moveNutDownRod 0.5s ease forwards';
+
+                // lowerNut();
+            });  
+            
+
 
             // const targetRod = e.target.parentElement.parentElement;
             // // console.log(currentRod);

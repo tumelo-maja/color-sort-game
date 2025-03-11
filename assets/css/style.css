@@ -60,7 +60,6 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 20px;
-
 }
 
 .rod {
@@ -89,19 +88,26 @@ footer {
   box-sizing: border-box;
 }
 
-.orange { background-color: var(--orange);}
-.yellow { background-color: var(--yellow);}
-.blue { background-color: var(--blue);}
-.whitesilver { background-color: var(--whitesilver);}
+.orange {
+  background-color: var(--orange);
+}
+.yellow {
+  background-color: var(--yellow);
+}
+.blue {
+  background-color: var(--blue);
+}
+.whitesilver {
+  background-color: var(--whitesilver);
+}
 
 .raise-nut {
   position: absolute;
-  top: 23px; 
+  top: 23px;
   left: -10px;
   transition: transform 0.25s ease-in;
-  transform : translateY(-45px) ;
+  transform: translateY(-45px);
   /* animation: 2s infinite nut-anime; */
-
 }
 
 .game-statistics {
@@ -119,9 +125,10 @@ footer {
 
 /*--- Keyframes for raised nut ---*/
 @keyframes nut-anime {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1) translateY(-20px);
-    box-shadow: 0 ;
+    box-shadow: 0;
   }
   50% {
     transform: scale(1.1) translateY(-20px);
@@ -130,13 +137,55 @@ footer {
 }
 
 @keyframes moveNut-X {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(20px); }
-  100% { transform: translateX(var(--distanceX)); }
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(var(--distanceX));
+  }
 }
 
 @keyframes moveNut-Y {
-  0% { transform: translateY(-65px); }
-  50% { transform: translateY(-80px); }
-  100% { transform: translateY(var(--distanceY)); }
+  0% {
+    transform: translateY(-65px);
+  }
+  50% {
+    transform: translateY(-80px);
+  }
+  100% {
+    transform: translateY(var(--distanceY));
+  }
+}
+
+/* move from source rod to top of target rod*/
+@keyframes moveNutToLid {
+  0% {
+    top: 23px;
+    left: 10px;
+  }
+  50% {
+    top: 10px;
+    left: 50px;
+  }
+  100% {
+    top: 23px;
+    left: 68px;
+  }
+}
+
+/*--- move from top of target rod to base ---*/
+@keyframes moveNutDownRod {
+  0% {
+    top: 23px;
+    left: 68px;
+    z-index: 1;
+  }
+  100% {
+    top: 88px;
+    left: 68px;
+    z-index: 1;
+  }
 }
