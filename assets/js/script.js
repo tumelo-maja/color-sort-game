@@ -94,53 +94,60 @@ document.addEventListener("DOMContentLoaded", function () {
         if (currentRod !== raisedRod) {
             console.log('Lets move it')
 
-            const targetRod = e.target.parentElement.parentElement;
+            const raisedNutWrapperRect = raisedNutWrapper.getBoundingClientRect();
+            const currentRodRect = currentRod.getBoundingClientRect();
+            currentRodRect.appendChild(raisedNutWrapperRect);
+            raisedNutWrapper.style.left = (raisedNutWrapperRect.left - currentRodRect.left) + "px";
+            raisedNutWrapper.style.top = (raisedNutWrapperRect.top - currentRodRect.top) + "px";
+
+            // const targetRod = e.target.parentElement.parentElement;
+            // // console.log(currentRod);
             // console.log(currentRod);
-            console.log(currentRod);
-            console.log(raisedNutWrapper);
+            // console.log(raisedNutWrapper);
 
-            // calcukate distance between the raised nut and the target rod 
-            const raisedNutWrapperPosition = raisedNutWrapper.getBoundingClientRect();
-            const currentRodPosition = currentRod.getBoundingClientRect();
-            const targetRodPosition = targetRod.getBoundingClientRect();
-            const nutStyle = window.getComputedStyle(raisedNut);
-            const rodStyle = window.getComputedStyle(targetRod);
+            // // calcukate distance between the raised nut and the target rod 
+            // const raisedNutWrapperPosition = raisedNutWrapper.getBoundingClientRect();
+            // const currentRodPosition = currentRod.getBoundingClientRect();
+            // const targetRodPosition = targetRod.getBoundingClientRect();
+            // const nutStyle = window.getComputedStyle(raisedNut);
+            // const rodStyle = window.getComputedStyle(targetRod);
 
-            // get the .rod object centeres
-            const targetRodCenterX = (targetRodPosition.left + targetRodPosition.width) / 2;
-            const currentRodCenterX = (currentRodPosition.left + currentRodPosition.width) / 2;
-            const distanceX = (targetRodCenterX - currentRodCenterX); //- parseFloat(rodStyle.width) / 2;
+            // // get the .rod object centeres
+            // const targetRodCenterX = (targetRodPosition.left + targetRodPosition.width) / 2;
+            // const currentRodCenterX = (currentRodPosition.left + currentRodPosition.width) / 2;
+            // const distanceX = (targetRodCenterX - currentRodCenterX) - parseFloat(rodStyle.width) / 2;
 
-            console.log(`distancex: ${distanceX}`);
-            console.log(`width: ${rodStyle.marginLeft}`);
+            // console.log(`distance: ${distanceX}`);
+            // console.log(`width: ${rodStyle.marginLeft}`);
 
-            // height: 12px; margin: 2px; 0 nuts in test rod
-            const distanceY = targetRodPosition.top - raisedNutWrapperPosition.top;
+            // // height: 12px; margin: 2px; 0 nuts in test rod
+            // // const distanceY = targetRodPosition.top - raisedNutWrapperPosition.top;
+            // const distanceY = targetRodPosition.top - currentRodPosition.top;
 
-            raisedNut.style.setProperty('--distanceX', `${distanceX}px`);
-            raisedNutWrapper.style.setProperty('--distanceY', `${distanceY}px`);
+            // console.log(targetRodPosition);
 
-            raisedNutWrapper.style.zIndex = '1';
+            // raisedNut.style.setProperty('--distanceX', `${distanceX}px`);
+            // raisedNutWrapper.style.setProperty('--distanceY', `${distanceY}px`);
 
-            raisedNut.style.animation = 'moveNut-X 1.5s ease forwards';
-            raisedNutWrapper.style.animation = 'moveNut-Y 1.5s ease forwards';
+            // raisedNutWrapper.style.zIndex = '1';
 
-            // targetRod.appendChild(raisedNutWrapper);
+            // raisedNut.style.animation = 'moveNut-X 1.5s ease forwards';
+            // raisedNutWrapper.style.animation = 'moveNut-Y 1.5s ease forwards';
 
-            raisedNutWrapper.addEventListener('animationend', function () {
-                raisedNut.style.animation = 'none';
-                raisedNutWrapper.style.animation = 'none';
-                raisedNutWrapper.appendChild(raisedNut);
-                targetRod.appendChild(raisedNutWrapper);
-            });
-            lowerNut();
+            // // targetRod.appendChild(raisedNutWrapper);
 
+            // raisedNutWrapper.addEventListener('animationend', function () {
+            //     raisedNutWrapper.appendChild(raisedNut);
+            //     targetRod.appendChild(raisedNutWrapper);
+            //     raisedNut.style.animation = 'none';
+            //     raisedNutWrapper.style.animation = 'none';
+            //     lowerNut();
+            // });     
+            
         } else {
             lowerNut();
             console.log('Lets lower it')
         }
-
-
 
     }
 
