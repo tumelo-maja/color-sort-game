@@ -105,18 +105,37 @@ document.addEventListener("DOMContentLoaded", function () {
             raisedNut.style.animation = 'moveNutToLid 0.5s ease forwards';
             raisedNutWrapper.style.animation = 'moveNutToLid 0.5s ease forwards';
 
-            raisedNutWrapper.appendChild(raisedNut);
-            currentRod.appendChild(raisedNutWrapper);
+
 
 
             // raisedNut.style.animation = "none";
             // square.removeEventListener("animationend", handler);
 
+            // Get styles to compare colors
+            const targetNutStyle = window.getComputedStyle(currentRod.lastElementChild);
+            const raisedNutStyle = window.getComputedStyle(raisedNut);
+
+            console.log(`Source color: ${raisedNutStyle.backgroundColor}`)
+            console.log(`Target color: ${targetNutStyle.backgroundColor}`)
+
             raisedNutWrapper.addEventListener('animationend', function () {
+
+
+                // if lastchild (top nut) does not match, return nut
+                if (raisedNutStyle.backgroundColor === targetNutStyle.backgroundColor) {
+                    raisedNutWrapper.appendChild(raisedNut);
+                    currentRod.appendChild(raisedNutWrapper);
+
+                    raisedNut.style.animation = 'moveNutDownRod 0.5s ease forwards';
+                    raisedNutWrapper.style.animation = 'moveNutDownRod 0.5s ease forwards';
+                } else {
+                    raisedNut.style.animation = 'returnNut 0.5s ease forwards';
+                    raisedNutWrapper.style.animation = 'returnNut 0.5s ease forwards';
+                    lowerNut();
+                }
+                
                 raisedNut.style.animation = 'none';
                 raisedNutWrapper.style.animation = 'none';
-                raisedNut.style.animation = 'moveNutDownRod 0.5s ease forwards';
-                raisedNutWrapper.style.animation = 'moveNutDownRod 0.5s ease forwards';
 
                 // lowerNut();
             });  
