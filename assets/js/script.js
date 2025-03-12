@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Set values passed in keyframes (positions) * should be in separate function
 
-    var rootSelector = document.querySelector(':root'); 
+    var rootSelector = document.querySelector(':root');
 
     rootSelector.style.setProperty('--raisePositionTop', '23px');
     rootSelector.style.setProperty('--raisePositionLeft', '10px');
@@ -115,8 +115,18 @@ document.addEventListener("DOMContentLoaded", function () {
             const raisedNutWrapperRect = raisedNutWrapper.getBoundingClientRect();
             const targetRodRect = targetRod.getBoundingClientRect();
 
-            // raisedNutWrapper.style.left = (raisedNutWrapperRect.left - currentRodRect.left) + "px";
-            // raisedNutWrapper.style.top = (raisedNutWrapperRect.top - currentRodRect.top) + "px";
+            // GEt the center of the lid ::after element
+            const lidElement = window.getComputedStyle(targetRod, '::after');
+            const lidElementWidth = parseFloat(lidElement.getPropertyValue('width'));
+            const lidElementHeight = parseFloat(lidElement.getPropertyValue('height'));
+            const lidElementTop = parseFloat(lidElement.getPropertyValue('top'));
+            const lidElementLeft = parseFloat(lidElement.getPropertyValue('left'));
+
+            // console.log(lidElementLeft);
+            const lidCenterX = targetRodRect.left + lidElementLeft + lidElementWidth / 2;
+            const lidCenterY = targetRodRect.top + lidElementTop + lidElementHeight / 2;
+            // console.log(lidCenterX);
+            // console.log(lidCenterY);
 
             // Get styles to compare colors
             const targetNutColor = targetNut.getAttribute("data-color");
