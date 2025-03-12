@@ -158,42 +158,11 @@ footer {
   animation: moveNutToLid 1s linear  forwards, moveNutDownRod 1.5s linear 0.5s forwards;
 }
 
+.fail-move {
+  animation: moveNutToLid 1s linear  forwards, returnNut 1.5s linear 0.5s forwards;
+}
+
 /*--- Keyframes for raised nut ---*/
-@keyframes nut-anime {
-  0%,
-  100% {
-    transform: scale(1) translateY(-20px);
-    box-shadow: 0;
-  }
-  50% {
-    transform: scale(1.1) translateY(-20px);
-    box-shadow: 1px 1px 5px red;
-  }
-}
-
-@keyframes moveNut-X {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(20px);
-  }
-  100% {
-    transform: translateX(var(--distanceX));
-  }
-}
-
-@keyframes moveNut-Y {
-  0% {
-    transform: translateY(-65px);
-  }
-  50% {
-    transform: translateY(-80px);
-  }
-  100% {
-    transform: translateY(var(--distanceY));
-  }
-}
 
 /* move from source rod to top of target rod*/
 @keyframes moveNutToLid {

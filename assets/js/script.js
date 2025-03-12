@@ -90,6 +90,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * Function to return the CSS value of a attribute from an object. 
+     * Made to clear the code and make it readable
+     * Takes 'object' and 'attribute' as arguments
+     */
+    function getCssStyleValue(object, attribute) {
+        const attributeValue = parseFloat(getComputedStyle(object).getPropertyValue(attribute));
+        return attributeValue
+    }
+
+    /**
      * Move raised nut to another rod
      */
     function moveNut(e) {
@@ -117,9 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const lidElementHeight = parseFloat(lidElement.getPropertyValue('height'));
 
             // retrieve the position setting for .raise-nut class
-            const raiseNutOffsetX = parseFloat(getComputedStyle(raisedNut).getPropertyValue('left'));
-            const raiseNutOffsetY = parseFloat(getComputedStyle(raisedNut).getPropertyValue('top'));
-
+            const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut,'left'));
+            const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut,'top'));
 
             // Final position of the nut = Account for existing nuts
             const rodPositionX = Math.round(targetRodRect.left - raisedRodRect.left + raiseNutOffsetX);
@@ -131,8 +140,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Mid-way position in transit from raise position to target rod
             const raiseMaxY = lidPositionY - (lidPositionY/2);
-            const raiseMaxX = (rodPositionX+lidPositionX)/2 - parseFloat(getComputedStyle(raisedNut).getPropertyValue('width'))/2;
-            
+            const raiseMaxX = (rodPositionX+lidPositionX)/2 - parseFloat(getCssStyleValue(raisedNut,'width'))/2;
+
             // Set CSS variables for the keyframe animations
             raisedNut.style.setProperty("--raiseMaxLeft", raiseMaxX +"px");
             raisedNut.style.setProperty("--raiseMaxTop", raiseMaxY +"px");
@@ -145,8 +154,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const targetNutColor = targetNut.getAttribute("data-color");
             const raisedNutColor = raisedNut.getAttribute("data-color");
 
+            // Conditions to move nuts to new rod
+            const isColorMatch = raisedNutColor === targetNutColor;
+            const isSpaceAvailable = rodChildrenCount < maxNutsPerRod;
+            const isRodEmpty = 0 < rodChildrenCount ;
+
             // if last child (top nut) color does not match, return nut to origin
-            if (raisedNutColor === targetNutColor) {
+            if ((isColorMatch && isSpaceAvailable) || (isRodEmpty)) {
 
                 // Activate the success move animation
                 raisedNut.classList.add("success-move");
@@ -165,9 +179,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
             } else {
-                raisedNut.style.animation = 'returnNut 0.5s ease forwards';
-                raisedNutWrapper.style.animation = 'returnNut 0.5s ease forwards';
+                // raisedNut.style.animation = 'returnNut 0.5s ease forwards';
+                // raisedNutWrapper.style.animation = 'returnNut 0.5s ease forwards';
                 // lowerNut();
+
+                // Activate the fail move animation to return the nut to origin
+                raisedNut.classList.add("fail-move");
+                raisedNutWrapper.classList.add("fail-move");
+
+                let animateStages = 0;
+                raisedNutWrapper.addEventListener('animationend', () => {
+                    animateStages++;
+                    if (animateStages === 2) {
+                        raisedNut.classList.remove("fail-move", "raise-nut");
+                        raisedNutWrapper.classList.remove("fail-move");
+                    }
+                });
             }
 
         } else {
