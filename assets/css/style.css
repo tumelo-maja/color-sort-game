@@ -180,29 +180,29 @@ footer {
 /* move from source rod to top of target rod*/
 @keyframes moveNutToLid {
   0% {
-    top: 23px;
-    left: 10px;
+    top: var(--raisePositionTop); /** 23px; */
+    left: var(--raisePositionLeft); /**10px; */
   }
   50% {
-    top: 10px;
-    left: 50px;
+    top: var(--raiseMaxTop); /**10px; */
+    left: var(--raiseMaxLeft); /**50px; */
   }
   100% {
-    top: 23px;
-    left: 68px;
+    top: var(--lidPositionTop); /** 23px;*/
+    left: var(--lidPositionLeft); /** 68px; */
   }
 }
 
 /*--- move from top of target rod to base ---*/
 @keyframes moveNutDownRod {
   0% {
-    top: 23px;
-    left: 68px;
+    top: var(--lidPositionTop); /** 23px;*/
+    left: var(--lidPositionLeft); /** 68px; */
     z-index: 1;
   }
   100% {
-    top: 88px;
-    left: 68px;
+    top: var(--targetPositionTop); /** 88px;*/
+    left: var(--targetPositionLeft); /** 68px; */
     z-index: 1;
   }
 }
@@ -210,13 +210,13 @@ footer {
 /*--- return nut to source ---*/
 @keyframes returnNut {
   0% {
-    top: 23px;
-    left: 68px;
+    top: var(--lidPositionTop); /** 23px;*/
+    left: var(--lidPositionLeft); /** 68px; */
     z-index: 1;
   }
   100% {
-    top: 23px;
-    left: 10px;
+    top: var(--raisePositionTop); /** 23px; */
+    left: var(--raisePositionLeft); /**10px; */
     z-index: 1;
   }
 }
