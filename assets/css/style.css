@@ -63,7 +63,7 @@ footer {
 
 .game-area {
   border: 2px solid green;
-  height: 450px;
+  height: 480px;
   width: 240px;
   padding: 20px;
 }
@@ -79,31 +79,35 @@ footer {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  width: 20px;
-  height: 155px;
+  width: 25px;
+  height: 190px;
   background-color: silver;
-  border: 1px dotted black;
+  border: 1px solid #808080;
   margin: 10px;
   position: relative;
+  padding: 4px 0;
+  /* gap: 1px; */
+  box-sizing: border-box;
 }
 
 .rod::after {
   content: '';
-  width: 22px;
+  width: 23px;
   height: 8px;
   background-color: #e2e2e2;
   border: 1px solid #808080;
   position: absolute;
   border-radius: 50%;
-  top: -4px;
-  left: -2px;
-  z-index: 300;
+  top: -6px;
+  left: 50%;
+  /* z-index: 2; */
+  transform: translateX(-50%) ;
 }
 
 .nut {
   width: 40px;
-  height: 17px;
-  margin: 1px 0;
+  height: 16px;
+  margin-bottom: 3px;
   border-radius: 5px;
   border: 2px solid black;
   align-self: center;
@@ -111,8 +115,8 @@ footer {
   text-align: center;
   cursor: pointer;
   transition: transform 0.5s ease-in-out;
-  box-sizing: border-box;
-  z-index: 100;
+  /* box-sizing: border-box; */
+  /* z-index: 100; */
 }
 
 .orange {

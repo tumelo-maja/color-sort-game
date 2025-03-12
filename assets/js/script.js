@@ -132,34 +132,34 @@ document.addEventListener("DOMContentLoaded", function () {
             const raiseNutOffsetX = parseFloat(getComputedStyle(raisedNut).getPropertyValue('left'));
             const raiseNutOffsetY = parseFloat(getComputedStyle(raisedNut).getPropertyValue('top'));
 
-            const lidCenterX = targetRodRect.left - raisedRodRect.left + raiseNutOffsetX;
-            const lidCenterY = raiseNutOffsetY;
             
             console.log(`raiseNutOffsetY: ${raiseNutOffsetY}`);
             console.log(`targetRodRect.top: ${targetRodRect.top}`);
             console.log(`raisedRodRect.top: ${raisedRodRect.top}`);
-            // console.log(lidCenterY);
 
             // calculate the rod position
-            const rodChildren = targetRod.querySelectorAll('.nut-wrap');
-            const rodChildrenHeight = rodChildren.length * parseFloat(nutStyle.height);
-            console.log(`This rod has: ${rodChildren.length} nuts`);
+            let rodChildrenCount = targetRod.querySelectorAll('.nut-wrap').length;
+            // const rodChildrenHeight = rodChildren.length * parseFloat(nutStyle.height);
+            console.log(`This rod has: ${rodChildrenCount} nuts`);
             // console.log(rodChildren);
-            console.log(rodChildrenHeight);
+            // console.log(rodChildrenHeight);
 
-            const rodPositionX = lidCenterX;
-            const rodPositionY = (targetRod.clientHeight) ; 
+            // Final position of the nut = Account for existing nuts
+            const rodPositionX = Math.round(targetRodRect.left - raisedRodRect.left + raiseNutOffsetX);
+            // const rodPositionY = (targetRod.clientHeight + raiseNutOffsetY +(parseFloat(nutStyle.marginTop)*2)) ; 
+            const maxNutsPerRod = 8;
+            // rodChildrenCount =0;
 
-            console.log(lidCenterY);
-            console.log(lidCenterX);
-            // console.log(rodHeight);
+            const nutSize =parseFloat(nutStyle.height)+parseFloat(nutStyle.marginBottom);
 
-            // console.log(`Rod height: ${rodHeight}`);
-            const lidXpos = getComputedStyle(document.documentElement).getPropertyValue('--lidPositionLeft');
+            const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (rodChildrenCount * nutSize)) + raiseNutOffsetY)+lidElementHeight; 
+            console.log(`Children Height: ${rodPositionY}`)
 
-
+            // Position on 'lid' above target rod
             const lidPositionY = raiseNutOffsetY;
             const lidPositionX = rodPositionX;
+
+            // Mid-way position in transit from raise position to target rod
             const raiseMaxY = lidPositionY - (lidPositionY/2);
             const raiseMaxX = (rodPositionX+lidPositionX)/2 - parseFloat(getComputedStyle(raisedNut).getPropertyValue('width'))/2;
 
@@ -191,10 +191,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 raisedNutWrapper.addEventListener('animationend', () => {
                     animateStages++;
                     if (animateStages === 2) {
-                        // raisedNutWrapper.appendChild(raisedNut);
-                        // targetRod.appendChild(raisedNutWrapper);
-                        // raisedNut.classList.remove("success-move", "raise-nut");
-                        // raisedNutWrapper.classList.remove("success-move");
+                        raisedNutWrapper.appendChild(raisedNut);
+                        targetRod.appendChild(raisedNutWrapper);
+                        raisedNut.classList.remove("success-move", "raise-nut");
+                        raisedNutWrapper.classList.remove("success-move");
                     }
                 });
 
