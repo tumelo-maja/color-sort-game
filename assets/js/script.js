@@ -10,6 +10,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // let moveButton = document.getElementById('rod4');
     // moveButton.addEventListener('click', moveNut);
 
+    // Set values passed in keyframes (positions) * should be in separate function
+    
+    const raisePositionTop = '23px';
+    const raisePositionLeft = '10px';
+
+    const raiseMaxTop = '10px';
+    const raiseMaxLeft = '50px';
+
+    const lidPositionTop = '23px';
+    const lidPositionLeft = '68px';
+
+    const targetPositionTop = '88px';
+    const targetPositionLeft = '68px';
+
+    // end of variables
+
     // Test end 
 
 
@@ -122,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (animateStages === 2) {
                         raisedNutWrapper.appendChild(raisedNut);
                         targetRod.appendChild(raisedNutWrapper);
-                        raisedNut.classList.remove("success-move","raise-nut");
+                        raisedNut.classList.remove("success-move", "raise-nut");
                         raisedNutWrapper.classList.remove("success-move");
                     }
                 });
