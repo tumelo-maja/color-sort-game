@@ -49,12 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function raiseNut(e) {
         let selectedNut = e.target;
         let currentNutWrap = selectedNut.parentElement;
-        let currentRod = currentNutWrap.parentElement;
+        let targetRod = currentNutWrap.parentElement;
 
         // only raise the top nut
-        if (currentRod.lastElementChild === currentNutWrap) {
+        if (targetRod.lastElementChild === currentNutWrap) {
 
             selectedNut.classList.add("raise-nut");
+            // currentNutWrap.classList.add("raise-nut");
             console.log("Definitely last born!");
         } else {
             console.log("Not the last child");
@@ -87,47 +88,30 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get raised nut
         const raisedNut = document.querySelector(".raise-nut");
         const raisedNutWrapper = raisedNut.parentElement;
-        const currentRod = raisedNutWrapper.parentElement;
-        const currentNut = e.target;
-        const raisedRod = currentNut.parentElement.parentElement;
+        const raisedRod = raisedNutWrapper.parentElement;
+        const targetNut = e.target;
+        const targetRod = targetNut.parentElement.parentElement;
         console.log('This is the current rod');
         console.log(raisedRod);
 
-        if (currentRod !== raisedRod) {
+        if (targetRod !== raisedRod) {
             console.log('Lets move it')
 
             const raisedNutWrapperRect = raisedNutWrapper.getBoundingClientRect();
-            const currentRodRect = currentRod.getBoundingClientRect();
+            const targetRodRect = targetRod.getBoundingClientRect();
 
-            raisedNutWrapper.style.left = (raisedNutWrapperRect.left - currentRodRect.left) + "px";
-            raisedNutWrapper.style.top = (raisedNutWrapperRect.top - currentRodRect.top) + "px";
-
-            // Pass two animations together 1) raised to target rod and 2) target rod top to base
-            const dur1 = 1;
-            const dur2 = 1;
-            // raisedNut.style.animation = `moveNutToLid ${dur1}s ease forwards, moveNutDownRod ${dur2}s ease 0.5s forwards`;
-            // raisedNutWrapper.style.animation = `moveNutToLid ${dur1}s ease forwards, moveNutDownRod ${dur2} ease 0.5s forwards`;
-            // raisedNut.style.animation = `moveNutToLid ${dur1}s ease forwards`;
-            // raisedNutWrapper.style.animation = `moveNutToLid ${dur1}s ease forwards`;
-
-            // raisedNut.style.animation = 'returnNut 0.5s ease forwards';
-
-
+            // raisedNutWrapper.style.left = (raisedNutWrapperRect.left - currentRodRect.left) + "px";
+            // raisedNutWrapper.style.top = (raisedNutWrapperRect.top - currentRodRect.top) + "px";
 
             // Get styles to compare colors
-            const targetNutColor = currentNut.getAttribute("data-color");
+            const targetNutColor = targetNut.getAttribute("data-color");
             const raisedNutColor = raisedNut.getAttribute("data-color");
 
             console.log(`Source color: ${raisedNutColor}`);
             console.log(`Target color: ${targetNutColor}`);
 
-            // raisedNutWrapper.addEventListener('animationend', function () {
-
-
-            // if lastchild (top nut) does not match, return nut
+            // if lastchild (top nut) color does not match, return nut
             if (raisedNutColor === targetNutColor) {
-                raisedNutWrapper.appendChild(raisedNut);
-                currentRod.appendChild(raisedNutWrapper);
 
                 raisedNut.classList.add("success-move");
                 raisedNutWrapper.classList.add("success-move");
@@ -136,9 +120,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 raisedNutWrapper.addEventListener('animationend', () => {
                     animateStages++;
                     if (animateStages === 2) {
-                        raisedNut.classList.remove("success-move");
+                        raisedNutWrapper.appendChild(raisedNut);
+                        targetRod.appendChild(raisedNutWrapper);
+                        raisedNut.classList.remove("success-move","raise-nut");
                         raisedNutWrapper.classList.remove("success-move");
-                        console.log('Both animations finished; class removed.');
                     }
                 });
 
@@ -153,13 +138,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             // const targetRod = e.target.parentElement.parentElement;
-            // // console.log(currentRod);
-            // console.log(currentRod);
+            // // console.log(targetRod);
+            // console.log(targetRod);
             // console.log(raisedNutWrapper);
 
             // // calcukate distance between the raised nut and the target rod 
             // const raisedNutWrapperPosition = raisedNutWrapper.getBoundingClientRect();
-            // const currentRodPosition = currentRod.getBoundingClientRect();
+            // const currentRodPosition = targetRod.getBoundingClientRect();
             // const targetRodPosition = targetRod.getBoundingClientRect();
             // const nutStyle = window.getComputedStyle(raisedNut);
             // const rodStyle = window.getComputedStyle(targetRod);
