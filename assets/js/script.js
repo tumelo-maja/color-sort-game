@@ -103,18 +103,24 @@ document.addEventListener("DOMContentLoaded", function () {
      * Run the animation for the input move
      * Specify the animation class name
      */
-    function runAnimation(nutObject, animationName) {
+    function runAnimation(nutObject, targetRod, animationName) {
 
-        if (animationName === "success-move") {
-
-            nutObject.classList.add(animationName);
-            nutObject.parentElement.classList.add(animationName);
-        }
+        nutObject.classList.add(animationName);
+        nutObject.parentElement.classList.add(animationName);
 
         let animateStages = 0;
+        const raisedNutWrapper = nutObject.parentElement;
         nutObject.parentElement.addEventListener('animationend', () => {
             animateStages++;
             if (animateStages === 2) {
+
+                if (animationName === "success-move") {
+
+                    raisedNutWrapper.appendChild(nutObject);
+                    targetRod.appendChild(raisedNutWrapper);
+
+                }
+
                 nutObject.classList.remove(animationName, "raise-nut");
                 nutObject.parentElement.classList.remove(animationName);
             }
@@ -133,7 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetRod = targetNut.parentElement.parentElement;
         const nutStyle = window.getComputedStyle(raisedNut);
         const nutSize = parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom);
-        
+
+
         // Check the destination rod is not the same as origin rod
         if (targetRod === raisedRod) {
             console.log('Lets move it')
@@ -175,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         raisedNut.style.setProperty("--targetPositionLeft", rodPositionX + "px");
         raisedNut.style.setProperty("--targetPositionTop", rodPositionY + "px");
 
+        console.log(`rodPositionX: ${rodPositionX}`);
 
 
         // Conditions to move nuts to new rod
@@ -182,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (isRodEmpty) {
 
-            runAnimation(raisedNut, "success-move")
+            runAnimation(raisedNut, targetRod,"success-move")
 
         } else {
 
@@ -194,14 +202,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const targetNutColor = targetNut.getAttribute("data-color");
             const raisedNutColor = raisedNut.getAttribute("data-color");
 
+            console.log("Its got colors");
+
 
             if (isColorMatch && isSpaceAvailable) {
 
-                runAnimation(raisedNut, "success-move")
+                runAnimation(raisedNut, targetRod, "success-move")
 
             } else {
 
-                runAnimation(raisedNut, "fail-move")
+                runAnimation(raisedNut, targetRod, "fail-move")
 
             }
         }
