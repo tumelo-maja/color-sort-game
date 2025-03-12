@@ -123,6 +123,10 @@ footer {
   margin: 20px;
 }
 
+.success-move {
+  animation: moveNutToLid 1s ease forwards, moveNutDownRod 1s ease 0.5s forwards;
+}
+
 /*--- Keyframes for raised nut ---*/
 @keyframes nut-anime {
   0%,
