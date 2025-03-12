@@ -151,7 +151,7 @@ footer {
 }
 
 .success-move {
-  animation: moveNutToLid 1s linear forwards, moveNutDownRod 1.5s linear 0.5s forwards;
+  animation: moveNutToLid 1s linear  forwards, moveNutDownRod 1.5s linear 0.5s forwards;
 }
 
 /*--- Keyframes for raised nut ---*/

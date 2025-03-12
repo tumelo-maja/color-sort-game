@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // rootSelector.style.setProperty('--raisePositionTop', '23px');
     // rootSelector.style.setProperty('--raisePositionLeft', '-10px');
-    rootSelector.style.setProperty('--raiseMaxTop', '10px');
-    rootSelector.style.setProperty('--raiseMaxLeft', '50px');
+    // rootSelector.style.setProperty('--raiseMaxTop', '10px');
+    // rootSelector.style.setProperty('--raiseMaxLeft', '50px');
     // rootSelector.style.setProperty('--lidPositionTop', '23px');
     // rootSelector.style.setProperty('--lidPositionLeft', '68px');
     // rootSelector.style.setProperty('--targetPositionTop', '88px');
@@ -157,13 +157,25 @@ document.addEventListener("DOMContentLoaded", function () {
             // console.log(`Rod height: ${rodHeight}`);
             const lidXpos = getComputedStyle(document.documentElement).getPropertyValue('--lidPositionLeft');
 
-            raisedNut.style.setProperty("--lidPositionLeft", lidCenterX +"px");
-            raisedNut.style.setProperty("--lidPositionTop", lidCenterY +"px");
 
-            rootSelector.style.setProperty('--lidPositionTop', raiseNutOffsetY +'px');
-            rootSelector.style.setProperty('--lidPositionLeft', raiseNutOffsetX +'px');
+            const lidPositionY = raiseNutOffsetY;
+            const lidPositionX = rodPositionX;
+            const raiseMaxY = lidPositionY - (lidPositionY/2);
+            const raiseMaxX = (rodPositionX+lidPositionX)/2 - parseFloat(getComputedStyle(raisedNut).getPropertyValue('width'))/2;
+
+            // rootSelector.style.setProperty('--raiseMaxTop', '10px');
+            // rootSelector.style.setProperty('--raiseMaxLeft', '50px');
+            
+            raisedNut.style.setProperty("--raiseMaxLeft", raiseMaxX +"px");
+            raisedNut.style.setProperty("--raiseMaxTop", raiseMaxY +"px");
+
+            rootSelector.style.setProperty('--lidPositionTop', lidPositionY +'px');
+            rootSelector.style.setProperty('--lidPositionLeft', lidPositionX +'px');
             raisedNut.style.setProperty("--targetPositionLeft", rodPositionX +"px");
             raisedNut.style.setProperty("--targetPositionTop", rodPositionY +"px");
+
+            console.log(`X max: ${raiseMaxX}`);
+            console.log(`Y max: ${raiseMaxY}`);
 
             // Get styles to compare colors
             const targetNutColor = targetNut.getAttribute("data-color");
