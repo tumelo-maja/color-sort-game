@@ -88,7 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const raisedNut = document.querySelector(".raise-nut");
         const raisedNutWrapper = raisedNut.parentElement;
         const currentRod = raisedNutWrapper.parentElement;
-        const raisedRod = e.target.parentElement.parentElement;
+        const currentNut = e.target;
+        const raisedRod = currentNut.parentElement.parentElement;
         console.log('This is the current rod');
         console.log(raisedRod);
 
@@ -112,30 +113,40 @@ document.addEventListener("DOMContentLoaded", function () {
             // square.removeEventListener("animationend", handler);
 
             // Get styles to compare colors
-            const targetNutStyle = window.getComputedStyle(currentRod.lastElementChild);
-            const raisedNutStyle = window.getComputedStyle(raisedNut);
+            // const targetNutStyle = window.getComputedStyle(currentRod.lastElementChild.lastElementChild);
+            // const raisedNutStyle = window.getComputedStyle(raisedNut);
 
-            console.log(`Source color: ${raisedNutStyle.backgroundColor}`)
-            console.log(`Target color: ${targetNutStyle.backgroundColor}`)
+            const targetNutColor = currentNut.getAttribute("data-color");
+            const raisedNutColor = raisedNut.getAttribute("data-color");            
+
+            console.log(`Source color: ${raisedNutColor}`)
+            console.log(`Target color: ${targetNutColor}`)
 
             raisedNutWrapper.addEventListener('animationend', function () {
 
 
                 // if lastchild (top nut) does not match, return nut
-                if (raisedNutStyle.backgroundColor === targetNutStyle.backgroundColor) {
+                if (raisedNutColor === targetNutColor) {
                     raisedNutWrapper.appendChild(raisedNut);
                     currentRod.appendChild(raisedNutWrapper);
 
                     raisedNut.style.animation = 'moveNutDownRod 0.5s ease forwards';
                     raisedNutWrapper.style.animation = 'moveNutDownRod 0.5s ease forwards';
+
+                    // raisedNut.style.animation = '';
+                    // raisedNutWrapper.style.animation = '';
+                    
+
+                    console.log("They match");
                 } else {
                     raisedNut.style.animation = 'returnNut 0.5s ease forwards';
                     raisedNutWrapper.style.animation = 'returnNut 0.5s ease forwards';
-                    lowerNut();
+                    // lowerNut();
                 }
                 
-                raisedNut.style.animation = 'none';
-                raisedNutWrapper.style.animation = 'none';
+                // raisedNut.style.animation = 'none';
+                // raisedNutWrapper.style.animation = 'none';
+                
 
                 // lowerNut();
             });  
