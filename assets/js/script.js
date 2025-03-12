@@ -103,20 +103,23 @@ document.addEventListener("DOMContentLoaded", function () {
      * Run the animation for the input move
      * Specify the animation class name
      */
-        function runAnimation(nutObject, animationName ) {
+    function runAnimation(nutObject, animationName) {
+
+        if (animationName === "success-move") {
 
             nutObject.classList.add(animationName);
             nutObject.parentElement.classList.add(animationName);
-
-            let animateStages = 0;
-            nutObject.addEventListener('animationend', () => {
-                animateStages++;
-                if (animateStages === 2) {
-                    nutObject.classList.remove(animationName, "raise-nut");
-                    nutObject.parentElement.classList.remove(animationName);
-                }
-            });
         }
+
+        let animateStages = 0;
+        nutObject.parentElement.addEventListener('animationend', () => {
+            animateStages++;
+            if (animateStages === 2) {
+                nutObject.classList.remove(animationName, "raise-nut");
+                nutObject.parentElement.classList.remove(animationName);
+            }
+        });
+    }
 
     /**
      * Move raised nut to another rod
@@ -130,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetRod = targetNut.parentElement.parentElement;
         const nutStyle = window.getComputedStyle(raisedNut);
         const nutSize = parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom);
-
+        
         // Check the destination rod is not the same as origin rod
         if (targetRod === raisedRod) {
             console.log('Lets move it')
@@ -172,70 +175,33 @@ document.addEventListener("DOMContentLoaded", function () {
         raisedNut.style.setProperty("--targetPositionLeft", rodPositionX + "px");
         raisedNut.style.setProperty("--targetPositionTop", rodPositionY + "px");
 
-        // Get styles to compare colors
-        const targetNutColor = targetNut.getAttribute("data-color");
-        const raisedNutColor = raisedNut.getAttribute("data-color");
+
 
         // Conditions to move nuts to new rod
-        const isColorMatch = raisedNutColor === targetNutColor;
-        const isSpaceAvailable = rodChildrenCount < maxNutsPerRod;
         const isRodEmpty = 0 < rodChildrenCount;
 
         if (isRodEmpty) {
-            console.log();
 
-            // Activate the success move animation
-            raisedNut.classList.add("success-move");
-            raisedNutWrapper.classList.add("success-move");
-
-            // There's two animation involved, the both run before removing the animation classes
-            let animateStages = 0;
-            raisedNutWrapper.addEventListener('animationend', () => {
-                animateStages++;
-                if (animateStages === 2) {
-                    raisedNutWrapper.appendChild(raisedNut);
-                    targetRod.appendChild(raisedNutWrapper);
-                    raisedNut.classList.remove("success-move", "raise-nut");
-                    raisedNutWrapper.classList.remove("success-move");
-                }
-            });
-            
+            runAnimation(raisedNut, "success-move")
 
         } else {
+
+            // Conditions to move nuts to new rod
+            const isColorMatch = raisedNutColor === targetNutColor;
+            const isSpaceAvailable = rodChildrenCount < maxNutsPerRod;
+
+            // Get styles to compare colors
+            const targetNutColor = targetNut.getAttribute("data-color");
+            const raisedNutColor = raisedNut.getAttribute("data-color");
 
 
             if (isColorMatch && isSpaceAvailable) {
 
-                // Activate the success move animation
-                raisedNut.classList.add("success-move");
-                raisedNutWrapper.classList.add("success-move");
-
-                // There's two animation involved, the both run before removing the animation classes
-                let animateStages = 0;
-                raisedNutWrapper.addEventListener('animationend', () => {
-                    animateStages++;
-                    if (animateStages === 2) {
-                        raisedNutWrapper.appendChild(raisedNut);
-                        targetRod.appendChild(raisedNutWrapper);
-                        raisedNut.classList.remove("success-move", "raise-nut");
-                        raisedNutWrapper.classList.remove("success-move");
-                    }
-                });
+                runAnimation(raisedNut, "success-move")
 
             } else {
 
-                // Activate the fail move animation to return the nut to origin
-                raisedNut.classList.add("fail-move");
-                raisedNutWrapper.classList.add("fail-move");
-
-                let animateStages = 0;
-                raisedNutWrapper.addEventListener('animationend', () => {
-                    animateStages++;
-                    if (animateStages === 2) {
-                        raisedNut.classList.remove("fail-move", "raise-nut");
-                        raisedNutWrapper.classList.remove("fail-move");
-                    }
-                });
+                runAnimation(raisedNut, "fail-move")
 
             }
         }
