@@ -11,18 +11,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // moveButton.addEventListener('click', moveNut);
 
     // Set values passed in keyframes (positions) * should be in separate function
-    
-    const raisePositionTop = '23px';
-    const raisePositionLeft = '10px';
 
-    const raiseMaxTop = '10px';
-    const raiseMaxLeft = '50px';
+    var rootSelector = document.querySelector(':root'); 
 
-    const lidPositionTop = '23px';
-    const lidPositionLeft = '68px';
-
-    const targetPositionTop = '88px';
-    const targetPositionLeft = '68px';
+    rootSelector.style.setProperty('--raisePositionTop', '23px');
+    rootSelector.style.setProperty('--raisePositionLeft', '10px');
+    rootSelector.style.setProperty('--raiseMaxTop', '10px');
+    rootSelector.style.setProperty('--raiseMaxLeft', '50px');
+    rootSelector.style.setProperty('--lidPositionTop', '23px');
+    rootSelector.style.setProperty('--lidPositionLeft', '68px');
+    rootSelector.style.setProperty('--targetPositionTop', '88px');
+    rootSelector.style.setProperty('--targetPositionLeft', '68px');
 
     // end of variables
 

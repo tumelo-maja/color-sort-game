@@ -4,6 +4,19 @@
   --yellow: #f9b723;
   --blue: #26a1ee;
   --whitesilver: #c2b3d4;
+
+  /* position variables */
+  /* --raisePositionTop : 23px;
+  --raisePositionLeft : 10px;
+
+  --raiseMaxTop : 10px;
+  --raiseMaxLeft : 50px;
+
+  --lidPositionTop : 23px;
+  --lidPositionLeft : 68px;
+
+  --targetPositionTop : 88px;
+  --targetPositionLeft : 68px; */
 }
 
 body {
