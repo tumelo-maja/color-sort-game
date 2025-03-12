@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var rootSelector = document.querySelector(':root');
 
-    rootSelector.style.setProperty('--raisePositionTop', '23px');
-    rootSelector.style.setProperty('--raisePositionLeft', '10px');
+    // rootSelector.style.setProperty('--raisePositionTop', '23px');
+    // rootSelector.style.setProperty('--raisePositionLeft', '-10px');
     rootSelector.style.setProperty('--raiseMaxTop', '10px');
     rootSelector.style.setProperty('--raiseMaxLeft', '50px');
-    rootSelector.style.setProperty('--lidPositionTop', '23px');
-    rootSelector.style.setProperty('--lidPositionLeft', '68px');
+    // rootSelector.style.setProperty('--lidPositionTop', '23px');
+    // rootSelector.style.setProperty('--lidPositionLeft', '68px');
     // rootSelector.style.setProperty('--targetPositionTop', '88px');
     // rootSelector.style.setProperty('--targetPositionLeft', '68px');
 
@@ -129,12 +129,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const lidElementLeft = parseFloat(lidElement.getPropertyValue('left'));
 
             // console.log(lidElementLeft);
-            const raiseNutOffsetX = getComputedStyle(raisedNut).getPropertyValue('left');
+            const raiseNutOffsetX = parseFloat(getComputedStyle(raisedNut).getPropertyValue('left'));
+            const raiseNutOffsetY = parseFloat(getComputedStyle(raisedNut).getPropertyValue('top'));
 
-            const lidCenterX = targetRodRect.left - raisedRodRect.left + parseFloat(raiseNutOffsetX);
-            const lidCenterY = (targetRodRect.top - lidElementTop + lidElementHeight) / 2;
+            const lidCenterX = targetRodRect.left - raisedRodRect.left + raiseNutOffsetX;
+            const lidCenterY = raiseNutOffsetY;
             
-            // console.log(lidCenterX);
+            console.log(`raiseNutOffsetY: ${raiseNutOffsetY}`);
+            console.log(`targetRodRect.top: ${targetRodRect.top}`);
+            console.log(`raisedRodRect.top: ${raisedRodRect.top}`);
             // console.log(lidCenterY);
 
             // calculate the rod position
@@ -144,27 +147,23 @@ document.addEventListener("DOMContentLoaded", function () {
             // console.log(rodChildren);
             console.log(rodChildrenHeight);
 
-            // const rodCenterX = lidCenterX;
-            // const rodCenterY = (parseFloat(nutStyle.height) *8); //- rodChildrenHeight;
-            const nutHeight = parseFloat(window.getComputedStyle(targetNut).height); //- rodChildrenHeight;
-            const nutWidth = parseFloat(window.getComputedStyle(targetNut).width); //- rodChildrenHeight;
-            const rodHeight = parseFloat(window.getComputedStyle(targetRod).height); //- rodChildrenHeight;
-            const rodWidth = parseFloat(window.getComputedStyle(targetRod).width); //- rodChildrenHeight;
-            
-            const rodCenterX = lidCenterX -(raisedRod.clientWidth - targetNut.offsetWidth)/2;
-            const rodCenterY = (targetRod.clientHeight - targetNut.offsetHeight) ; 
+            const rodPositionX = lidCenterX;
+            const rodPositionY = (targetRod.clientHeight) ; 
 
             console.log(lidCenterY);
             console.log(lidCenterX);
             // console.log(rodHeight);
 
-            console.log(`Rod height: ${rodHeight}`);
+            // console.log(`Rod height: ${rodHeight}`);
             const lidXpos = getComputedStyle(document.documentElement).getPropertyValue('--lidPositionLeft');
 
-            // raisedNut.style.setProperty("--targetPositionLeft", rodCenterX +"px");
-            // raisedNut.style.setProperty("--targetPositionTop", rodCenterY +"px");
-            raisedNut.style.setProperty("--targetPositionLeft", lidCenterX +"px");
-            raisedNut.style.setProperty("--targetPositionTop", lidCenterY +"px");
+            raisedNut.style.setProperty("--lidPositionLeft", lidCenterX +"px");
+            raisedNut.style.setProperty("--lidPositionTop", lidCenterY +"px");
+
+            rootSelector.style.setProperty('--lidPositionTop', raiseNutOffsetY +'px');
+            rootSelector.style.setProperty('--lidPositionLeft', raiseNutOffsetX +'px');
+            raisedNut.style.setProperty("--targetPositionLeft", rodPositionX +"px");
+            raisedNut.style.setProperty("--targetPositionTop", rodPositionY +"px");
 
             // Get styles to compare colors
             const targetNutColor = targetNut.getAttribute("data-color");
