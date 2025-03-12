@@ -74,6 +74,19 @@ footer {
   position: relative;
 }
 
+.rod::after {
+  content: '';
+  width: 22px;
+  height: 8px;
+  background-color: #e2e2e2;
+  border: 1px solid #808080;
+  position: absolute;
+  border-radius: 50%;
+  top: -4px;
+  left: -2px;
+  z-index: 300;
+}
+
 .nut {
   width: 40px;
   height: 17px;
