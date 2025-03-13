@@ -139,34 +139,46 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * Calculate the 'lid' position - entry/exit points for all nuts
+     */
+    function calculateLidCenter(targetRod) {
+        
+        // target the 'afterelemnt representing the lid
+        const lidElement = window.getComputedStyle(targetRod, '::after');
+        // const lidElementRect = window.getComputedStyle(targetRod, '::after');
+        const lidElementRect = lidElement.getBoundingClientRect();
+        console.log(lidElementRect);
+
+
+    }
+
+    /**
      * Set the CSS values for the animation motion of the nut
      * @param {The parent rod of the raised nut} sourceRod 
      * @param {The final rod for the nut} targetRod 
      */
-    function setPositionalValues(sourceRod, targetRod,targetChildrenCount) {
+    function setPositionalValues(sourceRod, targetRod, targetChildrenCount) {
 
         const sourceRodRect = sourceRod.getBoundingClientRect(); // Object position w.r.t viewport
         const targetRodRect = targetRod.getBoundingClientRect();
 
-        const raisedNutWrapper =sourceRod.firstElementChild;
+        const raisedNutWrapper = sourceRod.firstElementChild;
         console.log(raisedNutWrapper);
-        const raisedNut =raisedNutWrapper.firstElementChild;
-
-        // ---(targetRod)--- GEt the center of the lid ::after element
-        const lidElement = window.getComputedStyle(targetRod, '::after');
-        const lidElementHeight = parseFloat(lidElement.getPropertyValue('height'));
+        const raisedNut = raisedNutWrapper.firstElementChild;
 
         // ---(raisedNut)--- retrieve the position setting for .raise-nut class
         const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut, 'left'));
         const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut, 'top'));
 
         // ---(targetRod / sourceRod)--- Final position of the nut = Account for existing nuts
-        const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
-        const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (targetChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
+        // const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
+        // const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (targetChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
 
         // ---(targetRod / sourceRod)--- Position on 'lid' above target rod (assumes same hor line)
-        const lidPositionY = raiseNutOffsetY;
-        const lidPositionX = rodPositionX;
+        // const lidPositionY = raiseNutOffsetY;
+        // const lidPositionX = rodPositionX;
+        const lidCenterPosition = calculateLidCenter(targetRod);
+        console.log(lidCenterPosition.xValue);
 
         // ---(targetRod / sourceRod)--- Mid-way position in transit from raise position to target rod
         const raiseMaxY = lidPositionY - (lidPositionY / 2);
@@ -199,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         raisedNut.classList.add(animationName); // nut element
 
         let animateStages = 0;
-        
+
         raisedNutWrapper.addEventListener('animationend', () => {
             animateStages++;
             if (animateStages === 2) {

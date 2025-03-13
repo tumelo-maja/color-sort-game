@@ -77,7 +77,7 @@ footer {
   box-sizing: border-box;
 }
 
-.rod::after {
+/* .rod::after {
   content: '';
   width: 23px;
   height: 8px;
@@ -87,7 +87,18 @@ footer {
   border-radius: 50%;
   top: -6px;
   left: 50%;
-  /* z-index: 2; */
+  transform: translateX(-50%) ;
+} */
+
+.rod-lid {
+  width: 23px;
+  height: 8px;
+  background-color: #e2e2e2;
+  border: 1px solid #808080;
+  position: absolute;
+  border-radius: 50%;
+  top: -5px;
+  left: 50%;
   transform: translateX(-50%) ;
 }
 
