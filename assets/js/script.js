@@ -43,7 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * 
+     * hand clicks on the nut element.
+     * Depending on the status of other nuts, the click nut can be 'raised'
+     * or it become the child element of the target rod and 'raised' nut moves above it
      */
     function nutClick(e) {
         // handle click to raise and click to move
@@ -60,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log('Lets raise it')
             raiseNut(nutObject);
         }
-
     }
 
     /**
