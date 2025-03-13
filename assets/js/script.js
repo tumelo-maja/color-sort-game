@@ -20,6 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Global variables.
     const maxNutsPerRod = 8;
 
+    // Get CSS style object for nut element - calculate height of each nut
+    const anyNut = document.querySelectorAll('.nut')[0];
+    const nutStyle = window.getComputedStyle(anyNut);
+    const nutSize = parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom);
+
 
 
     /**
@@ -173,15 +178,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetRod = nutObject.parentElement.parentElement;
         const targetNut = nutObject;
 
-        const nutStyle = window.getComputedStyle(raisedNut);
-        const nutSize = parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom);
-
         // Check the destination rod is not the same as origin rod
         if (targetRod === raisedRod) {
             console.log('Cannot move into self; Lowering Nut')
             lowerNut(raisedNut);
             return
         }
+
+        
 
         const targetRodRect = targetRod.getBoundingClientRect();
         const raisedRodRect = raisedRod.getBoundingClientRect();
