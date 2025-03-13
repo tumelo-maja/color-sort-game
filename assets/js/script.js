@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     runGame();
 
     // Testing purposes
-    let lowerButton = document.getElementById('test');
-    lowerButton.addEventListener('click', lowerNut);
+    // let lowerButton = document.getElementById('test');
+    // lowerButton.addEventListener('click', lowerNut);
 
     // let moveButton = document.getElementById('rod4');
     // moveButton.addEventListener('click', moveNut);
@@ -29,10 +29,17 @@ document.addEventListener("DOMContentLoaded", function () {
         // first function to run after loading
         console.log("Game has started! Lets play!")
 
-        let nuts = document.querySelectorAll(".nut");
+        const nuts = document.querySelectorAll(".nut");
         for (let nut of nuts) {
             nut.addEventListener('click', nutClick);
         }
+
+        // const rods = document.querySelectorAll(".rod");
+        // for (let rod of rods) {
+        //     rod.addEventListener('click', nutClick);
+        // }
+
+
     }
 
     /**
@@ -40,14 +47,18 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function nutClick(e) {
         // handle click to raise and click to move
-        const raisedNut = document.querySelector(".raise-nut");
+        const isNutRaised = document.querySelector(".raise-nut");
+        // let nutObject =null;
 
-        if (raisedNut) {
-            moveNut(e);
+        console.log("Its has wrap")
+        const nutObject = e.target;
+
+        if (isNutRaised) {
+            moveNut(nutObject);
             console.log("Time to move");
         } else {
             console.log('Lets raise it')
-            raiseNut(e);
+            raiseNut(nutObject);
         }
 
     }
@@ -55,8 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Raise the top nut &wrapper  above the rod when clicked
      */
-    function raiseNut(e) {
-        let selectedNut = e.target;
+    function raiseNut(nutObject) {
+        let selectedNut = nutObject;
         let currentNutWrap = selectedNut.parentElement;
         let targetRod = currentNutWrap.parentElement;
 
@@ -75,14 +86,14 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Lower nut to the base if it cannot be moved
      */
-    function lowerNut() {
+    function lowerNut(nutObject) {
         // remove the .raise-nut class if it exist
-        const raisedNut = document.querySelector(".raise-nut");
-        console.log(raisedNut)
+        // const nutObject = document.querySelector(".raise-nut");
+        console.log(nutObject)
 
-        if (raisedNut) {
+        if (nutObject) {
             console.log("There is a raised nut!");
-            raisedNut.classList.remove("raise-nut");
+            nutObject.classList.remove("raise-nut");
         } else {
             console.log("all nuts are lowered");
         }
@@ -130,21 +141,22 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Move raised nut to another rod
      */
-    function moveNut(e) {
+    function moveNut(nutObject) {
         // Get raised nut
         const raisedNut = document.querySelector(".raise-nut");
         const raisedNutWrapper = raisedNut.parentElement;
         const raisedRod = raisedNutWrapper.parentElement;
-        const targetNut = e.target;
-        const targetRod = targetNut.parentElement.parentElement;
+
+        const targetRod = nutObject.parentElement.parentElement;
+        const targetNut = nutObject;
+
         const nutStyle = window.getComputedStyle(raisedNut);
         const nutSize = parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom);
 
-
         // Check the destination rod is not the same as origin rod
         if (targetRod === raisedRod) {
-            console.log('Lets move it')
-            lowerNut();
+            console.log('Cannot move into self; Lowering Nut')
+            lowerNut(raisedNut);
             return
         }
 
@@ -186,32 +198,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // Conditions to move nuts to new rod
-        const isRodEmpty = 0 < rodChildrenCount;
+        const isRodEmpty = 0 === rodChildrenCount;
+        console.log(isRodEmpty)
 
         if (isRodEmpty) {
+            console.log("Rod is empty, we move");
 
-            runAnimation(raisedNut, targetRod,"success-move")
+            runAnimation(raisedNut, targetRod, "success-move")
 
         } else {
-
-            // Conditions to move nuts to new rod
-            const isColorMatch = raisedNutColor === targetNutColor;
-            const isSpaceAvailable = rodChildrenCount < maxNutsPerRod;
 
             // Get styles to compare colors
             const targetNutColor = targetNut.getAttribute("data-color");
             const raisedNutColor = raisedNut.getAttribute("data-color");
 
+            // Conditions to move nuts to new rod
+            const isColorMatch = raisedNutColor === targetNutColor;
+            const isSpaceAvailable = rodChildrenCount < maxNutsPerRod;
+
+
             console.log("Its got colors");
 
 
             if (isColorMatch && isSpaceAvailable) {
-
+                console.log("Color match and There's space");
                 runAnimation(raisedNut, targetRod, "success-move")
 
             } else {
-
-                runAnimation(raisedNut, targetRod, "fail-move")
+                lowerNut(raisedNut);
+                // runAnimation(raisedNut, targetRod, "fail-move")
 
             }
         }
