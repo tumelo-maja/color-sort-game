@@ -144,6 +144,36 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function runAnimation(nutObject, targetRod, animationName) {
 
+        // ---(targetRod)--- GEt the center of the lid ::after element
+        const lidElement = window.getComputedStyle(targetRod, '::after');
+        const lidElementHeight = parseFloat(lidElement.getPropertyValue('height'));
+
+        // ---(raisedNut)--- retrieve the position setting for .raise-nut class
+        const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut, 'left'));
+        const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut, 'top'));
+
+        // ---(targetRod / sourceRod)--- Final position of the nut = Account for existing nuts
+        const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
+        const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (rodChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
+
+        // ---(targetRod / sourceRod)--- Position on 'lid' above target rod (assumes same hor line)
+        const lidPositionY = raiseNutOffsetY;
+        const lidPositionX = rodPositionX;
+
+        // ---(targetRod / sourceRod)--- Mid-way position in transit from raise position to target rod
+        const raiseMaxY = lidPositionY - (lidPositionY / 2);
+        const raiseMaxX = (rodPositionX + lidPositionX) / 2 - parseFloat(getCssStyleValue(raisedNut, 'width')) / 2;
+
+        // Set CSS variables for the keyframe animations
+        raisedNut.style.setProperty("--raiseMaxLeft", raiseMaxX + "px");
+        raisedNut.style.setProperty("--raiseMaxTop", raiseMaxY + "px");
+        rootSelector.style.setProperty('--lidPositionTop', lidPositionY + 'px');
+        rootSelector.style.setProperty('--lidPositionLeft', lidPositionX + 'px');
+        raisedNut.style.setProperty("--targetPositionLeft", rodPositionX + "px");
+        raisedNut.style.setProperty("--targetPositionTop", rodPositionY + "px");
+
+
+        // Add animation class
         nutObject.classList.add(animationName);
         nutObject.parentElement.classList.add(animationName);
 
@@ -206,72 +236,8 @@ document.addEventListener("DOMContentLoaded", function () {
             return
         }
 
-        // From here; we move the nut - not more checks
-
-        // ---(targetRod)--- GEt the center of the lid ::after element
-        const lidElement = window.getComputedStyle(targetRod, '::after');
-        const lidElementHeight = parseFloat(lidElement.getPropertyValue('height'));
-
-        // ---(raisedNut)--- retrieve the position setting for .raise-nut class
-        const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut, 'left'));
-        const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut, 'top'));
-
-        // ---(targetRod / sourceRod)--- Final position of the nut = Account for existing nuts
-        const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
-        const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (rodChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
-
-        // ---(targetRod / sourceRod)--- Position on 'lid' above target rod (assumes same hor line)
-        const lidPositionY = raiseNutOffsetY;
-        const lidPositionX = rodPositionX;
-
-        // ---(targetRod / sourceRod)--- Mid-way position in transit from raise position to target rod
-        const raiseMaxY = lidPositionY - (lidPositionY / 2);
-        const raiseMaxX = (rodPositionX + lidPositionX) / 2 - parseFloat(getCssStyleValue(raisedNut, 'width')) / 2;
-
-        // Set CSS variables for the keyframe animations
-        raisedNut.style.setProperty("--raiseMaxLeft", raiseMaxX + "px");
-        raisedNut.style.setProperty("--raiseMaxTop", raiseMaxY + "px");
-        rootSelector.style.setProperty('--lidPositionTop', lidPositionY + 'px');
-        rootSelector.style.setProperty('--lidPositionLeft', lidPositionX + 'px');
-        raisedNut.style.setProperty("--targetPositionLeft", rodPositionX + "px");
-        raisedNut.style.setProperty("--targetPositionTop", rodPositionY + "px");
-
-
         // initiate the move
-        runAnimation(sourceRod, targetRod, "success-move")
-
-
-        // Conditions to move nuts to new rod
-        // const isRodEmpty = 0 === rodChildrenCount;
-        // console.log(isRodEmpty)
-
-        // if (isRodEmpty) {
-        //     console.log("Rod is empty, we move");
-
-        //     runAnimation(raisedNut, targetRod, "success-move")
-
-        // } else {
-
-        //     // Get styles to compare colors
-        //     const targetNutColor = targetNut.getAttribute("data-color");
-        //     const raisedNutColor = raisedNut.getAttribute("data-color");
-
-
-
-        //     console.log("Its got colors");
-
-
-        //     if (isColorMatch && isSpaceAvailable) {
-        //         console.log("Color match and There's space");
-        //         runAnimation(raisedNut, targetRod, "success-move")
-
-        //     } else {
-        //         lowerNut(raisedNut);
-        //         // runAnimation(raisedNut, targetRod, "fail-move")
-
-        //     }
-        // }
-
+        runAnimation(sourceRod, targetRod, "success-move");
 
     }
 
