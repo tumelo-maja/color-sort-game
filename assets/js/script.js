@@ -142,7 +142,10 @@ document.addEventListener("DOMContentLoaded", function () {
      * Run the animation for the input move
      * Specify the animation class name
      */
-    function runAnimation(nutObject, targetRod, animationName) {
+    function runAnimation(sourceRod, targetRod) {
+
+        const sourceRodRect = sourceRod.getBoundingClientRect(); // Object position w.r.t viewport
+        const targetRodRect = targetRod.getBoundingClientRect();
 
         // ---(targetRod)--- GEt the center of the lid ::after element
         const lidElement = window.getComputedStyle(targetRod, '::after');
@@ -204,11 +207,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const raisedNut = document.querySelector(".raise-nut");
         const raisedNutWrapper = raisedNut.parentElement;
         const sourceRod = raisedNutWrapper.parentElement;
-        const sourceRodRect = sourceRod.getBoundingClientRect(); // Object position w.r.t viewport
 
         const targetNut = nutObject;
         const targetRod = targetNut.parentElement.parentElement;
-        const targetRodRect = targetRod.getBoundingClientRect();
+
 
         // 1) Check the destination rod is not the same as origin rod
         if (targetRod === sourceRod) {
@@ -237,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // initiate the move
-        runAnimation(sourceRod, targetRod, "success-move");
+        runAnimation(sourceRod, targetRod);
 
     }
 
