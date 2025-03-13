@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const raisedNut = raisedNutWrapper.firstElementChild;
         // anyNut is global to avoud redefining 
         const nutFinalPosition = {
-            xValue: (targetRod.clientWidth - anyNut.offsetWidth)/2,
+            xValue: (targetRod.clientWidth - anyNut.offsetWidth) / 2,
             yValue: (targetRod.clientHeight - anyNut.offsetHeight) - (targetChildrenCount * anyNut.offsetHeight),
         }
 
@@ -184,46 +184,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Set the CSS values for the animation motion of the nut
+     * Calculate and set the CSS values for the animation motion of the nut
      * @param {The parent rod of the raised nut} sourceRod 
      * @param {The final rod for the nut} targetRod 
      */
     function setPositionalValues(sourceRod, targetRod, targetChildrenCount) {
 
-        const sourceRodRect = sourceRod.getBoundingClientRect(); // Object position w.r.t viewport
-        const targetRodRect = targetRod.getBoundingClientRect();
-
         const raisedNutWrapper = sourceRod.lastElementChild;
         // console.log(raisedNutWrapper);
         const raisedNut = raisedNutWrapper.firstElementChild;
-        console.log("Im the nut!");
-        console.log(raisedNut);
 
-        // ---(raisedNut)--- retrieve the position setting for .raise-nut class
-        // const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut, 'left'));
-        // const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut, 'top'));
+        const nutFinalPosition = calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount);
 
-        // ---(targetRod / sourceRod)--- Final position of the nut = Account for existing nuts
-        // const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
-        // const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (targetChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
-        const nutFinalPosition =calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount);
-        // console.log(nutFinalPosition.xValue);
-        // console.log(nutFinalPosition.yValue);
-
-
-        // ---(targetRod / sourceRod)--- Position on 'lid' above target rod (assumes same hor line)
-        // const lidPositionY = raiseNutOffsetY;
-        // const lidPositionX = rodPositionX;
+        // --- Calculate center of lid element --- //
         const lidCenterPosition = calculateLidCenter(targetRod);
-        // console.log(lidCenterPosition.xValue);
 
-        // ---(targetRod / sourceRod)--- Mid-way position in transit from raise position to target rod
-        const raiseMaxY = lidCenterPosition.yValue - (lidCenterPosition.yValue / 2);
-        const raiseMaxX = (nutFinalPosition.xValue + lidCenterPosition.xValue) / 2 - parseFloat(anyNut.offsetHeight) / 2;
+        // --- Calculate mid-way position through animation --- //
+        const raiseMax = {
+            yValue: lidCenterPosition.yValue - (lidCenterPosition.yValue / 2),
+            xValue: (nutFinalPosition.xValue + lidCenterPosition.xValue) / 2 - parseFloat(anyNut.offsetHeight) / 2
+        };
 
-        // Set CSS variables for the keyframe animations
-        raisedNut.style.setProperty("--raise-max-left", raiseMaxX + "px");
-        raisedNut.style.setProperty("--raise-max-top", raiseMaxY + "px");
+        // --- Set CSS variables for the keyframe animations --- //
+        raisedNut.style.setProperty("--raise-max-left", raiseMax.xValue + "px");
+        raisedNut.style.setProperty("--raise-max-top", raiseMax.yValue + "px");
         rootSelector.style.setProperty('--lid-position-top', lidCenterPosition.yValue + 'px');
         rootSelector.style.setProperty('--lid-position-left', lidCenterPosition.xValue + 'px');
         raisedNut.style.setProperty("--target-position-left", nutFinalPosition.xValue + "px");
