@@ -193,9 +193,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const sourceRodRect = sourceRod.getBoundingClientRect(); // Object position w.r.t viewport
         const targetRodRect = targetRod.getBoundingClientRect();
 
-        const raisedNutWrapper = sourceRod.firstElementChild;
-        console.log(raisedNutWrapper);
+        const raisedNutWrapper = sourceRod.lastElementChild;
+        // console.log(raisedNutWrapper);
         const raisedNut = raisedNutWrapper.firstElementChild;
+        console.log("Im the nut!");
+        console.log(raisedNut);
 
         // ---(raisedNut)--- retrieve the position setting for .raise-nut class
         // const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut, 'left'));
@@ -205,19 +207,19 @@ document.addEventListener("DOMContentLoaded", function () {
         // const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
         // const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (targetChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
         const nutFinalPosition =calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount);
-        console.log(nutFinalPosition.xValue);
-        console.log(nutFinalPosition.yValue);
+        // console.log(nutFinalPosition.xValue);
+        // console.log(nutFinalPosition.yValue);
 
 
         // ---(targetRod / sourceRod)--- Position on 'lid' above target rod (assumes same hor line)
         // const lidPositionY = raiseNutOffsetY;
         // const lidPositionX = rodPositionX;
         const lidCenterPosition = calculateLidCenter(targetRod);
-        console.log(lidCenterPosition.xValue);
+        // console.log(lidCenterPosition.xValue);
 
         // ---(targetRod / sourceRod)--- Mid-way position in transit from raise position to target rod
-        const raiseMaxY = lidPositionY - (lidPositionY / 2);
-        const raiseMaxX = (rodPositionX + lidPositionX) / 2 - parseFloat(getCssStyleValue(raisedNut, 'width')) / 2;
+        const raiseMaxY = lidCenterPosition.yValue - (lidCenterPosition.yValue / 2);
+        const raiseMaxX = (nutFinalPosition.xValue + lidCenterPosition.xValue) / 2 - parseFloat(anyNut.offsetHeight) / 2;
 
         // Set CSS variables for the keyframe animations
         raisedNut.style.setProperty("--raise-max-left", raiseMaxX + "px");
