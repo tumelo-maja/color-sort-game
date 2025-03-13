@@ -174,42 +174,57 @@ document.addEventListener("DOMContentLoaded", function () {
         const raisedNut = document.querySelector(".raise-nut");
         const raisedNutWrapper = raisedNut.parentElement;
         const raisedRod = raisedNutWrapper.parentElement;
+        const raisedRodRect = raisedRod.getBoundingClientRect(); // Object position w.r.t viewport
 
-        const targetRod = nutObject.parentElement.parentElement;
         const targetNut = nutObject;
+        const targetRod = targetNut.parentElement.parentElement;
+        const targetRodRect = targetRod.getBoundingClientRect();
 
-        // Check the destination rod is not the same as origin rod
+        // 1) Check the destination rod is not the same as origin rod
         if (targetRod === raisedRod) {
             console.log('Cannot move into self; Lowering Nut')
             lowerNut(raisedNut);
             return
         }
 
-        
+        // 2) Check if the target rod has space
+        const rodChildrenCount = targetRod.querySelectorAll('.nut-wrap').length; // get number of existing nuts
+        const isSpaceAvailable = rodChildrenCount < maxNutsPerRod;
+        if (!isSpaceAvailable) {
+            console.log("There's no space in target; Lowering Nut")
+            lowerNut(raisedNut);
+            return
+        }
 
-        const targetRodRect = targetRod.getBoundingClientRect();
-        const raisedRodRect = raisedRod.getBoundingClientRect();
+        // 3) Check if the riased nut and topChild of target rod have same colors
+        const targetNutColor = targetNut.getAttribute("data-color"); //last child color (target)
+        const raisedNutColor = raisedNut.getAttribute("data-color"); //raised nut color
+        const isColorMatch = raisedNutColor === targetNutColor;
+        if (!isColorMatch) {
+            console.log("Colors don't match; Lowering Nut")
+            lowerNut(raisedNut);
+            return
+        }
 
-        // get number of existing nuts
-        const rodChildrenCount = targetRod.querySelectorAll('.nut-wrap').length;
+        // From here; we move the nut - not more checks
 
-        // GEt the center of the lid ::after element
+        // ---(targetRod)--- GEt the center of the lid ::after element
         const lidElement = window.getComputedStyle(targetRod, '::after');
         const lidElementHeight = parseFloat(lidElement.getPropertyValue('height'));
 
-        // retrieve the position setting for .raise-nut class
+        // ---(raisedNut)--- retrieve the position setting for .raise-nut class
         const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut, 'left'));
         const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut, 'top'));
 
-        // Final position of the nut = Account for existing nuts
+        // ---(targetRod / raisedRod)--- Final position of the nut = Account for existing nuts
         const rodPositionX = Math.round(targetRodRect.left - raisedRodRect.left + raiseNutOffsetX);
         const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (rodChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
 
-        // Position on 'lid' above target rod (assumes same hor line)
+        // ---(targetRod / raisedRod)--- Position on 'lid' above target rod (assumes same hor line)
         const lidPositionY = raiseNutOffsetY;
         const lidPositionX = rodPositionX;
 
-        // Mid-way position in transit from raise position to target rod
+        // ---(targetRod / raisedRod)--- Mid-way position in transit from raise position to target rod
         const raiseMaxY = lidPositionY - (lidPositionY / 2);
         const raiseMaxX = (rodPositionX + lidPositionX) / 2 - parseFloat(getCssStyleValue(raisedNut, 'width')) / 2;
 
@@ -221,42 +236,41 @@ document.addEventListener("DOMContentLoaded", function () {
         raisedNut.style.setProperty("--targetPositionLeft", rodPositionX + "px");
         raisedNut.style.setProperty("--targetPositionTop", rodPositionY + "px");
 
-        console.log(`rodPositionX: ${rodPositionX}`);
+
+        // initiate the move
+        runAnimation(raisedNut, targetRod, "success-move")
 
 
         // Conditions to move nuts to new rod
-        const isRodEmpty = 0 === rodChildrenCount;
-        console.log(isRodEmpty)
+        // const isRodEmpty = 0 === rodChildrenCount;
+        // console.log(isRodEmpty)
 
-        if (isRodEmpty) {
-            console.log("Rod is empty, we move");
+        // if (isRodEmpty) {
+        //     console.log("Rod is empty, we move");
 
-            runAnimation(raisedNut, targetRod, "success-move")
+        //     runAnimation(raisedNut, targetRod, "success-move")
 
-        } else {
+        // } else {
 
-            // Get styles to compare colors
-            const targetNutColor = targetNut.getAttribute("data-color");
-            const raisedNutColor = raisedNut.getAttribute("data-color");
-
-            // Conditions to move nuts to new rod
-            const isColorMatch = raisedNutColor === targetNutColor;
-            const isSpaceAvailable = rodChildrenCount < maxNutsPerRod;
+        //     // Get styles to compare colors
+        //     const targetNutColor = targetNut.getAttribute("data-color");
+        //     const raisedNutColor = raisedNut.getAttribute("data-color");
 
 
-            console.log("Its got colors");
+
+        //     console.log("Its got colors");
 
 
-            if (isColorMatch && isSpaceAvailable) {
-                console.log("Color match and There's space");
-                runAnimation(raisedNut, targetRod, "success-move")
+        //     if (isColorMatch && isSpaceAvailable) {
+        //         console.log("Color match and There's space");
+        //         runAnimation(raisedNut, targetRod, "success-move")
 
-            } else {
-                lowerNut(raisedNut);
-                // runAnimation(raisedNut, targetRod, "fail-move")
+        //     } else {
+        //         lowerNut(raisedNut);
+        //         // runAnimation(raisedNut, targetRod, "fail-move")
 
-            }
-        }
+        //     }
+        // }
 
 
     }
