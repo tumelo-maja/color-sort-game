@@ -139,10 +139,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Run the animation for the input move
-     * Specify the animation class name
+     * Set the CSS values for the animation motion of the nut
+     * @param {The parent rod of the raised nut} sourceRod 
+     * @param {The final rod for the nut} targetRod 
      */
-    function runAnimation(sourceRod, targetRod) {
+    function setPositionalValues(sourceRod, targetRod) {
 
         const sourceRodRect = sourceRod.getBoundingClientRect(); // Object position w.r.t viewport
         const targetRodRect = targetRod.getBoundingClientRect();
@@ -168,13 +169,22 @@ document.addEventListener("DOMContentLoaded", function () {
         const raiseMaxX = (rodPositionX + lidPositionX) / 2 - parseFloat(getCssStyleValue(raisedNut, 'width')) / 2;
 
         // Set CSS variables for the keyframe animations
-        raisedNut.style.setProperty("--raiseMaxLeft", raiseMaxX + "px");
-        raisedNut.style.setProperty("--raiseMaxTop", raiseMaxY + "px");
-        rootSelector.style.setProperty('--lidPositionTop', lidPositionY + 'px');
-        rootSelector.style.setProperty('--lidPositionLeft', lidPositionX + 'px');
-        raisedNut.style.setProperty("--targetPositionLeft", rodPositionX + "px");
-        raisedNut.style.setProperty("--targetPositionTop", rodPositionY + "px");
+        raisedNut.style.setProperty("--raise-max-left", raiseMaxX + "px");
+        raisedNut.style.setProperty("--raise-max-top", raiseMaxY + "px");
+        rootSelector.style.setProperty('--lid-position-top', lidPositionY + 'px');
+        rootSelector.style.setProperty('--lid-position-left', lidPositionX + 'px');
+        raisedNut.style.setProperty("--target-position-left", rodPositionX + "px");
+        raisedNut.style.setProperty("--target-position-top", rodPositionY + "px");
 
+    }
+
+    /**
+     * Run the animation for the input move
+     * Specify the animation class name
+     */
+    function runAnimation(sourceRod, targetRod) {
+
+        setPositionalValues(); // Set the relative positions for the animation motion
 
         // Add animation class
         nutObject.classList.add(animationName);

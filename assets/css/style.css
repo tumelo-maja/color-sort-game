@@ -4,19 +4,6 @@
   --yellow: #f9b723;
   --blue: #26a1ee;
   --whitesilver: #c2b3d4;
-
-  /* position variables */
-  /* --raisePositionTop : 23px;
-  --raisePositionLeft : 10px;
-
-  --raiseMaxTop : 10px;
-  --raiseMaxLeft : 50px;
-
-  --lidPositionTop : 23px;
-  --lidPositionLeft : 68px;
-
-  --targetPositionTop : 88px;
-  --targetPositionLeft : 68px; */
 }
 
 body {
@@ -167,43 +154,29 @@ footer {
 /* move from source rod to top of target rod*/
 @keyframes moveNutToLid {
   0% {
-    top: var(--raisePositionTop); /** 23px; */
-    left: var(--raisePositionLeft); /**10px; */
+    top: var(--raise-position-top); /** 23px; */
+    left: var(--raise-position-left); /**10px; */
   }
   50% {
-    top: var(--raiseMaxTop); 
-    left: var(--raiseMaxLeft); 
+    top: var(--raise-max-top); 
+    left: var(--raise-max-left); 
   }
   100% {
-    top: var(--lidPositionTop); /** 23px;*/
-    left: var(--lidPositionLeft); /** 68px; */
+    top: var(--lid-position-top); /** 23px;*/
+    left: var(--lid-position-left); /** 68px; */
   }
 }
 
 /*--- move from top of target rod to base ---*/
 @keyframes moveNutDownRod {
   0% {
-    top: var(--lidPositionTop); /** 23px;*/
-    left: var(--lidPositionLeft); /** 68px; */
+    top: var(--lid-position-top); /** 23px;*/
+    left: var(--lid-position-left); /** 68px; */
     z-index: 1;
   }
   100% {
-    top: var(--targetPositionTop); /** 88px;*/
-    left: var(--targetPositionLeft); /** 68px; */
-    z-index: 1;
-  }
-}
-
-/*--- return nut to source ---*/
-@keyframes returnNut {
-  0% {
-    top: var(--lidPositionTop); /** 23px;*/
-    left: var(--lidPositionLeft); /** 68px; */
-    z-index: 1;
-  }
-  100% {
-    top: var(--raisePositionTop); /** 23px; */
-    left: var(--raisePositionLeft); /**10px; */
+    top: var(--target-position-top); /** 88px;*/
+    left: var(--target-position-left); /** 68px; */
     z-index: 1;
   }
 }
