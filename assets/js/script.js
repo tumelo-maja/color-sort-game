@@ -173,15 +173,15 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get raised nut
         const raisedNut = document.querySelector(".raise-nut");
         const raisedNutWrapper = raisedNut.parentElement;
-        const raisedRod = raisedNutWrapper.parentElement;
-        const raisedRodRect = raisedRod.getBoundingClientRect(); // Object position w.r.t viewport
+        const sourceRod = raisedNutWrapper.parentElement;
+        const sourceRodRect = sourceRod.getBoundingClientRect(); // Object position w.r.t viewport
 
         const targetNut = nutObject;
         const targetRod = targetNut.parentElement.parentElement;
         const targetRodRect = targetRod.getBoundingClientRect();
 
         // 1) Check the destination rod is not the same as origin rod
-        if (targetRod === raisedRod) {
+        if (targetRod === sourceRod) {
             console.log('Cannot move into self; Lowering Nut')
             lowerNut(raisedNut);
             return
@@ -216,15 +216,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut, 'left'));
         const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut, 'top'));
 
-        // ---(targetRod / raisedRod)--- Final position of the nut = Account for existing nuts
-        const rodPositionX = Math.round(targetRodRect.left - raisedRodRect.left + raiseNutOffsetX);
+        // ---(targetRod / sourceRod)--- Final position of the nut = Account for existing nuts
+        const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
         const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (rodChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
 
-        // ---(targetRod / raisedRod)--- Position on 'lid' above target rod (assumes same hor line)
+        // ---(targetRod / sourceRod)--- Position on 'lid' above target rod (assumes same hor line)
         const lidPositionY = raiseNutOffsetY;
         const lidPositionX = rodPositionX;
 
-        // ---(targetRod / raisedRod)--- Mid-way position in transit from raise position to target rod
+        // ---(targetRod / sourceRod)--- Mid-way position in transit from raise position to target rod
         const raiseMaxY = lidPositionY - (lidPositionY / 2);
         const raiseMaxX = (rodPositionX + lidPositionX) / 2 - parseFloat(getCssStyleValue(raisedNut, 'width')) / 2;
 
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // initiate the move
-        runAnimation(raisedNut, targetRod, "success-move")
+        runAnimation(sourceRod, targetRod, "success-move")
 
 
         // Conditions to move nuts to new rod
