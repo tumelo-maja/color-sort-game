@@ -164,6 +164,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * Calculate the final position of the nut at the end of the move animation.
+     * This will be the final position before 'appendChild' is appled 
+     */
+    function calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount) {
+        const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
+        const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (targetChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
+        // const nutFinalPosition = calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount);
+        // console.log(nutFinalPosition.xValue);
+    }
+
+    /**
      * Set the CSS values for the animation motion of the nut
      * @param {The parent rod of the raised nut} sourceRod 
      * @param {The final rod for the nut} targetRod 
@@ -182,8 +193,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut, 'top'));
 
         // ---(targetRod / sourceRod)--- Final position of the nut = Account for existing nuts
-        // const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
-        // const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (targetChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
+        const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
+        const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (targetChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
 
         // ---(targetRod / sourceRod)--- Position on 'lid' above target rod (assumes same hor line)
         // const lidPositionY = raiseNutOffsetY;
