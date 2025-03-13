@@ -143,10 +143,14 @@ document.addEventListener("DOMContentLoaded", function () {
      * @param {The parent rod of the raised nut} sourceRod 
      * @param {The final rod for the nut} targetRod 
      */
-    function setPositionalValues(sourceRod, targetRod) {
+    function setPositionalValues(sourceRod, targetRod,targetChildrenCount) {
 
         const sourceRodRect = sourceRod.getBoundingClientRect(); // Object position w.r.t viewport
         const targetRodRect = targetRod.getBoundingClientRect();
+
+        const raisedNutWrapper =sourceRod.firstElementChild;
+        console.log(raisedNutWrapper);
+        const raisedNut =raisedNutWrapper.firstElementChild;
 
         // ---(targetRod)--- GEt the center of the lid ::after element
         const lidElement = window.getComputedStyle(targetRod, '::after');
@@ -158,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // ---(targetRod / sourceRod)--- Final position of the nut = Account for existing nuts
         const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
-        const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (rodChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
+        const rodPositionY = Math.round(((maxNutsPerRod * nutSize) - (targetChildrenCount * nutSize)) + raiseNutOffsetY) + lidElementHeight;
 
         // ---(targetRod / sourceRod)--- Position on 'lid' above target rod (assumes same hor line)
         const lidPositionY = raiseNutOffsetY;
@@ -182,29 +186,31 @@ document.addEventListener("DOMContentLoaded", function () {
      * Run the animation for the input move
      * Specify the animation class name
      */
-    function runAnimation(sourceRod, targetRod) {
+    function runAnimation(sourceRod, targetRod, targetChildrenCount) {
 
-        setPositionalValues(); // Set the relative positions for the animation motion
+        setPositionalValues(sourceRod, targetRod, targetChildrenCount); // Set the relative positions for the animation motion
+
+        const raisedNutWrapper = sourceRod.lastElementChild;
+        const raisedNut = raisedNutWrapper.firstElementChild;
 
         // Add animation class
-        nutObject.classList.add(animationName);
-        nutObject.parentElement.classList.add(animationName);
+        const animationName = "success-move";
+        raisedNutWrapper.classList.add(animationName); // nutWrapper
+        raisedNut.classList.add(animationName); // nut element
 
         let animateStages = 0;
-        const raisedNutWrapper = nutObject.parentElement;
-        nutObject.parentElement.addEventListener('animationend', () => {
+        
+        raisedNutWrapper.addEventListener('animationend', () => {
             animateStages++;
             if (animateStages === 2) {
 
                 if (animationName === "success-move") {
-
-                    raisedNutWrapper.appendChild(nutObject);
+                    raisedNutWrapper.appendChild(raisedNut);
                     targetRod.appendChild(raisedNutWrapper);
-
                 }
 
-                nutObject.classList.remove(animationName, "raise-nut");
-                nutObject.parentElement.classList.remove(animationName);
+                raisedNut.classList.remove(animationName, "raise-nut");
+                raisedNutWrapper.classList.remove(animationName);
             }
         });
     }
@@ -230,8 +236,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // 2) Check if the target rod has space
-        const rodChildrenCount = targetRod.querySelectorAll('.nut-wrap').length; // get number of existing nuts
-        const isSpaceAvailable = rodChildrenCount < maxNutsPerRod;
+        const targetChildrenCount = targetRod.querySelectorAll('.nut-wrap').length; // get number of existing nuts
+        const isSpaceAvailable = targetChildrenCount < maxNutsPerRod;
         if (!isSpaceAvailable) {
             console.log("There's no space in target; Lowering Nut")
             lowerNut(raisedNut);
@@ -249,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // initiate the move
-        runAnimation(sourceRod, targetRod);
+        runAnimation(sourceRod, targetRod, targetChildrenCount);
 
     }
 
