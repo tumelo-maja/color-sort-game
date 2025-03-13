@@ -65,6 +65,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * hand clicks on the rod element.
+     * when clicked, a 'raised' nut is moved to it. 
+     * If the move is not allowed, the raised nut is lowered
+     */
+    function rodClick(e) {
+        // handle click to move raised nut or lower raised nut
+        
+    }
+
+    /**
      * Raise the top nut &wrapper  above the rod when clicked
      */
     function raiseNut(nutObject) {
