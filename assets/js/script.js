@@ -198,8 +198,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Set CSS variables for the keyframe animations
         raisedNut.style.setProperty("--raise-max-left", raiseMaxX + "px");
         raisedNut.style.setProperty("--raise-max-top", raiseMaxY + "px");
-        rootSelector.style.setProperty('--lid-position-top', lidPositionY + 'px');
-        rootSelector.style.setProperty('--lid-position-left', lidPositionX + 'px');
+        rootSelector.style.setProperty('--lid-position-top', lidCenterPosition.yValue + 'px');
+        rootSelector.style.setProperty('--lid-position-left', lidCenterPosition.xValue + 'px');
         raisedNut.style.setProperty("--target-position-left", rodPositionX + "px");
         raisedNut.style.setProperty("--target-position-top", rodPositionY + "px");
 
