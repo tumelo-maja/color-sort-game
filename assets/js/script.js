@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
             nut.addEventListener('click', nutClick);
         }
 
-        // const rods = document.querySelectorAll(".rod");
-        // for (let rod of rods) {
-        //     rod.addEventListener('click', nutClick);
-        // }
+        const rods = document.querySelectorAll(".rod");
+        for (let rod of rods) {
+            rod.addEventListener('click', rodClick);
+        }
 
 
     }
@@ -71,7 +71,19 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function rodClick(e) {
         // handle click to move raised nut or lower raised nut
-        
+        const raisedNut = document.querySelector(".raise-nut");
+        const rodChildrenCount = e.target.querySelectorAll('.nut-wrap').length;
+
+        if (raisedNut) {
+            if (rodChildrenCount === 0) {
+                // moveNut(raisedNut, 'rod');
+                console.log("Rod empty, lets move nuts");
+            } else {
+                console.log('Not allowed, lowering the nut')
+                lowerNut(raisedNut);
+            }
+        }
+
     }
 
     /**
