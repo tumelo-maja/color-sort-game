@@ -142,14 +142,25 @@ document.addEventListener("DOMContentLoaded", function () {
      * Calculate the 'lid' position - entry/exit points for all nuts
      */
     function calculateLidCenter(targetRod) {
-        
-        // target the 'afterelemnt representing the lid
-        const lidElement = window.getComputedStyle(targetRod, '::after');
+
+        // target the lid circle element
+        console.log("Look below");
+        console.log(targetRod);
+        const lidElement = targetRod.querySelector('.rod-lid');
+        console.log(lidElement);
+
         // const lidElementRect = window.getComputedStyle(targetRod, '::after');
         const lidElementRect = lidElement.getBoundingClientRect();
-        console.log(lidElementRect);
+        // console.log(lidElementRect);
 
+        const targetRodRect = targetRod.getBoundingClientRect();
 
+        const lidCenterPosition = {
+            xValue: lidElementRect.left - targetRodRect.left + lidElementRect.width / 2,
+            yValue: lidElementRect.top - targetRodRect.top + lidElementRect.height / 2
+        };
+
+        return lidCenterPosition;
     }
 
     /**
@@ -167,8 +178,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const raisedNut = raisedNutWrapper.firstElementChild;
 
         // ---(raisedNut)--- retrieve the position setting for .raise-nut class
-        const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut, 'left'));
-        const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut, 'top'));
+        // const raiseNutOffsetX = parseFloat(getCssStyleValue(raisedNut, 'left'));
+        // const raiseNutOffsetY = parseFloat(getCssStyleValue(raisedNut, 'top'));
 
         // ---(targetRod / sourceRod)--- Final position of the nut = Account for existing nuts
         // const rodPositionX = Math.round(targetRodRect.left - sourceRodRect.left + raiseNutOffsetX);
