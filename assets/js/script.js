@@ -294,13 +294,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // moveNutDownRod 1.5s linear 0.5s forwards;
 
         // Add animation settings same as success-move class
-        const animationDuration = ['1s', '1.5s'];
+        const animationDuration = ['0.25s', '0.5s'];
         const animationTiming = 'linear';
-        const animationDelay = ['', ''];
 
         // moveNutToLid moveNutDownRod
-        runAnimation(raisedNut, "moveNutToLid", animationDuration[0], animationTiming, animationDelay[0], function () {
-            runAnimation(raisedNut, "moveNutDownRod", animationDuration[1], animationTiming, animationDelay[1], function () {
+        runAnimation(raisedNut, "moveNutToLid", animationDuration[0], animationTiming, function () {
+            runAnimation(raisedNut, "moveNutDownRod", animationDuration[1], animationTiming, function () {
                 //  add child to wrapper and wrapper to target rod
                 raisedNutWrapper.appendChild(raisedNut);
                 targetRod.appendChild(raisedNutWrapper);
@@ -344,13 +343,13 @@ document.addEventListener("DOMContentLoaded", function () {
      * 3) appendchild 'nut' to target rod
      * Takes, a) raisedNut, animationName, duration, timing, delay and callback
      */
-    function runAnimation(raisedNut, animationName, animationDuration, animationTiming, animationDelay, callback) {
+    function runAnimation(raisedNut, animationName, animationDuration, animationTiming, callback) {
 
         console.log("In the run Animation")
         console.log(raisedNut)
 
         raisedNut.style.animation = "none";
-        raisedNut.style.animation = `${animationName} ${animationDuration} ${animationTiming} ${animationDelay} forwards`;
+        raisedNut.style.animation = `${animationName} ${animationDuration} ${animationTiming} forwards`;
         raisedNut.addEventListener("animationend", function handler(e) {
             raisedNut.style.animation = "none";
             raisedNut.removeEventListener("animationend", handler);
