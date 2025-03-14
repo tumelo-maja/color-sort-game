@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Global variables.
     const maxNutsPerRod = 8;
+    const animationOffsetX = 25;
+    const animationOffsetY = 10;
 
     // Get CSS style object for nut element - calculate height of each nut
     const anyNut = document.querySelectorAll('.nut')[0];
@@ -142,24 +144,44 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Calculate the 'lid' position - entry/exit points for all nuts
      */
-    function calculateLidCenter(targetRod) {
+    function calculateLidCenter(targetRod,sourceRod) {
 
-        // target the lid circle element
-        console.log("Look below");
-        console.log(targetRod);
-        const lidElement = targetRod.querySelector('.rod-lid');
-        console.log(lidElement);
+        const raisedNut = document.querySelector(".raise-nut");
 
-        // const lidElementRect = window.getComputedStyle(targetRod, '::after');
-        const lidElementRect = lidElement.getBoundingClientRect();
-        // console.log(lidElementRect);
+        const sourceLidElement = sourceRod.querySelector('.rod-lid');
+        const targetLidElement = targetRod.querySelector('.rod-lid');
+        // const targetRodRect = targetRod.getBoundingClientRect();
+        // const lidElement = targetRod.querySelector('.rod-lid');
+        const targetLidElementRect = targetLidElement.getBoundingClientRect();
+        const sourceLidElementRect = sourceLidElement.getBoundingClientRect();
 
-        const targetRodRect = targetRod.getBoundingClientRect();
+        rodYDifference = targetLidElementRect.top - sourceLidElementRect.top ;
+        rodXDifference = targetLidElementRect.left - sourceLidElementRect.left ;
+        console.log(`----rodYDifference:  ${rodYDifference}`);
+        console.log(`----rodXDifference:  ${rodXDifference}`);
 
+        // const rodsContainer = document.getElementsByClassName('game-area')[0];
+        // const rodsContainerRect = rodsContainer.getBoundingClientRect();
+
+        // lidPositionX = targetLidElement.left - rodsContainerRect.left;
+        // lidPositionY = targetLidElement.top - rodsContainerRect.top;
+
+        // const rodTop = getCssStyleValue(targetRod,'top');
+        // console.log(`rodTop:  ${rodTop}`);
+        // console.log(`raisedNut.offsetHeight:  ${raisedNut.offsetHeight}`);
+
+        // const offsetPosition = calculateNutMidOffset(sourceRod, targetRod);
+        // console.log(`offsetPosition:  ${offsetPosition.yValue}`);
+
+        const nutStartPosition = calculateNutStartPosition(sourceRod);
+
+
+
+        // output 
         const lidCenterPosition = {
-            xValue: lidElementRect.left - targetRodRect.left + lidElementRect.width / 2,
-            yValue: lidElementRect.top - targetRodRect.top + lidElementRect.height / 2
-        };
+            xValue:  Math.ceil(rodXDifference + nutStartPosition.xValue),
+            yValue: Math.ceil(rodYDifference + nutStartPosition.yValue)
+                };
 
         return lidCenterPosition;
     }
@@ -173,13 +195,73 @@ document.addEventListener("DOMContentLoaded", function () {
         const raisedNutWrapper = sourceRod.lastElementChild;
         // console.log(raisedNutWrapper);
         const raisedNut = raisedNutWrapper.firstElementChild;
+
+                // const rodTop = getCssStyleValue(targetRod,'top');
+
+        const lidCenterPosition = calculateLidCenter(targetRod,sourceRod);
+
         // anyNut is global to avoud redefining 
         const nutFinalPosition = {
-            xValue: (targetRod.clientWidth - anyNut.offsetWidth) / 2,
+            xValue: lidCenterPosition.xValue,
             yValue: (targetRod.clientHeight - anyNut.offsetHeight) - (targetChildrenCount * anyNut.offsetHeight),
         }
 
         return nutFinalPosition;
+
+    }
+
+    /**
+     * Calculate the position of the nut at the start of the move animation.
+     * The position after being 'raised' 
+     */
+    function calculateNutStartPosition(sourceRod) {
+
+        const raisedNutWrapper = sourceRod.lastElementChild;
+        const raisedNut = raisedNutWrapper.firstElementChild;
+
+        const sourceRodRect = sourceRod.getBoundingClientRect();
+        const raisedNutRect = raisedNut.getBoundingClientRect();
+
+
+        const nutStartPosition = {
+            // xValue: raisedNutRect.left - sourceRodRect.left,
+            // yValue: raisedNutRect.top - sourceRodRect.top,
+            xValue: -10,
+            yValue: 23,
+        }
+
+        return nutStartPosition;
+    }
+
+    /**
+     * Calculate the mid-point position of the source and target rods for the animation.
+     * The value is used at
+     */
+    function calculateNutMidOffset(sourceRod, targetRod) {
+
+        const sourceRodRect = sourceRod.getBoundingClientRect();
+        const targetRodRect = targetRod.getBoundingClientRect();
+
+        const nutStartPosition = calculateNutStartPosition(sourceRod);
+
+
+
+        console.log("Lets find a way")
+        let offsetPosition = {};
+
+        if (targetRodRect.left < sourceRodRect.left) {
+            offsetPosition = {
+                xValue: nutStartPosition.yValue - animationOffsetX,
+                yValue: nutStartPosition.yValue - animationOffsetY
+            };
+        } else {
+            offsetPosition = {
+                xValue: animationOffsetX - nutStartPosition.yValue,
+                yValue: nutStartPosition.yValue - animationOffsetY
+            }
+        }
+
+        return offsetPosition;
 
     }
 
@@ -197,17 +279,30 @@ document.addEventListener("DOMContentLoaded", function () {
         const nutFinalPosition = calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount);
 
         // --- Calculate center of lid element --- //
-        const lidCenterPosition = calculateLidCenter(targetRod);
+        const lidCenterPosition = calculateLidCenter(targetRod,sourceRod);
+
+        // --- Calculate start position for animation --- //
+        const nutStartPosition = calculateNutStartPosition(sourceRod);
 
         // --- Calculate mid-way position through animation --- //
-        const raiseMax = {
-            yValue: lidCenterPosition.yValue - (lidCenterPosition.yValue / 2),
-            xValue: (nutFinalPosition.xValue + lidCenterPosition.xValue) / 2 - parseFloat(anyNut.offsetHeight) / 2
-        };
+        const offsetPosition = calculateNutMidOffset(sourceRod, targetRod);
+        console.log(`Offset position: (X): ${offsetPosition.xValue} (Y): ${offsetPosition.yValue}`);
+        // const raiseMax = {
+        //     yValue: nutStartPosition.yValue + 10,
+        //     xValue: (nutStartPosition.xValue + lidCenterPosition.xValue)/2
+        // };
+
+
+        console.log(`Start (X): ${nutStartPosition.xValue} (Y): ${nutStartPosition.yValue}`)
+        console.log(`Max (X): ${offsetPosition.xValue} (Y): ${offsetPosition.yValue}`)
+        console.log(`Lid (X): ${lidCenterPosition.xValue} (Y): ${lidCenterPosition.yValue}`)
+        console.log(`Target (X): ${nutFinalPosition.xValue} (Y): ${nutFinalPosition.yValue}`)
 
         // --- Set CSS variables for the keyframe animations --- //
-        raisedNut.style.setProperty("--raise-max-left", raiseMax.xValue + "px");
-        raisedNut.style.setProperty("--raise-max-top", raiseMax.yValue + "px");
+        raisedNut.style.setProperty("--raise-start-left", nutStartPosition.xValue + "px");
+        raisedNut.style.setProperty("--raise-start-top", nutStartPosition.yValue + "px");
+        raisedNut.style.setProperty("--raise-max-left", offsetPosition.xValue + "px");
+        raisedNut.style.setProperty("--raise-max-top", offsetPosition.yValue + "px");
         rootSelector.style.setProperty('--lid-position-top', lidCenterPosition.yValue + 'px');
         rootSelector.style.setProperty('--lid-position-left', lidCenterPosition.xValue + 'px');
         raisedNut.style.setProperty("--target-position-left", nutFinalPosition.xValue + "px");
@@ -219,7 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Run the animation for the input move
      * Specify the animation class name
      */
-    function runAnimation(sourceRod, targetRod, targetChildrenCount) {
+    function prepareAnimation(sourceRod, targetRod, targetChildrenCount) {
 
         setPositionalValues(sourceRod, targetRod, targetChildrenCount); // Set the relative positions for the animation motion
 
@@ -288,7 +383,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // initiate the move
-        runAnimation(sourceRod, targetRod, targetChildrenCount);
+        prepareAnimation(sourceRod, targetRod, targetChildrenCount);
 
     }
 
