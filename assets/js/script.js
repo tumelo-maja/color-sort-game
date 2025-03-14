@@ -60,14 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const isNutRaised = document.querySelector(".raise-nut");
         // let nutObject =null;
 
-        console.log("Its has wrap")
         const nutObject = e.target;
 
         if (isNutRaised) {
             moveNut(nutObject);
-            console.log("Time to move");
         } else {
-            console.log('Lets raise it')
             raiseNut(nutObject);
         }
     }
@@ -104,13 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // only raise the top nut
         if (targetRod.lastElementChild === currentNutWrap) {
-
             selectedNut.classList.add("raise-nut");
-            // currentNutWrap.classList.add("raise-nut");
-            console.log("Definitely last born!");
-        } else {
-            console.log("Not the last child");
-        }
+        } 
     }
 
 
@@ -119,14 +111,9 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function lowerNut(nutObject) {
 
-        console.log(nutObject)
-
         if (nutObject) {
-            console.log("There is a raised nut!");
             nutObject.classList.remove("raise-nut");
-        } else {
-            console.log("all nuts are lowered");
-        }
+        } 
 
     }
 
@@ -215,21 +202,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const nutStartPosition = calculateNutStartPosition(sourceRod);
 
-
-
-        console.log("Lets find a way")
         let offsetPosition = {};
 
-        if (targetRodRect.left < sourceRodRect.left) {
+        console.log(`targetRodRect.left: ${targetRodRect.left}`);
+        console.log(`sourceRodRect.left: ${sourceRodRect.left}`);
+
+        if (sourceRodRect.left < targetRodRect.left) {
+            console.log("Slide Right")
             offsetPosition = {
                 xValue: nutStartPosition.yValue - animationOffsetX,
                 yValue: nutStartPosition.yValue - animationOffsetY
             };
+            console.log(`offsetPosition.xValue: ${offsetPosition.xValue}`);
+
         } else {
+            console.log("Slide Left")
             offsetPosition = {
-                xValue: animationOffsetX - nutStartPosition.yValue,
+                xValue: -(nutStartPosition.yValue + animationOffsetX),
                 yValue: nutStartPosition.yValue - animationOffsetY
-            }
+            };
+            console.log(`offsetPosition.xValue: ${offsetPosition.xValue}`);
+
         }
 
         return offsetPosition;
@@ -257,13 +250,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // --- Calculate mid-way position through animation --- //
         const offsetPosition = calculateNutMidOffset(sourceRod, targetRod);
-        console.log(`Offset position: (X): ${offsetPosition.xValue} (Y): ${offsetPosition.yValue}`);
+        // console.log(`Offset position: (X): ${offsetPosition.xValue} (Y): ${offsetPosition.yValue}`);
 
 
-        console.log(`Start (X): ${nutStartPosition.xValue} (Y): ${nutStartPosition.yValue}`)
-        console.log(`Max (X): ${offsetPosition.xValue} (Y): ${offsetPosition.yValue}`)
-        console.log(`Lid (X): ${lidCenterPosition.xValue} (Y): ${lidCenterPosition.yValue}`)
-        console.log(`Target (X): ${nutFinalPosition.xValue} (Y): ${nutFinalPosition.yValue}`)
+        // console.log(`Start (X): ${nutStartPosition.xValue} (Y): ${nutStartPosition.yValue}`)
+        // console.log(`Max (X): ${offsetPosition.xValue} (Y): ${offsetPosition.yValue}`)
+        // console.log(`Lid (X): ${lidCenterPosition.xValue} (Y): ${lidCenterPosition.yValue}`)
+        // console.log(`Target (X): ${nutFinalPosition.xValue} (Y): ${nutFinalPosition.yValue}`)
 
         // --- Set CSS variables for the keyframe animations --- //
         raisedNut.style.setProperty("--raise-start-left", nutStartPosition.xValue + "px");
@@ -294,7 +287,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // moveNutDownRod 1.5s linear 0.5s forwards;
 
         // Add animation settings same as success-move class
-        const animationDuration = ['0.25s', '0.5s'];
+        // const animationDuration = ['0.25s', '0.5s'];
+        const animationDuration = ['3s', '0.5s'];
         const animationTiming = 'linear';
 
         // moveNutToLid moveNutDownRod
@@ -344,9 +338,6 @@ document.addEventListener("DOMContentLoaded", function () {
      * Takes, a) raisedNut, animationName, duration, timing, delay and callback
      */
     function runAnimation(raisedNut, animationName, animationDuration, animationTiming, callback) {
-
-        console.log("In the run Animation")
-        console.log(raisedNut)
 
         raisedNut.style.animation = "none";
         raisedNut.style.animation = `${animationName} ${animationDuration} ${animationTiming} forwards`;
