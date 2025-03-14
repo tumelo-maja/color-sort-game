@@ -290,9 +290,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // runAnimation(raisedNut, animationName, callback);
 
+        // animation: moveNutToLid 1s linear forwards,
+        // moveNutDownRod 1.5s linear 0.5s forwards;
+
+        // Add animation settings same as success-move class
+        const animationDuration = ['1s', '1.5s'];
+        const animationTiming = 'linear';
+        const animationDelay = ['', ''];
+
         // moveNutToLid moveNutDownRod
-        runAnimation(raisedNut, "moveNutToLid", function () {
-            runAnimation(raisedNut, "moveNutDownRod", function () {
+        runAnimation(raisedNut, "moveNutToLid", animationDuration[0], animationTiming, animationDelay[0], function () {
+            runAnimation(raisedNut, "moveNutDownRod", animationDuration[1], animationTiming, animationDelay[1], function () {
                 //  add child to wrapper and wrapper to target rod
                 raisedNutWrapper.appendChild(raisedNut);
                 targetRod.appendChild(raisedNutWrapper);
@@ -301,6 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 raisedNutWrapper.classList.remove("raise-nut");
                 raisedNut.classList.remove("raise-nut");
             });
+            // setTimeout(runAnimation, 5000);
         });
 
         // Add animation class
@@ -333,19 +342,21 @@ document.addEventListener("DOMContentLoaded", function () {
      * 1) Move nut from raised position to lid of target rod
      * 2) Move nut from target rod lid position to base
      * 3) appendchild 'nut' to target rod
+     * Takes, a) raisedNut, animationName, duration, timing, delay and callback
      */
-    function runAnimation(raisedNut, animationName, callback) {
+    function runAnimation(raisedNut, animationName, animationDuration, animationTiming, animationDelay, callback) {
+
+        console.log("In the run Animation")
+        console.log(raisedNut)
 
         raisedNut.style.animation = "none";
-        raisedNut.style.animation = `${animationName} 0.5s ease forwards`;
+        raisedNut.style.animation = `${animationName} ${animationDuration} ${animationTiming} ${animationDelay} forwards`;
         raisedNut.addEventListener("animationend", function handler(e) {
-            if (e.animationName === animationName) {
-                raisedNut.style.animation = "none";
-                raisedNut.removeEventListener("animationend", handler);
+            raisedNut.style.animation = "none";
+            raisedNut.removeEventListener("animationend", handler);
 
-                // set callbakc to run next animation after removing the first
-                callback();
-            }
+            // set callbakc to run next animation after removing the first
+            callback();
         });
     }
 
