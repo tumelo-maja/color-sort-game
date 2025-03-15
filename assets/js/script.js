@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } else {
             if (rodChildrenCount) {
-                raiseNut(nutObjectTop);
+                raiseNut(nutObjectTop,rodChildrenCount);
             }
         }
 
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Raise the top nut &wrapper  above the rod when clicked
      */
-    function raiseNut(nutObject) {
+    function raiseNut(nutObject,rodChildrenCount) {
         // let selectedNut = nutObject;
         // let currentNutWrap = selectedNut.parentElement;
         // let targetRod = currentNutWrap.parentElement;
@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // if (targetRod.lastElementChild === currentNutWrap) {
         //     selectedNut.classList.add("raise-nut");
         // }
+        setRaiseNutTransformY(nutObject, rodChildrenCount);
         nutObject.classList.add("raise-nut");
     }
 
@@ -109,9 +110,24 @@ document.addEventListener("DOMContentLoaded", function () {
      * Set the transformY value for the raise-nut class.
      * The nut must always be raised slightly above the clicked rod
      */
-    function setRaiseNutTransformY() {
+    function setRaiseNutTransformY(nutObject, rodChildrenCount) {
         // raisedNut.style.setProperty("--raise-start-y", nutStartPosition.yValue + "px");
 
+        const raiseAboveTop = -30;
+        // const availableSpace = (maxNutsPerRod-rodChildrenCount) * anyNut.offsetHeight;
+        const anyNutHeight =getCssStyleValue(anyNut,'height');
+        const anyNutMargin =getCssStyleValue(anyNut,'margin-bottom');
+        const availableSpace = (maxNutsPerRod-rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
+
+        // console.log(`anyNutHeight: ${anyNutHeight}`);
+        // console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`);
+
+        const raiseValue = -availableSpace + raiseAboveTop;
+
+        // console.log(`availableSpace: ${availableSpace}`);
+        // console.log(`raiseValue: ${raiseValue}`);
+
+        nutObject.style.setProperty("--transform-y", raiseValue + "px");
 
     }
 

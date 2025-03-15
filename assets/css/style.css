@@ -116,7 +116,7 @@ footer {
 }
 
 .raise-nut {
-  transform: translate(0, -45px);
+  transform: translate(0, var(--transform-y));
 }
 
 .game-statistics {
