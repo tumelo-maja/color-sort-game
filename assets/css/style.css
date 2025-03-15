@@ -77,18 +77,7 @@ footer {
   box-sizing: border-box;
 }
 
-/* .rod::after {
-  content: '';
-  width: 23px;
-  height: 8px;
-  background-color: #e2e2e2;
-  border: 1px solid #808080;
-  position: absolute;
-  border-radius: 50%;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%) ;
-} */
+
 
 .rod-lid {
   width: 23px;
@@ -113,8 +102,6 @@ footer {
   text-align: center;
   cursor: pointer;
   transition: transform 0.25s ease-in;
-  /* box-sizing: border-box; */
-  /* z-index: 100; */
 }
 
 .orange {
@@ -131,12 +118,7 @@ footer {
 }
 
 .raise-nut {
-  /* position: absolute; */
-  /* top: -30px; */
-  /* left: -10px; */
-  /* transition: transform 1s ease-in; */
   transform: translate(0, -45px);
-  /* animation: 2s infinite nut-anime; */
 }
 
 .game-statistics {
@@ -161,7 +143,7 @@ footer {
 @keyframes moveNutToTarget {
   0% {
     transform: translate(var(--raise-start-x), var(--raise-start-y));
-    z-index: 100;
+    /* z-index: 100; */
   }
   33.33% {
     transform: translate(var(--raise-max-x), var(--raise-max-y));
@@ -169,41 +151,8 @@ footer {
   66.67% {
     transform: translate(var(--lid-position-x), var(--lid-position-y));
   }
-  /* 100% { transform: translate(var(--lid-position-x), var(--lid-position-y));   } */
   100% {
     transform: translate(var(--target-position-x), var(--target-position-y));
-    z-index: 100;
-
-  }
-  /* 100% { transform: translate(var(--target-position-x), var(--target-position-y));   } */
-}
-
-/* move from source rod to top of target rod*/
-@keyframes moveNutToLid {
-  0% {
-    top: var(--raise-start-top);
-    left: var(--raise-start-left);
-  }
-  50% {
-    top: var(--raise-max-top);
-    left: var(--raise-max-left);
-  }
-  100% {
-    top: var(--lid-position-top);
-    left: var(--lid-position-left);
-  }
-}
-
-/*--- move from top of target rod to base ---*/
-@keyframes moveNutDownRod {
-  0% {
-    top: var(--lid-position-top);
-    left: var(--lid-position-left);
-    z-index: 1;
-  }
-  100% {
-    top: var(--target-position-top);
-    left: var(--target-position-left);
-    z-index: 1;
+    /* z-index: 100; */
   }
 }
