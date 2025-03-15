@@ -68,9 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const nutObjectTop = rodElement.lastElementChild.firstElementChild;
         const rodChildrenCount = rodElement.querySelectorAll('.nut-wrap').length;
 
-        console.log(e.target);
-        console.log(rodChildrenCount);
-        console.log(raisedNut);
+        // console.log(e.target);
+        // console.log(rodChildrenCount);
+        // console.log(raisedNut);
 
         if (raisedNut) {
             // if (rodChildrenCount === 0) {
@@ -80,9 +80,58 @@ document.addEventListener("DOMContentLoaded", function () {
             //     console.log('Not allowed, lowering the nut')
             //     lowerNut(raisedNut);
             // }
-            moveNut(rodElement, rodChildrenCount);
+
+            let currentNut = raisedNut;
+
+            let currentNutWrapper = currentNut.parentElement;
+            console.log(currentNutWrapper);
+
+            let nutWrappersToMove = [currentNutWrapper];
+
+
+            // Check if colors of neext match the nut to move - append to nutsToMove.
+            let neighbourNutWrapper = currentNutWrapper.previousElementSibling;
+            // let neighbourNutWrapper = raisedNutWrapper.nextElementSibling;
+
+            console.log(`neighbourNutWrapper: ${neighbourNutWrapper}`);
+            // console.log(`neighbourNut: ${neighbourNut}`);
+
+            let neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color"); //colro of sibling 
+            let currentNutColor = currentNut.getAttribute("data-color");  
+
+            console.log(`neighbourNutColor: ${neighbourNutColor}`);
+            while (currentNutColor === neighbourNutColor) {
+
+                //appemd wrapper to array
+                nutWrappersToMove.unshift(neighbourNutWrapper);
+                
+                //upoadte current and neighbour colors
+                currentNut= neighbourNutWrapper.firstElementChild;
+
+                // nut wrappers
+                currentNutWrapper = neighbourNutWrapper;
+                neighbourNutWrapper =currentNutWrapper.previousElementSibling;
+
+
+                neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color");
+                currentNutColor = currentNut.getAttribute("data-color");
+
+              currentNut = currentNut.previousElementSibling;
+            }
+            // tumelo
+            let wrapperCount = 0;
+            for (let wrapper of nutWrappersToMove) {
+                wrapperCount++
+                console.log(`Wrapper Number: ${wrapperCount}`)
+                console.log(wrapper)
+            }
+
+            // moveNut(rodElement, rodChildrenCount);
 
         } else {
+            console.log(nutObjectTop);
+            console.log(`neighbourNut: ${nutObjectTop.nextElementSibling}`);
+
             if (rodChildrenCount) {
                 raiseNut(nutObjectTop,rodChildrenCount);
             }
@@ -115,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const raiseAboveTop = -30;
         // const availableSpace = (maxNutsPerRod-rodChildrenCount) * anyNut.offsetHeight;
-        const anyNutHeight =getCssStyleValue(anyNut,'height');
+        // const anyNutHeight =getCssStyleValue(anyNut,'height');
         const anyNutMargin =getCssStyleValue(anyNut,'margin-bottom');
         const availableSpace = (maxNutsPerRod-rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
 
