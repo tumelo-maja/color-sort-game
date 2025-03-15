@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // first function to run after loading
         console.log("Game has started! Lets play!")
 
-        const nuts = document.querySelectorAll(".nut");
-        for (let nut of nuts) {
-            nut.addEventListener('click', nutClick);
-        }
+        // const nuts = document.querySelectorAll(".nut");
+        // for (let nut of nuts) {
+        //     nut.addEventListener('click', nutClick);
+        // }
 
         const rods = document.querySelectorAll(".rod");
         for (let rod of rods) {
@@ -64,6 +64,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // handle click to move raised nut or lower raised nut
         const raisedNut = document.querySelector(".raise-nut");
         const rodChildrenCount = e.target.querySelectorAll('.nut-wrap').length;
+        // const nutObjectTop = e.target.lastElementChild.firstElementChild;
+        const nutObjectTop = e.currentTarget.lastElementChild;
+
+        console.log(e.target);
 
         if (raisedNut) {
             if (rodChildrenCount === 0) {
@@ -73,7 +77,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log('Not allowed, lowering the nut')
                 lowerNut(raisedNut);
             }
-        } 
+        } else {
+            raiseNut(nutObjectTop);
+        }
 
     }
 
@@ -81,14 +87,15 @@ document.addEventListener("DOMContentLoaded", function () {
      * Raise the top nut &wrapper  above the rod when clicked
      */
     function raiseNut(nutObject) {
-        let selectedNut = nutObject;
-        let currentNutWrap = selectedNut.parentElement;
-        let targetRod = currentNutWrap.parentElement;
+        // let selectedNut = nutObject;
+        // let currentNutWrap = selectedNut.parentElement;
+        // let targetRod = currentNutWrap.parentElement;
 
-        // only raise the top nut
-        if (targetRod.lastElementChild === currentNutWrap) {
-            selectedNut.classList.add("raise-nut");
-        }
+        // // only raise the top nut
+        // if (targetRod.lastElementChild === currentNutWrap) {
+        //     selectedNut.classList.add("raise-nut");
+        // }
+        nutObject.classList.add("raise-nut");
     }
 
 
@@ -130,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // output 
         const lidCenterPosition = {
             xValue: rodXDifference, // - (offsetPosition.xValue/2) ,
-            yValue: (Math.floor(rodYDifference ) - Math.abs(nutStartPosition.yValue - offsetPosition.yValue) - (anyNut.offsetHeight*2) ) 
+            yValue: (Math.floor(rodYDifference) - Math.abs(nutStartPosition.yValue - offsetPosition.yValue) - (anyNut.offsetHeight * 2))
         };
 
         return lidCenterPosition;
@@ -150,8 +157,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // anyNut is global to avoud redefining 
         const nutFinalPosition = {
-            xValue: rodXDifference ,
-            yValue: (maxNutsPerRod*anyNut.offsetHeight -((targetChildrenCount+1) * anyNut.offsetHeight)) -anyNut.offsetHeight +rodYDifference,
+            xValue: rodXDifference,
+            yValue: (maxNutsPerRod * anyNut.offsetHeight - ((targetChildrenCount + 1) * anyNut.offsetHeight)) - anyNut.offsetHeight + rodYDifference,
         }
 
         console.log(`targetChildrenCount: ${targetChildrenCount}`);

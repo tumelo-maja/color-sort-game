@@ -99,7 +99,7 @@ footer {
   justify-self: end;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.25s ease-in;
+  transition: transform 5s ease-in;
 }
 
 .orange {
