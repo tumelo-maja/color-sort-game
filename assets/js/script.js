@@ -105,6 +105,15 @@ document.addEventListener("DOMContentLoaded", function () {
         nutObject.classList.add("raise-nut");
     }
 
+    /**
+     * Set the transformY value for the raise-nut class.
+     * The nut must always be raised slightly above the clicked rod
+     */
+    function setRaiseNutTransformY() {
+        // raisedNut.style.setProperty("--raise-start-y", nutStartPosition.yValue + "px");
+
+
+    }
 
     /**
      * Lower nut to the base if it cannot be moved
