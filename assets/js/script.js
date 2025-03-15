@@ -344,14 +344,14 @@ document.addEventListener("DOMContentLoaded", function () {
         raisedNutWrapper.classList.add(animationName); // nutWrapper
         raisedNut.classList.add(animationName); // nut element
 
-        // raisedNutWrapper.addEventListener('animationend', () => {
+        raisedNutWrapper.addEventListener('animationend', () => {
 
-        //     raisedNutWrapper.appendChild(raisedNut);
-        //     targetRod.appendChild(raisedNutWrapper);
+            raisedNutWrapper.appendChild(raisedNut);
+            targetRod.appendChild(raisedNutWrapper);
 
-        //     raisedNut.classList.remove(animationName, "raise-nut");
-        //     raisedNutWrapper.classList.remove(animationName);
-        // });
+            raisedNut.classList.remove(animationName, "raise-nut");
+            raisedNutWrapper.classList.remove(animationName);
+        });
 
 
     }
