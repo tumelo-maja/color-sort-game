@@ -5,6 +5,9 @@
   --blue: #26a1ee;
   --whitesilver: #c2b3d4;
 }
+html {
+  height: 100%;
+}
 
 body {
   background-color: #777bac;
@@ -43,14 +46,15 @@ footer {
 
 .game-container {
   border: 2px solid red;
-  height: 700px;
+  /* height: 100%; */
   background-color: #091152;
   justify-items: center;
+  padding: 50px;
 }
 
 .game-area {
   border: 2px solid green;
-  height: 480px;
+  /* height: 500px; */
   width: 240px;
   padding: 20px;
 }
