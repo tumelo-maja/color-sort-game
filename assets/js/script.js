@@ -148,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
+            nutsToMove =nutsToMove.slice(0,5);
 
 
             moveNut(rodElement, currentNut, nutsToMove, rodChildrenCount);
@@ -232,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // if (targetRod.lastElementChild === currentNutWrap) {
         //     selectedNut.classList.add("raise-nut");
         // }
-        setRaiseNutTransformY(nutObject, rodChildrenCount,-30);
+        setRaiseNutTransformY(nutObject, rodChildrenCount, -30);
         nutObject.classList.add("raise-nut");
     }
 
@@ -240,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Set the transformY value for the raise-nut class.
      * The nut must always be raised slightly above the clicked rod
      */
-    function setRaiseNutTransformY(nutObject, rodChildrenCount,raiseAboveTop) {
+    function setRaiseNutTransformY(nutObject, rodChildrenCount, raiseAboveTop) {
         // raisedNut.style.setProperty("--raise-start-y", nutStartPosition.yValue + "px");
 
         // const raiseAboveTop = -30;
@@ -285,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Calculate the 'lid' position - entry/exit points for all nuts
      */
-    function calculateLidCenter(targetRod, sourceRod,nutObject) {
+    function calculateLidCenter(targetRod, sourceRod, nutObject) {
 
         const targetRodRect = targetRod.getBoundingClientRect();
         const sourceRodRect = sourceRod.getBoundingClientRect();
@@ -294,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
         rodXDifference = targetRodRect.left - sourceRodRect.left;
 
         const nutStartPosition = calculateNutStartPosition(nutObject);
-        const offsetPosition = calculateNutMidOffset(sourceRod, targetRod,nutObject);
+        const offsetPosition = calculateNutMidOffset(sourceRod, targetRod, nutObject);
 
         // output 
         const lidCenterPosition = {
@@ -320,10 +321,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // anyNut is global to avoud redefining 
         const nutFinalPosition = {
             xValue: rodXDifference,
-            yValue: (maxNutsPerRod * anyNut.offsetHeight - ((targetChildrenCount + 1) * anyNut.offsetHeight)) - anyNut.offsetHeight + rodYDifference,
-        }
+            yValue: ((maxNutsPerRod * anyNut.offsetHeight) - ((targetChildrenCount +1) * anyNut.offsetHeight)) + rodYDifference -2,
+            // yValue: (((targetChildrenCount + 1) * anyNut.offsetHeight)) - anyNut.offsetHeight + rodYDifference,       
+         }
 
         console.log(`targetChildrenCount: ${targetChildrenCount}`);
+        console.log(`rodYDifference: ${rodYDifference}`);
+        console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`);
+        console.log(`maxNuts * anyNut.offsetHeight: ${maxNutsPerRod * anyNut.offsetHeight}`);
         return nutFinalPosition;
 
     }
@@ -334,8 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function calculateNutStartPosition(nutObject) {
 
-        console.log('calculateNutStartPosition:')
-        console.log(nutObject)
         const transY = nutObject.style.getPropertyValue('--transform-y');
 
         const nutStartPosition = {
@@ -349,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Calculate the mid-point position of the source and target rods for the animation.
      * The value is used at
      */
-    function calculateNutMidOffset(sourceRod, targetRod,nutObject) {
+    function calculateNutMidOffset(sourceRod, targetRod, nutObject) {
 
         const nutStartPosition = calculateNutStartPosition(nutObject);
         const targetRodRect = targetRod.getBoundingClientRect();
@@ -388,11 +391,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let tranformIncreaseValue = 0;
         let sourceChildrenCount = sourceRod.querySelectorAll('.nut-wrap').length;
 
-        nutsToMove = nutsToMove.slice(0, 1);
+        // nutsToMove = nutsToMove.slice(0, 3);
 
         for (let nut of nutsToMove) {
 
-            
+
 
             // const raisedNutWrapper = sourceRod.lastElementChild;
             // const raisedNut = raisedNutWrapper.firstElementChild;
@@ -408,7 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const offsetPosition = calculateNutMidOffset(sourceRod, targetRod, nut);
 
             // --- Calculate center of lid element --- //
-            const lidCenterPosition = calculateLidCenter(targetRod, sourceRod,nut);
+            const lidCenterPosition = calculateLidCenter(targetRod, sourceRod, nut);
 
             // --- Calculate final position of nut movement --- //
             const nutFinalPosition = calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount);
@@ -421,7 +424,11 @@ document.addEventListener("DOMContentLoaded", function () {
             nut.style.setProperty('--lid-position-y', lidCenterPosition.yValue + 'px');
             nut.style.setProperty('--lid-position-x', lidCenterPosition.xValue + 'px');
             nut.style.setProperty("--target-position-x", nutFinalPosition.xValue + "px");
-            nut.style.setProperty("--target-position-y", nutFinalPosition.yValue + "px");
+            nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue - tranformIncreaseValue) + "px");
+
+            tranformIncreaseValue = tranformIncreaseValue +26;
+
+            console.log(`tranformIncreaseValue: ${tranformIncreaseValue}`);
 
 
 
@@ -430,10 +437,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // nut.style.setProperty("--raise-start-y", transY + "px");
 
-            console.log(`transform-y: ${nut.style.getPropertyValue('--transform-y')}`);
-            console.log(`raise-start-y: ${nut.style.getPropertyValue('--raise-start-y')}`);
-            console.log(`raise-max-y: ${nut.style.getPropertyValue('--raise-max-y')}`);
-            console.log(`lid-position-y: ${nut.style.getPropertyValue('--lid-position-y')}`);
+            // console.log(`transform-y: ${nut.style.getPropertyValue('--transform-y')}`);
+            // console.log(`raise-start-y: ${nut.style.getPropertyValue('--raise-start-y')}`);
+            // console.log(`raise-max-y: ${nut.style.getPropertyValue('--raise-max-y')}`);
+            // console.log(`lid-position-y: ${nut.style.getPropertyValue('--lid-position-y')}`);
             console.log(`target-position-y: ${nut.style.getPropertyValue('--target-position-y')}`);
 
             // const newRaiseHeight = nut.getAttribute("--transform-y"); //last child color (target)
@@ -500,7 +507,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount); // Set the transform positions for the animation motion
 
         // let rodChildrenCountLocal = rodChildrenCount;
-        let sourceChildrenCount = sourceRod.querySelectorAll('.nut-wrap');
+        // let sourceChildrenCount = sourceRod.querySelectorAll('.nut-wrap');
 
         // Allwrappers.forEach((wrapper, index) => {
         nutsToMove.forEach((nut, index) => {
@@ -514,10 +521,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // wrapper.firstElementChild.classList.add(animationName); // nutWrapper
                 // wrapper.classList.add(animationName); // nut element
-                sourceChildrenCount--;
+                // sourceChildrenCount--;
+                // nut.parentElement.appendChild(nut);
+                // targetRod.appendChild(nut.parentElement);
+
+                nut.parentElement.addEventListener("animationend", function handler() {
+
+                    nut.parentElement.style.animation = "";
+                    nut.style.animation = "";
+
+
+                    nut.parentElement.appendChild(nut);
+                    targetRod.appendChild(nut.parentElement);
+
+                    nut.classList.remove(animationName, "raise-nut");
+                    nut.parentElement.classList.remove(animationName);
+
+                    nut.parentElement.removeEventListener("animationend", handler);
+                });
+
 
             }, index * 500); // Delay increases by 500ms per item
         });
+
+
+        // for (let nut of nutsToMove) {
+
+
+        //     nut.parentElement.appendChild(nut);
+        //     targetRod.appendChild(nut.parentElement);
+
+        // };
+
+        // --------------
+        // raisedNutWrapper.addEventListener("animationend", function handler() {
+
+        //     raisedNutWrapper.style.animation = "";
+        //     raisedNut.style.animation = "";
+
+
+        //     raisedNutWrapper.appendChild(raisedNut);
+        //     targetRod.appendChild(raisedNutWrapper);
+
+        //     raisedNut.classList.remove(animationName, "raise-nut");
+        //     raisedNutWrapper.classList.remove(animationName);
+
+        //     raisedNutWrapper.removeEventListener("animationend", handler);
+        // });
+
+        // -------------
 
         // test - all balls
 
