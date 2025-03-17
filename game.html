@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Color Sort Game!</h1>
+    </header>
+    <div class="top-section">
+        <div>How to play!</div>
+        <div>Difficulty level</div>
+    </div>
+    <div class="game-container">
+        <div class="game-statistics">
+            Game statistics
+        </div>
+        <div class="game-area">
+            <div class="rod-container">
+                <div class="rod" id="rod1">
+                    <div class="rod-lid"></div>
+                    <!-- <div class="nut-wrap">
+                        <div class="nut whitesilver" data-color="whitesilver"></div>
+                    </div> -->
+                    <div class="nut-wrap">
+                        <div class="nut orange" data-color="orange"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut yellow" data-color="yellow"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut yellow" data-color="yellow"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div  id="testNut" class="nut blue" data-color="blue"></div>
+                    </div>
+                </div>
+                <div class="rod" id="rod2">
+                    <div class="rod-lid"></div>
+                    <div class="nut-wrap">
+                        <div class="nut orange" data-color="orange"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut whitesilver" data-color="whitesilver"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut yellow" data-color="yellow"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut whitesilver" data-color="whitesilver"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div  id="blue2" class="nut blue" data-color="blue"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div  id="blue1" class="nut blue" data-color="blue"></div>
+                    </div>
+                    <!-- <div class="nut-wrap">
+                        <div class="nut whitesilver" data-color="whitesilver"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div> -->
+                </div>
+                <div class="rod" id="rod3">
+                    <div class="rod-lid"></div>
+                    <div class="nut-wrap">
+                        <div class="nut whitesilver" data-color="whitesilver"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut orange" data-color="orange"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut yellow" data-color="yellow"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut yellow" data-color="yellow"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="rod-container">
+                <div class="rod blue" id="rod4">
+                    <div class="rod-lid"></div>
+                    <div class="nut-wrap">
+                        <div class="nut orange" data-color="orange"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut whitesilver" data-color="whitesilver"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut yellow" data-color="yellow"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut whitesilver" data-color="whitesilver"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut orange" data-color="orange"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div>
+                </div>
+                <div class="rod" id="rod5">
+                    <div class="rod-lid"></div>
+                    <!-- <div class="nut-wrap">
+                        <div class="nut orange" data-color="orange"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut whitesilver" data-color="whitesilver"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut yellow" data-color="yellow"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut whitesilver" data-color="whitesilver"></div>
+                    </div> -->
+                    <div class="nut-wrap">
+                        <div class="nut orange" data-color="orange"></div>
+                    </div>
+                    <div class="nut-wrap">
+                        <div class="nut blue" data-color="blue"></div>
+                    </div>
+                </div>
+                <div class="rod" id="rod6">
+                    <div class="rod-lid"></div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="game-controls">
+
+            <button id="test">lowerNut</button>
+            <button id="motionTest">Test</button>
+            <button>Button3</button>
+        </div>
+    </div>
+    <footer>
+        <div> Give Feedback</div>
+        <div> Disclaimer</div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

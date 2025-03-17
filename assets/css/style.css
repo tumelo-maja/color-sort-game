@@ -140,10 +140,39 @@ footer {
   transform: translateX(-30px);
 }
 
+#start-button {
+  text-decoration: none;
+  color: white;
+  background-color: darkblue;
+  margin: 20px;
+  border-radius: 5px;
+  display: flex;
+  cursor: pointer;
+  padding: 10px;
+  height: 30px;
+  width: 90px;
+  border: 2px solid lightcyan;
+  align-items: center;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+main {
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
 /* test animation */
 @keyframes moveBall {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(var(--deltaX, 0px), var(--deltaY, 0px)); }
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(var(--deltaX, 0px), var(--deltaY, 0px));
+  }
 }
 
 /*--- Keyframes for raised nut ---*/
@@ -162,7 +191,6 @@ footer {
   100% {
     transform: translate(var(--target-position-x), var(--target-position-y));
     z-index: 100;
-
   }
 }
 
