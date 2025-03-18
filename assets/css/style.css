@@ -87,7 +87,7 @@ h2, h3 {
 /* .instructions-list {} */
 
 .game-container {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   /* height: 100%; */
   background-color: #091152;
   justify-items: center;
@@ -95,10 +95,10 @@ h2, h3 {
 }
 
 .game-area {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   height: max-content;
   width: 240px;
-  padding: 20px;
+  padding: 0;
   display: flex;
   align-content: end;
   flex-direction: column;
@@ -212,13 +212,13 @@ h2, h3 {
 
 /* game display */
 .game-display {
-  border: 1px solid wheat;
+  /* border: 1px solid wheat; */
   height: 60px;
   width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 15px;
+  margin: 0 10px;
   padding: 10px;
   position: relative;
 }
@@ -226,7 +226,7 @@ h2, h3 {
 .game-level {
   color: white;
   align-self: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: 5px;
 }
 
@@ -258,9 +258,10 @@ h2, h3 {
 
 /* head-area */
 .head-area {
-  border: 2px solid white;
+  /* border: 2px solid white; */
   height: 50px;
-  width: 250px;
+  /* width: 250px; */
+  width: 100%;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -272,12 +273,13 @@ h2, h3 {
   height: 50px;
   width: 50px;
   text-align: center;
+  margin: 0 10px;
 }
 
 .head-area i {
   color: wheat;
   margin: 10px;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 /* animations */
