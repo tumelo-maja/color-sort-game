@@ -178,6 +178,7 @@ padding: 10px;
 }
 
 #game-moves {
+  position: relative;
   background-color: #26a1ee;
   border-radius: 5px;
   width: 170px;
@@ -194,7 +195,9 @@ padding: 10px;
 
 #move-value {
   color: wheat;
-
+  position: absolute;
+  top: 50%;
+  right: 0;
 }
 
 
