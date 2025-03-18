@@ -62,6 +62,11 @@ h3 {
 
 .welcome-section p {
   color: white;
+  text-align: center;
+}
+
+.welcome-section a {
+  justify-self: center;
 }
 
 .game-instructions {
