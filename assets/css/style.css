@@ -5,12 +5,9 @@
   --blue: #26a1ee;
   --whitesilver: #c2b3d4;
 }
-html {
-  height: 100%;
-}
 
 body {
-  background-color: #777bac;
+  background-color: #091152;
   margin: 0;
   padding: 0;
   width: 100%;
