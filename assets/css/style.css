@@ -84,7 +84,10 @@ h2, h3 {
 
 
 
-/* .instructions-list {} */
+/* Help Modal  */
+#instructionsModal {
+  display: none;
+}
 
 .game-container {
   /* border: 2px solid red; */
