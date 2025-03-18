@@ -16,7 +16,8 @@
 
             <a aria-current="page" href="index.html" aria-label="Go to home page"><i class="fa-solid fa-house"></i></a>
             <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal"
-                aria-label="Shows instructions on how to play (opens in a modal window)"><i class="fa-solid fa-question"></i>
+                aria-label="Shows instructions on how to play (opens in a modal window)"><i
+                    class="fa-solid fa-question"></i>
             </a>
         </div>
 
@@ -162,15 +163,29 @@
         </div>
         <div class="game-controls">
 
-            <button id="undo-move"><i class="material-symbols-outlined game-icons">
-                    undo
-                </i></button>
-            <button id="add-bolt"><i class="material-symbols-outlined game-icons">
-                    add
-                </i></button>
-            <button><i class="material-symbols-outlined game-icons">
-                    settings_backup_restore
-                </i></button>
+            <ul>
+                <li>
+                    <button id="undo-move"><i class="material-symbols-outlined game-icons">
+                            undo
+                        </i></button>
+                </li>
+                <li>
+                    <button id="add-bolt"><i class="material-symbols-outlined game-icons">
+                            add
+                        </i></button>
+                </li>
+                <li>
+                    <button><i id="game-reset" class="material-symbols-outlined game-icons">
+                            settings_backup_restore
+                        </i></button>
+                </li>
+                <li>
+                    <button><i id="new-game" class="material-symbols-outlined game-icons">
+                        splitscreen_vertical_add
+                        </i></button>
+                </li>
+                
+            </ul>
         </div>
     </div>
     <!-- fontawesome JS script-->
