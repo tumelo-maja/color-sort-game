@@ -54,6 +54,7 @@ h3 {
 .play-instructions {
   cursor: pointer;
   transition: transform 0.25s ease-in-out;
+  user-select: none;
 }
 
 .play-instructions:hover {
