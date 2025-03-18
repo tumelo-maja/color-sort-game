@@ -318,17 +318,22 @@ document.addEventListener("DOMContentLoaded", function () {
         rodYDifference = targetRodRect.top - sourceRodRect.top;
         rodXDifference = targetRodRect.left - sourceRodRect.left;
 
+        const nutSize = anyNut.offsetHeight + parseFloat(nutStyle.marginBottom);
+
         // anyNut is global to avoud redefining 
         const nutFinalPosition = {
             xValue: rodXDifference,
-            yValue: ((maxNutsPerRod * anyNut.offsetHeight) - ((targetChildrenCount +1) * anyNut.offsetHeight)) + rodYDifference -2,
+            yValue: rodYDifference,
+            // yValue: (targetRod.offsetHeight -((targetChildrenCount ) * nutSize)) + rodYDifference,
+            // yValue: ((maxNutsPerRod * anyNut.offsetHeight) - ((targetChildrenCount +1) * anyNut.offsetHeight)) + rodYDifference -2,
             // yValue: (((targetChildrenCount + 1) * anyNut.offsetHeight)) - anyNut.offsetHeight + rodYDifference,       
          }
 
-        console.log(`targetChildrenCount: ${targetChildrenCount}`);
-        console.log(`rodYDifference: ${rodYDifference}`);
+        console.log(`nutStyle.marginBottom: ${nutStyle.marginBottom}`);
         console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`);
-        console.log(`maxNuts * anyNut.offsetHeight: ${maxNutsPerRod * anyNut.offsetHeight}`);
+        // console.log(`rodYDifference: ${rodYDifference}`);
+        // console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`);
+        // console.log(`maxNuts * anyNut.offsetHeight: ${maxNutsPerRod * anyNut.offsetHeight}`);
         return nutFinalPosition;
 
     }
@@ -424,9 +429,9 @@ document.addEventListener("DOMContentLoaded", function () {
             nut.style.setProperty('--lid-position-y', lidCenterPosition.yValue + 'px');
             nut.style.setProperty('--lid-position-x', lidCenterPosition.xValue + 'px');
             nut.style.setProperty("--target-position-x", nutFinalPosition.xValue + "px");
-            nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue - tranformIncreaseValue) + "px");
+            nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue ) + "px");
 
-            tranformIncreaseValue = tranformIncreaseValue +26;
+            // tranformIncreaseValue = tranformIncreaseValue +26;
 
             console.log(`tranformIncreaseValue: ${tranformIncreaseValue}`);
 
@@ -525,20 +530,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 // nut.parentElement.appendChild(nut);
                 // targetRod.appendChild(nut.parentElement);
 
-                nut.parentElement.addEventListener("animationend", function handler() {
+                // nut.parentElement.addEventListener("animationend", function handler() {
 
-                    nut.parentElement.style.animation = "";
-                    nut.style.animation = "";
+                //     nut.parentElement.style.animation = "";
+                //     nut.style.animation = "";
 
 
-                    nut.parentElement.appendChild(nut);
-                    targetRod.appendChild(nut.parentElement);
+                //     nut.parentElement.appendChild(nut);
+                //     targetRod.appendChild(nut.parentElement);
 
-                    nut.classList.remove(animationName, "raise-nut");
-                    nut.parentElement.classList.remove(animationName);
+                //     nut.classList.remove(animationName, "raise-nut");
+                //     nut.parentElement.classList.remove(animationName);
 
-                    nut.parentElement.removeEventListener("animationend", handler);
-                });
+                //     nut.parentElement.removeEventListener("animationend", handler);
+                // });
 
 
             }, index * 500); // Delay increases by 500ms per item

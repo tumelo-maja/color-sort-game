@@ -136,6 +136,20 @@ footer {
   margin: 20px;
 }
 
+.game-controls button{
+  color: darkblue;
+  background-color: wheat;
+  margin: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  /* padding: 4px 10px; */
+  height: 60px;
+  width: 60px;
+  border: 2px solid green;
+  align-content: center;
+}
+
 .success-move {
   animation: moveNutToTarget 5s ease-in-out forwards;
 }
