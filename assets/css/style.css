@@ -39,8 +39,8 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  margin: 0 20px;
+  padding: 10px;
+  margin: 0 10px;
 }
 
 h2, h3 {
@@ -54,9 +54,17 @@ h2, h3 {
   color: white;
 }
 
+.game-instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .game-instructions p{
   color: white;
-  width: 80%;
+  width: 100%;
+  margin: 0;
+  padding: 5px 0;
 }
 
 .last-p {
@@ -64,17 +72,17 @@ h2, h3 {
   font-size: 1.2rem;
 }
 
-.game-instructions li {
-  color: white;
-  list-style-type: square;
-  margin: 1rem;
+.instructions-list {
+  margin: 0;
 }
 
-.game-instructions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.instructions-list li {
+  color: white;
+  list-style-type: square;
+  margin: 1rem 0;
 }
+
+
 
 /* .instructions-list {} */
 
