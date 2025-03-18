@@ -53,6 +53,11 @@ h3 {
 
 .play-instructions {
   cursor: pointer;
+  transition: transform 0.25s ease-in-out;
+}
+
+.play-instructions:hover {
+  transform: scale(1.2);
 }
 
 .welcome-section p {
