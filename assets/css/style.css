@@ -51,6 +51,10 @@ h3 {
   margin: 15px 0;
 }
 
+.play-instructions {
+  cursor: pointer;
+}
+
 .welcome-section p {
   color: white;
 }

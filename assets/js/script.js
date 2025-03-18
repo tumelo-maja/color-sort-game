@@ -34,8 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
             rod.addEventListener('click', rodClick);
         }
 
-        const undoButton = document.getElementById('undo-move');
-        undoButton.addEventListener('click',updateMovesRemaining);
+        const playInstructionElement = document.querySelector('.play-instructions');
+        playInstructionElement.addEventListener('click',toggleHiddenItem);
+
+        // const undoButton = document.getElementById('undo-move');
+        // undoButton.addEventListener('click',updateMovesRemaining);
 
         // Modal conrols
         // const modalElement = document.getElementById('instructionsModal');
@@ -72,6 +75,16 @@ document.addEventListener("DOMContentLoaded", function () {
     //         raiseNut(nutObject);
     //     }
     // }
+
+    /**
+     * Function to display/hide items
+     */
+    function toggleHiddenItem() {   
+
+        const targetElement = document.querySelector('.game-instructions');
+        targetElement.classList.toggle('hidden-item');
+
+    }
 
     /**
      * hand clicks on the rod element.
