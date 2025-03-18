@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -15,6 +14,13 @@
     <div class="game-container">
 
         <div class="game-area">
+            <div class="game-display">
+                <p>Level <span>1</span></p>
+                <div id="game-moves">
+                    <div class="move-fill"></div>
+                    <span id="move-value">55</span>
+                </div>
+            </div>
             <div class="rod-container">
                 <div class="rod" id="rod1">
                     <div class="rod-lid"></div>
@@ -150,12 +156,12 @@
         <div class="game-controls">
 
             <button id="undo"><i class="material-symbols-outlined game-icons">
-                undo
-            </i></button>
+                    undo
+                </i></button>
             <button id="add-bolt"><i class="material-symbols-outlined game-icons">
-                add
-            </i></button>
-                <button><i class="material-symbols-outlined game-icons">
+                    add
+                </i></button>
+            <button><i class="material-symbols-outlined game-icons">
                     settings_backup_restore
                 </i></button>
         </div>
