@@ -26,13 +26,13 @@ h1 {
   text-align: center;
 }
 
-footer {
+/* footer {
   text-align: center;
   background-color: #f1f1f1;
   padding: 15px;
   position: relative;
   bottom: 0;
-}
+} */
 
 /* landing page - instructions*/
 main {
@@ -43,7 +43,8 @@ main {
   margin: 0 10px;
 }
 
-h2, h3 {
+h2,
+h3 {
   color: wheat;
   text-transform: uppercase;
   text-align: center;
@@ -60,7 +61,7 @@ h2, h3 {
   align-items: center;
 }
 
-.game-instructions p{
+.game-instructions p {
   color: white;
   width: 100%;
   margin: 0;
@@ -72,25 +73,34 @@ h2, h3 {
   font-size: 1.2rem;
 }
 
-.instructions-list {
+.game-instructions lu {
   margin: 0;
 }
 
-.instructions-list li {
+.game-instructions li {
   color: white;
   list-style-type: square;
   margin: 1rem 0;
 }
 
-
-
 /* Help Modal  */
-#instructionsModal {
+/* #instructionsModal {
   display: none;
+  z-index: 1;
+} */
+
+.modal-content {
+  border: 2px solid red;
+  background-color: #091152;
+  color:white;
+}
+.modal-body a {
+  color: var(--thin-air);
 }
 
+
 .game-container {
-  /* border: 2px solid red; */
+  border: 2px solid red;
   /* height: 100%; */
   background-color: #091152;
   justify-items: center;
@@ -205,8 +215,6 @@ h2, h3 {
   justify-content: space-evenly;
   list-style: none;
   padding: 0;
-
-
 }
 
 .game-icons {

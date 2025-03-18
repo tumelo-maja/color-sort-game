@@ -38,20 +38,20 @@ document.addEventListener("DOMContentLoaded", function () {
         undoButton.addEventListener('click',updateMovesRemaining);
 
         // Modal conrols
-        const modalElement = document.getElementById('instructionsModal');
-        console.log("Theres the modal below:");
-        console.log(modalElement);
+        // const modalElement = document.getElementById('instructionsModal');
+        // console.log("Theres the modal below:");
+        // console.log(modalElement);
 
-        const helpButton = document.getElementById('helpModal');
-        helpButton.addEventListener("click", () => {
-            modalElement.style.display = "flex";
-            console.log("Modal clicked")
-        });
+        // const helpButton = document.getElementById('helpModal');
+        // helpButton.addEventListener("click", () => {
+        //     modalElement.style.display = "flex";
+        //     console.log("Modal clicked")
+        // });
 
-        const modalCloseButton = document.getElementById('closeModal');
-        modalCloseButton.addEventListener("click", () => {
-            modalElement.style.display = "none";
-        });
+        // const modalCloseButton = document.getElementById('closeModal');
+        // modalCloseButton.addEventListener("click", () => {
+        //     modalElement.style.display = "none";
+        // });
 
     }
 
