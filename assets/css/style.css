@@ -168,6 +168,8 @@ flex-direction: column;
 justify-content: space-between;
 margin: 15px;
 padding: 10px;
+position: relative;
+
 }
 
 .game-level {
@@ -178,7 +180,7 @@ padding: 10px;
 }
 
 #game-moves {
-  position: relative;
+  /* position: relative; */
   background-color: #26a1ee;
   border-radius: 5px;
   width: 170px;
@@ -198,8 +200,11 @@ padding: 10px;
 #move-value {
   color: wheat;
   position: absolute;
-  top: 50%;
-  right: 0;
+  bottom: 10px;
+  right: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.08rem;
 }
 
 
