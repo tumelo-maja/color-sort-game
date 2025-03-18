@@ -137,7 +137,7 @@ footer {
 }
 
 .game-controls button{
-  color: darkblue;
+  color: white;
   background-color: wheat;
   margin: 20px;
   border-radius: 50%;
@@ -148,6 +148,10 @@ footer {
   width: 60px;
   border: 2px solid green;
   align-content: center;
+}
+
+.game-icons {
+  font-size: 2rem;
 }
 
 .success-move {
