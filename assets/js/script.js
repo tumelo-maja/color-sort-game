@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
             rod.addEventListener('click', rodClick);
         }
 
+        const undoButton = document.getElementById('undo-move');
+        undoButton.addEventListener('click',updateMovesRemaining);
 
     }
 
@@ -729,6 +731,34 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
         }
+    }
+
+    /**
+     * Update number of moves remaining 
+     */
+    function updateMovesRemaining() {
+        const movesNumber = document.getElementById('move-value');
+        const gameMoves = document.getElementById('game-moves');
+        const movesBar = document.querySelector('.move-fill');
+
+        const maximumMoves = 20;
+        let widthIncrements = Math.round(100/maximumMoves,2);
+
+
+        console.log("Moves must update!");
+
+        let currentBarwidth = (getCssStyleValue(movesBar,'width')/getCssStyleValue(gameMoves,'width'))*100;
+        let newBarwidth = currentBarwidth - widthIncrements;
+        console.log(`Current width is ${currentBarwidth}`);
+        console.log(`New width is ${newBarwidth}`);
+        // let operand1= parseInt(document.getElementById('operand1').innerText);
+
+        let currentMovesValue = parseInt(movesNumber.innerText);
+        let newMovesValue = currentMovesValue -1;
+        console.log(`Current move is ${currentMovesValue}`);
+        console.log(`New move is ${newMovesValue}`);
+        movesNumber.textContent = newMovesValue;
+        movesBar.style.width = newBarwidth+'%';
     }
 
 })
