@@ -170,6 +170,7 @@ h2, h3 {
   color: white;
 }
 
+/* game controls */
 .game-controls {
   margin: 20px;
 }
@@ -177,15 +178,24 @@ h2, h3 {
 .game-controls button {
   color: white;
   background-color: wheat;
-  margin: 20px;
+  margin: 10px;
   border-radius: 50%;
   display: inline-block;
   cursor: pointer;
   /* padding: 4px 10px; */
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   border: 2px solid green;
   align-content: center;
+}
+
+.game-controls ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  padding: 0;
+
+
 }
 
 .game-icons {
