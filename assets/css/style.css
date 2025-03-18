@@ -22,17 +22,17 @@ h1 {
   height: 40px;
   padding: 10px;
   margin: 0;
-  font-size: 2rem;
+  /* font-size: 2rem; */
   text-align: center;
 }
 
-/* footer {
+footer {
   text-align: center;
   background-color: #f1f1f1;
   padding: 15px;
   position: relative;
   bottom: 0;
-} */
+}
 
 /* landing page - instructions*/
 main {
@@ -71,6 +71,7 @@ h3 {
 .welcome-section p {
   color: white;
   text-align: center;
+  margin: 20px 0;
 }
 
 .welcome-section a {
@@ -92,7 +93,7 @@ h3 {
 
 .last-p {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 110%;
 }
 
 .game-instructions lu {
@@ -248,12 +249,12 @@ h3 {
 /* game display */
 .game-display {
   border: 1px solid wheat;
-  height: 60px;
+  height: 70px;
   width: 220px;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: space-evenly; */
-  align-self: center;
+  justify-content: center;
+  /* align-self: center; */
   margin: 0 10px;
   padding: 0;
   position: relative;
@@ -273,7 +274,7 @@ h3 {
   border-radius: 5px;
   width: 170px;
   height: 20px;
-  margin: 0 5px ;
+  margin: 5px ;
   overflow: hidden;
 }
 
@@ -286,11 +287,11 @@ h3 {
 #move-value {
   color: wheat;
   position: absolute;
-  bottom: 12px;
-  right: 10px;
-  font-size: 1rem;
+  bottom: 10px;
+  right: 15px;
+  font-size: 105%;
   font-weight: bold;
-  letter-spacing: 0.08rem;
+  /* letter-spacing: 0.08rem; */
 }
 
 /* head-area */
@@ -342,7 +343,7 @@ h3 {
   border: 2px solid lightcyan;
   align-items: center;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 18px;
 }
 
 .hidden-item {
