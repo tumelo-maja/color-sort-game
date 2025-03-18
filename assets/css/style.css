@@ -54,15 +54,18 @@ footer {
 
 .game-area {
   border: 2px solid green;
-  /* height: 500px; */
+  height: max-content;
   width: 240px;
   padding: 20px;
+  display: flex;
+  align-content: end;
+  flex-direction: column;
 }
 
 .rod-container {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   padding: 20px;
 }
 
@@ -155,6 +158,46 @@ footer {
   font-size: 2rem;
 }
 
+/* game display */
+.game-display {
+border: 1px solid wheat;
+height: 60px;
+width: 200px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+margin: 15px;
+padding: 10px;
+}
+
+.game-level {
+  color: white;
+  align-self: center;
+  border: 1px solid red;
+  margin: 5px;
+}
+
+#game-moves {
+  background-color: #26a1ee;
+  border-radius: 5px;
+  width: 170px;
+  height: 20px;
+  margin: 5px 20px 5px 5px;
+}
+
+.move-fill {
+  background-color: #777bac;
+  width: 50%;
+  height: 100%;
+
+}
+
+#move-value {
+  color: wheat;
+
+}
+
+
 /* animations */
 .success-move {
   animation: moveNutToTarget 5s ease-in-out forwards;
@@ -181,16 +224,6 @@ footer {
   font-size: 1.1rem;
 }
 
-/* test animation */
-@keyframes moveBall {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(var(--deltaX, 0px), var(--deltaY, 0px));
-  }
-}
-
 /*--- Keyframes for raised nut ---*/
 /*--- Movement using transform ---*/
 @keyframes moveNutToTarget {
@@ -209,21 +242,3 @@ footer {
     z-index: 100;
   }
 }
-
-/* @keyframes moveNutToTarget {
-  0% {
-    transform: translate(0, var(--transform-y));
-  }
-  25% {
-    transform: translate(var(--raise-start-x), var(--raise-start-y));
-  }
-  50% {
-    transform: translate(var(--raise-max-x), var(--raise-max-y));
-  }
-  75% {
-    transform: translate(var(--lid-position-x), var(--lid-position-y));
-  }
-  100% {
-    transform: translate(var(--target-position-x), var(--target-position-y));
-  }
-} */
