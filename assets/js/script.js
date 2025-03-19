@@ -233,22 +233,31 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Calculate the 'lid' position - entry/exit points for all nuts
      */
-    function calculateLidCenter(targetRod, sourceRod, nutObject) {
+    function calculateLidCenter(targetRod, sourceRod, nut) {
 
-        const targetRodRect = targetRod.getBoundingClientRect();
-        const sourceRodRect = sourceRod.getBoundingClientRect();
+        const sourceRow = sourceRod.getAttribute("data-row");
+        const sourceColumn = sourceRod.getAttribute("data-column");
 
-        rodYDifference = targetRodRect.top - sourceRodRect.top;
-        rodXDifference = targetRodRect.left - sourceRodRect.left;
+        const targetRow = targetRod.getAttribute("data-row");
+        const targetColumn = targetRod.getAttribute("data-column");
 
-        const nutStartPosition = calculateNutStartPosition(nutObject);
-        const offsetPosition = calculateNutMidOffset(sourceRod, targetRod, nutObject);
+        const stepsColumn = sourceColumn - targetColumn;
+        const stepsRow = sourceRow - targetRow;
+
+        const transY = nut.style.getPropertyValue('--transform-y');
+
+        const lidCenterPosition = {
+            // xValue: targetRow >=  sourceRow ? -(horizontalStep*(stepsColumn-2)+horizontalStep/2) : (horizontalStep*(stepsColumn+1)), 
+            xValue: -(horizontalStep*(stepsColumn))-6, 
+            yValue: targetRow ==  sourceRow ? parseFloat(transY)+(verticalStep*(stepsRow)) : (parseFloat(transY)-(verticalStep*(stepsRow)*7)),
+        };
+
 
         // output 
-        const lidCenterPosition = {
-            xValue: rodXDifference, // - (offsetPosition.xValue/2) ,
-            yValue: (Math.floor(rodYDifference) - Math.abs(nutStartPosition.yValue - offsetPosition.yValue) - (anyNut.offsetHeight * 2))
-        };
+        // const lidCenterPosition = {
+        //     xValue: rodXDifference, // - (offsetPosition.xValue/2) ,
+        //     yValue: (Math.floor(rodYDifference) - Math.abs(nutStartPosition.yValue - offsetPosition.yValue) - (anyNut.offsetHeight * 2))
+        // };
 
         return lidCenterPosition;
     }
@@ -307,9 +316,10 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function calculateNutMidOffset(sourceRod, targetRod, nut) {
 
-        const sourceRow = sourceRod.getAttribute("data-row");
-        const targetRow = targetRod.getAttribute("data-row");
-
+        // const sourceRow = sourceRod.getAttribute("data-row");
+        // const targetRow = targetRod.getAttribute("data-row");
+        const sourceColumn = sourceRod.getAttribute("data-column");
+        const targetColumn = targetRod.getAttribute("data-column");
         const transY = nut.style.getPropertyValue('--transform-y');
 
  
@@ -319,10 +329,10 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`verticalStep: ${verticalStep}`);
     
         const offsetPosition = {
-            xValue: targetRow >=  sourceRow ? horizontalStep : -horizontalStep, 
+            xValue: targetColumn >=  sourceColumn ? horizontalStep : -horizontalStep+10, 
             yValue: parseFloat(transY)-verticalStep,
         };
-
+        
 
         // let offsetPosition = calculateNutMovement(targetColumn, targetRow, sourceColumn, sourceRow);
 
