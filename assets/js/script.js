@@ -238,12 +238,14 @@ document.addEventListener("DOMContentLoaded", function () {
         rodYDifference = targetRodRect.top - sourceRodRect.top;
         rodXDifference = targetRodRect.left - sourceRodRect.left;
 
-        const nutSize = anyNut.offsetHeight + parseFloat(nutStyle.marginBottom);
+        const nutSize = anyNut.offsetHeight ;//+ parseFloat(nutStyle.marginBottom);
+        // let currentBarwidth = (getCssStyleValue(movesBar, 'width')
+        // tumelo
 
         // anyNut is global to avoud redefining 
         const nutFinalPosition = {
             xValue: rodXDifference,
-            yValue: rodYDifference,
+            yValue: rodYDifference //+((targetChildrenCount ) * parseFloat(nutStyle.height)/2) -parseFloat(nutStyle.height),
             // yValue: (targetRod.offsetHeight -((targetChildrenCount ) * nutSize)) + rodYDifference,
             // yValue: ((maxNutsPerRod * anyNut.offsetHeight) - ((targetChildrenCount +1) * anyNut.offsetHeight)) + rodYDifference -2,
             // yValue: (((targetChildrenCount + 1) * anyNut.offsetHeight)) - anyNut.offsetHeight + rodYDifference,       
@@ -251,6 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log(`nutStyle.marginBottom: ${nutStyle.marginBottom}`);
         console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`);
+        console.log(`nutStyle.height: ${nutStyle.height}`);
 
         return nutFinalPosition;
 
@@ -313,10 +316,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let tranformIncreaseValue = 0;
         let sourceChildrenCount = sourceRod.querySelectorAll('.nut-wrap').length;
+        const heighExistingChildren = (targetChildrenCount*(parseFloat(nutStyle.height)+parseFloat(nutStyle.marginBottom)));
 
         // nutsToMove = nutsToMove.slice(0, 3);
 
         for (let nut of nutsToMove) {
+
+            // height offset
+            let heightOffset = parseFloat(nutStyle.height) -heighExistingChildren;
+            console.log(`Target children: ${targetChildrenCount}`);
 
             //set raise values first
             setRaiseNutTransformY(nut, sourceChildrenCount, -30);
@@ -341,7 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
             nut.style.setProperty('--lid-position-y', lidCenterPosition.yValue + 'px');
             nut.style.setProperty('--lid-position-x', lidCenterPosition.xValue + 'px');
             nut.style.setProperty("--target-position-x", nutFinalPosition.xValue + "px");
-            nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue) + "px");
+            nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue + heightOffset) + "px");
 
             // tranformIncreaseValue = tranformIncreaseValue +26;
 
