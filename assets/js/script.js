@@ -216,8 +216,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('Lets try another ways');
 
         // Calc setps from spource to target
-        const stepsColumn = targetRodColumn - sourceRodColumn;
-        const stepsRow = targetRodRow - sourceRodRow;
+        const stepsColumn = sourceRodColumn - targetRodColumn;
+        const stepsRow = sourceRodRow - targetRodRow;
       
         // const verticalStep =25;
         // const horizontalStep =42;
@@ -305,30 +305,38 @@ document.addEventListener("DOMContentLoaded", function () {
      * Calculate the mid-point position of the source and target rods for the animation.
      * The value is used at
      */
-    function calculateNutMidOffset(sourceRod, targetRod, nutObject) {
+    function calculateNutMidOffset(sourceRod, targetRod, nut) {
 
-        const nutStartPosition = calculateNutStartPosition(nutObject);
-        const targetRodRect = targetRod.getBoundingClientRect();
-        const sourceRodRect = sourceRod.getBoundingClientRect();
+        const sourceRow = sourceRod.getAttribute("data-row");
+        const targetRow = targetRod.getAttribute("data-row");
 
-        let offsetPosition = {};
+        const transY = nut.style.getPropertyValue('--transform-y');
 
-        const animationOffsetX = 25;
-        const animationOffsetY = -10;
+ 
+      
+        // const verticalStep =25;
+        // const horizontalStep =42;
+        console.log(`verticalStep: ${verticalStep}`);
+    
+        const offsetPosition = {
+            xValue: targetRow >=  sourceRow ? horizontalStep : -horizontalStep, 
+            yValue: parseFloat(transY)-verticalStep,
+        };
 
-        if (sourceRodRect.left > targetRodRect.left) {
-            offsetPosition = {
-                xValue: nutStartPosition.yValue + animationOffsetX,
-                yValue: nutStartPosition.yValue + animationOffsetY
-            };
 
-        } else {
-            offsetPosition = {
-                xValue: -(nutStartPosition.yValue + animationOffsetX),
-                yValue: nutStartPosition.yValue + animationOffsetY
-            };
+        // let offsetPosition = calculateNutMovement(targetColumn, targetRow, sourceColumn, sourceRow);
 
-        }
+        // if (sourceColumn > targetColumn) {
+        //     offsetPosition = {
+        //         xValue: nutStartPosition.yValue + animationOffsetX,
+        //         yValue: nutStartPosition.yValue + animationOffsetY
+        //     };
+        // } else {
+        //     offsetPosition = {
+        //         xValue: -(nutStartPosition.yValue + animationOffsetX),
+        //         yValue: nutStartPosition.yValue + animationOffsetY
+        //     };
+        // }
 
         return offsetPosition;
 
@@ -513,7 +521,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const targetNut = targetRod.lastElementChild.firstElementChild;
             // const nutObjectTop = rodElement.lastElementChild;
-            void targetNut.offsetWidth;
+            // void targetNut.offsetWidth;
 
             // 1) Check the destination rod is not the same as origin rod
             if (targetRod === sourceRod) {
