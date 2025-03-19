@@ -16,6 +16,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const anyNut = document.querySelectorAll('.nut')[0];
     const nutStyle = window.getComputedStyle(anyNut);
 
+    const playInstructionElement = document.querySelector('.play-instructions');
+    console.log(playInstructionElement);
+
+    if (playInstructionElement) {
+        playInstructionElement.addEventListener('click', toggleHiddenItem);
+    }
+
+
+
 
     /**
      * initialize the game play
@@ -34,8 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
             rod.addEventListener('click', rodClick);
         }
 
-        const playInstructionElement = document.querySelector('.play-instructions');
-        playInstructionElement.addEventListener('click',toggleHiddenItem);
 
         // const undoButton = document.getElementById('undo-move');
         // undoButton.addEventListener('click',updateMovesRemaining);
@@ -79,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Function to display/hide items
      */
-    function toggleHiddenItem() {   
+    function toggleHiddenItem() {
 
         const targetElement = document.querySelector('.game-instructions');
         targetElement.classList.toggle('hidden-item');
@@ -179,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
-            nutsToMove =nutsToMove.slice(0,5);
+            nutsToMove = nutsToMove.slice(0, 5);
 
 
             moveNut(rodElement, currentNut, nutsToMove, rodChildrenCount);
@@ -358,7 +365,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // yValue: (targetRod.offsetHeight -((targetChildrenCount ) * nutSize)) + rodYDifference,
             // yValue: ((maxNutsPerRod * anyNut.offsetHeight) - ((targetChildrenCount +1) * anyNut.offsetHeight)) + rodYDifference -2,
             // yValue: (((targetChildrenCount + 1) * anyNut.offsetHeight)) - anyNut.offsetHeight + rodYDifference,       
-         }
+        }
 
         console.log(`nutStyle.marginBottom: ${nutStyle.marginBottom}`);
         console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`);
@@ -460,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
             nut.style.setProperty('--lid-position-y', lidCenterPosition.yValue + 'px');
             nut.style.setProperty('--lid-position-x', lidCenterPosition.xValue + 'px');
             nut.style.setProperty("--target-position-x", nutFinalPosition.xValue + "px");
-            nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue ) + "px");
+            nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue) + "px");
 
             // tranformIncreaseValue = tranformIncreaseValue +26;
 
@@ -771,23 +778,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const movesBar = document.querySelector('.move-fill');
 
         const maximumMoves = 20;
-        let widthIncrements = Math.round(100/maximumMoves,2);
+        let widthIncrements = Math.round(100 / maximumMoves, 2);
 
 
         console.log("Moves must update!");
 
-        let currentBarwidth = (getCssStyleValue(movesBar,'width')/getCssStyleValue(gameMoves,'width'))*100;
+        let currentBarwidth = (getCssStyleValue(movesBar, 'width') / getCssStyleValue(gameMoves, 'width')) * 100;
         let newBarwidth = currentBarwidth - widthIncrements;
         console.log(`Current width is ${currentBarwidth}`);
         console.log(`New width is ${newBarwidth}`);
         // let operand1= parseInt(document.getElementById('operand1').innerText);
 
         let currentMovesValue = parseInt(movesNumber.innerText);
-        let newMovesValue = currentMovesValue -1;
+        let newMovesValue = currentMovesValue - 1;
         console.log(`Current move is ${currentMovesValue}`);
         console.log(`New move is ${newMovesValue}`);
         movesNumber.textContent = newMovesValue;
-        movesBar.style.width = newBarwidth+'%';
+        movesBar.style.width = newBarwidth + '%';
     }
 
 })
