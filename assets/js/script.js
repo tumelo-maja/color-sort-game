@@ -23,9 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
         playInstructionElement.addEventListener('click', toggleHiddenItem);
     }
 
-
-
-
     /**
      * initialize the game play
      */
@@ -33,55 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // first function to run after loading
         console.log("Game has started! Lets play!")
 
-        // const nuts = document.querySelectorAll(".nut");
-        // for (let nut of nuts) {
-        //     nut.addEventListener('click', nutClick);
-        // }
-
         const rods = document.querySelectorAll(".rod");
         for (let rod of rods) {
             rod.addEventListener('click', rodClick);
         }
 
-
-        // const undoButton = document.getElementById('undo-move');
-        // undoButton.addEventListener('click',updateMovesRemaining);
-
-        // Modal conrols
-        // const modalElement = document.getElementById('instructionsModal');
-        // console.log("Theres the modal below:");
-        // console.log(modalElement);
-
-        // const helpButton = document.getElementById('helpModal');
-        // helpButton.addEventListener("click", () => {
-        //     modalElement.style.display = "flex";
-        //     console.log("Modal clicked")
-        // });
-
-        // const modalCloseButton = document.getElementById('closeModal');
-        // modalCloseButton.addEventListener("click", () => {
-        //     modalElement.style.display = "none";
-        // });
-
     }
-
-    /**
-     * hand clicks on the nut element.
-     * Depending on the status of other nuts, the click nut can be 'raised'
-     * or it become the child element of the target rod and 'raised' nut moves above it
-     */
-    // function nutClick(e) {
-    //     // handle click to raise and click to move
-    //     const isNutRaised = document.querySelector(".raise-nut");
-
-    //     const nutObject = e.target;
-
-    //     if (isNutRaised) {
-    //         moveNut(nutObject);
-    //     } else {
-    //         raiseNut(nutObject);
-    //     }
-    // }
 
     /**
      * Function to display/hide items
