@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // end of variables
 
     // Global variables.
-    const maxNutsPerRod = 8;
+    const maxNutsPerRod = 4;
+    const verticalStep =-25;
+
 
     // Get CSS style object for nut element - calculate height of each nut
     const anyNut = document.querySelectorAll('.nut')[0];
@@ -162,7 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
      * Raise the top nut &wrapper  above the rod when clicked
      */
     function raiseNut(nutObject, rodChildrenCount) {
-        setRaiseNutTransformY(nutObject, rodChildrenCount, -30);
+
+        setRaiseNutTransformY(nutObject, rodChildrenCount);
         nutObject.classList.add("raise-nut");
     }
 
@@ -170,12 +173,13 @@ document.addEventListener("DOMContentLoaded", function () {
      * Set the transformY value for the raise-nut class.
      * The nut must always be raised slightly above the clicked rod
      */
-    function setRaiseNutTransformY(nutObject, rodChildrenCount, raiseAboveTop) {
+    function setRaiseNutTransformY(nutObject, rodChildrenCount) {
 
         const anyNutMargin = getCssStyleValue(anyNut, 'margin-bottom');
+        // const availableSpace = (maxNutsPerRod - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
         const availableSpace = (maxNutsPerRod - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
 
-        const raiseValue = -availableSpace + raiseAboveTop;
+        const raiseValue = -availableSpace + verticalStep;
 
 
         nutObject.style.setProperty("--transform-y", raiseValue + "px");
@@ -327,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(`Target children: ${targetChildrenCount}`);
 
             //set raise values first
-            setRaiseNutTransformY(nut, sourceChildrenCount, -30);
+            setRaiseNutTransformY(nut, sourceChildrenCount);
 
             // --- Calculate start position for animation --- //
             const nutStartPosition = calculateNutStartPosition(nut);
