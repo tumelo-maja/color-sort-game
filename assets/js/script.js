@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Global variables.
     const maxNutsPerRod = 4;
-    const verticalStep =-25;
+    const verticalStep =25;
+    const horizontalStep =42;
 
 
     // Get CSS style object for nut element - calculate height of each nut
@@ -179,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // const availableSpace = (maxNutsPerRod - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
         const availableSpace = (maxNutsPerRod - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
 
-        const raiseValue = -availableSpace + verticalStep;
+        const raiseValue = -availableSpace - verticalStep;
 
 
         nutObject.style.setProperty("--transform-y", raiseValue + "px");
@@ -206,6 +207,28 @@ document.addEventListener("DOMContentLoaded", function () {
         const attributeValue = parseFloat(getComputedStyle(object).getPropertyValue(attribute));
         return attributeValue
     }
+
+    /**
+     * Calculate nut movement in horizontal and vertical steps
+     */
+    function calculateNutMovement(targetRodColumn, targetRodRow, sourceRodColumn, sourceRodRow) {
+
+        console.log('Lets try another ways');
+
+        // Calc setps from spource to target
+        const stepsColumn = targetRodColumn - sourceRodColumn;
+        const stepsRow = targetRodRow - sourceRodRow;
+      
+        // const verticalStep =25;
+        // const horizontalStep =42;
+    
+        const nutTransformValues = {
+            xValue: stepsRow * horizontalStep, 
+            yValue: stepsColumn * verticalStep,
+        };
+
+        return nutTransformValues;
+      }
 
     /**
      * Calculate the 'lid' position - entry/exit points for all nuts
