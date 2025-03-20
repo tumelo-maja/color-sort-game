@@ -63,6 +63,22 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("That's it I'm done");
     })
 
+    // undo move
+    let lastMoveHistory = {};
+    const undoMoveButton = document.getElementById("undo-move");
+    undoMoveButton.addEventListener('click', undoLastMove)
+
+    /**
+     * Undo last move
+     */
+    function undoLastMove() {
+        console.log("This is the lastmove history");
+        console.log(lastMoveHistory)
+        let moveType = 'reverse';
+        moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'],moveType);
+
+    }
+
 
     /**
      * initialize the game play
@@ -206,10 +222,19 @@ document.addEventListener("DOMContentLoaded", function () {
             // console.log(`These ones ${1} Moved! - ${(nutsToMove[0].innerText)}`)
             // console.log(`These ones ${2} Moved! - ${(nutsToMove[1].innerText)}`)
 
+            let moveType = 'forward';
 
-            moveNut(rodElement, raisedNut, nutsToMove, rodChildrenCount);
+            moveNut(rodElement, raisedNut, nutsToMove, rodChildrenCount,moveType);
+
+            lastMoveHistory['targetRod']=sourceRod;
+            // lastMoveHistory['raisedNut']=nutsToMove[nutsToMove.length-1];
+            lastMoveHistory['raisedNut']=nutsToMove.slice(-1)[0];
+            lastMoveHistory['nutsToMove']=nutsToMove;
+            lastMoveHistory['rodChildrenCount']=sourceRod.querySelectorAll('.nut-wrap').length - nutsToMove.length;
 
 
+
+            
 
         } else {
             console.log(nutObjectTop);
@@ -593,10 +618,14 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Move raised nut to another rod
      */
-    function moveNut(targetRod, raisedNut, nutsToMove, rodChildrenCount) {
+    function moveNut(targetRod, raisedNut, nutsToMove, rodChildrenCount,moveType) {
         // Get raised nut
         const raisedNutWrapper = raisedNut.parentElement;
         const sourceRod = raisedNutWrapper.parentElement;
+
+        if (moveType ==='reverse') {
+            runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
+        }
 
         // Move nut right away if target rod is empty
         if (rodChildrenCount) {
