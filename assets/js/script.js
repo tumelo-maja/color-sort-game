@@ -115,8 +115,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 //upoadte current and neighbour colors
                 currentNut = neighbourNutWrapper.firstElementChild;
                 currentNutWrapper = neighbourNutWrapper;
-                neighbourNutWrapper = currentNutWrapper.previousElementSibling;
 
+                // let neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color"); //colro of sibling 
+                // let currentNutColor = currentNut.getAttribute("data-color");
+                console.log("This is the problem wrapper")
+                console.log(neighbourNutWrapper)
+
+                if (currentNutWrapper.previousElementSibling.classList.contains('nut-wrap')) {
+                    // sibling = sibling.nextElementSibling;
+                    neighbourNutWrapper = currentNutWrapper.previousElementSibling;
+                  } else {
+                    break
+                  }
 
                 neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color");
                 currentNutColor = currentNut.getAttribute("data-color");
