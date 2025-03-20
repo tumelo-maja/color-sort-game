@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     runGame();
 
     // Testing purposes
-    // let lowerButton = document.getElementById('test');
-    // lowerButton.addEventListener('click', lowerNut);
+    let newGameButton = document.getElementById('new-game');
+    newGameButton.addEventListener('click', confettiAnimation);
 
     // end of variables
 
@@ -13,6 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const maxNutsPerRod = 4;
     const verticalStep = 25;
     const horizontalStep = 42;
+
+    const nutColors = {
+        'orange': '#f25029',
+        'yellow': '#f9b723',
+        'blue': '#26a1ee',
+        'whitesilver': '#c2b3d4',
+    }
 
 
     // Get CSS style object for nut element - calculate height of each nut
@@ -638,12 +645,68 @@ document.addEventListener("DOMContentLoaded", function () {
                 // remov event listener for completed rods
                 targetRod.removeEventListener("click", rodClick);
 
+                // show small confetti
+
+                const targetRodRect = targetRod.getBoundingClientRect();
+                // calcluate relative positon of the rod - center / convert ro ratio
+                const startX = (targetRodRect.left + targetRodRect.width / 2) / window.innerWidth;
+                const startY = (targetRodRect.top - 10) / window.innerHeight;
+
+
+                confettiAnimation(startX, startY, ['#f25029'], 0.5);
+
             } else {
                 console.log("Not all ball elements have the same color.");
             }
         } else {
             console.log("There are still missinbg nuts");
         }
+    }
+
+    /**
+     * Show animation after a rod has been completed corectly 
+     */
+    // function confettiAnimation (startX,startY,colors, particleSize) {
+    function confettiAnimation() {
+
+        const targetRod = document.getElementById("rod5");
+        console.log(targetRod);
+        const nutClass = targetRod.querySelector('.nut').classList[1];
+
+
+
+        // const nutColorClass = document.querySelector(nutClasses);
+        // const nutColor = getComputedStyle(nutColorClass).backgroundColor;
+
+        console.log(`The found color is ${nutColors[nutClass]}`)
+
+        const targetRodRect = targetRod.getBoundingClientRect();
+        // calcluate relative positon of the rod - center / convert ro ratio
+        const startX = (targetRodRect.left + targetRodRect.width / 2) / window.innerWidth;
+        const startY = (targetRodRect.top) / window.innerHeight;
+
+
+        // confettiAnimation(startX, startY, ['#f25029'], 0.5);
+
+        const colors =[nutColors[nutClass]];
+        // const nutColor = getCssStyleValue(topNut.style.backgroundColor, 'background-color');
+
+        const particleSize = 0.5;
+
+
+        confetti({
+            particleCount: 50,
+            angle: 90,
+            spread: 55,
+            origin: { x: startX, y: startY },
+            ticks: 50,
+            colors: colors,
+            shapes: ['circle'],
+            scalar: particleSize,
+            startVelocity: 10,
+
+        });
+
     }
 
 })
