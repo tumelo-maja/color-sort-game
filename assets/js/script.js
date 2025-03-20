@@ -634,6 +634,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (nutSameColor) {
                 console.log(`Yeeey this rod has been completed with: ${firstNutColor} color`);
+
+                // remov event listener for completed rods
+                targetRod.removeEventListener("click", rodClick);
+
             } else {
                 console.log("Not all ball elements have the same color.");
             }
