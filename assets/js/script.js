@@ -493,7 +493,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }, index * 100); // Delay increases by 500ms per item
         });
-
+        // Decreament moves after completed move
+        updateMovesRemaining()
     }
     // }
 
@@ -652,7 +653,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const startX = (targetRodRect.left + targetRodRect.width / 2) / window.innerWidth;
                 const startY = (targetRodRect.top - 10) / window.innerHeight;
 
-                const nutColorHex =[nutColors[firstNutColor]];
+                const nutColorHex = [nutColors[firstNutColor]];
 
 
 
@@ -669,33 +670,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Show animation after a rod has been completed corectly 
      */
-    function confettiAnimation (startX,startY,nutColor, particleSize) {
-    // function confettiAnimation() {
-
-        // const targetRod = document.getElementById("rod5");
-        // console.log(targetRod);
-        // const nutClass = targetRod.querySelector('.nut').classList[1];
-
-
-
-        // // const nutColorClass = document.querySelector(nutClasses);
-        // // const nutColor = getComputedStyle(nutColorClass).backgroundColor;
-
-        // console.log(`The found color is ${nutColors[nutClass]}`)
-
-        // const targetRodRect = targetRod.getBoundingClientRect();
-        // // calcluate relative positon of the rod - center / convert ro ratio
-        // const startX = (targetRodRect.left + targetRodRect.width / 2) / window.innerWidth;
-        // const startY = (targetRodRect.top) / window.innerHeight;
-
-
-        // // confettiAnimation(startX, startY, ['#f25029'], 0.5);
-
-        // const colors =[nutColors[nutColor]];
-        // // const nutColor = getCssStyleValue(topNut.style.backgroundColor, 'background-color');
-
-        // const particleSize = 0.5;
-
+    function confettiAnimation(startX, startY, nutColor, particleSize) {
 
         confetti({
             particleCount: 50,
