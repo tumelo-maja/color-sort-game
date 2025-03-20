@@ -90,9 +90,16 @@ document.addEventListener("DOMContentLoaded", function () {
             // Check if colors of neext match the nut to move - append to nutsToMove.
             let neighbourNutWrapper = currentNutWrapper.previousElementSibling;
             // let neighbourNutWrapper = raisedNutWrapper.nextElementSibling;
+            let neighbourNutColor ="";
 
-            let neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color"); //colro of sibling 
+            if (!neighbourNutWrapper.classList.contains('nut-wrap')) {
+                neighbourNutColor=null; 
+              } else {
+                neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color"); 
+            }
+
             let currentNutColor = currentNut.getAttribute("data-color");
+
             // console.log("Before While: ......")
             // console.log(`neighbourNutColor: ${neighbourNutColor}`);
             // console.log(`currentNutColor: ${currentNutColor}`);
@@ -121,10 +128,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("This is the problem wrapper")
                 console.log(neighbourNutWrapper)
 
-                if (currentNutWrapper.previousElementSibling.classList.contains('nut-wrap')) {
-                    // sibling = sibling.nextElementSibling;
-                    neighbourNutWrapper = currentNutWrapper.previousElementSibling;
-                  } else {
+                neighbourNutWrapper = currentNutWrapper.previousElementSibling;
+
+
+                if (!neighbourNutWrapper.classList.contains('nut-wrap')) {
                     break
                   }
 
@@ -158,8 +165,8 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Nuts to move");
             console.log(nutsToMove);
 
-            console.log(`These ones ${1} Moved! - ${(nutsToMove[0].innerText)}`)
-            console.log(`These ones ${2} Moved! - ${(nutsToMove[1].innerText)}`)
+            // console.log(`These ones ${1} Moved! - ${(nutsToMove[0].innerText)}`)
+            // console.log(`These ones ${2} Moved! - ${(nutsToMove[1].innerText)}`)
 
 
             moveNut(rodElement, currentNut, nutsToMove, rodChildrenCount);
@@ -474,7 +481,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
 
-            }, index * 500); // Delay increases by 500ms per item
+            }, index * 100); // Delay increases by 500ms per item
         });
 
     }
