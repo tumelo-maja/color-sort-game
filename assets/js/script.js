@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // console.log(`These ones ${2} Moved! - ${(nutsToMove[1].innerText)}`)
 
 
-            moveNut(rodElement, currentNut, nutsToMove, rodChildrenCount);
+            moveNut(rodElement, raisedNut, nutsToMove, rodChildrenCount);
 
 
 
