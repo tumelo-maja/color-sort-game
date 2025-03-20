@@ -370,6 +370,53 @@ h3 {
   background-color: #091152;
 }
 
+/* game loss modal */
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal-container h2 {
+  color: #091152;
+  margin: 0 0 15px;
+  font-size: 1.5rem;
+}
+
+.game-modal {
+  background-color: wheat;
+  width: 500px;
+  max-width: 100%;
+  padding: 30px 50px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  /* height: 250px; */
+}
+
+.game-modal p{
+  margin: 2px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  margin: 20px 10px;
+}
+
+.modal-buttons button {
+border-radius: 5px;
+} 
+
+
 /*--- Keyframes for raised nut ---*/
 /*--- Movement using transform ---*/
 @keyframes moveNutToTarget {

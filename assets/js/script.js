@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Testing purposes
     let newGameButton = document.getElementById('new-game');
-    newGameButton.addEventListener('click', confettiAnimation);
+    // newGameButton.addEventListener('click', gameOverLoss);
 
     // end of variables
 
@@ -492,13 +492,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     // check the rod completion
                     checkRodCompletion(targetRod);
                     
-                    const movesNumber = parseInt(document.getElementById('move-value').innerText);    
-                    if (movesNumber === 0) {
-                        //end the game with a lost if moves get to 0
-                        // setTimeout(gameLoss(), 1500);
-                        gameLoss()
+                    // const movesNumber = parseInt(document.getElementById('move-value').innerText);    
+                    // if (movesNumber === 0) {
+                    //     //end the game with a lost if moves get to 0
+                    //     // setTimeout(gameOverLoss(), 1500);
+                    //     gameOverLoss()
             
-                    }
+                    // }
                 });
 
 
@@ -636,8 +636,17 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Display modal for game loss and give user option to retry or start a new game
      */
-    function gameLoss() {
-        alert("Oops, You are out of moves\nDefeat!");
+    function gameOverLoss() {
+        // alert("Oops, You are out of moves\nDefeat!");
+        //("#lossModal").modal()
+        // const lossModal = document.getElementById("lossModal");
+        // const gameOverModal = new bootstrap.Modal(lossModal);
+        // gameOverModal.show();
+
+        // lossModal.style.display = 'block';
+        // $("#lossModal").modal()
+        console.log("Game over - you suck at this!");
+
 
     }
 

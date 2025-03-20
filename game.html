@@ -18,7 +18,7 @@
         <div class="head-area">
             <a aria-current="page" href="index.html" aria-label="Go to home page"><i class="fa-solid fa-house"></i></a>
             <div class="game-score"><span id="score-value">100</span><i class="fa-solid fa-coins"></i></div>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal"
+            <a href="#helpModal" data-bs-toggle="modal" data-bs-target="#helpModal"
                 aria-label="Shows instructions on how to play (opens in a modal window)"><i
                     class="fa-solid fa-question"></i>
             </a>
@@ -158,6 +158,22 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Custom modal for game over -->
+    <div id="gameOverModal" class="modal-container">
+        <div class="game-modal">
+            <h2 class="modal-title">Game Over - You lost</h2>
+            <p>Oh no! You're run out of moves to sort the colors</p>
+            <p>Why not try again or start a fresh new challenge?</p>
+            <div class="modal-buttons">
+                <button id="retry">Retry</button>
+                <button id="modal-new-game">New Game</button>
+                <button id="quit-game">Quit Game</button>
+            </div>
+
+        </div>
+
     </div>
 
     <!-- Bootstrap Javascript -->
