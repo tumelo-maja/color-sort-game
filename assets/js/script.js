@@ -90,12 +90,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // Check if colors of neext match the nut to move - append to nutsToMove.
             let neighbourNutWrapper = currentNutWrapper.previousElementSibling;
             // let neighbourNutWrapper = raisedNutWrapper.nextElementSibling;
-            let neighbourNutColor ="";
+            let neighbourNutColor = "";
 
             if (!neighbourNutWrapper.classList.contains('nut-wrap')) {
-                neighbourNutColor=null; 
-              } else {
-                neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color"); 
+                neighbourNutColor = null;
+            } else {
+                neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color");
             }
 
             let currentNutColor = currentNut.getAttribute("data-color");
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!neighbourNutWrapper.classList.contains('nut-wrap')) {
                     break
-                  }
+                }
 
                 neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color");
                 currentNutColor = currentNut.getAttribute("data-color");
@@ -463,7 +463,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // sourceChildrenCount--;
                 // nut.parentElement.appendChild(nut);
                 // targetRod.appendChild(nut.parentElement);
-                console.log(`Nut number ${index+1} Moved! - ${(nut.innerText)}`)
+                console.log(`Nut number ${index + 1} Moved! - ${(nut.innerText)}`)
 
                 nut.parentElement.addEventListener("animationend", function handler() {
 
@@ -478,6 +478,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     nut.parentElement.classList.remove(animationName);
 
                     nut.parentElement.removeEventListener("animationend", handler);
+
+                    // check the rod completion
+                    checkRodCompletion(targetRod)
                 });
 
 
@@ -615,6 +618,28 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`New move is ${newMovesValue}`);
         movesNumber.textContent = newMovesValue;
         movesBar.style.width = newBarwidth + '%';
+    }
+
+    /**
+     * Check if the rod has been completed by checking the count and colors of the child nuts
+     */
+    function checkRodCompletion(targetRod) {
+
+        const allNuts = targetRod.querySelectorAll('.nut');
+        console.log(allNuts)
+
+        if (allNuts.length === maxNutsPerRod) { //confirm if it has the max nuts possible
+            const firstNutColor = allNuts[0].getAttribute('data-color');
+            const nutSameColor = Array.from(allNuts).every(nut => nut.getAttribute('data-color') === firstNutColor);
+
+            if (nutSameColor) {
+                console.log(`Yeeey this rod has been completed with: ${firstNutColor} color`);
+            } else {
+                console.log("Not all ball elements have the same color.");
+            }
+        } else {
+            console.log("There are still missinbg nuts");
+        }
     }
 
 })

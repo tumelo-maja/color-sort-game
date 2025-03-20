@@ -322,7 +322,7 @@ h3 {
 
 /* animations */
 .success-move {
-  animation: moveNutToTarget 5s ease-in-out forwards;
+  animation: moveNutToTarget 1s ease-in-out forwards;
 }
 
 .test-move {
