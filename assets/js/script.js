@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Global variables.
     const maxNutsPerRod = 4;
-    const verticalStep =25;
-    const horizontalStep =42;
+    const verticalStep = 25;
+    const horizontalStep = 42;
 
 
     // Get CSS style object for nut element - calculate height of each nut
@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // let currentNutWrapper = currentNut.parentElement;
             console.log(currentNutWrapper);
 
-            const allNuts = sourceRod.querySelectorAll('.nut-wrap');
-            console.log(allNuts)
+            // const allNuts = sourceRod.querySelectorAll('.nut-wrap');
+            // console.log(allNuts)
 
 
             // Check if colors of neext match the nut to move - append to nutsToMove.
@@ -99,51 +99,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             let nutWrappersToMove = [currentNutWrapper];
-            // let nutsToMove = [currentNut];
+            let nutsToMove = [currentNut];
+
+            // console.log("first Nut to move");
+            // console.log(nutsToMove);
 
             // console.log(`neighbourNutColor: ${neighbourNutColor}`);
             // console.log(`currentNutColor: ${currentNutColor}`);
-            // while (currentNutColor === neighbourNutColor) {
+            while (currentNutColor === neighbourNutColor) {
+
+                //appemd wrapper to array
+                nutWrappersToMove.unshift(neighbourNutWrapper);
+                nutsToMove.unshift(neighbourNutWrapper.firstElementChild);
+
+                //upoadte current and neighbour colors
+                currentNut = neighbourNutWrapper.firstElementChild;
+                currentNutWrapper = neighbourNutWrapper;
+                neighbourNutWrapper = currentNutWrapper.previousElementSibling;
 
 
-
-            //     //upoadte current and neighbour colors
-            //     currentNut = neighbourNutWrapper.firstElementChild;
-
-            //     // nut wrappers
-            //     currentNutWrapper = neighbourNutWrapper;
-            //     neighbourNutWrapper = currentNutWrapper.previousElementSibling;
+                neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color");
+                currentNutColor = currentNut.getAttribute("data-color");
+                console.log(`neighbourNutColor: ${neighbourNutColor}`);
+                console.log(`currentNutColor: ${currentNutColor}`);
 
 
-            //     neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color");
-            //     currentNutColor = currentNut.getAttribute("data-color");
-            //     console.log(`neighbourNutColor: ${neighbourNutColor}`);
-            //     console.log(`currentNutColor: ${currentNutColor}`);
+                // currentNut = currentNut.previousElementSibling;
+
+                console.log(currentNut);
+                // raiseNut(currentNut, rodChildrenCount);
+                // moveNut(rodElement ,currentNut , rodChildrenCount);
 
 
-            //     currentNut = currentNut.previousElementSibling;
-
-            //     console.log(currentNut);
-            //     // raiseNut(currentNut, rodChildrenCount);
-            //     // moveNut(rodElement ,currentNut , rodChildrenCount);
-
-            //     //appemd wrapper to array
-            //     nutWrappersToMove.unshift(neighbourNutWrapper);
-            //     nutsToMove.unshift(currentNut);
-
-            // }
-
-            let nutsToMove = [];
-
-
-            for (let wrapper of allNuts) {
-                // nutsToMove
-                nutsToMove.unshift(wrapper.firstElementChild);
-                // nutsToMove.push(wrapper.firstElementChild);
 
             }
 
-            nutsToMove = nutsToMove.slice(0, 5);
+            // let nutsToMove = [];
+
+
+            // for (let wrapper of allNuts) {
+            //     // nutsToMove
+            //     nutsToMove.unshift(wrapper.firstElementChild);
+            //     // nutsToMove.push(wrapper.firstElementChild);
+
+            // }
+
+            // nutsToMove = nutsToMove.slice(0, 5);
+            console.log("Nuts to move");
+            console.log(nutsToMove);
+
+            console.log(`These ones ${1} Moved! - ${(nutsToMove[0].innerText)}`)
+            console.log(`These ones ${2} Moved! - ${(nutsToMove[1].innerText)}`)
 
 
             moveNut(rodElement, currentNut, nutsToMove, rodChildrenCount);
@@ -218,17 +224,17 @@ document.addEventListener("DOMContentLoaded", function () {
         // Calc setps from spource to target
         const stepsColumn = sourceRodColumn - targetRodColumn;
         const stepsRow = sourceRodRow - targetRodRow;
-      
+
         // const verticalStep =25;
         // const horizontalStep =42;
-    
+
         const nutTransformValues = {
-            xValue: stepsRow * horizontalStep, 
+            xValue: stepsRow * horizontalStep,
             yValue: stepsColumn * verticalStep,
         };
 
         return nutTransformValues;
-      }
+    }
 
     /**
      * Calculate the 'lid' position - entry/exit points for all nuts
@@ -248,8 +254,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const lidCenterPosition = {
             // xValue: targetRow >=  sourceRow ? -(horizontalStep*(stepsColumn-2)+horizontalStep/2) : (horizontalStep*(stepsColumn+1)), 
-            xValue: -(horizontalStep*(stepsColumn))-6, 
-            yValue: targetRow ==  sourceRow ? parseFloat(transY)+(verticalStep*(stepsRow)) : (parseFloat(transY)-(verticalStep*(stepsRow)*7)),
+            xValue: -(horizontalStep * (stepsColumn)) - 6,
+            yValue: targetRow == sourceRow ? parseFloat(transY) + (verticalStep * (stepsRow)) : (parseFloat(transY) - (verticalStep * (stepsRow) * 7)),
         };
 
 
@@ -274,7 +280,7 @@ document.addEventListener("DOMContentLoaded", function () {
         rodYDifference = targetRodRect.top - sourceRodRect.top;
         rodXDifference = targetRodRect.left - sourceRodRect.left;
 
-        const nutSize = anyNut.offsetHeight ;//+ parseFloat(nutStyle.marginBottom);
+        const nutSize = anyNut.offsetHeight;//+ parseFloat(nutStyle.marginBottom);
         // let currentBarwidth = (getCssStyleValue(movesBar, 'width')
         // tumelo
 
@@ -287,9 +293,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // yValue: (((targetChildrenCount + 1) * anyNut.offsetHeight)) - anyNut.offsetHeight + rodYDifference,       
         }
 
-        console.log(`nutStyle.marginBottom: ${nutStyle.marginBottom}`);
-        console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`);
-        console.log(`nutStyle.height: ${nutStyle.height}`);
+        // console.log(`nutStyle.marginBottom: ${nutStyle.marginBottom}`);
+        // console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`);
+        // console.log(`nutStyle.height: ${nutStyle.height}`);
 
         return nutFinalPosition;
 
@@ -322,17 +328,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetColumn = targetRod.getAttribute("data-column");
         const transY = nut.style.getPropertyValue('--transform-y');
 
- 
-      
+
+
         // const verticalStep =25;
         // const horizontalStep =42;
-        console.log(`verticalStep: ${verticalStep}`);
-    
+        // console.log(`verticalStep: ${verticalStep}`);
+
         const offsetPosition = {
-            xValue: targetColumn >=  sourceColumn ? horizontalStep : -horizontalStep+10, 
-            yValue: parseFloat(transY)-verticalStep,
+            xValue: targetColumn >= sourceColumn ? horizontalStep : -horizontalStep + 10,
+            yValue: parseFloat(transY) - verticalStep,
         };
-        
+
 
         // let offsetPosition = calculateNutMovement(targetColumn, targetRow, sourceColumn, sourceRow);
 
@@ -359,17 +365,17 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
 
-        let tranformIncreaseValue = 0;
+        // let tranformIncreaseValue = 0;
         let sourceChildrenCount = sourceRod.querySelectorAll('.nut-wrap').length;
-        const heighExistingChildren = (targetChildrenCount*(parseFloat(nutStyle.height)+parseFloat(nutStyle.marginBottom)));
+        const heighExistingChildren = (targetChildrenCount * (parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom)));
 
         // nutsToMove = nutsToMove.slice(0, 3);
 
         for (let nut of nutsToMove) {
 
             // height offset
-            let heightOffset = parseFloat(nutStyle.height) -heighExistingChildren;
-            console.log(`Target children: ${targetChildrenCount}`);
+            let heightOffset = parseFloat(nutStyle.height) - heighExistingChildren;
+            // console.log(`Target children: ${targetChildrenCount}`);
 
             //set raise values first
             setRaiseNutTransformY(nut, sourceChildrenCount);
@@ -398,14 +404,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // tranformIncreaseValue = tranformIncreaseValue +26;
 
-            console.log(`tranformIncreaseValue: ${tranformIncreaseValue}`);
+            // console.log(`tranformIncreaseValue: ${tranformIncreaseValue}`);
 
 
 
             // const transY = nut.getAttribute("--transform-y");
-            const transY = nut.style.getPropertyValue('--transform-y');
+            // const transY = nut.style.getPropertyValue('--transform-y');
 
-            console.log(`target-position-y: ${nut.style.getPropertyValue('--target-position-y')}`);
+            // console.log(`target-position-y: ${nut.style.getPropertyValue('--target-position-y')}`);
 
 
             targetChildrenCount++; // increase after each loop
@@ -440,21 +446,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 // sourceChildrenCount--;
                 // nut.parentElement.appendChild(nut);
                 // targetRod.appendChild(nut.parentElement);
+                console.log(`Nut number ${index+1} Moved! - ${(nut.innerText)}`)
 
-                // nut.parentElement.addEventListener("animationend", function handler() {
+                nut.parentElement.addEventListener("animationend", function handler() {
 
-                //     nut.parentElement.style.animation = "";
-                //     nut.style.animation = "";
+                    nut.parentElement.style.animation = "";
+                    nut.style.animation = "";
 
 
-                //     nut.parentElement.appendChild(nut);
-                //     targetRod.appendChild(nut.parentElement);
+                    nut.parentElement.appendChild(nut);
+                    targetRod.appendChild(nut.parentElement);
 
-                //     nut.classList.remove(animationName, "raise-nut");
-                //     nut.parentElement.classList.remove(animationName);
+                    nut.classList.remove(animationName, "raise-nut");
+                    nut.parentElement.classList.remove(animationName);
 
-                //     nut.parentElement.removeEventListener("animationend", handler);
-                // });
+                    nut.parentElement.removeEventListener("animationend", handler);
+                });
 
 
             }, index * 500); // Delay increases by 500ms per item
