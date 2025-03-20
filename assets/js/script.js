@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const horizontalStep = 42;
 
     const maximumMoves = 3;
+    const widthIncrements = Math.round(100 / maximumMoves, 2);
+
 
 
     const nutColors = {
@@ -44,20 +46,20 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(modalContainer)
 
     // modeal eventlisteners
-    gameRetryButton.addEventListener('click',function () {
+    gameRetryButton.addEventListener('click', function () {
         // modalContainer.classList.add('close-modal')
         modalContainer.style.display = 'none';
         location.reload();
         console.log("I'm not giving up!");
     });
 
-    gameNewButton.addEventListener('click',function () {
+    gameNewButton.addEventListener('click', function () {
         // modalContainer.classList.add('close-modal')
         modalContainer.style.display = 'none';
         console.log("Time for new game");
     });
 
-    gameQuitButton.addEventListener('click',function () {
+    gameQuitButton.addEventListener('click', function () {
         // modalContainer.classList.add('close-modal')
         modalContainer.style.display = 'none';
         console.log("That's it I'm done");
@@ -73,7 +75,9 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function undoLastMove() {
         let moveType = 'reverse';
-        moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'],moveType);
+        moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'], moveType);
+        updateMovesRemaining(moveType);
+
     }
 
 
@@ -154,12 +158,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             let moveType = 'forward';
-            moveNut(rodElement, raisedNut, nutsToMove, rodChildrenCount,moveType);
+            moveNut(rodElement, raisedNut, nutsToMove, rodChildrenCount, moveType);
 
-            lastMoveHistory['targetRod']=sourceRod;
-            lastMoveHistory['raisedNut']=nutsToMove.slice(-1)[0];
-            lastMoveHistory['nutsToMove']=nutsToMove;
-            lastMoveHistory['rodChildrenCount']=sourceRod.querySelectorAll('.nut-wrap').length - nutsToMove.length;
+            lastMoveHistory['targetRod'] = sourceRod;
+            lastMoveHistory['raisedNut'] = nutsToMove.slice(-1)[0];
+            lastMoveHistory['nutsToMove'] = nutsToMove;
+            lastMoveHistory['rodChildrenCount'] = sourceRod.querySelectorAll('.nut-wrap').length - nutsToMove.length;
 
             // Shouldn't undo - completed rod
 
@@ -262,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // anyNut is global to avoud redefining 
         const nutFinalPosition = {
             xValue: rodXDifference,
-            yValue: rodYDifference      
+            yValue: rodYDifference
         }
 
         return nutFinalPosition;
@@ -392,7 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // check the rod completion
                     checkRodCompletion(targetRod);
 
-                    const movesNumber = parseInt(document.getElementById('move-value').innerText);    
+                    const movesNumber = parseInt(document.getElementById('move-value').innerText);
                     if (movesNumber === 0) {
                         gameOverLoss()
                     }
@@ -405,12 +409,12 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Move raised nut to another rod
      */
-    function moveNut(targetRod, raisedNut, nutsToMove, rodChildrenCount,moveType) {
+    function moveNut(targetRod, raisedNut, nutsToMove, rodChildrenCount, moveType) {
         // Get raised nut
         const raisedNutWrapper = raisedNut.parentElement;
         const sourceRod = raisedNutWrapper.parentElement;
 
-        if (moveType ==='reverse') {
+        if (moveType === 'reverse') {
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
         }
 
@@ -452,24 +456,32 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Decreament moves after completed move
-        updateMovesRemaining()
+        updateMovesRemaining(moveType);
     }
 
     /**
      * Update number of moves remaining 
      */
-    function updateMovesRemaining() {
+    function updateMovesRemaining(moveType) {
         const movesNumber = document.getElementById('move-value');
         const gameMoves = document.getElementById('game-moves');
         const movesBar = document.querySelector('.move-fill');
 
-        let widthIncrements = Math.round(100 / maximumMoves, 2);
 
         let currentBarwidth = (getCssStyleValue(movesBar, 'width') / getCssStyleValue(gameMoves, 'width')) * 100;
-        let newBarwidth = currentBarwidth - widthIncrements;
-
         let currentMovesValue = parseInt(movesNumber.innerText);
-        let newMovesValue = currentMovesValue - 1;
+
+        let newBarwidth =0;
+        let newMovesValue =0;
+
+        if (moveType === 'forward') {
+            newBarwidth = currentBarwidth - widthIncrements;
+            newMovesValue = currentMovesValue - 1;
+        } else {
+            newBarwidth = currentBarwidth + widthIncrements;
+            newMovesValue = currentMovesValue + 1;
+            console.log('Take it back');
+        }
 
         movesNumber.textContent = newMovesValue;
         movesBar.style.width = newBarwidth + '%';
@@ -508,7 +520,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 confettiAnimation(startX, startY, [nutColorHex], 0.5);
 
             }
-        } 
+        }
 
 
     }
