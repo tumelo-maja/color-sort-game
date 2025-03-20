@@ -350,6 +350,21 @@ h3 {
   display: none;
 }
 
+/* game scores */
+.game-score {
+  border: 3px solid yellow;
+  width: 100px;
+  height: 35px;
+  text-align: center;
+  color: darkblue;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 3px;
+  border-radius: 20px;
+  background-color: wheat;
+}
+
 /*--- Keyframes for raised nut ---*/
 /*--- Movement using transform ---*/
 @keyframes moveNutToTarget {
