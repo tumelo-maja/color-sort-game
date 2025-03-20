@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     runGame();
 
     // Testing purposes
-    let newGameButton = document.getElementById('new-game');
+    // let newGameButton = document.getElementById('new-game');
     // newGameButton.addEventListener('click', gameOverLoss);
 
     // end of variables
@@ -35,6 +35,29 @@ document.addEventListener("DOMContentLoaded", function () {
     if (playInstructionElement) {
         playInstructionElement.addEventListener('click', toggleHiddenItem);
     }
+
+    // handle modal elements 
+    const gameRetryButton = document.getElementById("game-retry");
+    const gameNewButton = document.getElementById("modal-new-game");
+    const gameQuitButton = document.getElementById("game-quit");
+    const modalContainer = document.getElementById("modal-container");
+
+    // modeal eventlisteners
+    gameRetryButton.addEventListener('click',function () {
+        modalContainer.classList.add('close-modal')
+        console.log("I'm not giving up!");
+    });
+
+    gameNewButton.addEventListener('click',function () {
+        modalContainer.classList.add('close-modal')
+        console.log("Time for new game");
+    });
+
+    gameQuitButton.addEventListener('click',function () {
+        modalContainer.classList.add('close-modal')
+        console.log("That's it I'm done");
+    })
+
 
     /**
      * initialize the game play
@@ -491,13 +514,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // check the rod completion
                     checkRodCompletion(targetRod);
-                    
+
                     // const movesNumber = parseInt(document.getElementById('move-value').innerText);    
                     // if (movesNumber === 0) {
                     //     //end the game with a lost if moves get to 0
                     //     // setTimeout(gameOverLoss(), 1500);
                     //     gameOverLoss()
-            
+
                     // }
                 });
 
