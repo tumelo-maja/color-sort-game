@@ -261,3 +261,8 @@ link to example of animate in JS - (https://stackoverflow.com/questions/59573722
 ### Images
 
 ### Tutorials and other resources
+Tutorial on inserting google icons: (https://www.youtube.com/watch?v=D9ciQq6cwmI)
+
+Canvas confetti: (https://www.npmjs.com/package/canvas-confetti)
+
+Createing Custong Modal: (https://www.youtube.com/watch?v=XH5OW46yO8I)
