@@ -356,13 +356,18 @@ h3 {
   width: 100px;
   height: 35px;
   text-align: center;
-  color: darkblue;
+  color: wheat;
   font-size: 15px;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   padding: 3px;
   border-radius: 20px;
-  background-color: wheat;
+  /* background-color: wheat; */
+}
+
+.game-score i {
+  background-color: #091152;
 }
 
 /*--- Keyframes for raised nut ---*/
