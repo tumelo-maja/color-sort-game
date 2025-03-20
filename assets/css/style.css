@@ -115,12 +115,11 @@ h3 {
 .modal-content {
   border: 2px solid red;
   background-color: #091152;
-  color:white;
+  color: white;
 }
 .modal-body a {
   color: var(--thin-air);
 }
-
 
 .game-container {
   border: 2px solid red;
@@ -274,7 +273,7 @@ h3 {
   border-radius: 5px;
   width: 170px;
   height: 20px;
-  margin: 5px ;
+  margin: 5px;
   overflow: hidden;
 }
 
@@ -372,17 +371,24 @@ h3 {
 
 /* game loss modal */
 .modal-container {
-  display: flex;
-  justify-content: center;
-  align-items:center;
   display: none;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+  /* opacity: 0;
+  pointer-events: none; */
 }
+
+/* .modal-container.close-modal {
+  display: flex;
+  opacity: 1;
+  pointer-events:auto;
+} */
 
 .modal-container h2 {
   color: #091152;
@@ -401,7 +407,7 @@ background-color: rgba(0, 0, 0, 0.2);
   /* height: 250px; */
 }
 
-.game-modal p{
+.game-modal p {
   margin: 2px;
 }
 
@@ -413,8 +419,8 @@ background-color: rgba(0, 0, 0, 0.2);
 }
 
 .modal-buttons button {
-border-radius: 5px;
-} 
+  border-radius: 5px;
+}
 
 
 /*--- Keyframes for raised nut ---*/

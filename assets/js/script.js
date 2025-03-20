@@ -40,21 +40,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const gameRetryButton = document.getElementById("game-retry");
     const gameNewButton = document.getElementById("modal-new-game");
     const gameQuitButton = document.getElementById("game-quit");
-    const modalContainer = document.getElementById("modal-container");
+    const modalContainer = document.getElementById("gameOverModal");
+    console.log(modalContainer)
 
     // modeal eventlisteners
     gameRetryButton.addEventListener('click',function () {
-        modalContainer.classList.add('close-modal')
+        // modalContainer.classList.add('close-modal')
+        modalContainer.style.display = 'none';
+        location.reload();
         console.log("I'm not giving up!");
     });
 
     gameNewButton.addEventListener('click',function () {
-        modalContainer.classList.add('close-modal')
+        // modalContainer.classList.add('close-modal')
+        modalContainer.style.display = 'none';
         console.log("Time for new game");
     });
 
     gameQuitButton.addEventListener('click',function () {
-        modalContainer.classList.add('close-modal')
+        // modalContainer.classList.add('close-modal')
+        modalContainer.style.display = 'none';
         console.log("That's it I'm done");
     })
 
@@ -515,13 +520,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     // check the rod completion
                     checkRodCompletion(targetRod);
 
-                    // const movesNumber = parseInt(document.getElementById('move-value').innerText);    
-                    // if (movesNumber === 0) {
-                    //     //end the game with a lost if moves get to 0
-                    //     // setTimeout(gameOverLoss(), 1500);
-                    //     gameOverLoss()
+                    const movesNumber = parseInt(document.getElementById('move-value').innerText);    
+                    if (movesNumber === 0) {
+                        //end the game with a lost if moves get to 0
+                        // setTimeout(gameOverLoss(), 1500);
+                        gameOverLoss()
 
-                    // }
+                    }
                 });
 
 
@@ -668,6 +673,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // lossModal.style.display = 'block';
         // $("#lossModal").modal()
+        modalContainer.style.display = 'flex';
+
         console.log("Game over - you suck at this!");
 
 
