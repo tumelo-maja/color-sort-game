@@ -668,4 +668,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    /**
+     * Generate a new game based on random inputs  
+     */
+    function generateNewGame() {
+
+        // repeate colors in an array
+        Array(3).fill(['a','b','c']).flat() 
+
+        // Shuffle colors
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // separate shuffled array into rod containers
+        const rodContainers = [];
+        for (let i = 0; i < 3; i++) {
+
+            rodContainers.push({
+            name: "rod" + (i + 1),
+            nuts: nuts.slice(i * 4, i * 4 + 4)
+            });
+        }
+
+        return { containers: containers };
+
+      
+
+    }
+
 })
