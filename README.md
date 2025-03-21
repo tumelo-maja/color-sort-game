@@ -266,3 +266,6 @@ Tutorial on inserting google icons: (https://www.youtube.com/watch?v=D9ciQq6cwmI
 Canvas confetti: (https://www.npmjs.com/package/canvas-confetti)
 
 Creating Custom Modal: (https://www.youtube.com/watch?v=XH5OW46yO8I)
+
+Odometer CDN for Number counter Animation: (https://www.youtube.com/watch?v=p2rV9tKvjFg)
+Odometer Library: (https://cdnjs.com/libraries/odometer.js/0.4.7)

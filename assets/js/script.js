@@ -18,12 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const widthIncrements = Math.round(100 / maximumMoves, 2);
 
     let completedRods = 0;
-    const totalRods = 3;
+    const totalRodsToWin = 3;
 
+    const pointsPerRod =10; //point factor for each completed rod
     const movesNumber = document.getElementById('move-value');
     movesNumber.textContent = maximumMoves;
-
-
 
     const nutColors = {
         'orange': '#f25029',
@@ -526,6 +525,10 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function gameOverWin() {
 
+        let pointsEarned = calculatePointsWon();
+        const pointsDisplayElements = document.getElementById('pointsDisplay');
+        pointsDisplayElements.textContent=pointsEarned;
+
         modalWinContainer.style.display = 'flex';
     }
 
@@ -540,8 +543,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // update level value
         levelValueElement.innerText = levelValue;
+    }
 
+    /**
+     * Calculate total points won
+     */
+    function calculatePointsWon() {
+        // point perRod 10
+        // Maxnuts per rod 4
+        // totalRodsToWin 3
 
+        let pointsEarned = maxNutsPerRod * totalRodsToWin * pointsPerRod;
+        return pointsEarned;
     }
 
     /**
@@ -585,7 +598,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkGameCompletion() {
 
         let gameWon = false;
-        if (completedRods === totalRods) {
+        if (completedRods === totalRodsToWin) {
             gameWon = true;
             gameOverWin();
             console.log("You've done! Well done :-)");
