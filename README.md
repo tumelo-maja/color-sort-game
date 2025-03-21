@@ -269,3 +269,6 @@ Creating Custom Modal: (https://www.youtube.com/watch?v=XH5OW46yO8I)
 
 Odometer CDN for Number counter Animation: (https://www.youtube.com/watch?v=p2rV9tKvjFg)
 Odometer Library: (https://cdnjs.com/libraries/odometer.js/0.4.7)
+
+IntersectionObserver: (https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let completedRods = 0;
     const totalRodsToWin = 3;
 
-    const pointsPerRod =10; //point factor for each completed rod
+    const pointsPerRod = 10; //point factor for each completed rod
     const movesNumber = document.getElementById('move-value');
     movesNumber.textContent = maximumMoves;
 
@@ -59,7 +59,30 @@ document.addEventListener("DOMContentLoaded", function () {
         // modalLossContainer.classList.add('close-modal')
         modalWinContainer.style.display = 'none';
         gameLevelUp();
-        location.reload(); //placeholder for now
+
+        // const pointsDisplayElements = document.getElementById('pointsDisplay');
+        // pointsDisplayElements.textContent = pointsEarned;
+
+        // // const pointsEarnedOdometer = document.querySelector('.pointsEarnedOdometer');
+        // // const scoreValueOdometer = document.getElementById('score-value');
+
+        // modalWinContainer.style.display = 'flex';
+        // setTimeout(() => {
+        //     runOdometer(pointsDisplayElements, 0, pointsEarned);
+                const userScoreElement = document.getElementById('score-value');
+                const currentScore = parseInt(userScoreElement.textContent);
+
+                const pointsDisplayElement = document.getElementById('pointsDisplay');
+                const pointsEarned = pointsDisplayElement.textContent;
+        // pointsDisplayElements.textContent =
+
+                const newScore = currentScore + pointsEarned;
+
+
+        setTimeout(() => {
+            runOdometer(userScoreElement, currentScore, newScore);
+        }, 1000); // Delay increases by 500ms per item
+        // location.reload(); //placeholder for now
         console.log("Whooray!");
     })
 
@@ -86,7 +109,39 @@ document.addEventListener("DOMContentLoaded", function () {
     // undo move
     let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
     const undoMoveButton = document.getElementById("undo-move");
-    undoMoveButton.addEventListener('click', undoLastMove)
+    undoMoveButton.addEventListener('click', undoLastMove);
+
+    /**
+     * Odometer object to create number counter animations
+     */
+    function runOdometer(object, startValue, finalValue) {
+        const odometer = new Odometer({
+            el: object,
+            value: startValue,
+        });
+
+        // let hasRun = false;
+
+        // const options = {
+        //     threshold: [0, 0.9],
+        // };
+
+        // const callback = (entries, observer) => {
+        //     entries.forEach(entry => {
+        //         if (entry.isIntersecting) {
+        //             if (!hasRun) {
+        //                 odometer.update(value);
+        //                 hasRun=true
+        //             }
+        //         }
+        //     })
+        // };
+
+        // const observer = new IntersectionObserver(callback, options);
+        // observer.observe(el)
+
+        odometer.update(finalValue);
+    }
 
     /**
      * Undo last move
@@ -527,9 +582,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let pointsEarned = calculatePointsWon();
         const pointsDisplayElements = document.getElementById('pointsDisplay');
-        pointsDisplayElements.textContent=pointsEarned;
+        pointsDisplayElements.textContent = pointsEarned;
+
+        // const pointsEarnedOdometer = document.querySelector('.pointsEarnedOdometer');
+        // const scoreValueOdometer = document.getElementById('score-value');
 
         modalWinContainer.style.display = 'flex';
+        setTimeout(() => {
+            runOdometer(pointsDisplayElements, 0, pointsEarned);
+        }, 1000); // Delay increases by 500ms per item
+
+        // });
+
     }
 
     /**
