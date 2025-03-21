@@ -27,6 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const anyNut = document.querySelectorAll('.nut')[0];
     const nutStyle = window.getComputedStyle(anyNut);
 
+    // handle modal elements - Game Loss
+    const gameRetryButton = document.getElementById("game-retry");
+    const gameNewButton = document.getElementById("modal-new-game");
+    const gameQuitButton = document.getElementById("game-quit");
+    const modalLossContainer = document.getElementById("gameOverLossModal");
+
+    // handle modal elements - Game Win
+    const continueButton = document.getElementById("modal-continue-game");
+    const modalWinContainer = document.getElementById("gameOverWinModal");
 
     // Run game to load default game setup with level=1 and score=0
     runGame();
@@ -38,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const odometer = new Odometer({
             el: object,
             value: startValue,
+            duration: 5000,
+
         });
 
         odometer.update(finalValue);
@@ -72,12 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
             playInstructionElement.addEventListener('click', toggleHiddenItem);
         }
 
-        // handle modal elements - Game Loss
-        const gameRetryButton = document.getElementById("game-retry");
-        const gameNewButton = document.getElementById("modal-new-game");
-        const gameQuitButton = document.getElementById("game-quit");
-        const modalLossContainer = document.getElementById("gameOverLossModal");
-
         // modal eventlisteners - Game Loss
         gameRetryButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
@@ -95,9 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("That's it I'm done");
         })
 
-        // handle modal elements - Game Win
-        const continueButton = document.getElementById("modal-continue-game");
-        const modalWinContainer = document.getElementById("gameOverWinModal");
+        // undo move button listener
+        const undoMoveButton = document.getElementById("undo-move");
+        undoMoveButton.addEventListener('click', undoLastMove);
 
         // Win button -continue
         continueButton.addEventListener('click', function () {
@@ -106,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
             gameLevelUp(); // Progress user level up
 
             // Get current Score
-            const userScoreElement = document.getElementById('score-value');
+            const userScoreElement = document.getElementById('scoreValue');
             const currentScore = parseInt(userScoreElement.textContent);
 
             // Get earned points
@@ -115,16 +120,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const newScore = currentScore + pointsEarned;
 
-            // Delay the count animation
             setTimeout(() => {
                 runOdometer(userScoreElement, currentScore, newScore);
-            }, 1000);
+            }, 2000); // Delay increases by 500ms per item
         })
-
-        // undo move button listener
-        const undoMoveButton = document.getElementById("undo-move");
-        undoMoveButton.addEventListener('click', undoLastMove);
-
     }
 
     /**
@@ -541,17 +540,35 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function gameOverWin() {
 
+        modalWinContainer.style.display = 'flex';
+
         let pointsEarned = calculatePointsWon();
         const pointsDisplayElements = document.getElementById('pointsDisplay');
-        pointsDisplayElements.textContent = pointsEarned;
+        // pointsDisplayElements.textContent = pointsEarned;
+
+        // const targetRodRect = targetRod.getBoundingClientRect();
+        const winModalRect = modalWinContainer.querySelector('.game-modal').getBoundingClientRect();
+        const leftStartX = (winModalRect.left) / window.innerWidth;
+        const rightStartX = (winModalRect.left + winModalRect.width) / window.innerWidth;
+        const startY = (winModalRect.top + winModalRect.height / 2) / window.innerHeight;
+
+        let startVelocity = 50;
+        let spread = 90;
+        let particleSize = 1;
+        let ticks = 150;
+
+        setTimeout(() => {
+            confettiAnimation(leftStartX, startY, Object.values(nutColors), particleSize, angle = 45, spread = spread, startVelocity = startVelocity, ticks = ticks);
+            confettiAnimation(rightStartX, startY, nutColors[0], particleSize, angle = 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
+        }, 500);
+
 
         // const pointsEarnedOdometer = document.querySelector('.pointsEarnedOdometer');
-        // const scoreValueOdometer = document.getElementById('score-value');
+        // const scoreValueOdometer = document.getElementById('scoreValue');
 
-        modalWinContainer.style.display = 'flex';
         setTimeout(() => {
             runOdometer(pointsDisplayElements, 0, pointsEarned);
-        }, 1000); // Delay increases by 500ms per item
+        }, 2000); // Delay increases by 500ms per item
 
         // });
 
@@ -638,18 +655,18 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Show animation after a rod has been completed corectly 
      */
-    function confettiAnimation(startX, startY, nutColor, particleSize) {
+    function confettiAnimation(startX, startY, nutColor, particleSize, angle = 90, spread = 55, startVelocity = 10, ticks = 50) {
 
         confetti({
             particleCount: 50,
-            angle: 90,
-            spread: 55,
+            angle: angle,
+            spread: spread,
             origin: { x: startX, y: startY },
-            ticks: 50,
+            ticks: ticks,
             colors: nutColor,
             shapes: ['circle'],
             scalar: particleSize,
-            startVelocity: 10,
+            startVelocity: startVelocity,
 
         });
 

@@ -358,21 +358,25 @@ h3 {
 /* game scores */
 .game-score {
   border: 3px solid yellow;
-  width: 100px;
+  width: 150px;
   height: 35px;
   text-align: center;
   color: wheat;
   font-size: 15px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  padding: 3px;
+  padding: 3px 10px;
   border-radius: 20px;
   /* background-color: wheat; */
 }
 
 .game-score i {
-  background-color: #091152;
+  /* background-color: #091152; */
+}
+
+.game-score #scoreValue{
+ font-weight: bold;
 }
 
 /* game loss modal */
@@ -390,11 +394,6 @@ h3 {
   pointer-events: none; */
 }
 
-/* .modal-container.close-modal {
-  display: flex;
-  opacity: 1;
-  pointer-events:auto;
-} */
 
 .modal-container h2 {
   color: #091152;
