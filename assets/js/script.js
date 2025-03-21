@@ -14,8 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const verticalStep = 25;
     const horizontalStep = 42;
 
-    const maximumMoves = 3;
+    const maximumMoves = 5;
     const widthIncrements = Math.round(100 / maximumMoves, 2);
+
+    let completedRods = 0;
+    const totalRods = 3;
+
+    const movesNumber = document.getElementById('move-value');
+    movesNumber.textContent = maximumMoves;
 
 
 
@@ -49,6 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const continueButton = document.getElementById("modal-continue-game");
     const modalWinContainer = document.getElementById("gameOverWinModal");
     console.log(modalWinContainer)
+    // Win button -continue
+    continueButton.addEventListener('click', function () {
+        // modalLossContainer.classList.add('close-modal')
+        modalWinContainer.style.display = 'none';
+        location.reload(); //placeholder for now
+        console.log("Whooray!");
+    })
 
     // modeal eventlisteners
     gameRetryButton.addEventListener('click', function () {
@@ -401,11 +414,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     // check the rod completion
                     checkRodCompletion(targetRod);
 
-                    const movesNumber = parseInt(document.getElementById('move-value').innerText);
-                    if (movesNumber === 0) {
-                        gameOverLoss()
+                    //check game completion
+                    let isGameComplete = checkGameCompletion();
 
+                    if (!isGameComplete) {
+                        const movesNumber = parseInt(document.getElementById('move-value').innerText);
+                        if (movesNumber === 0) {
+                            gameOverLoss();
+                        }
                     }
+
+
+
                 });
             }, index * 100); // Delay increases by 500ms per item
         });
@@ -501,6 +521,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * Display game over modal for Win case
+     */
+    function gameOverWin() {
+
+        modalWinContainer.style.display = 'flex';
+    }
+
+    /**
      * Check if the rod has been completed by checking the count and colors of the child nuts
      */
     function checkRodCompletion(targetRod) {
@@ -525,10 +553,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 confettiAnimation(startX, startY, [nutColorHex], 0.5);
 
+                // update total rods
+                ++completedRods;
+
+
             }
         }
 
 
+    }
+
+    /**
+     * Check if all rods are completed
+     */
+    function checkGameCompletion() {
+
+        let gameWon = false;
+        if (completedRods === totalRods) {
+            gameWon = true;
+            gameOverWin();
+            console.log("You've done! Well done :-)")
+        } else {
+            gameWon = false;
+            console.log("Not there yet")
+        }
+
+        return gameWon
     }
 
     /**
