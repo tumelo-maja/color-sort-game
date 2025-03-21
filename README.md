@@ -272,3 +272,7 @@ Odometer Library: (https://cdnjs.com/libraries/odometer.js/0.4.7)
 
 IntersectionObserver: (https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 
+Randomize array using  Durstenfeld Shuffle: (https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
+more link - https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+
+Repeat elements in an array: (https://stackoverflow.com/questions/12503146/create-an-array-with-same-element-repeated-multiple-times)
