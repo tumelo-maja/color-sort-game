@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     continueButton.addEventListener('click', function () {
         // modalLossContainer.classList.add('close-modal')
         modalWinContainer.style.display = 'none';
+        gameLevelUp();
         location.reload(); //placeholder for now
         console.log("Whooray!");
     })
@@ -529,6 +530,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * Increase the level after win
+     */
+    function gameLevelUp() {
+        // level-value"
+        const levelValueElement = document.getElementById('level-value');
+        let levelValue = parseInt(levelValueElement.innerText);
+        ++levelValue;
+
+        // update level value
+        levelValueElement.innerText = levelValue;
+
+
+    }
+
+    /**
      * Check if the rod has been completed by checking the count and colors of the child nuts
      */
     function checkRodCompletion(targetRod) {
@@ -572,7 +588,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (completedRods === totalRods) {
             gameWon = true;
             gameOverWin();
-            console.log("You've done! Well done :-)")
+            console.log("You've done! Well done :-)");
         } else {
             gameWon = false;
             console.log("Not there yet")
