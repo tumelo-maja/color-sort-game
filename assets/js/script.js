@@ -1,28 +1,18 @@
 // Add Event Listener to run only after DOM has loaded
 document.addEventListener("DOMContentLoaded", function () {
-    // Run game to load default game setup with level=1 and score=0
-    runGame();
-
-    // Testing purposes
-    // let newGameButton = document.getElementById('new-game');
-    // newGameButton.addEventListener('click', gameOverLoss);
-
-    // end of variables
 
     // Global variables.
     const maxNutsPerRod = 4;
     const verticalStep = 25;
     const horizontalStep = 42;
 
-    const maximumMoves = 5;
+    let maximumMoves = 5;
     const widthIncrements = Math.round(100 / maximumMoves, 2);
 
-    let completedRods = 0;
-    const totalRodsToWin = 3;
-
+    let completedRods = 0; // initialize as 0
+    const totalRodsToWin = 3; // Rods completed to win
     const pointsPerRod = 10; //point factor for each completed rod
-    const movesNumber = document.getElementById('move-value');
-    movesNumber.textContent = maximumMoves;
+
 
     const nutColors = {
         'orange': '#f25029',
@@ -31,85 +21,15 @@ document.addEventListener("DOMContentLoaded", function () {
         'whitesilver': '#c2b3d4',
     }
 
+    let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
 
     // Get CSS style object for nut element - calculate height of each nut
     const anyNut = document.querySelectorAll('.nut')[0];
     const nutStyle = window.getComputedStyle(anyNut);
 
-    const playInstructionElement = document.querySelector('.play-instructions');
-    console.log(playInstructionElement);
 
-    if (playInstructionElement) {
-        playInstructionElement.addEventListener('click', toggleHiddenItem);
-    }
-
-    // handle modal elements - Game Loss
-    const gameRetryButton = document.getElementById("game-retry");
-    const gameNewButton = document.getElementById("modal-new-game");
-    const gameQuitButton = document.getElementById("game-quit");
-    const modalLossContainer = document.getElementById("gameOverLossModal");
-    console.log(modalLossContainer)
-
-    // handle modal elements - Game Win
-    const continueButton = document.getElementById("modal-continue-game");
-    const modalWinContainer = document.getElementById("gameOverWinModal");
-    console.log(modalWinContainer)
-    // Win button -continue
-    continueButton.addEventListener('click', function () {
-        // modalLossContainer.classList.add('close-modal')
-        modalWinContainer.style.display = 'none';
-        gameLevelUp();
-
-        // const pointsDisplayElements = document.getElementById('pointsDisplay');
-        // pointsDisplayElements.textContent = pointsEarned;
-
-        // // const pointsEarnedOdometer = document.querySelector('.pointsEarnedOdometer');
-        // // const scoreValueOdometer = document.getElementById('score-value');
-
-        // modalWinContainer.style.display = 'flex';
-        // setTimeout(() => {
-        //     runOdometer(pointsDisplayElements, 0, pointsEarned);
-                const userScoreElement = document.getElementById('score-value');
-                const currentScore = parseInt(userScoreElement.textContent);
-
-                const pointsDisplayElement = document.getElementById('pointsDisplay');
-                const pointsEarned = pointsDisplayElement.textContent;
-        // pointsDisplayElements.textContent =
-
-                const newScore = currentScore + pointsEarned;
-
-
-        setTimeout(() => {
-            runOdometer(userScoreElement, currentScore, newScore);
-        }, 1000); // Delay increases by 500ms per item
-        // location.reload(); //placeholder for now
-        console.log("Whooray!");
-    })
-
-    // modeal eventlisteners
-    gameRetryButton.addEventListener('click', function () {
-        // modalLossContainer.classList.add('close-modal')
-        modalLossContainer.style.display = 'none';
-        location.reload();
-        console.log("I'm not giving up!");
-    });
-
-    gameNewButton.addEventListener('click', function () {
-        // modalLossContainer.classList.add('close-modal')
-        modalLossContainer.style.display = 'none';
-        console.log("Time for new game");
-    });
-
-    gameQuitButton.addEventListener('click', function () {
-        // modalLossContainer.classList.add('close-modal')
-        modalLossContainer.style.display = 'none';
-        console.log("That's it I'm done");
-    })
-
-    // undo move
-    let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
-    const undoMoveButton = document.getElementById("undo-move");
-    undoMoveButton.addEventListener('click', undoLastMove);
+    // Run game to load default game setup with level=1 and score=0
+    runGame();
 
     /**
      * Odometer object to create number counter animations
@@ -119,26 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
             el: object,
             value: startValue,
         });
-
-        // let hasRun = false;
-
-        // const options = {
-        //     threshold: [0, 0.9],
-        // };
-
-        // const callback = (entries, observer) => {
-        //     entries.forEach(entry => {
-        //         if (entry.isIntersecting) {
-        //             if (!hasRun) {
-        //                 odometer.update(value);
-        //                 hasRun=true
-        //             }
-        //         }
-        //     })
-        // };
-
-        // const observer = new IntersectionObserver(callback, options);
-        // observer.observe(el)
 
         odometer.update(finalValue);
     }
@@ -150,19 +50,80 @@ document.addEventListener("DOMContentLoaded", function () {
         let moveType = 'reverse';
         moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'], moveType);
         updateMovesRemaining(moveType);
-
     }
-
 
     /**
      * initialize the game play
      */
     function runGame() {
-
         const rods = document.querySelectorAll(".rod");
         for (let rod of rods) {
             rod.addEventListener('click', rodClick);
         }
+
+        let movesNumber = document.getElementById('move-value');
+        console.log(movesNumber);
+        movesNumber.textContent = maximumMoves;
+
+        const playInstructionElement = document.querySelector('.play-instructions');
+        console.log(playInstructionElement);
+
+        if (playInstructionElement) {
+            playInstructionElement.addEventListener('click', toggleHiddenItem);
+        }
+
+        // handle modal elements - Game Loss
+        const gameRetryButton = document.getElementById("game-retry");
+        const gameNewButton = document.getElementById("modal-new-game");
+        const gameQuitButton = document.getElementById("game-quit");
+        const modalLossContainer = document.getElementById("gameOverLossModal");
+
+        // modal eventlisteners - Game Loss
+        gameRetryButton.addEventListener('click', function () {
+            modalLossContainer.style.display = 'none';
+            location.reload();
+            console.log("I'm not giving up!");
+        });
+
+        gameNewButton.addEventListener('click', function () {
+            modalLossContainer.style.display = 'none';
+            console.log("Time for new game");
+        });
+
+        gameQuitButton.addEventListener('click', function () {
+            modalLossContainer.style.display = 'none';
+            console.log("That's it I'm done");
+        })
+
+        // handle modal elements - Game Win
+        const continueButton = document.getElementById("modal-continue-game");
+        const modalWinContainer = document.getElementById("gameOverWinModal");
+
+        // Win button -continue
+        continueButton.addEventListener('click', function () {
+
+            modalWinContainer.style.display = 'none';
+            gameLevelUp(); // Progress user level up
+
+            // Get current Score
+            const userScoreElement = document.getElementById('score-value');
+            const currentScore = parseInt(userScoreElement.textContent);
+
+            // Get earned points
+            const pointsDisplayElement = document.getElementById('pointsDisplay');
+            const pointsEarned = pointsDisplayElement.textContent;
+
+            const newScore = currentScore + pointsEarned;
+
+            // Delay the count animation
+            setTimeout(() => {
+                runOdometer(userScoreElement, currentScore, newScore);
+            }, 1000);
+        })
+
+        // undo move button listener
+        const undoMoveButton = document.getElementById("undo-move");
+        undoMoveButton.addEventListener('click', undoLastMove);
 
     }
 
