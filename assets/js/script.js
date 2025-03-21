@@ -38,30 +38,35 @@ document.addEventListener("DOMContentLoaded", function () {
         playInstructionElement.addEventListener('click', toggleHiddenItem);
     }
 
-    // handle modal elements 
+    // handle modal elements - Game Loss
     const gameRetryButton = document.getElementById("game-retry");
     const gameNewButton = document.getElementById("modal-new-game");
     const gameQuitButton = document.getElementById("game-quit");
-    const modalContainer = document.getElementById("gameOverModal");
-    console.log(modalContainer)
+    const modalLossContainer = document.getElementById("gameOverLossModal");
+    console.log(modalLossContainer)
+
+    // handle modal elements - Game Win
+    const continueButton = document.getElementById("modal-continue-game");
+    const modalWinContainer = document.getElementById("gameOverWinModal");
+    console.log(modalWinContainer)
 
     // modeal eventlisteners
     gameRetryButton.addEventListener('click', function () {
-        // modalContainer.classList.add('close-modal')
-        modalContainer.style.display = 'none';
+        // modalLossContainer.classList.add('close-modal')
+        modalLossContainer.style.display = 'none';
         location.reload();
         console.log("I'm not giving up!");
     });
 
     gameNewButton.addEventListener('click', function () {
-        // modalContainer.classList.add('close-modal')
-        modalContainer.style.display = 'none';
+        // modalLossContainer.classList.add('close-modal')
+        modalLossContainer.style.display = 'none';
         console.log("Time for new game");
     });
 
     gameQuitButton.addEventListener('click', function () {
-        // modalContainer.classList.add('close-modal')
-        modalContainer.style.display = 'none';
+        // modalLossContainer.classList.add('close-modal')
+        modalLossContainer.style.display = 'none';
         console.log("That's it I'm done");
     })
 
@@ -399,6 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const movesNumber = parseInt(document.getElementById('move-value').innerText);
                     if (movesNumber === 0) {
                         gameOverLoss()
+
                     }
                 });
             }, index * 100); // Delay increases by 500ms per item
@@ -471,8 +477,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentBarwidth = (getCssStyleValue(movesBar, 'width') / getCssStyleValue(gameMoves, 'width')) * 100;
         let currentMovesValue = parseInt(movesNumber.innerText);
 
-        let newBarwidth =0;
-        let newMovesValue =0;
+        let newBarwidth = 0;
+        let newMovesValue = 0;
 
         if (moveType === 'forward') {
             newBarwidth = currentBarwidth - widthIncrements;
@@ -491,7 +497,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Display modal for game loss and give user option to retry or start a new game
      */
     function gameOverLoss() {
-        modalContainer.style.display = 'flex';
+        modalLossContainer.style.display = 'flex';
     }
 
     /**
