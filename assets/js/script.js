@@ -115,14 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const currentScore = parseInt(userScoreElement.textContent);
 
             // Get earned points
-            const pointsDisplayElement = document.getElementById('pointsDisplay');
-            const pointsEarned = pointsDisplayElement.textContent;
-
-            const newScore = currentScore + pointsEarned;
+            let pointsEarned = calculatePointsWon();
+            let newScore = currentScore + pointsEarned;
 
             setTimeout(() => {
                 runOdometer(userScoreElement, currentScore, newScore);
-            }, 2000); // Delay increases by 500ms per item
+            }, 500); // Delay increases by 500ms per item
         })
     }
 
@@ -542,10 +540,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modalWinContainer.style.display = 'flex';
 
-        let pointsEarned = calculatePointsWon();
-        const pointsDisplayElements = document.getElementById('pointsDisplay');
-        // pointsDisplayElements.textContent = pointsEarned;
-
         // const targetRodRect = targetRod.getBoundingClientRect();
         const winModalRect = modalWinContainer.querySelector('.game-modal').getBoundingClientRect();
         const leftStartX = (winModalRect.left) / window.innerWidth;
@@ -563,13 +557,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500);
 
 
-        // const pointsEarnedOdometer = document.querySelector('.pointsEarnedOdometer');
-        // const scoreValueOdometer = document.getElementById('scoreValue');
+
+        let pointsEarned = calculatePointsWon();
+        const pointsDisplayElements = document.getElementById('pointsDisplay');
 
         setTimeout(() => {
             runOdometer(pointsDisplayElements, 0, pointsEarned);
         }, 2000); // Delay increases by 500ms per item
 
+        
         // });
 
     }
