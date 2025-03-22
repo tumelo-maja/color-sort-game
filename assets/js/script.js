@@ -723,8 +723,11 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function addNutsToRods(gameType) {
 
+        //clear current nuts 
+        clearNuts();
+
         // const clickedButton = e.target;
-        if (gameType ==="new") {
+        if (gameType === "new") {
 
             // Save game sate for use in reset
             gameInitialState['gameRodContainers'] = generateNutsWithColors();
@@ -780,11 +783,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateNewGame(e) {
 
-        //clear current nuts 
-        clearNuts();
-
-
-            let gameType = "new"
+        let gameType = "new"
         addNutsToRods(gameType);
         // Update nut Element global style
         anyNut = document.querySelectorAll('.nut')[0];
@@ -793,18 +792,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Remove existing nuts before restting or generating new game
+     * Remove existing nuts before resetting or generating new game
      */
     function clearNuts() {
         let allRods = document.querySelectorAll('.rod');
         console.log("allRods:");
         console.log(allRods);
 
-            for (let rod of allRods) {
-                let nutWrappers = rod.querySelectorAll('.nut-wrap');
-                for (let nutWrapper of nutWrappers) {
-                    rod.removeChild(nutWrapper);
-                }
+        for (let rod of allRods) {
+            let nutWrappers = rod.querySelectorAll('.nut-wrap');
+            for (let nutWrapper of nutWrappers) {
+                rod.removeChild(nutWrapper);
             }
+        }
     }
 })
