@@ -11,12 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let movesNumberElement = document.getElementById('move-value');
     movesNumberElement.textContent = maximumMoves;
     let userMoves = maximumMoves;
+    let userScore = 0;
     let movesBar = document.querySelector('.move-fill');
 
 
 
 
-
+    let pointsEarned = 0;
     let completedRods = 0; // initialize as 0
     const totalRodsToWin = 3; // Rods completed to win
     const pointsPerRod = 10; //point factor for each completed rod
@@ -58,16 +59,28 @@ document.addEventListener("DOMContentLoaded", function () {
     runGame();
 
     /**
-     * Odometer object to create number counter animations
+     * Create an Odometer instance to create number counter animations
      */
-    function runOdometer(object, startValue, finalValue) {
-        const odometer = new Odometer({
+    function createOdometer(object, startValue) {
+
+        object.innerHTML = `${startValue}`;
+
+        let odometerInstance = new Odometer({
             el: object,
             value: startValue,
             duration: 5000,
         });
 
-        odometer.update(finalValue);
+        return odometerInstance;
+    }
+
+    /**
+     * Run an update on the Odometer instance to animate number counting
+     */
+    function runOdometer(odometerInstance, finalValue) {
+        setTimeout(() => {
+            odometerInstance.update(finalValue);
+          }, 50);
     }
 
     /**
@@ -125,17 +138,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Get current Score
             const userScoreElement = document.getElementById('scoreValue');
-            const currentScore = parseInt(userScoreElement.textContent);
+            const currentScore = parseInt(userScoreElement.innerText);
 
             // Get earned points
-            let pointsEarned = calculatePointsWon();
-            let newScore = currentScore + pointsEarned;
+            pointsEarned = calculatePointsWon();
 
             setTimeout(() => {
-                runOdometer(userScoreElement, currentScore, newScore);
-            }, 500);
+                let scoreOdometer =createOdometer(userScoreElement, userScore);
+                userScore = userScore + pointsEarned;
+                runOdometer(scoreOdometer, userScore);
+            }, 1000);
+            console.log(`This ois the new score: ${userScore}`);
+
+            let pointsDisplayElements = document.getElementById('pointsDisplay');
+            pointsDisplayElements.innerText=0;
+
+
+            generateNewGame();
         });
 
+        // start game button
         startGameButton.addEventListener('click',generateNewGame);
 
         //Run new game
@@ -556,11 +578,12 @@ document.addEventListener("DOMContentLoaded", function () {
             confettiAnimation(rightStartX, startY, nutColors[0], particleSize, angle = 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
         }, 500);
 
-        let pointsEarned = calculatePointsWon();
-        const pointsDisplayElements = document.getElementById('pointsDisplay');
+        pointsEarned = calculatePointsWon();
+        let pointsDisplayElements = document.getElementById('pointsDisplay');
 
         setTimeout(() => {
-            runOdometer(pointsDisplayElements, 0, pointsEarned);
+            let pointsOdometer =createOdometer(pointsDisplayElements, 0);
+            runOdometer(pointsOdometer, pointsEarned);
         }, 2000);
 
     }
@@ -585,8 +608,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Maxnuts per rod 4
         // totalRodsToWin 3
 
-        let pointsEarned = maxNutsPerRod * totalRodsToWin * pointsPerRod;
-        return pointsEarned;
+        return maxNutsPerRod * totalRodsToWin * pointsPerRod;
     }
 
     /**
