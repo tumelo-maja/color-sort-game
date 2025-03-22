@@ -814,4 +814,25 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
+    /**
+     * Save user level and score to localStorage
+     */
+    function saveUserProgress() {
+        let levelValueElement = document.getElementById('level-value');
+        let userScoreElement = document.getElementById('scoreValue');
+
+        let userProgress = {
+            userLevel: levelValueElement.textContent,
+            userScore: userScoreElement.textContent,
+        };
+        console.log(userProgress);
+
+        let userProgressStringified = JSON.stringify(userProgress);
+        console.log(userProgressStringified);
+
+        localStorage.setItem("userProgress",userProgressStringified);
+
+
+    }
 })
