@@ -604,7 +604,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 confettiAnimation(startX, startY, [nutColorHex], 0.5);
 
                 undoMoveButton.classList.add('disable');
-                const rodLid = targetRod.querySelector('.rod-lid');
+                let rodLid = targetRod.querySelector('.rod-lid');
                 rodLid.classList.add('complete');
 
                 // update total rods
@@ -762,6 +762,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(allRods);
 
         for (let rod of allRods) {
+            //Remove .complete if any
+            let rodLid = rod.querySelector('.rod-lid');
+            rodLid.classList.remove('complete');
+            rod.addEventListener("click", rodClick);
+
+
             let nutWrappers = rod.querySelectorAll('.nut-wrap');
             for (let nutWrapper of nutWrappers) {
                 rod.removeChild(nutWrapper);
