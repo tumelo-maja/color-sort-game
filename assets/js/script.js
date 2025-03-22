@@ -718,16 +718,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // separate shuffled colors into rod containers
-        // const rodContainers = [];
-        // for (let i = 0; i < 3; i++) {
+        let rodContainers = [];
+        for (let i = 0; i < maxNutsPerRod-1; i++) {
 
-        //     rodContainers.push({
-        //         name: "rod" + (i + 1),
-        //         nuts: nuts.slice(i * 4, i * 4 + 4)
-        //     });
-        // }
+            rodContainers.push({
+                name: "rod" + (i + 1),
+                nuts: nutsColorArray.slice(i * 4, i * 4 + 4)
+            });
+        }
 
-        // return { containers: containers };
+        console.log("Final rodContainers");
+        console.log(rodContainers);
+
+        // return { rodContainers: rodContainers };
 
 
 
