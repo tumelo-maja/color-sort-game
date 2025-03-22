@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modalNewGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
-            console.log("Time for new game");
+            generateNewGame();
         });
 
         modalQuitGameButton.addEventListener('click', function () {
@@ -749,11 +749,10 @@ document.addEventListener("DOMContentLoaded", function () {
         addNutsToRods();
 
         // Update nut Element global style
-        if (anyNut === null || nutStyle === null) {
-            anyNut = document.querySelectorAll('.nut')[0];
-            nutStyle = window.getComputedStyle(anyNut);
-            console.log("anyNut has been reset")
-        }
+        anyNut = document.querySelectorAll('.nut')[0];
+        nutStyle = window.getComputedStyle(anyNut);
+        console.log("anyNut has been reset")
+
     }
 
     /**
