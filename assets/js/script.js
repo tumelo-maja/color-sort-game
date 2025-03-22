@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
     newGameButton.addEventListener('click', generateNewGame);
     const undoMoveButton = document.getElementById("undo-move"); //undo move
 
+
+    const startGameButton = document.getElementById("undo-move"); //undo move
+
     // Run game to load default game setup with level=1 and score=0
     runGame();
 
@@ -132,6 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 runOdometer(userScoreElement, currentScore, newScore);
             }, 500);
         });
+
+        startGameButton.addEventListener('click',generateNewGame);
 
         //Run new game
         generateNewGame();
