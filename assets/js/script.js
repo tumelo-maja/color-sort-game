@@ -754,4 +754,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     }
+
+    /** 
+     * Create nut elements based on color arrays including the wrapper
+     */
+    function createNutElement() {
+
+    }
+    
 })
