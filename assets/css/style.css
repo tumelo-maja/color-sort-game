@@ -172,6 +172,13 @@ h3 {
   transform: translateX(-50%);
 }
 
+.rod-lid.complete {
+  width: 35px;
+  height: 12px;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+}
+
 .nut {
   width: 40px;
   height: 20px;

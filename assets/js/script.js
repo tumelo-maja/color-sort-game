@@ -630,6 +630,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 undoMoveButton.classList.add('disable');
 
+                const rodLid = targetRod.querySelector('.rod-lid');
+                rodLid.classList.add('complete');
+                // rodLid.style.backgroundColor='red';
+
                 // update total rods
                 ++completedRods;
 
