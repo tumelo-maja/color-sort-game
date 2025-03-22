@@ -781,31 +781,30 @@ document.addEventListener("DOMContentLoaded", function () {
     function generateNewGame(e) {
 
         //clear current nuts 
-        let allRods = document.querySelectorAll('.rod');
-        console.log("allRods:");
-        console.log(allRods);
+        clearNuts();
 
-        // if (allRods[0].querySelectorAll('.nut-wrap').length === 0) {
-        //     addNutsToRods(e);
-        // } else {
 
-            for (let rod of allRods) {
-                let nutWrappers = rod.querySelectorAll('.nut-wrap');
-
-                console.log("nutWrappers:");
-                console.log(nutWrappers);
-                // if (!nutWrappers.length) continue;
-
-                for (let nutWrapper of nutWrappers) {
-                    rod.removeChild(nutWrapper);
-                }
-            }
-        // }
-        let gameType = "new"
+            let gameType = "new"
         addNutsToRods(gameType);
         // Update nut Element global style
         anyNut = document.querySelectorAll('.nut')[0];
         nutStyle = window.getComputedStyle(anyNut);
 
+    }
+
+    /**
+     * Remove existing nuts before restting or generating new game
+     */
+    function clearNuts() {
+        let allRods = document.querySelectorAll('.rod');
+        console.log("allRods:");
+        console.log(allRods);
+
+            for (let rod of allRods) {
+                let nutWrappers = rod.querySelectorAll('.nut-wrap');
+                for (let nutWrapper of nutWrappers) {
+                    rod.removeChild(nutWrapper);
+                }
+            }
     }
 })
