@@ -786,8 +786,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let gameType = "new"
         addNutsToRods(gameType);
         // Update nut Element global style
-        anyNut = document.querySelectorAll('.nut')[0];
-        nutStyle = window.getComputedStyle(anyNut);
+        if (anyNut === null || nutStyle === null) {
+            anyNut = document.querySelectorAll('.nut')[0];
+            nutStyle = window.getComputedStyle(anyNut);
+        }
 
     }
 
