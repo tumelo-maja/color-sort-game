@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //game control  buttons
     const newGameButton = document.getElementById("new-game"); // new-game
-    newGameButton.addEventListener('click',generateNutsWithColors);
+    newGameButton.addEventListener('click',addNutsToRods);
     const undoMoveButton = document.getElementById("undo-move"); //undo move
 
 
@@ -690,7 +690,6 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Generate a new game based on random inputs  
      */
-    // function generateNutsWithColors(maxNutsPerRod, totalRodsToWin, nutColors) {
     function generateNutsWithColors() {
 
         // repeate colors in an array
@@ -730,10 +729,29 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Final rodContainers");
         console.log(rodContainers);
 
+        return rodContainers;
         // return { rodContainers: rodContainers };
-
-
-
     }
 
+    /**
+     * Place shuffled nuts into rod containers
+     */
+    function addNutsToRods() {
+
+        let rodContainers = generateNutsWithColors();
+        console.log(rodContainers);
+        console.log(rodContainers[0]);
+
+
+        for (let rodItem of rodContainers) {
+            // console.log(rodItem.name);
+            let rodId = rodItem.name;
+
+            let currentRod = document.getElementById(rodId)
+            console.log(currentRod);
+
+
+        }
+
+    }
 })
