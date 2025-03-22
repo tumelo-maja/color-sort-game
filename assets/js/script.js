@@ -721,26 +721,10 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Place shuffled nuts into rod containers
      */
-    function addNutsToRods(gameType) {
+    function addNutsToRods() {
 
         //clear current nuts 
         clearNuts();
-
-        // const clickedButton = e.target;
-        if (gameType === "new") {
-
-            // Save game sate for use in reset
-            gameInitialState['gameRodContainers'] = generateNutsWithColors();
-
-            let nutsAndWrappers = [];
-            for (let rodItem of gameInitialState.gameRodContainers) {
-                let nutsAndWrapper = createNutsAndWrappers(rodItem.nuts);
-                nutsAndWrappers.push(nutsAndWrapper);
-            }
-
-            gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
-        }
-
         // for (let rodItem of gameInitialState.gameRodContainers) {
         gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
 
@@ -783,13 +767,24 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateNewGame(e) {
 
-        let gameType = "new"
-        addNutsToRods(gameType);
         // Update nut Element global style
         if (anyNut === null || nutStyle === null) {
             anyNut = document.querySelectorAll('.nut')[0];
             nutStyle = window.getComputedStyle(anyNut);
         }
+
+        // Save game sate for use in reset
+        gameInitialState['gameRodContainers'] = generateNutsWithColors();
+        let nutsAndWrappers = [];
+        for (let rodItem of gameInitialState.gameRodContainers) {
+            let nutsAndWrapper = createNutsAndWrappers(rodItem.nuts);
+            nutsAndWrappers.push(nutsAndWrapper);
+        }
+
+        gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
+
+        addNutsToRods();
+
 
     }
 
