@@ -720,16 +720,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // separate shuffled colors into rod containers
         let rodContainers = [];
-        for (let i = 0; i < maxNutsPerRod - 1; i++) {
+        for (let i = 0; i < maxNutsPerRod -1; i++) {
 
             rodContainers.push({
                 name: "rod" + (i + 1),
-                nuts: nutsColorArray.slice(i * 4, i * 4 + 4)
+                nuts: nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod)
             });
+
+            let bb= nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod);
+            console.log(`bb index: ${i}`)
+            console.log(bb)
         }
 
         console.log("Final rodContainers");
         console.log(rodContainers);
+        console.log("Final rodContainers");
 
         return rodContainers;
         // return { rodContainers: rodContainers };
@@ -750,42 +755,20 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let rodItem of gameInitialState.gameRodContainers) {
                 let nutsAndWrapper = createNutsAndWrappers(rodItem.nuts);
                 nutsAndWrappers.push(nutsAndWrapper);
+                console.log("rodItem.nuts:");
+                console.log(rodItem.nuts)
             }
 
             gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
 
         }
 
-        // for (let rodItem of rodContainers) {
-        //     // console.log(rodItem.name);
-        //     let rodId = rodItem.name;
-
-        //     let currentRod = document.getElementById(rodId)
-        //     console.log(currentRod);
-
-        //     let nutAndWrappers = createNutsAndWrappers(rodItem.nuts);
-        //     console.log(nutAndWrappers);
-
-        //     nutAndWrappers.forEach((wrapper, index) => {
-        //         // console.log(wrapper.wrapper);
-        //         currentRod.appendChild(wrapper.wrapper);
-        //     });
-
-        // }
-
-        console.log(`Leng os N&W: ${gameInitialState['nutsAndWrappers'].length}`)
-
         // for (let rodItem of gameInitialState.gameRodContainers) {
         gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
 
             let currentRod = document.getElementById(rodItem.name);
-            console.log("The Current Rod is here")
-            console.log(currentRod)
-            gameInitialState.nutsAndWrappers.forEach((wrapper, wrapperIndex) => {
-                console.log("The wrapper is here")
-                console.log(wrapper[rodIndex].wrapper)
-                currentRod.appendChild(wrapper[rodIndex].wrapper);
-                // currentRod.appendChild(wrapper.wrapper);
+            gameInitialState.nutsAndWrappers[rodIndex].forEach((wrapper, wrapperIndex) => {
+                currentRod.appendChild(wrapper.wrapper);
             });
 
         });
