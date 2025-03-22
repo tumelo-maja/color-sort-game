@@ -813,7 +813,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function generateNewGame(e) {
 
         //clear current nuts 
-        
+        let allRods = document.querySelectorAll('.rod');
+        console.log(allRods) 
+
         addNutsToRods(e);
 
     }
