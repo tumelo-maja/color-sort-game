@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
 
     // Get CSS style object for nut element - calculate height of each nut
-    const anyNut = document.querySelectorAll('.nut')[0];
-    const nutStyle = window.getComputedStyle(anyNut);
+    // const anyNut = document.querySelectorAll('.nut')[0];
+    // const nutStyle = window.getComputedStyle(anyNut);
 
     // handle modal elements - Game Loss
     const modalRetryGameButton = document.getElementById("game-retry");
@@ -751,8 +751,12 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(currentRod);
 
             let nutAndWrappers = createNutsAndWrappers(rodItem.nuts);
+            console.log(nutAndWrappers);
 
-
+            nutAndWrappers.forEach((wrapper, index) => {
+                // console.log(wrapper.wrapper);
+                currentRod.appendChild(wrapper.wrapper);
+            });
 
         }
 
@@ -781,7 +785,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // nutsAndWrappers.push(nutWrapperElement);
             nutsAndWrappers.push({
                 name: `rod${index}`,
-                wrappers: nutWrapperElement,
+                wrapper: nutWrapperElement,
             });
 
         });
