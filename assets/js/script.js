@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
 
-    // Get CSS style object for nut element - calculate height of each nut
-    // const anyNut = document.querySelectorAll('.nut')[0];
-    // const nutStyle = window.getComputedStyle(anyNut);
+    // Intialize Get CSS style object for nut element 
+    let anyNut = null;
+    let nutStyle = null;
 
     // handle modal elements - Game Loss
     const modalRetryGameButton = document.getElementById("game-retry");
@@ -696,7 +696,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // repeated nut colors for total nuts
         let nutsColorArray = Array(maxNutsPerRod).fill(Object.keys(nutColors)).flat();
- 
+
         // Shuffle colors
         for (let i = nutsColorArray.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
@@ -707,7 +707,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // separate shuffled colors into rod containers
         let rodContainers = [];
-        for (let i = 0; i < maxNutsPerRod -1; i++) {
+        for (let i = 0; i < maxNutsPerRod - 1; i++) {
 
             rodContainers.push({
                 name: "rod" + (i + 1),
@@ -782,9 +782,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //clear current nuts 
         let allRods = document.querySelectorAll('.rod');
-        console.log(allRods); 
+        console.log("allRods:");
+        console.log(allRods);
+
+        // if (allRods[0].querySelectorAll('.nut-wrap').length === 0) {
+        //     addNutsToRods(e);
+        // } else {
+
+            for (let rod of allRods) {
+                let nutWrappers = rod.querySelectorAll('.nut-wrap');
+
+                console.log("nutWrappers:")
+                console.log(nutWrappers)
+                // if (!nutWrappers.length) continue;
+
+                for (let nutWrapper of nutWrappers) {
+                    rod.removeChild(nutWrapper);
+                }
+            }
+        // }
 
         addNutsToRods(e);
+        // Update nut Element global style
+        anyNut = document.querySelectorAll('.nut')[0];
+        nutStyle = window.getComputedStyle(anyNut);
 
     }
 })
