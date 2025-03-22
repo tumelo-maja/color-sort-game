@@ -22,10 +22,10 @@
 
     <div class="game-container">
         <div class="head-area">
-            <a aria-current="page" href="index.html" aria-label="Go to home page"><i class="fa-solid fa-house"></i></a>
+            <a aria-current="page" href="index.html" aria-label="Go to home page"  title="Go to home page"><i class="fa-solid fa-house"></i></a>
             <div class="game-score"><span id="scoreValue">0</span><i class="fa-solid fa-coins"></i></div>
             <a href="#helpModal" data-bs-toggle="modal" data-bs-target="#helpModal"
-                aria-label="Shows instructions on how to play (opens in a modal window)"><i
+                aria-label="Shows instructions on how to play (opens in a modal window)"  title="Learn how to play the game"><i
                     class="fa-solid fa-question"></i>
             </a>
         </div>
@@ -103,22 +103,22 @@
 
             <ul>
                 <li>
-                    <button id="undo-move"><i class="material-symbols-outlined game-icons">
+                    <button id="undo-move"  title="Undo the last move"><i class="material-symbols-outlined game-icons">
                             undo
                         </i></button>
                 </li>
                 <li>
-                    <button id="add-bolt"><i class="material-symbols-outlined game-icons">
+                    <button id="add-bolt" title="Add an extra rod"><i class="material-symbols-outlined game-icons">
                             add
                         </i></button>
                 </li>
                 <li>
-                    <button><i id="game-reset" class="material-symbols-outlined game-icons">
+                    <button id="game-reset" title="Reset game"><i class="material-symbols-outlined game-icons">
                             settings_backup_restore
                         </i></button>
                 </li>
                 <li>
-                    <button><i id="new-game" class="material-symbols-outlined game-icons">
+                    <button id="new-game" title="Play a new game"><i  class="material-symbols-outlined game-icons">
                             splitscreen_vertical_add
                         </i></button>
                 </li>
@@ -173,9 +173,9 @@
             <p>Oh no! You're run out of moves to sort the colors</p>
             <p>Why not try again or start a fresh new challenge?</p>
             <div class="modal-buttons">
-                <button id="game-retry">Retry</button>
-                <button id="modal-new-game">New Game</button>
-                <button id="game-quit">Quit Game</button>
+                <button id="game-retry" title="Reset game">Retry</button>
+                <button id="modal-new-game" title="Play a new game">New Game</button>
+                <button id="game-quit" title="Quit game and return to home page">Quit Game</button>
             </div>
 
         </div>
@@ -190,7 +190,7 @@
             <p>Your colorful adventure was a blast</p>
             <p>You scored <span id="pointsDisplay">0</span> points!</p>
             <div class="modal-buttons">
-                <button id="modal-continue-game">Continue</button>
+                <button id="modal-continue-game"  title="Play another game">Continue</button>
             </div>
 
         </div>
