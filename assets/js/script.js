@@ -91,7 +91,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // modal eventlisteners - Game Loss
         modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
-            location.reload();
+            // location.reload();
+            resetGame();
             console.log("I'm not giving up!");
         });
 
@@ -124,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setTimeout(() => {
                 runOdometer(userScoreElement, currentScore, newScore);
-            }, 500); 
+            }, 500);
         })
     }
 
@@ -221,6 +222,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setRaiseNutTransformY(nutObject, rodChildrenCount);
         nutObject.classList.add("raise-nut");
+        console.log(`raiseNut: ${anyNut.offsetHeight}`)
+        console.log(anyNut);
+
     }
 
     /**
@@ -232,6 +236,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const anyNutMargin = getCssStyleValue(anyNut, 'margin-bottom');
         const availableSpace = (maxNutsPerRod - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
         const raiseValue = -availableSpace - verticalStep;
+
+        console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`)
 
         nutObject.style.setProperty("--transform-y", raiseValue + "px");
     }
@@ -426,7 +432,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
                 });
-            }, index * 100); 
+            }, index * 100);
         });
     }
 
@@ -464,7 +470,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // 3) Check if the raised nut and topChild of target rod have same colors
             const targetNutColor = targetNut.getAttribute("data-color");
-            const raisedNutColor = raisedNut.getAttribute("data-color"); 
+            const raisedNutColor = raisedNut.getAttribute("data-color");
 
             const isColorMatch = raisedNutColor === targetNutColor;
             if (!isColorMatch) {
@@ -721,12 +727,6 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateNewGame() {
 
-        // Update nut Element global style
-        if (anyNut === null || nutStyle === null) {
-            anyNut = document.querySelectorAll('.nut')[0];
-            nutStyle = window.getComputedStyle(anyNut);
-        }
-
         // Save game sate for use in reset
         gameInitialState['gameRodContainers'] = generateNutsWithColors();
         let nutsAndWrappers = [];
@@ -736,6 +736,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
+        addNutsToRods();
+
+        // Update nut Element global style
+        if (anyNut === null || nutStyle === null) {
+            anyNut = document.querySelectorAll('.nut')[0];
+            nutStyle = window.getComputedStyle(anyNut);
+            console.log("anyNut has been reset")
+        }
+    }
+
+    /**
+     * Reset game to saved gameInitialState
+     */
+    function resetGame() {
         addNutsToRods();
     }
 
