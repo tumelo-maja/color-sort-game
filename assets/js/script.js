@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalRodsToWin = 3; // Rods completed to win
     const pointsPerRod = 10; //point factor for each completed rod
 
-    let gameInitialState ={}; // Var to store game state
+    let gameInitialState = {}; // Var to store game state
 
 
     const nutColors = {
@@ -738,28 +738,57 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Place shuffled nuts into rod containers
      */
-    function addNutsToRods(gameType) {
+    function addNutsToRods(e) {
 
-        if (gameType !== "reset" ) {
-            gameRodContainers = generateNutsWithColors();
-            nutsAndWrappers = createNutsAndWrappers(rodItem.nuts);
+        const clickedButton = e.target;
+        if (!clickedButton.classList.contains('reset')) {
 
             // Save game sate for use in reset
-            gameInitialState['gameRodContainers'] =gameRodContainers;
-            gameInitialState['nutsAndWrappers'] =nutsAndWrappers;
+            gameInitialState['gameRodContainers'] = generateNutsWithColors();
 
+            let nutsAndWrappers = [];
+            for (let rodItem of gameInitialState.gameRodContainers) {
+                let nutsAndWrapper = createNutsAndWrappers(rodItem.nuts);
+                nutsAndWrappers.push(nutsAndWrapper);
+            }
+
+            gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
 
         }
 
+        // for (let rodItem of rodContainers) {
+        //     // console.log(rodItem.name);
+        //     let rodId = rodItem.name;
 
-        for (let rodItem of gameRodContainers) {
+        //     let currentRod = document.getElementById(rodId)
+        //     console.log(currentRod);
+
+        //     let nutAndWrappers = createNutsAndWrappers(rodItem.nuts);
+        //     console.log(nutAndWrappers);
+
+        //     nutAndWrappers.forEach((wrapper, index) => {
+        //         // console.log(wrapper.wrapper);
+        //         currentRod.appendChild(wrapper.wrapper);
+        //     });
+
+        // }
+
+        console.log(`Leng os N&W: ${gameInitialState['nutsAndWrappers'].length}`)
+
+        // for (let rodItem of gameInitialState.gameRodContainers) {
+        gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
 
             let currentRod = document.getElementById(rodItem.name);
-            nutsAndWrappers.forEach((wrapper, index) => {
-                currentRod.appendChild(wrapper.wrapper);
+            console.log("The Current Rod is here")
+            console.log(currentRod)
+            gameInitialState.nutsAndWrappers.forEach((wrapper, wrapperIndex) => {
+                console.log("The wrapper is here")
+                console.log(wrapper[rodIndex].wrapper)
+                currentRod.appendChild(wrapper[rodIndex].wrapper);
+                // currentRod.appendChild(wrapper.wrapper);
             });
 
-        }
+        });
 
     }
 
