@@ -750,7 +750,9 @@ document.addEventListener("DOMContentLoaded", function () {
             let currentRod = document.getElementById(rodId)
             console.log(currentRod);
 
-            let nutAndWrappers = createNutElement(rodItem.nuts);
+            let nutAndWrappers = createNutsAndWrappers(rodItem.nuts);
+
+
 
         }
 
@@ -759,7 +761,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /** 
      * Create nut elements based on color arrays including the wrapper
      */
-    function createNutElement(nutsArray) {
+    function createNutsAndWrappers(nutsArray) {
 
         let nutsAndWrappers = [];
 
