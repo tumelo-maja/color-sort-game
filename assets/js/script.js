@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalRodsToWin = 3; // Rods completed to win
     const pointsPerRod = 10; //point factor for each completed rod
 
+    let gameInitialState ={}; // Var to store game state
+
 
     const nutColors = {
         'orange': '#f25029',
@@ -740,7 +742,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (gameType !== "reset" ) {
             gameRodContainers = generateNutsWithColors();
-            nutAndWrappers = createNutsAndWrappers(rodItem.nuts);
+            nutsAndWrappers = createNutsAndWrappers(rodItem.nuts);
+
+            // Save game sate for use in reset
+            gameInitialState['gameRodContainers'] =gameRodContainers;
+            gameInitialState['nutsAndWrappers'] =nutsAndWrappers;
+
 
         }
 
@@ -748,7 +755,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let rodItem of gameRodContainers) {
 
             let currentRod = document.getElementById(rodItem.name);
-            nutAndWrappers.forEach((wrapper, index) => {
+            nutsAndWrappers.forEach((wrapper, index) => {
                 currentRod.appendChild(wrapper.wrapper);
             });
 
