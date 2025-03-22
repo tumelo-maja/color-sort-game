@@ -787,20 +787,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         //Loop throught nuts arayy
-        for (let nutColor of nutsArray) {
+        // for (let nutColor of nutsArray) {
+        nutsArray.forEach((nutColor, index) => {
+
 
             let nutElement = document.createElement("div");
             nutElement.setAttribute("class", `nut ${nutColor}`);
             nutElement.setAttribute("data-color", nutColor);
-    
+
             let nutWrapperElement = document.createElement("div");
             nutWrapperElement.setAttribute("class", "nut-wrap");
-    
+
             nutWrapperElement.appendChild(nutElement);
 
-            nutsAndWrappers.push(nutWrapperElement);
+            // nutsAndWrappers.push(nutWrapperElement);
+            nutsAndWrappers.push({
+                name: `rod${index}`,
+                wrappers: nutWrapperElement,
+            });
 
-        }
+        });
 
         // console.log("Complete Rod Nuts");
         // console.log(nutsAndWrappers);
