@@ -774,6 +774,10 @@ document.addEventListener("DOMContentLoaded", function () {
         movesNumberElement.textContent = maximumMoves;
         movesBar.style="";
 
+        //reset ompleted rods
+        completedRods=0;
+
+
 
 
         for (let rod of allRods) {
