@@ -721,10 +721,10 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Place shuffled nuts into rod containers
      */
-    function addNutsToRods(e) {
+    function addNutsToRods(gameType) {
 
-        const clickedButton = e.target;
-        if (!clickedButton.classList.contains('reset')) {
+        // const clickedButton = e.target;
+        if (gameType ==="new") {
 
             // Save game sate for use in reset
             gameInitialState['gameRodContainers'] = generateNutsWithColors();
@@ -801,8 +801,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         // }
-
-        addNutsToRods(e);
+        let gameType = "new"
+        addNutsToRods(gameType);
         // Update nut Element global style
         anyNut = document.querySelectorAll('.nut')[0];
         nutStyle = window.getComputedStyle(anyNut);
