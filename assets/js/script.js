@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //game control  buttons
     const newGameButton = document.getElementById("new-game"); // new-game
-    newGameButton.addEventListener('click',addNutsToRods);
+    newGameButton.addEventListener('click', addNutsToRods);
     const undoMoveButton = document.getElementById("undo-move"); //undo move
 
 
@@ -718,7 +718,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // separate shuffled colors into rod containers
         let rodContainers = [];
-        for (let i = 0; i < maxNutsPerRod-1; i++) {
+        for (let i = 0; i < maxNutsPerRod - 1; i++) {
 
             rodContainers.push({
                 name: "rod" + (i + 1),
@@ -761,27 +761,56 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function createNutElement(nutsArray) {
 
-        let nutColor = nutsArray[0];
-        console.log(`This nut: ${nutColor}`);
-        
-        let nutElement = document.createElement("div");
-        nutElement.setAttribute("class", `nut ${nutColor}`);
-        nutElement.setAttribute("data-color", nutColor);
+        let nutsAndWrappers = [];
 
-        let nutWrapperElement = document.createElement("div");
-        nutWrapperElement.setAttribute("class", "nut-wrap");
+        // let nutColor = nutsArray[0];
+        // console.log(`This nut: ${nutColor}`);
 
-        console.log("This is my new nut div");
-        console.log(nutElement);
+        // let nutElement = document.createElement("div");
+        // nutElement.setAttribute("class", `nut ${nutColor}`);
+        // nutElement.setAttribute("data-color", nutColor);
 
-        console.log("This is my new wrapper div");
-        console.log(nutWrapperElement);
-    //     <div class="nut-wrap">
-    //     <div class="nut yellow" data-color="yellow"></div>
-    // </div>
+        // let nutWrapperElement = document.createElement("div");
+        // nutWrapperElement.setAttribute("class", "nut-wrap");
+
+        // console.log("This is my new nut div");
+        // console.log(nutElement);
+
+        // console.log("This is my new wrapper div");
+        // console.log(nutWrapperElement);
+
+        // // Append nut to wrapper
+        // nutWrapperElement.appendChild(nutElement);
+
+        // console.log("This is complete nut and wrapper");
+        // console.log(nutWrapperElement);
 
 
-        return true
+        //Loop throught nuts arayy
+        for (let nutColor of nutsArray) {
+
+            let nutElement = document.createElement("div");
+            nutElement.setAttribute("class", `nut ${nutColor}`);
+            nutElement.setAttribute("data-color", nutColor);
+    
+            let nutWrapperElement = document.createElement("div");
+            nutWrapperElement.setAttribute("class", "nut-wrap");
+    
+            nutWrapperElement.appendChild(nutElement);
+
+            nutsAndWrappers.push(nutWrapperElement);
+
+        }
+
+        // console.log("Complete Rod Nuts");
+        // console.log(nutsAndWrappers);
+
+        // for (let wrapper of nutsAndWrappers) {
+        //     console.log(wrapper);
+
+        // }
+
+        return nutsAndWrappers;
 
     }
 
