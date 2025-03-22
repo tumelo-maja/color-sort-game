@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const verticalStep = 25;
     const horizontalStep = 42;
 
-    let maximumMoves = 5;
+    let maximumMoves = 10;
     const widthIncrements = Math.round(100 / maximumMoves, 2);
 
     let completedRods = 0; // initialize as 0
@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const continueButton = document.getElementById("modal-continue-game");
     const modalWinContainer = document.getElementById("gameOverWinModal");
 
+    //Undo move button
+    const undoMoveButton = document.getElementById("undo-move");
+
+
     // Run game to load default game setup with level=1 and score=0
     runGame();
 
@@ -61,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let moveType = 'reverse';
         moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'], moveType);
         updateMovesRemaining(moveType);
+        undoMoveButton.classList.add('disable');
     }
 
     /**
@@ -101,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
 
         // undo move button listener
-        const undoMoveButton = document.getElementById("undo-move");
         undoMoveButton.addEventListener('click', undoLastMove);
 
         // Win button -continue
@@ -196,6 +200,10 @@ document.addEventListener("DOMContentLoaded", function () {
             lastMoveHistory['nutsToMove'] = nutsToMove;
             lastMoveHistory['rodChildrenCount'] = sourceRod.querySelectorAll('.nut-wrap').length - nutsToMove.length;
 
+            // Remove 'disable class after successful move
+            if (undoMoveButton.classList.contains('disable')) {
+                undoMoveButton.classList.remove('disable');
+            }
             // Shouldn't undo - completed rod
 
         } else {
@@ -619,6 +627,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const nutColorHex = [nutColors[firstNutColor]];
 
                 confettiAnimation(startX, startY, [nutColorHex], 0.5);
+
+                undoMoveButton.classList.add('disable');
 
                 // update total rods
                 ++completedRods;
