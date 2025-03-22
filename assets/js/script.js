@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modalQuitGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
-            console.log("That's it I'm done");
+            window.location.href = "index.html";
         })
 
         // undo move button listener
