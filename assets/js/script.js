@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Global variables.
     const maxNutsPerRod = 4;
     const verticalStep = 25;
-    const horizontalStep = 42;
+    const horizontalStep = 42
 
     let maximumMoves = 10;
     const widthIncrements = Math.round(100 / maximumMoves, 2);
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const nutColors = {
         'orange': '#f25029',
-        'yellow': '#f9b723',
+        // 'yellow': '#f9b723',
         'blue': '#26a1ee',
         'whitesilver': '#c2b3d4',
     }
@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const nutStyle = window.getComputedStyle(anyNut);
 
     // handle modal elements - Game Loss
-    const gameRetryButton = document.getElementById("game-retry");
-    const gameNewButton = document.getElementById("modal-new-game");
-    const gameQuitButton = document.getElementById("game-quit");
+    const modalRetryGameButton = document.getElementById("game-retry");
+    const modalNewGameButton = document.getElementById("modal-new-game");
+    const modalQuitGameButton = document.getElementById("game-quit");
     const modalLossContainer = document.getElementById("gameOverLossModal");
 
     // handle modal elements - Game Win
@@ -38,7 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalWinContainer = document.getElementById("gameOverWinModal");
 
     //Undo move button
-    const undoMoveButton = document.getElementById("undo-move");
+
+    //game control  buttons
+    const newGameButton = document.getElementById("new-game"); // new-game
+    newGameButton.addEventListener('click',generateNutsWithColors);
+    const undoMoveButton = document.getElementById("undo-move"); //undo move
+
 
 
     // Run game to load default game setup with level=1 and score=0
@@ -89,18 +94,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // modal eventlisteners - Game Loss
-        gameRetryButton.addEventListener('click', function () {
+        modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
             location.reload();
             console.log("I'm not giving up!");
         });
 
-        gameNewButton.addEventListener('click', function () {
+        modalNewGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
             console.log("Time for new game");
         });
 
-        gameQuitButton.addEventListener('click', function () {
+        modalQuitGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
             console.log("That's it I'm done");
         })
@@ -573,7 +578,7 @@ document.addEventListener("DOMContentLoaded", function () {
             runOdometer(pointsDisplayElements, 0, pointsEarned);
         }, 2000); // Delay increases by 500ms per item
 
-        
+
         // });
 
     }
@@ -685,32 +690,46 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Generate a new game based on random inputs  
      */
-    function generateNewGame() {
+    // function generateNutsWithColors(maxNutsPerRod, totalRodsToWin, nutColors) {
+    function generateNutsWithColors() {
 
         // repeate colors in an array
-        Array(3).fill(['a','b','c']).flat() 
+        // Array(3).fill(['a','b','c']).flat();
+
+        let totalGameNuts = maxNutsPerRod * totalRodsToWin;
+
+        // repeated nut colors for total nuts
+        let nutsColorArray = Array(maxNutsPerRod).fill(Object.keys(nutColors)).flat();
+        console.log("Before shuffle");
+
+        console.log(nutsColorArray);
 
         // Shuffle colors
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
+        for (let i = nutsColorArray.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = nutsColorArray[i];
+            nutsColorArray[i] = nutsColorArray[j];
+            nutsColorArray[j] = temp;
         }
+        // }
 
-        // separate shuffled array into rod containers
-        const rodContainers = [];
-        for (let i = 0; i < 3; i++) {
+        console.log("After shuffle");
+        console.log(nutsColorArray);
 
-            rodContainers.push({
-            name: "rod" + (i + 1),
-            nuts: nuts.slice(i * 4, i * 4 + 4)
-            });
-        }
 
-        return { containers: containers };
+        // separate shuffled colors into rod containers
+        // const rodContainers = [];
+        // for (let i = 0; i < 3; i++) {
 
-      
+        //     rodContainers.push({
+        //         name: "rod" + (i + 1),
+        //         nuts: nuts.slice(i * 4, i * 4 + 4)
+        //     });
+        // }
+
+        // return { containers: containers };
+
+
 
     }
 
