@@ -6,13 +6,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const verticalStep = 25;
     const horizontalStep = 42
 
-    let maximumMoves = 10;
+    const maximumMoves = 10;
     const widthIncrements = Math.round(100 / maximumMoves, 2);
+    let movesNumberElement = document.getElementById('move-value');
+    movesNumberElement.textContent = maximumMoves;
+    let userMoves = maximumMoves;
+    let movesBar = document.querySelector('.move-fill');
+
+
+
+
 
     let completedRods = 0; // initialize as 0
     const totalRodsToWin = 3; // Rods completed to win
     const pointsPerRod = 10; //point factor for each completed rod
     let gameInitialState = {}; // Var to store game state
+    
 
     const nutColors = {
         // 'orange': '#f25029',
@@ -76,10 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let rod of rods) {
             rod.addEventListener('click', rodClick);
         }
-
-        let movesNumber = document.getElementById('move-value');
-        console.log(movesNumber);
-        movesNumber.textContent = maximumMoves;
 
         const playInstructionElement = document.querySelector('.play-instructions');
         console.log(playInstructionElement);
@@ -429,8 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     let isGameComplete = checkGameCompletion();
 
                     if (!isGameComplete) {
-                        const movesNumber = parseInt(document.getElementById('move-value').innerText);
-                        if (movesNumber === 0) {
+                        if (userMoves === 0) {
                             gameOverLoss();
                         }
                     }
@@ -496,27 +500,25 @@ document.addEventListener("DOMContentLoaded", function () {
      * Update number of moves remaining 
      */
     function updateMovesRemaining(moveType) {
-        const movesNumber = document.getElementById('move-value');
         const gameMoves = document.getElementById('game-moves');
-        const movesBar = document.querySelector('.move-fill');
-
+        userMoves =movesNumberElement.textContent ;
 
         let currentBarwidth = (getCssStyleValue(movesBar, 'width') / getCssStyleValue(gameMoves, 'width')) * 100;
-        let currentMovesValue = parseInt(movesNumber.innerText);
 
         let newBarwidth = 0;
         let newMovesValue = 0;
 
         if (moveType === 'forward') {
             newBarwidth = currentBarwidth - widthIncrements;
-            newMovesValue = currentMovesValue - 1;
+            --userMoves;
         } else {
             newBarwidth = currentBarwidth + widthIncrements;
-            newMovesValue = currentMovesValue + 1;
+            ++userMoves;
             console.log('Take it back');
         }
 
-        movesNumber.textContent = newMovesValue;
+        console.log(`newMovesValue ${newMovesValue}`);
+        movesNumberElement.textContent = userMoves;
         movesBar.style.width = newBarwidth + '%';
     }
 
@@ -763,6 +765,12 @@ document.addEventListener("DOMContentLoaded", function () {
         let allRods = document.querySelectorAll('.rod');
         console.log("allRods:");
         console.log(allRods);
+
+        // Reset moves/ bar
+        movesNumberElement.textContent = maximumMoves;
+        movesBar.style="";
+
+
 
         for (let rod of allRods) {
             //Remove .complete if any
