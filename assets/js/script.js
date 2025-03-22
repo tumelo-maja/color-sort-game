@@ -750,6 +750,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let currentRod = document.getElementById(rodId)
             console.log(currentRod);
 
+            let nutAndWrappers = createNutElement(rodItem.nuts);
 
         }
 
@@ -758,8 +759,17 @@ document.addEventListener("DOMContentLoaded", function () {
     /** 
      * Create nut elements based on color arrays including the wrapper
      */
-    function createNutElement() {
+    function createNutElement(nutsArray) {
+
+        let nutElement = document.createElement("div");
+        nutElement.setAttribute("class", "democlass");
+        nutElement.setAttribute("data-color", "black");
+
+        console.log("This is my new div");
+        console.log(nutElement);
+
+        return true
 
     }
-    
+
 })
