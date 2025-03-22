@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //game control  buttons
     const newGameButton = document.getElementById("new-game"); // new-game
-    newGameButton.addEventListener('click', addNutsToRods);
+    newGameButton.addEventListener('click', generateNewGame);
     const undoMoveButton = document.getElementById("undo-move"); //undo move
 
 
@@ -694,17 +694,9 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateNutsWithColors() {
 
-        // repeate colors in an array
-        // Array(3).fill(['a','b','c']).flat();
-
-        let totalGameNuts = maxNutsPerRod * totalRodsToWin;
-
         // repeated nut colors for total nuts
         let nutsColorArray = Array(maxNutsPerRod).fill(Object.keys(nutColors)).flat();
-        console.log("Before shuffle");
-
-        console.log(nutsColorArray);
-
+ 
         // Shuffle colors
         for (let i = nutsColorArray.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
@@ -712,11 +704,6 @@ document.addEventListener("DOMContentLoaded", function () {
             nutsColorArray[i] = nutsColorArray[j];
             nutsColorArray[j] = temp;
         }
-        // }
-
-        console.log("After shuffle");
-        console.log(nutsColorArray);
-
 
         // separate shuffled colors into rod containers
         let rodContainers = [];
@@ -726,18 +713,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 name: "rod" + (i + 1),
                 nuts: nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod)
             });
-
-            let bb= nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod);
-            console.log(`bb index: ${i}`)
-            console.log(bb)
         }
 
-        console.log("Final rodContainers");
-        console.log(rodContainers);
-        console.log("Final rodContainers");
-
         return rodContainers;
-        // return { rodContainers: rodContainers };
     }
 
     /**
@@ -755,12 +733,9 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let rodItem of gameInitialState.gameRodContainers) {
                 let nutsAndWrapper = createNutsAndWrappers(rodItem.nuts);
                 nutsAndWrappers.push(nutsAndWrapper);
-                console.log("rodItem.nuts:");
-                console.log(rodItem.nuts)
             }
 
             gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
-
         }
 
         // for (let rodItem of gameInitialState.gameRodContainers) {
@@ -770,7 +745,6 @@ document.addEventListener("DOMContentLoaded", function () {
             gameInitialState.nutsAndWrappers[rodIndex].forEach((wrapper, wrapperIndex) => {
                 currentRod.appendChild(wrapper.wrapper);
             });
-
         });
 
     }
@@ -781,10 +755,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function createNutsAndWrappers(nutsArray) {
 
         let nutsAndWrappers = [];
-
         //Loop throught nuts arayy
         nutsArray.forEach((nutColor, index) => {
-
 
             let nutElement = document.createElement("div");
             nutElement.setAttribute("class", `nut ${nutColor}`);
@@ -794,17 +766,13 @@ document.addEventListener("DOMContentLoaded", function () {
             nutWrapperElement.setAttribute("class", "nut-wrap");
 
             nutWrapperElement.appendChild(nutElement);
-
-            // nutsAndWrappers.push(nutWrapperElement);
             nutsAndWrappers.push({
                 name: `rod${index}`,
                 wrapper: nutWrapperElement,
             });
-
         });
 
         return nutsAndWrappers;
-
     }
 
     /**
@@ -814,7 +782,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //clear current nuts 
         let allRods = document.querySelectorAll('.rod');
-        console.log(allRods) 
+        console.log(allRods); 
 
         addNutsToRods(e);
 
