@@ -126,7 +126,10 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
                 runOdometer(userScoreElement, currentScore, newScore);
             }, 500);
-        })
+        });
+
+        //Run new game
+        generateNewGame();
     }
 
     /**
@@ -766,7 +769,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let rodLid = rod.querySelector('.rod-lid');
             rodLid.classList.remove('complete');
             rod.addEventListener("click", rodClick);
-
 
             let nutWrappers = rod.querySelectorAll('.nut-wrap');
             for (let nutWrapper of nutWrappers) {
