@@ -761,12 +761,25 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function createNutElement(nutsArray) {
 
+        let nutColor = nutsArray[0];
+        console.log(`This nut: ${nutColor}`);
+        
         let nutElement = document.createElement("div");
-        nutElement.setAttribute("class", "democlass");
-        nutElement.setAttribute("data-color", "black");
+        nutElement.setAttribute("class", `nut ${nutColor}`);
+        nutElement.setAttribute("data-color", nutColor);
 
-        console.log("This is my new div");
+        let nutWrapperElement = document.createElement("div");
+        nutWrapperElement.setAttribute("class", "nut-wrap");
+
+        console.log("This is my new nut div");
         console.log(nutElement);
+
+        console.log("This is my new wrapper div");
+        console.log(nutWrapperElement);
+    //     <div class="nut-wrap">
+    //     <div class="nut yellow" data-color="yellow"></div>
+    // </div>
+
 
         return true
 
