@@ -763,31 +763,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let nutsAndWrappers = [];
 
-        // let nutColor = nutsArray[0];
-        // console.log(`This nut: ${nutColor}`);
-
-        // let nutElement = document.createElement("div");
-        // nutElement.setAttribute("class", `nut ${nutColor}`);
-        // nutElement.setAttribute("data-color", nutColor);
-
-        // let nutWrapperElement = document.createElement("div");
-        // nutWrapperElement.setAttribute("class", "nut-wrap");
-
-        // console.log("This is my new nut div");
-        // console.log(nutElement);
-
-        // console.log("This is my new wrapper div");
-        // console.log(nutWrapperElement);
-
-        // // Append nut to wrapper
-        // nutWrapperElement.appendChild(nutElement);
-
-        // console.log("This is complete nut and wrapper");
-        // console.log(nutWrapperElement);
-
-
         //Loop throught nuts arayy
-        // for (let nutColor of nutsArray) {
         nutsArray.forEach((nutColor, index) => {
 
 
@@ -807,14 +783,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
         });
-
-        // console.log("Complete Rod Nuts");
-        // console.log(nutsAndWrappers);
-
-        // for (let wrapper of nutsAndWrappers) {
-        //     console.log(wrapper);
-
-        // }
 
         return nutsAndWrappers;
 
