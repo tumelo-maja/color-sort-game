@@ -314,16 +314,20 @@ h3 {
 .head-area a {
   border: 2px solid white;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   text-align: center;
   margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 .head-area i {
   color: wheat;
-  margin: 10px;
-  font-size: 1.5rem;
+  /* margin: 10px; */
+  font-size: 1.2rem;
 }
 
 /* animations */

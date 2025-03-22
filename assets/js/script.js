@@ -792,8 +792,8 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let rod of allRods) {
                 let nutWrappers = rod.querySelectorAll('.nut-wrap');
 
-                console.log("nutWrappers:")
-                console.log(nutWrappers)
+                console.log("nutWrappers:");
+                console.log(nutWrappers);
                 // if (!nutWrappers.length) continue;
 
                 for (let nutWrapper of nutWrappers) {
