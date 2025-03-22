@@ -736,25 +736,19 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Place shuffled nuts into rod containers
      */
-    function addNutsToRods() {
+    function addNutsToRods(gameType) {
 
-        let rodContainers = generateNutsWithColors();
-        console.log(rodContainers);
-        console.log(rodContainers[0]);
+        if (gameType !== "reset" ) {
+            gameRodContainers = generateNutsWithColors();
+            nutAndWrappers = createNutsAndWrappers(rodItem.nuts);
+
+        }
 
 
-        for (let rodItem of rodContainers) {
-            // console.log(rodItem.name);
-            let rodId = rodItem.name;
+        for (let rodItem of gameRodContainers) {
 
-            let currentRod = document.getElementById(rodId)
-            console.log(currentRod);
-
-            let nutAndWrappers = createNutsAndWrappers(rodItem.nuts);
-            console.log(nutAndWrappers);
-
+            let currentRod = document.getElementById(rodItem.name);
             nutAndWrappers.forEach((wrapper, index) => {
-                // console.log(wrapper.wrapper);
                 currentRod.appendChild(wrapper.wrapper);
             });
 
