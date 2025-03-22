@@ -12,13 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let completedRods = 0; // initialize as 0
     const totalRodsToWin = 3; // Rods completed to win
     const pointsPerRod = 10; //point factor for each completed rod
-
     let gameInitialState = {}; // Var to store game state
 
-
     const nutColors = {
-        'orange': '#f25029',
-        // 'yellow': '#f9b723',
+        // 'orange': '#f25029',
+        'yellow': '#f9b723',
         'blue': '#26a1ee',
         'whitesilver': '#c2b3d4',
     }
@@ -39,14 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const continueButton = document.getElementById("modal-continue-game");
     const modalWinContainer = document.getElementById("gameOverWinModal");
 
-    //Undo move button
-
     //game control  buttons
     const newGameButton = document.getElementById("new-game"); // new-game
     newGameButton.addEventListener('click', generateNewGame);
     const undoMoveButton = document.getElementById("undo-move"); //undo move
-
-
 
     // Run game to load default game setup with level=1 and score=0
     runGame();
@@ -59,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
             el: object,
             value: startValue,
             duration: 5000,
-
         });
 
         odometer.update(finalValue);
@@ -131,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setTimeout(() => {
                 runOdometer(userScoreElement, currentScore, newScore);
-            }, 500); // Delay increases by 500ms per item
+            }, 500); 
         })
     }
 
@@ -165,7 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Check if colors of neext match the nut to move - append to nutsToMove.
             let neighbourNutWrapper = currentNutWrapper.previousElementSibling;
-            // let neighbourNutWrapper = raisedNutWrapper.nextElementSibling;
             let neighbourNutColor = "";
 
             if (!neighbourNutWrapper.classList.contains('nut-wrap')) {
@@ -181,11 +173,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             while (currentNutColor === neighbourNutColor) {
 
-                //appemd wrapper to array
+                //append wrapper to array
                 nutWrappersToMove.unshift(neighbourNutWrapper);
                 nutsToMove.unshift(neighbourNutWrapper.firstElementChild);
 
-                //upoadte current and neighbour colors
+                //update current and neighbour colors
                 currentNut = neighbourNutWrapper.firstElementChild;
                 currentNutWrapper = neighbourNutWrapper;
 
@@ -211,7 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (undoMoveButton.classList.contains('disable')) {
                 undoMoveButton.classList.remove('disable');
             }
-            // Shouldn't undo - completed rod
 
         } else {
             console.log(nutObjectTop);
@@ -221,7 +212,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 raiseNut(nutObjectTop, rodChildrenCount);
             }
         }
-
     }
 
     /**
@@ -241,12 +231,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const anyNutMargin = getCssStyleValue(anyNut, 'margin-bottom');
         const availableSpace = (maxNutsPerRod - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
-
         const raiseValue = -availableSpace - verticalStep;
 
-
         nutObject.style.setProperty("--transform-y", raiseValue + "px");
-
     }
 
     /**
@@ -257,7 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (nutObject) {
             nutObject.classList.remove("raise-nut");
         }
-
     }
 
     /**
@@ -296,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Calculate the final position of the nut at the end of the move animation.
-     * This will be the final position before 'appendChild' is appled 
+     * This will be the final position before 'appendChild' is applied 
      */
     function calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount) {
 
@@ -306,17 +292,13 @@ document.addEventListener("DOMContentLoaded", function () {
         rodYDifference = targetRodRect.top - sourceRodRect.top;
         rodXDifference = targetRodRect.left - sourceRodRect.left;
 
-        const nutSize = anyNut.offsetHeight;
-        // let currentBarwidth = (getCssStyleValue(movesBar, 'width')
-
         // anyNut is global to avoud redefining 
         const nutFinalPosition = {
             xValue: rodXDifference,
-            yValue: rodYDifference
+            yValue: rodYDifference,
         }
 
         return nutFinalPosition;
-
     }
 
     /**
@@ -350,7 +332,6 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         return offsetPosition;
-
     }
 
     /**
@@ -364,13 +345,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let sourceChildrenCount = sourceRod.querySelectorAll('.nut-wrap').length;
         const heighExistingChildren = (targetChildrenCount * (parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom)));
 
-        // nutsToMove = nutsToMove.slice(0, 3);
-
         for (let nut of nutsToMove) {
 
             // height offset
             let heightOffset = parseFloat(nutStyle.height) - heighExistingChildren;
-            // console.log(`Target children: ${targetChildrenCount}`);
 
             //set raise values first
             setRaiseNutTransformY(nut, sourceChildrenCount);
@@ -409,18 +387,14 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function runAnimation(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
 
-
-
         setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount); // Set the transform positions for the animation motion
 
-        // // Add animation class
+        //Add animation class
         const animationName = "success-move";
 
-        // Allwrappers.forEach((wrapper, index) => {
         nutsToMove.forEach((nut, index) => {
             setTimeout(() => {
 
-                //   nut.classList.add('animate');
                 nut.classList.add(animationName); // nutWrapper
                 nut.parentElement.classList.add(animationName); // nut element
 
@@ -451,14 +425,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             gameOverLoss();
                         }
                     }
-
-
-
                 });
-            }, index * 100); // Delay increases by 500ms per item
+            }, index * 100); 
         });
     }
-    // }
 
     /**
      * Move raised nut to another rod
@@ -493,8 +463,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // 3) Check if the raised nut and topChild of target rod have same colors
-            const targetNutColor = targetNut.getAttribute("data-color"); //last child color (target)
-            const raisedNutColor = raisedNut.getAttribute("data-color"); //raised nut color
+            const targetNutColor = targetNut.getAttribute("data-color");
+            const raisedNutColor = raisedNut.getAttribute("data-color"); 
 
             const isColorMatch = raisedNutColor === targetNutColor;
             if (!isColorMatch) {
@@ -555,7 +525,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modalWinContainer.style.display = 'flex';
 
-        // const targetRodRect = targetRod.getBoundingClientRect();
         const winModalRect = modalWinContainer.querySelector('.game-modal').getBoundingClientRect();
         const leftStartX = (winModalRect.left) / window.innerWidth;
         const rightStartX = (winModalRect.left + winModalRect.width) / window.innerWidth;
@@ -571,17 +540,12 @@ document.addEventListener("DOMContentLoaded", function () {
             confettiAnimation(rightStartX, startY, nutColors[0], particleSize, angle = 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
         }, 500);
 
-
-
         let pointsEarned = calculatePointsWon();
         const pointsDisplayElements = document.getElementById('pointsDisplay');
 
         setTimeout(() => {
             runOdometer(pointsDisplayElements, 0, pointsEarned);
-        }, 2000); // Delay increases by 500ms per item
-
-
-        // });
+        }, 2000);
 
     }
 
@@ -594,7 +558,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let levelValue = parseInt(levelValueElement.innerText);
         ++levelValue;
 
-        // update level value
         levelValueElement.innerText = levelValue;
     }
 
@@ -623,32 +586,26 @@ document.addEventListener("DOMContentLoaded", function () {
             const nutSameColor = Array.from(allNuts).every(nut => nut.getAttribute('data-color') === firstNutColor);
 
             if (nutSameColor) {
-                // remov event listener for completed rods
+
                 targetRod.removeEventListener("click", rodClick);
 
                 const targetRodRect = targetRod.getBoundingClientRect();
                 // calcluate relative positon of the rod - center / convert ro ratio
                 const startX = (targetRodRect.left + targetRodRect.width / 2) / window.innerWidth;
                 const startY = (targetRodRect.top - 10) / window.innerHeight;
-
                 const nutColorHex = [nutColors[firstNutColor]];
 
                 confettiAnimation(startX, startY, [nutColorHex], 0.5);
 
                 undoMoveButton.classList.add('disable');
-
                 const rodLid = targetRod.querySelector('.rod-lid');
                 rodLid.classList.add('complete');
-                // rodLid.style.backgroundColor='red';
 
                 // update total rods
                 ++completedRods;
 
-
             }
         }
-
-
     }
 
     /**
@@ -714,7 +671,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 nuts: nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod)
             });
         }
-
         return rodContainers;
     }
 
@@ -725,7 +681,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //clear current nuts 
         clearNuts();
-        // for (let rodItem of gameInitialState.gameRodContainers) {
         gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
 
             let currentRod = document.getElementById(rodItem.name);
@@ -758,14 +713,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 wrapper: nutWrapperElement,
             });
         });
-
         return nutsAndWrappers;
     }
 
     /**
      * Generate new game and clear previous nuts
      */
-    function generateNewGame(e) {
+    function generateNewGame() {
 
         // Update nut Element global style
         if (anyNut === null || nutStyle === null) {
@@ -782,10 +736,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
-
         addNutsToRods();
-
-
     }
 
     /**
