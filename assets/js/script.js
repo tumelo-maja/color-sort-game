@@ -807,4 +807,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    /**
+     * Generate new game and clear previous nuts
+     */
+    function generateNewGame(e) {
+
+        //clear current nuts 
+        
+        addNutsToRods(e);
+
+    }
 })
