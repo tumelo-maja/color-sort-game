@@ -50,9 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let anyNut = null;
     let nutStyle = null;
 
-    
+
     const testButton = document.getElementById("test-button");
-    testButton.addEventListener('click',generateGameLayout);
+    testButton.addEventListener('click', generateGameLayout);
 
     // handle modal elements - Game Loss
     const modalRetryGameButton = document.getElementById("game-retry");
@@ -794,7 +794,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // separate shuffled colors into rod containers
         let rodContainers = [];
-        
+
         // for (let i = 0; i < maxNutsPerRod - 1; i++) {
         for (let i = 0; i < gameMode.rodCapacity - 1; i++) {
 
@@ -854,6 +854,9 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateNewGame() {
 
+        //generate game Layout
+        generateGameLayout();
+
         // Save game sate for use in reset
         gameInitialState['gameRodContainers'] = generateNutsWithColors();
         let nutsAndWrappers = [];
@@ -877,6 +880,65 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateGameLayout() {
         const gameArea = document.querySelector('.game-area');
+        console.log("gameArea");
+        console.log(gameArea);
+
+        let gameMode = gameModeObject.Easy;
+
+
+        //Loop to create containers
+        // tumelo
+
+        gameModeObject
+        const totalRods = gameMode.rodContainers * gameMode.rodPerContainer;
+
+        let rodNumber = 0;
+        for (let i = 0; i < gameMode.rodContainers; i++) {
+
+            let containerElement = document.createElement("div");
+            containerElement.setAttribute("class", 'rod-container');
+
+            // console.log(containerElement);
+            // console.log(`Container: ${i} created!`);
+
+            // Cerate rod elements in each container
+            for (let j = 0; j < gameMode.rodPerContainer; j++) {
+
+                ++rodNumber;
+
+                let rodElement = document.createElement("div");
+                rodElement.setAttribute("id", `rod${rodNumber}`);
+
+                if (rodNumber === totalRods) {
+                    rodElement.setAttribute("class", 'rod extra disable');
+                    rodElement.setAttribute("data-capacity", "1");
+                } else {
+                    rodElement.setAttribute("class", 'rod');
+                    rodElement.setAttribute("data-capacity", `${gameMode.rodCapacity}`);
+                }
+
+                rodElement.setAttribute("data-row", `${i + 1}`);
+                rodElement.setAttribute("data-column", `${j + 1}`);
+
+                // Create lid element for each rod
+                let lidElement = document.createElement("div");
+                lidElement.setAttribute("class", 'rod-lid');
+
+                //append lid to rod
+                rodElement.appendChild(lidElement);
+
+                //append rod to container;
+                containerElement.appendChild(rodElement);
+
+            }
+            console.log(containerElement);
+
+            //append each container to game-area div
+            gameArea.appendChild(containerElement);
+
+
+        }
+
     }
 
     /**
