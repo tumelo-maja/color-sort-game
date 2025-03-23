@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
         startGameButton.addEventListener('click', generateNewGame);
 
         // Add extra rod
-        extraRodButton.addEventListener('click',addExtraRod);
+        extraRodButton.addEventListener('click', addExtraRod);
 
         // //m get previous levels and scores
         initializeUserProgress();
@@ -654,8 +654,15 @@ document.addEventListener("DOMContentLoaded", function () {
         // point perRod 10
         // Maxnuts per rod 4
         // totalRodsToWin 3
+        // movesRemainingBonus 5 per move
+        // extraRodBonus 10 if not used
+        
+        const movesRemainingBonus = parseInt(movesNumberElement.textContent) * 5;
+        const extraRodBonus = extraRodButton.classList.contains('disable') ? 0 : 10;
+        console.log(`movesRemainingBonus: ${movesRemainingBonus}`);
+        console.log(`extraRodBonus: ${extraRodBonus}`);
 
-        return maxNutsPerRod * totalRodsToWin * pointsPerRod;
+        return (maxNutsPerRod * totalRodsToWin * pointsPerRod) + movesRemainingBonus + extraRodBonus;
     }
 
     /**
