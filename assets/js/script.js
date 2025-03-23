@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalRodsToWin = 3; // Rods completed to win
     const pointsPerRod = 10; //point factor for each completed rod
     let gameInitialState = {}; // Var to store game state
-    
+
 
     const nutColors = {
         // 'orange': '#f25029',
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function runOdometer(odometerInstance, finalValue) {
         setTimeout(() => {
             odometerInstance.update(finalValue);
-          }, 50);
+        }, 50);
     }
 
     /**
@@ -138,27 +138,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Get current Score
             const userScoreElement = document.getElementById('scoreValue');
-            const currentScore = parseInt(userScoreElement.innerText);
+            // const currentScore = parseInt(userScoreElement.innerText);
 
             // Get earned points
             pointsEarned = calculatePointsWon();
 
             setTimeout(() => {
-                let scoreOdometer =createOdometer(userScoreElement, userScore);
+                let scoreOdometer = createOdometer(userScoreElement, userScore);
                 userScore = userScore + pointsEarned;
                 runOdometer(scoreOdometer, userScore);
             }, 1000);
             console.log(`This ois the new score: ${userScore}`);
 
             let pointsDisplayElements = document.getElementById('pointsDisplay');
-            pointsDisplayElements.innerText=0;
+            pointsDisplayElements.innerText = 0;
 
+            // save user progress
+            saveUserProgress();
 
             generateNewGame();
         });
 
         // start game button
-        startGameButton.addEventListener('click',generateNewGame);
+        startGameButton.addEventListener('click', generateNewGame);
 
         //Run new game
         generateNewGame();
@@ -528,7 +530,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function updateMovesRemaining(moveType) {
         const gameMoves = document.getElementById('game-moves');
-        userMoves =movesNumberElement.textContent ;
+        userMoves = movesNumberElement.textContent;
 
         let currentBarwidth = (getCssStyleValue(movesBar, 'width') / getCssStyleValue(gameMoves, 'width')) * 100;
 
@@ -582,7 +584,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let pointsDisplayElements = document.getElementById('pointsDisplay');
 
         setTimeout(() => {
-            let pointsOdometer =createOdometer(pointsDisplayElements, 0);
+            let pointsOdometer = createOdometer(pointsDisplayElements, 0);
             runOdometer(pointsOdometer, pointsEarned);
         }, 2000);
 
@@ -794,10 +796,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Reset moves/ bar
         movesNumberElement.textContent = maximumMoves;
-        movesBar.style="";
+        movesBar.style = "";
 
         //reset ompleted rods
-        completedRods=0;
+        completedRods = 0;
 
 
 
@@ -819,19 +821,27 @@ document.addEventListener("DOMContentLoaded", function () {
      * Save user level and score to localStorage
      */
     function saveUserProgress() {
-        let levelValueElement = document.getElementById('level-value');
-        let userScoreElement = document.getElementById('scoreValue');
 
-        let userProgress = {
-            userLevel: levelValueElement.textContent,
-            userScore: userScoreElement.textContent,
-        };
-        console.log(userProgress);
+        setTimeout(() => {
 
-        let userProgressStringified = JSON.stringify(userProgress);
-        console.log(userProgressStringified);
+            let levelValueElement = document.getElementById('level-value');
+            // let userScoreElement = document.getElementById('scoreValue');
 
-        localStorage.setItem("userProgress",userProgressStringified);
+            let userProgress = {
+                userLevel: levelValueElement.textContent,
+                userScore: userScore,
+            };
+            // console.log(userProgress);
+            console.log(`This is my score: ${userScore}`);
+            console.log(userScore);
+
+            let userProgressStringified = JSON.stringify(userProgress);
+            console.log(userProgressStringified);
+
+            localStorage.setItem("userProgress", userProgressStringified);
+
+            console.log("Your progress is saved!!");
+        }, 3000);
 
     }
 })
