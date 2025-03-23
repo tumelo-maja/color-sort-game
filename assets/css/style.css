@@ -245,6 +245,9 @@ h3 {
   width: 40px;
   border: 2px solid green;
   align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-controls ul {
