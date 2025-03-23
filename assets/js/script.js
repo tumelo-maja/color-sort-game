@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let pointsEarned = 0;
     let completedRods = 0; // initialize as 0
-    const totalRodsToWin = 3; // Rods completed to win
     const pointsPerRod = 10; //point factor for each completed rod
     let gameInitialState = {}; // Var to store game state
 
@@ -88,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let movesNumberElement = document.getElementById('move-value');
     movesNumberElement.textContent = gameMode.maximumMoves;
     let userMoves = gameMode.maximumMoves;
+
+    const totalRodsToWin = Object.values(nutColors).length; // Rods completed to win
 
     let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
 
@@ -950,7 +951,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         //Loop to create containers
-        // tumelo
 
         // gameModeObject
         // const totalRods = gameMode.containers * gameMode.rodsInContainers;
