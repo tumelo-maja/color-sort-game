@@ -81,6 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // let gameMode = gameModeObject.medium;
     let gameMode = gameModeObject.hard;
 
+    // game area
+    const gameAreaElement = document.querySelector('.game-area');
+
+
     let movesNumberElement = document.getElementById('move-value');
     movesNumberElement.textContent = gameMode.maximumMoves;
     let userMoves = gameMode.maximumMoves;
@@ -861,8 +865,8 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function addNutsToRods() {
 
-        //clear current nuts 
-        clearNuts();
+        //clear and containers 
+        clearGameLayout();
         gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
 
             let currentRod = document.getElementById(rodItem.name);
@@ -928,15 +932,15 @@ document.addEventListener("DOMContentLoaded", function () {
      * Generate and place containers and rods into game area
      */
     function generateGameLayout() {
-        const gameArea = document.querySelector('.game-area');
-        console.log("gameArea");
-        console.log(gameArea);
+        // const gameAreaElement = document.querySelector('.game-area');
+        // console.log("gameAreaElement");
+        // console.log(gameAreaElement);
 
 
         //Loop to create containers
         // tumelo
 
-        gameModeObject
+        // gameModeObject
         // const totalRods = gameMode.containers * gameMode.rodsInContainers;
         const totalRods = gameMode.rodsInContainers.reduce((a, b) => a + b, 0);
 
@@ -983,7 +987,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(containerElement);
 
             //append each container to game-area div
-            gameArea.appendChild(containerElement);
+            gameAreaElement.appendChild(containerElement);
 
 
         }
@@ -1000,10 +1004,12 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Remove existing nuts before resetting or generating new game
      */
-    function clearNuts() {
-        let allRods = document.querySelectorAll('.rod');
-        console.log("allRods:");
-        console.log(allRods);
+    function clearGameLayout() {
+        // let allRods = document.querySelectorAll('.rod');
+        // console.log("allRods:");
+        // console.log(allRods);
+        let allContainers = gameAreaElement.querySelectorAll('.rod-container');
+
 
         // Reset moves/ bar
         movesNumberElement.textContent = gameMode.maximumMoves;
@@ -1012,20 +1018,22 @@ document.addEventListener("DOMContentLoaded", function () {
         //reset ompleted rods
         completedRods = 0;
 
-
-
-
-        for (let rod of allRods) {
-            //Remove .complete if any
-            let rodLid = rod.querySelector('.rod-lid');
-            rodLid.classList.remove('complete');
-            rod.addEventListener("click", rodClick);
-
-            let nutWrappers = rod.querySelectorAll('.nut-wrap');
-            for (let nutWrapper of nutWrappers) {
-                rod.removeChild(nutWrapper);
-            }
+        for (let container of allContainers) {
+            gameAreaElement.removeChild(container);
         }
+
+
+        // for (let rod of allRods) {
+        //     //Remove .complete if any
+        //     let rodLid = rod.querySelector('.rod-lid');
+        //     rodLid.classList.remove('complete');
+        //     rod.addEventListener("click", rodClick);
+
+        //     let nutWrappers = rod.querySelectorAll('.nut-wrap');
+        //     for (let nutWrapper of nutWrappers) {
+        //         rod.removeChild(nutWrapper);
+        //     }
+        // }
     }
 
     /**
