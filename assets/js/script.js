@@ -162,6 +162,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // start game button
         startGameButton.addEventListener('click', generateNewGame);
 
+        //m get previous levels and scores
+        getUserProgress();
+
         //Run new game
         generateNewGame();
     }
@@ -822,7 +825,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function saveUserProgress() {
 
-        // setTimeout(() => {
+        setTimeout(() => {
 
             let levelValueElement = document.getElementById('level-value');
             // let userScoreElement = document.getElementById('scoreValue');
@@ -841,11 +844,23 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("userProgress", JSON.stringify(userProgress));
 
             console.log("Your progress is saved!!");
-        // }, 3000);
+        }, 3000);
 
     }
 
     /**
-     * Retrieve 'suer
+     * Retrieve 'userProgress' if available on localStorage
      */
+    function getUserProgress() {
+
+        //check if there's anything there
+        if (localStorage) {
+            console.log("There's something there");
+            let userProgress = localStorage.getItem('userProgress');
+            console.log(userProgress);
+        } else {
+            console.log("Its empty! nothing saved")
+
+        }
+    }
 })
