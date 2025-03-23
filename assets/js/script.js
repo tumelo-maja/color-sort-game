@@ -644,9 +644,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkRodCompletion(targetRod) {
 
         const allNuts = targetRod.querySelectorAll('.nut');
+        const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
+
         console.log(allNuts)
 
-        if (allNuts.length === maxNutsPerRod) { //confirm if it has the max nuts possible
+        if (allNuts.length === rodCapacity) { //confirm if it has the max nuts possible
             const firstNutColor = allNuts[0].getAttribute('data-color');
             const nutSameColor = Array.from(allNuts).every(nut => nut.getAttribute('data-color') === firstNutColor);
 
