@@ -51,8 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const undoMoveButton = document.getElementById("undo-move"); //undo move
 
 
-    const startGameButton = document.getElementById("undo-move"); //undo move
+    const startGameButton = document.getElementById("undo-move"); // start game
 
+    const extraRodButton = document.getElementById("add-rod"); // add extra rod
     // Run game to load default game setup with level=1 and score=0
     runGame();
 
@@ -160,8 +161,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // start game button
         startGameButton.addEventListener('click', generateNewGame);
 
+        // Add extra rod
+        extraRodButton.addEventListener('click',addExtraRod);
+
         // //m get previous levels and scores
-        // getUserProgress();
         initializeUserProgress();
 
         //Run new game
@@ -197,6 +200,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function toggleHiddenItem() {
         const targetElement = document.querySelector('.game-instructions');
         targetElement.classList.toggle('hidden-item');
+    }
+
+    /**
+     * Activate the extra rod to be used
+     */
+    function addExtraRod() {
+        let extraRodElement = document.querySelector('.rod.extra');
+        extraRodElement.classList.remove('disable');
+        extraRodButton.classList.add('disable');
     }
 
     /**
