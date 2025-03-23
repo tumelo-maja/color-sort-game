@@ -21,8 +21,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const pointsPerRod = 10; //point factor for each completed rod
     let gameInitialState = {}; // Var to store game state
 
+    // nut colors
+    const nutColors = {
+        'yellow': '#f9b723',
+        'blue': '#26a1ee',
+        'whitesilver': '#c2b3d4',
+        'orange': '#f25029',
+        'green': '#8DCD3B',
+        'purple': '#911899',
+        'beige' : '#FFCFC1',
+        'pink' : '#FF90C8',
+        'red' : '#FF0C15',
+    }
+
     const gameModeObject = {
-        Easy: {
+        easy: {
             containers: 2,
             rodsInContainers: [3,3],
             rodCapacity: 4,
@@ -34,17 +47,25 @@ document.addEventListener("DOMContentLoaded", function () {
             nutCount: 12,
             maximumMoves: 10,
         },
+        medium: {
+            containers: 2,
+            rodsInContainers: [4,4],
+            rodCapacity: 4,
+            nutColors: {
+                'yellow': '#f9b723',
+                'blue': '#26a1ee',
+                'whitesilver': '#c2b3d4',
+                'green': '#8DCD3B',
+                'orange': '#f25029',
+            },
+            nutCount: 20,
+            maximumMoves: 16,
+        },
     };
 
     // Set game mode
-    let gameMode = gameModeObject.Easy;
-
-    const nutColors = {
-        // 'orange': '#f25029',
-        'yellow': '#f9b723',
-        'blue': '#26a1ee',
-        'whitesilver': '#c2b3d4',
-    }
+    // let gameMode = gameModeObject.easy;
+    let gameMode = gameModeObject.medium;
 
     let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
 
