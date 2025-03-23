@@ -769,8 +769,12 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateNutsWithColors() {
 
+        let gameMode = gameModeObject.Easy;
+
         // repeated nut colors for total nuts
-        let nutsColorArray = Array(maxNutsPerRod).fill(Object.keys(nutColors)).flat();
+        // let nutsColorArray = Array(maxNutsPerRod).fill(Object.keys(nutColors)).flat();
+        let nutsColorArray = Array(gameMode.rodCapacity).fill(Object.keys(gameMode.nutColors)).flat();
+
 
         // Shuffle colors
         for (let i = nutsColorArray.length - 1; i > 0; i--) {
@@ -782,11 +786,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // separate shuffled colors into rod containers
         let rodContainers = [];
-        for (let i = 0; i < maxNutsPerRod - 1; i++) {
+        
+        // for (let i = 0; i < maxNutsPerRod - 1; i++) {
+        for (let i = 0; i < gameMode.rodCapacity - 1; i++) {
 
             rodContainers.push({
                 name: "rod" + (i + 1),
-                nuts: nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod)
+                nuts: nutsColorArray.slice(i * gameMode.rodCapacity, (i * gameMode.rodCapacity) + gameMode.rodCapacity)
+                // nuts: nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod)
             });
         }
         return rodContainers;
