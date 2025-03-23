@@ -822,7 +822,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function saveUserProgress() {
 
-        setTimeout(() => {
+        // setTimeout(() => {
 
             let levelValueElement = document.getElementById('level-value');
             // let userScoreElement = document.getElementById('scoreValue');
@@ -832,16 +832,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 userScore: userScore,
             };
             // console.log(userProgress);
-            console.log(`This is my score: ${userScore}`);
-            console.log(userScore);
+            // console.log(`This is my score: ${userScore}`);
+            // console.log(userScore);
 
-            let userProgressStringified = JSON.stringify(userProgress);
-            console.log(userProgressStringified);
+            // let userProgressStringified = JSON.stringify(userProgress);
+            // console.log(userProgressStringified);
 
-            localStorage.setItem("userProgress", userProgressStringified);
+            localStorage.setItem("userProgress", JSON.stringify(userProgress));
 
             console.log("Your progress is saved!!");
-        }, 3000);
+        // }, 3000);
 
     }
+
+    /**
+     * Retrieve 'suer
+     */
 })
