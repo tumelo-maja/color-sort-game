@@ -22,11 +22,12 @@
 
     <div class="game-container">
         <div class="head-area">
-            <a aria-current="page" href="index.html" aria-label="Go to home page"  title="Go to home page"><i class="fa-solid fa-house"></i></a>
+            <a aria-current="page" href="index.html" aria-label="Go to home page" title="Go to home page"><i
+                    class="fa-solid fa-house"></i></a>
             <div class="game-score"><span id="scoreValue">0</span><i class="fa-solid fa-coins"></i></div>
             <a href="#helpModal" data-bs-toggle="modal" data-bs-target="#helpModal"
-                aria-label="Shows instructions on how to play (opens in a modal window)"  title="Learn how to play the game"><i
-                    class="fa-solid fa-question"></i>
+                aria-label="Shows instructions on how to play (opens in a modal window)"
+                title="Learn how to play the game"><i class="fa-solid fa-question"></i>
             </a>
         </div>
         <div class="game-stats">
@@ -67,7 +68,7 @@
 
             <ul>
                 <li>
-                    <button id="undo-move"  title="Undo the last move"><i class="material-symbols-outlined game-icons">
+                    <button id="undo-move" title="Undo the last move"><i class="material-symbols-outlined game-icons">
                             undo
                         </i></button>
                 </li>
@@ -77,12 +78,13 @@
                         </i></button>
                 </li>
                 <li>
-                    <button id="game-reset" title="Reset game" class="reset"><i class="material-symbols-outlined game-icons">
+                    <button id="game-reset" title="Reset game" class="reset"><i
+                            class="material-symbols-outlined game-icons">
                             settings_backup_restore
                         </i></button>
                 </li>
                 <li>
-                    <button id="new-game" title="Play a new game"><i  class="material-symbols-outlined game-icons">
+                    <button id="new-game" title="Play a new game"><i class="material-symbols-outlined game-icons">
                             splitscreen_vertical_add
                         </i></button>
                 </li>
@@ -125,6 +127,20 @@
                     </ul>
                     <p class="last-p">Let's have fun and stack those colors like a pro!</p>
 
+                    <p class="points">
+                        See how points are calculated <i class="fa-solid fa-hand-point-left fa-beat"></i>
+                    </p>
+
+                    <div class="points hidden-item1">
+                        <p>You get:</p>
+                        <ul>
+                            <li><i class="fa-solid fa-coins"></i><strong>10 points</strong> for each completed bolt</li>
+                            <li><i class="fa-solid fa-coins"></i><strong>1 point</strong> for every nut placed</li>
+                            <li><i class="fa-solid fa-coins"></i><strong>10 point bonus</strong> if you didn't use the extra bolt</li>
+                            <li><i class="fa-solid fa-coins"></i><strong>5 points</strong> for every move remaining at the end</li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -154,7 +170,7 @@
             <p>Your colorful adventure was a blast</p>
             <p>You scored <span id="pointsDisplay">0</span> points!</p>
             <div class="modal-buttons">
-                <button id="modal-continue-game"  title="Play another game">Continue</button>
+                <button id="modal-continue-game" title="Play another game">Continue</button>
             </div>
 
         </div>
