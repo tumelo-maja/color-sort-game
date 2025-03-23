@@ -36,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     };
 
+    // Set game mode
+    let gameMode = gameModeObject.Easy;
 
     const nutColors = {
         // 'orange': '#f25029',
@@ -777,8 +779,6 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateNutsWithColors() {
 
-        let gameMode = gameModeObject.Easy;
-
         // repeated nut colors for total nuts
         // let nutsColorArray = Array(maxNutsPerRod).fill(Object.keys(nutColors)).flat();
         let nutsColorArray = Array(gameMode.rodCapacity).fill(Object.keys(gameMode.nutColors)).flat();
@@ -882,8 +882,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const gameArea = document.querySelector('.game-area');
         console.log("gameArea");
         console.log(gameArea);
-
-        let gameMode = gameModeObject.Easy;
 
 
         //Loop to create containers
