@@ -21,6 +21,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const pointsPerRod = 10; //point factor for each completed rod
     let gameInitialState = {}; // Var to store game state
 
+    const gameModeObject = {
+        Easy: {
+            rodContainers: 2,
+            rodPerContainer: 3,
+            rodCapacity: 4,
+            nutColors: [],
+            nutCount: 12,
+            maximumMoves: 10,
+        },
+    };
+
 
     const nutColors = {
         // 'orange': '#f25029',
@@ -163,8 +174,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         pointDescriptionElement.addEventListener('click', function (e) {
-            
-            const pointDescriptionExpanded = document.querySelector('.points-expanded'); 
+
+            const pointDescriptionExpanded = document.querySelector('.points-expanded');
             pointDescriptionExpanded.classList.toggle('hidden-item');
 
             // points calculations
