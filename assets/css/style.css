@@ -451,6 +451,42 @@ h3 {
   opacity: 0.7; 
 }
 
+/* Points caclulations */
+.points p {
+  margin: 5px;
+}
+
+.points ul {
+  margin: 5px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.points li {
+  margin: 0 5px 5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.points .fa-coins {
+  font-size: 20px;
+  margin-right: 8px;
+  color: wheat;
+}
+
+.points .fa-hand-point-left {
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.points strong {
+  margin-right: 5px;
+}
+
+.points.expanded p {
+  margin: 5px;
+}
 
 /*--- Keyframes for raised nut ---*/
 /*--- Movement using transform ---*/
