@@ -56,11 +56,30 @@ document.addEventListener("DOMContentLoaded", function () {
             nutCount: 20,
             maximumMoves: 16,
         },
+        hard: {
+            containers: 3,
+            rodsInContainers: [4, 4, 4],
+            rodCapacity: 4,
+            nutColors: {
+                'yellow': '#f9b723',
+                'blue': '#26a1ee',
+                'whitesilver': '#c2b3d4',
+                'orange': '#f25029',
+                'green': '#8DCD3B',
+                'purple': '#911899',
+                'beige': '#FFCFC1',
+                'pink': '#FF90C8',
+                'red': '#FF0C15',
+            },
+            nutCount: 20,
+            maximumMoves: 42,
+        },
     };
 
     // Set game mode
     // let gameMode = gameModeObject.easy;
-    let gameMode = gameModeObject.medium;
+    // let gameMode = gameModeObject.medium;
+    let gameMode = gameModeObject.hard;
 
     let movesNumberElement = document.getElementById('move-value');
     movesNumberElement.textContent = gameMode.maximumMoves;
