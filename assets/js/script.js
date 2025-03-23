@@ -385,7 +385,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function setRaiseNutTransformY(nutObject, rodChildrenCount) {
 
         const anyNutMargin = getCssStyleValue(anyNut, 'margin-bottom');
-        const availableSpace = (maxNutsPerRod - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
+        const rodObject = nutObject.parentElement.parentElement;
+        const rodCapacity = parseInt(nutObject.parentElement.parentElement.getAttribute('data-capacity'));
+
+        const availableSpace = (rodCapacity - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
         const raiseValue = -availableSpace - verticalStep;
 
         console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`)
@@ -597,6 +600,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get raised nut
         const raisedNutWrapper = raisedNut.parentElement;
         const sourceRod = raisedNutWrapper.parentElement;
+        const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
+
 
         if (moveType === 'reverse') {
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
@@ -615,7 +620,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // 2) Check if the target rod has space
-            const isSpaceAvailable = rodChildrenCount < maxNutsPerRod;
+            const isSpaceAvailable = rodChildrenCount < rodCapacity;
             if (!isSpaceAvailable) {
                 console.log("There's no space in target; Lowering Nut")
                 lowerNut(raisedNut);
@@ -738,7 +743,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`movesRemainingBonus: ${movesRemainingBonus}`);
         console.log(`extraRodBonus: ${extraRodBonus}`);
 
-        return (maxNutsPerRod * totalRodsToWin * pointsPerRod) + movesRemainingBonus + extraRodBonus;
+        return (gameMode.rodCapacity * totalRodsToWin * pointsPerRod) + movesRemainingBonus + extraRodBonus;
     }
 
     /**
