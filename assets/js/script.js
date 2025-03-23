@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameInitialState = {}; // Var to store game state
 
     // nut colors
-    const nutColors = {
+    const nutColorsAll = {
         'yellow': '#f9b723',
         'blue': '#26a1ee',
         'whitesilver': '#c2b3d4',
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'whitesilver': '#c2b3d4',
             },
             nutCount: 12,
-            maximumMoves: 10,
+            maximumMoves: 15,
         },
         medium: {
             containers: 2,
@@ -75,10 +75,15 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     };
 
+    let difficultyMode='medium';
+    const defaultDifficulty ='easy';
     // Set game mode
-    let gameMode = gameModeObject.easy;
+    let gameMode = gameModeObject[difficultyMode];
     // let gameMode = gameModeObject.medium;
     // let gameMode = gameModeObject.hard;
+
+    // localStorage.removeItem('userProgress');
+
 
     // game area
     const gameAreaElement = document.querySelector('.game-area');
@@ -88,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     movesNumberElement.textContent = gameMode.maximumMoves;
     let userMoves = gameMode.maximumMoves;
 
-    const totalRodsToWin = Object.values(nutColors).length; // Rods completed to win
+    const totalRodsToWin = Object.values(gameMode.nutColors).length; // Rods completed to win
 
     let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
 
@@ -229,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
             pointsDisplayElements.innerText = 0;
 
             // save user progress
-            saveUserProgress();
+            saveUserProgress(difficultyMode);
 
             generateNewGame();
         });
@@ -249,10 +254,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add extra rod
         extraRodButton.addEventListener('click', addExtraRod);
 
-        // //m get previous levels and scores
+        // get previous levels and scores
         initializeUserProgress();
 
-        //Run new game
+        // Run new game
         generateNewGame();
     }
 
@@ -266,14 +271,20 @@ document.addEventListener("DOMContentLoaded", function () {
         let userProgress = getUserProgress();
         if (userProgress) {
             userScoreElement.innerText = userProgress.userScore;
-            levelValueElement.innerText = userProgress.userLevel;
+            levelValueElement.innerText = userProgress.currentLevel;
+            difficultyMode =userProgress.difficultyMode;
+
+            // userProgress[difficultyMode] = parseInt(levelValueElement.textContent);
+            // userProgress.currentDifficulty = difficultyMode;
+            // userProgress.currentLevel = parseInt(levelValueElement.textContent);
+
 
         } else {
             userScoreElement.innerText = userScore;
             levelValueElement.innerText = userLevel;
 
             //save to local storage
-            saveUserProgress();
+            saveUserProgress(defaultDifficulty);
 
         }
 
@@ -714,8 +725,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let ticks = 150;
 
         setTimeout(() => {
-            confettiAnimation(leftStartX, startY, Object.values(nutColors), particleSize, angle = 45, spread = spread, startVelocity = startVelocity, ticks = ticks);
-            confettiAnimation(rightStartX, startY, nutColors[0], particleSize, angle = 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
+            confettiAnimation(leftStartX, startY, Object.values(nutColorsAll), particleSize, angle = 45, spread = spread, startVelocity = startVelocity, ticks = ticks);
+            confettiAnimation(rightStartX, startY, Object.values(nutColorsAll), particleSize, angle = 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
         }, 500);
 
         pointsEarned = calculatePointsWon();
@@ -780,7 +791,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // calcluate relative positon of the rod - center / convert ro ratio
                 const startX = (targetRodRect.left + targetRodRect.width / 2) / window.innerWidth;
                 const startY = (targetRodRect.top - 10) / window.innerHeight;
-                const nutColorHex = [nutColors[firstNutColor]];
+                const nutColorHex = [gameMode.nutColors[firstNutColor]];
 
                 confettiAnimation(startX, startY, [nutColorHex], 0.5);
 
@@ -1051,7 +1062,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Save user level and score to localStorage
      */
-    function saveUserProgress() {
+    function saveUserProgress(difficultyMode) {
 
         setTimeout(() => {
 
@@ -1059,10 +1070,15 @@ document.addEventListener("DOMContentLoaded", function () {
             // let userScoreElement = document.getElementById('scoreValue');
 
             let userProgress = {
-                userLevel: levelValueElement.textContent,
                 userScore: userScore,
             };
-            // console.log(userProgress);
+
+            userProgress[difficultyMode] = parseInt(levelValueElement.textContent);
+            userProgress.currentDifficulty = difficultyMode;
+            userProgress.currentLevel = parseInt(levelValueElement.textContent);
+
+
+            console.log(userProgress);
             // console.log(`This is my score: ${userScore}`);
             // console.log(userScore);
 
