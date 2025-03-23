@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const gameModeObject = {
         Easy: {
-            rodContainers: 2,
-            rodPerContainer: 3,
+            containers: 2,
+            rodsInContainers: [3,3],
             rodCapacity: 4,
             nutColors: {
                 'yellow': '#f9b723',
@@ -793,18 +793,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // separate shuffled colors into rod containers
-        let rodContainers = [];
+        let containers = [];
 
         // for (let i = 0; i < maxNutsPerRod - 1; i++) {
         for (let i = 0; i < gameMode.rodCapacity - 1; i++) {
 
-            rodContainers.push({
+            containers.push({
                 name: "rod" + (i + 1),
                 nuts: nutsColorArray.slice(i * gameMode.rodCapacity, (i * gameMode.rodCapacity) + gameMode.rodCapacity)
                 // nuts: nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod)
             });
         }
-        return rodContainers;
+        return containers;
     }
 
     /**
@@ -888,19 +888,21 @@ document.addEventListener("DOMContentLoaded", function () {
         // tumelo
 
         gameModeObject
-        const totalRods = gameMode.rodContainers * gameMode.rodPerContainer;
+        // const totalRods = gameMode.containers * gameMode.rodsInContainers;
+        const totalRods = gameMode.rodsInContainers.reduce((a, b) => a + b, 0);
 
         let rodNumber = 0;
-        for (let i = 0; i < gameMode.rodContainers; i++) {
+        for (let i = 0; i < gameMode.containers; i++) {
 
             let containerElement = document.createElement("div");
             containerElement.setAttribute("class", 'rod-container');
 
             // console.log(containerElement);
             // console.log(`Container: ${i} created!`);
+            let rodsInContainer = gameMode.rodsInContainers[i];
 
             // Cerate rod elements in each container
-            for (let j = 0; j < gameMode.rodPerContainer; j++) {
+            for (let j = 0; j < rodsInContainer; j++) {
 
                 ++rodNumber;
 
