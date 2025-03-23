@@ -12,10 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     movesNumberElement.textContent = maximumMoves;
     let userMoves = maximumMoves;
     let userScore = 0;
+    let userLevel = 1;
     let movesBar = document.querySelector('.move-fill');
-
-
-
 
     let pointsEarned = 0;
     let completedRods = 0; // initialize as 0
@@ -162,11 +160,35 @@ document.addEventListener("DOMContentLoaded", function () {
         // start game button
         startGameButton.addEventListener('click', generateNewGame);
 
-        //m get previous levels and scores
-        getUserProgress();
+        // //m get previous levels and scores
+        // getUserProgress();
+        initializeUserProgress();
 
         //Run new game
         generateNewGame();
+    }
+
+    /**
+     * initialize levels and scores
+     */
+    function initializeUserProgress() {
+        let levelValueElement = document.getElementById('level-value');
+        let userScoreElement = document.getElementById('scoreValue');
+
+        let userProgress = getUserProgress();
+        if (userProgress) {
+            userScoreElement.innerText = userProgress.userScore;
+            levelValueElement.innerText = userProgress.userLevel;
+
+        } else {
+            userScoreElement.innerText = userScore;
+            levelValueElement.innerText = userLevel;
+
+            //save to local storage
+            saveUserProgress();
+
+        }
+
     }
 
     /**
@@ -598,7 +620,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function gameLevelUp() {
         // level-value"
-        const levelValueElement = document.getElementById('level-value');
+        let levelValueElement = document.getElementById('level-value');
         let levelValue = parseInt(levelValueElement.innerText);
         ++levelValue;
 
