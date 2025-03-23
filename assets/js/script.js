@@ -858,9 +858,13 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("There's something there");
             let userProgress = localStorage.getItem('userProgress');
             console.log(userProgress);
+
+            return JSON.parse(userProgress);
+
         } else {
             console.log("Its empty! nothing saved")
-
+            return null
         }
+
     }
 })
