@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let availableSpace = rodCapacity - rodChildrenCount;
             console.log(`This rod only space for ${availableSpace} nuts`);
 
-            while ((currentNutColor === neighbourNutColor) && (nutsToMove.length<availableSpace)) {
+            while ((currentNutColor === neighbourNutColor) && (nutsToMove.length < availableSpace)) {
 
                 //append wrapper to array
                 nutWrappersToMove.unshift(neighbourNutWrapper);
@@ -459,6 +459,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function runAnimation(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
 
+        const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
         setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount); // Set the transform positions for the animation motion
 
         //Add animation class
@@ -485,15 +486,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     nut.parentElement.removeEventListener("animationend", handler);
 
-                    // check the rod completion
-                    checkRodCompletion(targetRod);
+                    // only check for full rods
+                    if (rodCapacity !== 1) {
+                        // check the rod completion
+                        checkRodCompletion(targetRod);
 
-                    //check game completion
-                    let isGameComplete = checkGameCompletion();
+                        //check game completion
+                        let isGameComplete = checkGameCompletion();
 
-                    if (!isGameComplete) {
-                        if (userMoves === 0) {
-                            gameOverLoss();
+                        if (!isGameComplete) {
+                            if (userMoves === 0) {
+                                gameOverLoss();
+                            }
                         }
                     }
                 });
