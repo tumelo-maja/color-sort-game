@@ -76,9 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Set game mode
-    // let gameMode = gameModeObject.easy;
+    let gameMode = gameModeObject.easy;
     // let gameMode = gameModeObject.medium;
-    let gameMode = gameModeObject.hard;
+    // let gameMode = gameModeObject.hard;
 
     // game area
     const gameAreaElement = document.querySelector('.game-area');
