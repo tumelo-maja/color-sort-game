@@ -26,7 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
             rodContainers: 2,
             rodPerContainer: 3,
             rodCapacity: 4,
-            nutColors: [],
+            nutColors: {
+                'yellow': '#f9b723',
+                'blue': '#26a1ee',
+                'whitesilver': '#c2b3d4',
+            },
             nutCount: 12,
             maximumMoves: 10,
         },
@@ -45,6 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Intialize Get CSS style object for nut element 
     let anyNut = null;
     let nutStyle = null;
+
+    
+    const testButton = document.getElementById("test-button");
+    testButton.addEventListener('click',generateGameLayout);
 
     // handle modal elements - Game Loss
     const modalRetryGameButton = document.getElementById("game-retry");
@@ -862,6 +870,13 @@ document.addEventListener("DOMContentLoaded", function () {
         nutStyle = window.getComputedStyle(anyNut);
         console.log("anyNut has been reset")
 
+    }
+
+    /**
+     * Generate and place containers and rods into game area
+     */
+    function generateGameLayout() {
+        const gameArea = document.querySelector('.game-area');
     }
 
     /**
