@@ -126,6 +126,16 @@ document.addEventListener("DOMContentLoaded", function () {
     runGame();
 
     /**
+     * Function to add eventlisteners to rod elements
+     */
+    function addRodEventListeners() {
+        const rods = document.querySelectorAll(".rod");
+        for (let rod of rods) {
+            rod.addEventListener('click', rodClick);
+        }
+    }
+
+    /**
      * Create an Odometer instance to create number counter animations
      */
     function createOdometer(object, startValue) {
@@ -164,10 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * initialize the game play
      */
     function runGame() {
-        const rods = document.querySelectorAll(".rod");
-        for (let rod of rods) {
-            rod.addEventListener('click', rodClick);
-        }
+        addRodEventListeners();
 
         const playInstructionElement = document.querySelector('.play-instructions');
         console.log(playInstructionElement);
@@ -871,6 +878,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //generate game Layout
         generateGameLayout();
 
+        addRodEventListeners();
 
         gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
 
