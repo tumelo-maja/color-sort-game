@@ -867,6 +867,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //clear and containers 
         clearGameLayout();
+
+        //generate game Layout
+        generateGameLayout();
+
+
         gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
 
             let currentRod = document.getElementById(rodItem.name);
@@ -883,7 +888,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function createNutsAndWrappers(nutsArray) {
 
         let nutsAndWrappers = [];
-        //Loop throught nuts arayy
+        //Loop througth nuts arayy
         nutsArray.forEach((nutColor, index) => {
 
             let nutElement = document.createElement("div");
@@ -907,8 +912,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateNewGame() {
 
-        //generate game Layout
-        generateGameLayout();
+
 
         // Save game sate for use in reset
         gameInitialState['gameRodContainers'] = generateNutsWithColors();
