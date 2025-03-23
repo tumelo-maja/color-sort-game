@@ -101,12 +101,12 @@ Other goals:
   * Users earn points for each completed level and progress to the next level upon completion
   After completing a level, a congratulation modal appears and ask user to confirm if the want to continue playing. 
   * Users can see their current level and accumulated points.
-  * Users get bonus points for the remaining moves at the end of the game
+  * Users get bonus points for the remaining moves at the end of the game and for not using extra rod
 
   - Tasks:
   * Implement an HTML and css-styled container to display points and level.
   * Implement JavaScript code add score and update the display element as user progresses through levels
-  * Ensure the bonuses are included for completed levels with remaining moves
+  * Ensure the bonuses are included for completed levels with remaining moves and for not using extra rod
 
 
 - **Undo Last Move (should-have)**

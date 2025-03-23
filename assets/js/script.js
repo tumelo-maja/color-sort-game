@@ -137,7 +137,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Get current Score
             const userScoreElement = document.getElementById('scoreValue');
-            // const currentScore = parseInt(userScoreElement.innerText);
+            const currentScore = parseInt(userScoreElement.innerText);
+            console.log(`currentScore {currentScore}`)
 
             // Get earned points
             pointsEarned = calculatePointsWon();
@@ -147,7 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 userScore = userScore + pointsEarned;
                 runOdometer(scoreOdometer, userScore);
             }, 1000);
-            console.log(`This ois the new score: ${userScore}`);
 
             let pointsDisplayElements = document.getElementById('pointsDisplay');
             pointsDisplayElements.innerText = 0;
@@ -656,7 +656,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // totalRodsToWin 3
         // movesRemainingBonus 5 per move
         // extraRodBonus 10 if not used
-        
+
         const movesRemainingBonus = parseInt(movesNumberElement.textContent) * 5;
         const extraRodBonus = extraRodButton.classList.contains('disable') ? 0 : 10;
         console.log(`movesRemainingBonus: ${movesRemainingBonus}`);
