@@ -6,11 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const verticalStep = 25;
     const horizontalStep = 42
 
-    const maximumMoves = 10;
-    const widthIncrements = Math.round(100 / maximumMoves, 2);
-    let movesNumberElement = document.getElementById('move-value');
-    movesNumberElement.textContent = maximumMoves;
-    let userMoves = maximumMoves;
     let userScore = 0;
     let userLevel = 1;
     let movesBar = document.querySelector('.move-fill');
@@ -66,6 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set game mode
     // let gameMode = gameModeObject.easy;
     let gameMode = gameModeObject.medium;
+
+    let movesNumberElement = document.getElementById('move-value');
+    movesNumberElement.textContent = gameMode.maximumMoves;
+    let userMoves = gameMode.maximumMoves;
 
     let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
 
@@ -630,6 +629,9 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function updateMovesRemaining(moveType) {
         const gameMoves = document.getElementById('game-moves');
+        // const maximumMoves = 10;
+        const widthIncrements = Math.round(100 / gameMode.maximumMoves, 2);
+
         userMoves = movesNumberElement.textContent;
 
         let currentBarwidth = (getCssStyleValue(movesBar, 'width') / getCssStyleValue(gameMoves, 'width')) * 100;
@@ -980,7 +982,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(allRods);
 
         // Reset moves/ bar
-        movesNumberElement.textContent = maximumMoves;
+        movesNumberElement.textContent = gameMode.maximumMoves;
         movesBar.style = "";
 
         //reset ompleted rods
