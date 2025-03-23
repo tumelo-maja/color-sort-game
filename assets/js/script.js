@@ -51,9 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const undoMoveButton = document.getElementById("undo-move"); //undo move
 
 
-    const startGameButton = document.getElementById("undo-move"); // start game
+    // const startGameButton = document.getElementById("start-button"); // start game
 
     const extraRodButton = document.getElementById("add-rod"); // add extra rod
+
+    const pointDescriptionElement = document.getElementById("points-head"); // points calculations
+
+
     // Run game to load default game setup with level=1 and score=0
     runGame();
 
@@ -158,8 +162,17 @@ document.addEventListener("DOMContentLoaded", function () {
             generateNewGame();
         });
 
+        pointDescriptionElement.addEventListener('click', function (e) {
+            
+            const pointDescriptionExpanded = document.querySelector('.points-expanded'); 
+            pointDescriptionExpanded.classList.toggle('hidden-item');
+
+            // points calculations
+
+        });
+
         // start game button
-        startGameButton.addEventListener('click', generateNewGame);
+        // startGameButton.addEventListener('click', generateNewGame);
 
         // Add extra rod
         extraRodButton.addEventListener('click', addExtraRod);

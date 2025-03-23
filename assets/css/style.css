@@ -452,35 +452,36 @@ h3 {
 }
 
 /* Points caclulations */
-.points p {
+#points-head {
   margin: 5px;
+  cursor: pointer;
 }
 
-.points ul {
+.points-expanded ul {
   margin: 5px;
   list-style-type: none;
   padding-left: 0;
 }
 
-.points li {
+.points-expanded li {
   margin: 0 5px 5px;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
 }
 
-.points .fa-coins {
+.points-expanded .fa-coins {
   font-size: 20px;
   margin-right: 8px;
   color: wheat;
 }
 
-.points .fa-hand-point-left {
+.points-expanded .fa-hand-point-left {
   font-size: 20px;
   margin-left: 5px;
 }
 
-.points strong {
+.points-expanded strong {
   margin-right: 5px;
 }
 
