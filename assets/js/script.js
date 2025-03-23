@@ -234,7 +234,11 @@ document.addEventListener("DOMContentLoaded", function () {
             let nutWrappersToMove = [currentNutWrapper];
             let nutsToMove = [currentNut];
 
-            while (currentNutColor === neighbourNutColor) {
+            const rodCapacity = parseInt(rodElement.getAttribute('data-capacity'));
+            let availableSpace = rodCapacity - rodChildrenCount;
+            console.log(`This rod only space for ${availableSpace} nuts`);
+
+            while ((currentNutColor === neighbourNutColor) && (nutsToMove.length<availableSpace)) {
 
                 //append wrapper to array
                 nutWrappersToMove.unshift(neighbourNutWrapper);
@@ -268,8 +272,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
         } else {
-            console.log(nutObjectTop);
-            console.log(`neighbourNut: ${nutObjectTop.nextElementSibling}`);
+            // console.log(nutObjectTop);
+            // console.log(`neighbourNut: ${nutObjectTop.nextElementSibling}`);
 
             if (rodChildrenCount) {
                 raiseNut(nutObjectTop, rodChildrenCount);
@@ -284,8 +288,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setRaiseNutTransformY(nutObject, rodChildrenCount);
         nutObject.classList.add("raise-nut");
-        console.log(`raiseNut: ${anyNut.offsetHeight}`)
-        console.log(anyNut);
+        // console.log(`raiseNut: ${anyNut.offsetHeight}`)
+        // console.log(anyNut);
 
     }
 
