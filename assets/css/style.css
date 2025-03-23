@@ -4,6 +4,45 @@
   --yellow: #f9b723;
   --blue: #26a1ee;
   --whitesilver: #c2b3d4;
+  --green: #8DCD3B;
+  --purple: #911899;
+  --beige: #FFCFC1;
+  --pink: #FF90C8;
+  --red: #FF0C15;
+}
+
+/* Nut colors*/
+.orange {
+  background-color: var(--orange);
+}
+.yellow {
+  background-color: var(--yellow);
+}
+.blue {
+  background-color: var(--blue);
+}
+.whitesilver {
+  background-color: var(--whitesilver);
+}
+
+.green {
+  background-color: var(--green);
+}
+
+.purple {
+  background-color: var(--purple);
+}
+
+.beige {
+  background-color: var(--beige);
+}
+
+.pink {
+  background-color: var(--pink);
+}
+
+.red {
+  background-color: var(--red);
 }
 
 body {
@@ -196,20 +235,6 @@ h3 {
   cursor: pointer;
   transition: transform 0.25s ease-in;
   margin: 0 21px 3px;
-}
-
-/* Nut colors*/
-.orange {
-  background-color: var(--orange);
-}
-.yellow {
-  background-color: var(--yellow);
-}
-.blue {
-  background-color: var(--blue);
-}
-.whitesilver {
-  background-color: var(--whitesilver);
 }
 
 .raise-nut {

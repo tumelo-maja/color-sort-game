@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // Global variables.
-    const maxNutsPerRod = 4;
+    // const maxNutsPerRod = 4;
     const verticalStep = 25;
     const horizontalStep = 42
 
@@ -29,15 +29,15 @@ document.addEventListener("DOMContentLoaded", function () {
         'orange': '#f25029',
         'green': '#8DCD3B',
         'purple': '#911899',
-        'beige' : '#FFCFC1',
-        'pink' : '#FF90C8',
-        'red' : '#FF0C15',
+        'beige': '#FFCFC1',
+        'pink': '#FF90C8',
+        'red': '#FF0C15',
     }
 
     const gameModeObject = {
         easy: {
             containers: 2,
-            rodsInContainers: [3,3],
+            rodsInContainers: [3, 3],
             rodCapacity: 4,
             nutColors: {
                 'yellow': '#f9b723',
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         medium: {
             containers: 2,
-            rodsInContainers: [4,4],
+            rodsInContainers: [4, 4],
             rodCapacity: 4,
             nutColors: {
                 'yellow': '#f9b723',
@@ -803,7 +803,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // repeated nut colors for total nuts
         // let nutsColorArray = Array(maxNutsPerRod).fill(Object.keys(nutColors)).flat();
         let nutsColorArray = Array(gameMode.rodCapacity).fill(Object.keys(gameMode.nutColors)).flat();
-
+        console.log(`nutsColorArray ${nutsColorArray.length}`);
+        console.log(nutsColorArray);
 
         // Shuffle colors
         for (let i = nutsColorArray.length - 1; i > 0; i--) {
@@ -817,7 +818,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let containers = [];
 
         // for (let i = 0; i < maxNutsPerRod - 1; i++) {
-        for (let i = 0; i < gameMode.rodCapacity - 1; i++) {
+        // for (let i = 0; i < gameMode.rodCapacity - 1; i++) {
+        for (let i = 0; i < Object.keys(gameMode.nutColors).length; i++) {
 
             containers.push({
                 name: "rod" + (i + 1),
