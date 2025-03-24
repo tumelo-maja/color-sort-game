@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let userLevel = 1;
     let movesBar = document.querySelector('.move-fill');
 
-    let pointsEarned = 0;
     let completedRods = 0; // initialize as 0
     const pointsPerRod = 10; //point factor for each completed rod
     let gameInitialState = {}; // Var to store game state
@@ -230,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(`currentScore {currentScore}`)
 
             // Get earned points
-            pointsEarned = calculatePointsWon();
+            let pointsEarned = calculatePointsWon();
 
             setTimeout(() => {
                 let scoreOdometer = createOdometer(userScoreElement, userScore);
@@ -740,15 +739,10 @@ document.addEventListener("DOMContentLoaded", function () {
             confettiAnimation(rightStartX, startY, Object.values(nutColorsAll), particleSize, angle = 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
         }, 500);
 
-        pointsEarned = calculatePointsWon();
-        // let pointsDisplayElement = document.getElementById('pointsDisplay');
+        let pointsEarned = calculatePointsWon();
 
         setTimeout(() => {
-            // let pointsOdometer = createOdometer(pointsDisplayElement, 0);
-            // runOdometer(pointsOdometer, pointsEarned);
             pointsDisplayElement.innerHTML =pointsEarned;
-            console.log(`Yeeeeeeeeeeeey pointsEarned: ${pointsEarned}`)
-
         }, 2000);
 
     }
