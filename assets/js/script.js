@@ -861,16 +861,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let nutsColorArray = Array(gameMode.rodCapacity).fill(Object.keys(gameMode.nutColors)).flat();
 
         // Shuffle colors
-        function shuffleColors(colorArray) {
-            for (let i = colorArray.length - 1; i > 0; i--) {
-                let j = Math.floor(Math.random() * (i + 1));
-                let temp = colorArray[i];
-                colorArray[i] = colorArray[j];
-                colorArray[j] = temp;
-            }
-            return colorArray;
-        }
-
         shuffleColors(nutsColorArray);
 
 
@@ -896,6 +886,20 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
         return containers;
+    }
+
+    /**
+     * Shuffle the nut colors to get a random mix for the game
+     */
+    function shuffleColors(colorArray) {
+        let shuffledColorArray= colorArray;
+        for (let i = shuffledColorArray.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let tempColor = shuffledColorArray[i];
+            shuffledColorArray[i] = shuffledColorArray[j];
+            shuffledColorArray[j] = tempColor;
+        }
+        return shuffledColorArray;
     }
 
     /**
