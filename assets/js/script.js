@@ -291,8 +291,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let userProgress = getUserProgress();
         if (userProgress) {
             userScoreElement.innerText = userProgress.userScore;
-            levelValueElement.innerText = userProgress.currentLevel;
             difficultyMode = userProgress.currentDifficulty;
+            levelValueElement.innerText = userProgress[difficultyMode];
             gameMode = gameModeObject[difficultyMode];
 
             console.log("We tried loading");
