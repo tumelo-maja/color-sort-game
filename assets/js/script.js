@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const verticalStep = 25;
     const horizontalStep = 42
 
-    let userScore = 0;
-    let userLevel = 1;
+    // let userScore = 0;
+    // let userLevel = 1;
     let movesBar = document.querySelector('.move-fill');
 
     let completedRods = 0; // initialize as 0
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // let gameMode = gameModeObject.medium;
     // let gameMode = gameModeObject.hard;
 
-    // localStorage.removeItem('userProgress');
+    localStorage.removeItem('userProgress');
 
 
     // game area
@@ -92,9 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Intialize variables
     let userMoves = 0;
     let totalRodsToWin = 0;
-    let lastMoveHistory = {}; 
+    let lastMoveHistory = {};
     let anyNut = null;
     let nutStyle = null;
+    let userProgress = {};
+    currentScore = 0;
 
     // handle modal elements - Game Loss
     const modalRetryGameButton = document.getElementById("game-retry");
@@ -112,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const undoMoveButton = document.getElementById("undo-move"); //undo move
 
     // difficultyMode
-    const difficultyModeSelect = document.getElementById("difficultyMode"); 
+    const difficultyModeSelect = document.getElementById("difficultyMode");
     console.log(difficultyModeSelect);
 
     // const startGameButton = document.getElementById("start-button"); // start game
@@ -219,17 +221,23 @@ document.addEventListener("DOMContentLoaded", function () {
             gameLevelUp(); // Progress user level up
 
             //Get current score and earned points
-            let currentScore = getOdometerValue(userScoreElement);
+            currentScore = getOdometerValue(userScoreElement);
             let pointsEarned = getOdometerValue(pointsDisplayElement);
+            let newScore = currentScore + pointsEarned;
 
             setTimeout(() => {
-                userScoreElement.innerHTML = currentScore + pointsEarned;
+                userScoreElement.innerHTML = newScore;
+                // save user progress
+                saveUserProgress(difficultyMode,newScore);
             }, 1000);
+
+            console.log("userScoreElement After continue")
+            console.log(newScore)
+            console.log(userScoreElement.innerHTML)
 
             restoreDisplayPointsDigits();
 
-            // save user progress
-            saveUserProgress(difficultyMode);
+
 
             generateNewGame();
         });
@@ -244,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // startGameButton.addEventListener('click', generateNewGame);
 
         // difficultyModeSelect
-        difficultyModeSelect.addEventListener('change', function() {
+        difficultyModeSelect.addEventListener('change', function () {
 
             difficultyMode = this.value;
             gameMode = gameModeObject[difficultyMode];
@@ -325,7 +333,6 @@ document.addEventListener("DOMContentLoaded", function () {
             gameMode = gameModeObject[defaultDifficulty];
 
             //save to local storage
-            // saveUserProgress(defaultDifficulty);
             createUserProgress();
 
         }
@@ -901,7 +908,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Shuffle the nut colors to get a random mix for the game
      */
     function shuffleColors(colorArray) {
-        let shuffledColorArray= colorArray;
+        let shuffledColorArray = colorArray;
         for (let i = shuffledColorArray.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             let tempColor = shuffledColorArray[i];
@@ -953,7 +960,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         movesNumberElement.textContent = gameMode.maximumMoves;
         totalRodsToWin = Object.values(gameMode.nutColors).length;
-    
+
 
     }
 
@@ -1090,14 +1097,19 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Save user level and score to localStorage
      */
-    function saveUserProgress(difficultyMode) {
+    function saveUserProgress(difficultyMode,newScore) {
 
         setTimeout(() => {
 
             let levelValueElement = document.getElementById('level-value');
 
-            let userProgress = {
-                userScore: userScore,
+            // let currentScore = getOdometerValue(userScoreElement);
+
+            console.log("currentScore Before save")
+            console.log(newScore)
+
+            userProgress = {
+                userScore: newScore,
             };
 
             userProgress[difficultyMode] = parseInt(levelValueElement.textContent);
@@ -1120,7 +1132,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (localStorage) {
 
-            let userProgress = localStorage.getItem('userProgress');
+            userProgress = localStorage.getItem('userProgress');
             return JSON.parse(userProgress);
 
         } else {
@@ -1134,8 +1146,8 @@ document.addEventListener("DOMContentLoaded", function () {
      * Create 'userProgress' with default values and save to localStorage
      */
     function createUserProgress() {
-        let userProgress = {
-            userScore: userScore,
+        userProgress = {
+            userScore: currentScore,
             easy: 1,
             medium: 1,
             hard: 1,
