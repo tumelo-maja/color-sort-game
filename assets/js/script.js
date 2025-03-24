@@ -101,10 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let anyNut = null;
     let nutStyle = null;
 
-
-    const testButton = document.getElementById("test-button");
-    testButton.addEventListener('click', generateGameLayout);
-
     // handle modal elements - Game Loss
     const modalRetryGameButton = document.getElementById("game-retry");
     const modalNewGameButton = document.getElementById("modal-new-game");
@@ -863,12 +859,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Shuffle colors
         shuffleColors(nutsColorArray);
 
-
-
         while (!checkColorTriplicates(nutsColorArray)) {
             shuffleColors(nutsColorArray);
         }
-
 
         // separate shuffled colors into rod containers
         let containers = [];
