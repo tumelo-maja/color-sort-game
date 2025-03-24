@@ -126,11 +126,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const extraRodButton = document.getElementById("add-rod"); // add extra rod
 
     const pointDescriptionElement = document.getElementById("points-head"); // points calculations
-    
-    const pointsDisplayElement = document.getElementById("pointsDisplay"); // points calculations
 
+    let pointsDisplayElement = document.getElementById("pointsDisplay"); // points display
     let pointsOdometer = new Odometer({
         el: pointsDisplayElement,
+        duration: 5000,
+    });
+
+    let userScoreElement = document.getElementById('scoreValue');
+    let scoreOdometer = new Odometer({
+        el: userScoreElement,
         duration: 5000,
     });
 
@@ -223,17 +228,35 @@ document.addEventListener("DOMContentLoaded", function () {
             gameLevelUp(); // Progress user level up
 
             // Get current Score
-            const userScoreElement = document.getElementById('scoreValue');
-            const currentScore = parseInt(userScoreElement.innerText);
-            console.log(`currentScore {currentScore}`)
+            // let currentScore = parseInt(userScoreElement.textContent);
+            // console.log(`currentScore ${currentScore}`);
+            // console.log(userScoreElement);
+            let scoreOdometerChildren = userScoreElement.querySelectorAll('.odometer-value');
+            console.log("scoreOdometerChildren");
+            console.log(scoreOdometerChildren);
+
+            // scoreOdometerChildren
+            // let odometerScore = scoreOdometerChildren.reduce((a, b) => a.innerText + b.innerText, 0);
+            // console.log(`odometerScore: ${odometerScore}`);
+
+            let currentScoreStr = '';
+            scoreOdometerChildren.forEach(odometerSpan => {
+                currentScoreStr += odometerSpan.innerText;
+            });
+
+            console.log(`Final odometerScore: ${currentScoreStr}`);
+            let currentScore = parseInt(currentScoreStr);
 
             // Get earned points
             let pointsEarned = calculatePointsWon();
 
             setTimeout(() => {
-                let scoreOdometer = createOdometer(userScoreElement, userScore);
-                userScore = userScore + pointsEarned;
-                runOdometer(scoreOdometer, userScore);
+                // let scoreOdometer = createOdometer(userScoreElement, userScore);
+                // userScore = userScore + pointsEarned;
+                // runOdometer(scoreOdometer, userScore);
+                userScoreElement.innerHTML = currentScore + pointsEarned;
+
+
             }, 1000);
 
             pointsDisplayElement.innerText = 0;
@@ -273,7 +296,6 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function initializeUserProgress() {
         let levelValueElement = document.getElementById('level-value');
-        let userScoreElement = document.getElementById('scoreValue');
 
         let userProgress = getUserProgress();
         if (userProgress) {
@@ -740,7 +762,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let pointsEarned = calculatePointsWon();
 
         setTimeout(() => {
-            pointsDisplayElement.innerHTML =pointsEarned;
+            pointsDisplayElement.innerHTML = pointsEarned;
         }, 2000);
 
     }
@@ -1073,7 +1095,6 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
 
             let levelValueElement = document.getElementById('level-value');
-            // let userScoreElement = document.getElementById('scoreValue');
 
             let userProgress = {
                 userScore: userScore,
@@ -1133,6 +1154,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         localStorage.setItem("userProgress", JSON.stringify(userProgress));
 
-     }
+    }
 
 })
