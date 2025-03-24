@@ -889,12 +889,17 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(nutsColorArray);
 
         // Shuffle colors
-        for (let i = nutsColorArray.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1));
-            let temp = nutsColorArray[i];
-            nutsColorArray[i] = nutsColorArray[j];
-            nutsColorArray[j] = temp;
+        function shuffleColors(colorArray) {
+            for (let i = colorArray.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                let temp = colorArray[i];
+                colorArray[i] = colorArray[j];
+                colorArray[j] = temp;
+            }
+            return colorArray;
         }
+
+        shuffleColors(nutsColorArray);
 
         // separate shuffled colors into rod containers
         let containers = [];
