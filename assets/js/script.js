@@ -127,7 +127,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const extraRodButton = document.getElementById("add-rod"); // add extra rod
 
     const pointDescriptionElement = document.getElementById("points-head"); // points calculations
+    
+    const pointsDisplayElement = document.getElementById("pointsDisplay"); // points calculations
 
+    let pointsOdometer = new Odometer({
+        el: pointsDisplayElement,
+        // value: parseInt(pointsDisplayElement.innerHTML),
+        duration: 5000,
+    });
 
     // Run game to load default game setup with level=1 and score=0
     runGame();
@@ -231,8 +238,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 runOdometer(scoreOdometer, userScore);
             }, 1000);
 
-            let pointsDisplayElements = document.getElementById('pointsDisplay');
-            pointsDisplayElements.innerText = 0;
+            // let pointsDisplayElement = document.getElementById('pointsDisplay');
+            pointsDisplayElement.innerText = 0;
 
             // save user progress
             saveUserProgress(difficultyMode);
@@ -734,11 +741,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500);
 
         pointsEarned = calculatePointsWon();
-        let pointsDisplayElements = document.getElementById('pointsDisplay');
+        // let pointsDisplayElement = document.getElementById('pointsDisplay');
 
         setTimeout(() => {
-            let pointsOdometer = createOdometer(pointsDisplayElements, 0);
-            runOdometer(pointsOdometer, pointsEarned);
+            // let pointsOdometer = createOdometer(pointsDisplayElement, 0);
+            // runOdometer(pointsOdometer, pointsEarned);
+            pointsDisplayElement.innerHTML =pointsEarned;
+            console.log(`Yeeeeeeeeeeeey pointsEarned: ${pointsEarned}`)
+
         }, 2000);
 
     }
