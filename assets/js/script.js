@@ -75,10 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     };
 
-    let difficultyMode='medium';
-    const defaultDifficulty ='easy';
+    // let difficultyMode = 'medium';
     // Set game mode
-    let gameMode = gameModeObject[difficultyMode];
+    const defaultDifficulty = 'easy';
+    let difficultyMode = defaultDifficulty;
+    let gameMode = gameModeObject[defaultDifficulty];
     // let gameMode = gameModeObject.medium;
     // let gameMode = gameModeObject.hard;
 
@@ -235,6 +236,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // save user progress
             saveUserProgress(difficultyMode);
+            console.log(`difficultyMode: ${difficultyMode}`)
+            console.log(difficultyMode)
 
             generateNewGame();
         });
@@ -272,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (userProgress) {
             userScoreElement.innerText = userProgress.userScore;
             levelValueElement.innerText = userProgress.currentLevel;
-            difficultyMode =userProgress.difficultyMode;
+            difficultyMode = userProgress.difficultyMode;
 
             // userProgress[difficultyMode] = parseInt(levelValueElement.textContent);
             // userProgress.currentDifficulty = difficultyMode;
@@ -280,11 +283,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         } else {
-            userScoreElement.innerText = userScore;
-            levelValueElement.innerText = userLevel;
+            userScoreElement.innerText = 0;
+            levelValueElement.innerText = 1;
 
             //save to local storage
-            saveUserProgress(defaultDifficulty);
+            // saveUserProgress(defaultDifficulty);
+            createUserProgress();
 
         }
 
@@ -1111,4 +1115,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     }
+
+    /**
+     * Create 'userProgress' with default values and save to localStorage
+     */
+    function createUserProgress() {
+        let userProgress = {
+            userScore: userScore,
+            easy: 1,
+            medium: 1,
+            hard: 1,
+            currentDifficulty: defaultDifficulty,
+            currentLevel: 1,
+        };
+
+        localStorage.setItem("userProgress", JSON.stringify(userProgress));
+
+     }
+
 })
