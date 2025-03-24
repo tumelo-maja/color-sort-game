@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // let difficultyMode = 'medium';
     // Set game mode
     const defaultDifficulty = 'easy';
-    let difficultyMode = defaultDifficulty;
-    let gameMode = gameModeObject[defaultDifficulty];
+    let difficultyMode = '';//defaultDifficulty;
+    let gameMode = '';//gameModeObject[defaultDifficulty];
     // let gameMode = gameModeObject.medium;
     // let gameMode = gameModeObject.hard;
 
@@ -87,17 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // game area
     const gameAreaElement = document.querySelector('.game-area');
-
-
     let movesNumberElement = document.getElementById('move-value');
-    movesNumberElement.textContent = gameMode.maximumMoves;
-    let userMoves = gameMode.maximumMoves;
 
-    const totalRodsToWin = Object.values(gameMode.nutColors).length; // Rods completed to win
-
-    let lastMoveHistory = {}; // use object to store last move inputs to moveNuts
-
-    // Intialize Get CSS style object for nut element 
+    // Intialize variables
+    let userMoves = 0;
+    let totalRodsToWin = 0;
+    let lastMoveHistory = {}; 
     let anyNut = null;
     let nutStyle = null;
 
@@ -297,7 +292,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (userProgress) {
             userScoreElement.innerText = userProgress.userScore;
             levelValueElement.innerText = userProgress.currentLevel;
-            difficultyMode = userProgress.difficultyMode;
+            difficultyMode = userProgress.currentDifficulty;
+            gameMode = gameModeObject[difficultyMode];
+
+            console.log("We tried loading");
+            console.log(`difficultyMode: ${difficultyMode}`);
+            console.log(gameModeObject);
+            console.log(gameMode);
+
+            console.log("userProgress");
+            console.log(userProgress);
+
 
             // userProgress[difficultyMode] = parseInt(levelValueElement.textContent);
             // userProgress.currentDifficulty = difficultyMode;
@@ -307,6 +312,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             userScoreElement.innerText = 0;
             levelValueElement.innerText = 1;
+            difficultyMode = defaultDifficulty;
+            gameMode = gameModeObject[defaultDifficulty];
 
             //save to local storage
             // saveUserProgress(defaultDifficulty);
@@ -934,6 +941,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentRod.appendChild(wrapper.wrapper);
             });
         });
+
+        movesNumberElement.textContent = gameMode.maximumMoves;
+        totalRodsToWin = Object.values(gameMode.nutColors).length;
+    
 
     }
 
