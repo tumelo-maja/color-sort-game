@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'orange': '#f25029',
             },
             nutCount: 20,
-            maximumMoves: 16,
+            maximumMoves: 25,
         },
         hard: {
             containers: 3,
@@ -238,9 +238,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const pointDescriptionExpanded = document.querySelector('.points-expanded');
             pointDescriptionExpanded.classList.toggle('hidden-item');
-
-            // points calculations
-
         });
 
         // start game button
@@ -251,10 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             difficultyMode = this.value;
             gameMode = gameModeObject[difficultyMode];
-
-            console.log("Difficukty mode changed");
-            console.log(gameMode)
-            console.log(`New mode is: ${difficultyMode}`)
 
             generateNewGame();
         })
