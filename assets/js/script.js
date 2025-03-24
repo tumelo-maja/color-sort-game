@@ -228,21 +228,22 @@ document.addEventListener("DOMContentLoaded", function () {
             gameLevelUp(); // Progress user level up
 
 
-            let scoreOdometerChildren = userScoreElement.querySelectorAll('.odometer-value');
-            let currentScoreStr = '';
-            scoreOdometerChildren.forEach(odometerSpan => {
-                currentScoreStr += odometerSpan.innerText;
-            });
+            // let scoreOdometerChildren = userScoreElement.querySelectorAll('.odometer-value');
+            // let currentScoreStr = '';
+            // scoreOdometerChildren.forEach(odometerSpan => {
+            //     currentScoreStr += odometerSpan.innerText;
+            // });
 
-            let currentScore = parseInt(currentScoreStr);
+            // let currentScore = parseInt(currentScoreStr);
+            let currentScore = getOdometerValue(userScoreElement);
 
             // Get earned points
-            let pointsOdometerChildren = pointsDisplayElement.querySelectorAll('.odometer-value');
-            let currentPointsStr = '';
-            pointsOdometerChildren.forEach(odometerSpan => {
-                currentPointsStr += odometerSpan.innerText;
-            });
-            let pointsEarned = parseInt(currentPointsStr);
+            // let pointsOdometerChildren = pointsDisplayElement.querySelectorAll('.odometer-value');
+            // let currentPointsStr = '';
+            // pointsOdometerChildren.forEach(odometerSpan => {
+            //     currentPointsStr += odometerSpan.innerText;
+            // });
+            let pointsEarned = getOdometerValue(pointsDisplayElement);
 
             setTimeout(() => {
                 userScoreElement.innerHTML = currentScore + pointsEarned;
@@ -290,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
         elementChildren.forEach(odometerSpan => {
             stringDigits += odometerSpan.innerText;
         });
-        let 
+         
         return parseInt(stringDigits);
     }
 
