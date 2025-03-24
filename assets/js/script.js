@@ -227,28 +227,23 @@ document.addEventListener("DOMContentLoaded", function () {
             modalWinContainer.style.display = 'none';
             gameLevelUp(); // Progress user level up
 
-            // Get current Score
-            // let currentScore = parseInt(userScoreElement.textContent);
-            // console.log(`currentScore ${currentScore}`);
-            // console.log(userScoreElement);
+
             let scoreOdometerChildren = userScoreElement.querySelectorAll('.odometer-value');
-            console.log("scoreOdometerChildren");
-            console.log(scoreOdometerChildren);
-
-            // scoreOdometerChildren
-            // let odometerScore = scoreOdometerChildren.reduce((a, b) => a.innerText + b.innerText, 0);
-            // console.log(`odometerScore: ${odometerScore}`);
-
             let currentScoreStr = '';
             scoreOdometerChildren.forEach(odometerSpan => {
                 currentScoreStr += odometerSpan.innerText;
             });
 
-            console.log(`Final odometerScore: ${currentScoreStr}`);
             let currentScore = parseInt(currentScoreStr);
 
             // Get earned points
-            let pointsEarned = calculatePointsWon();
+            // let pointsEarned = calculatePointsWon();
+            let pointsOdometerChildren = pointsDisplayElement.querySelectorAll('.odometer-value');
+            let currentPointsStr = '';
+            pointsOdometerChildren.forEach(odometerSpan => {
+                currentPointsStr += odometerSpan.innerText;
+            });
+            let pointsEarned = parseInt(currentPointsStr);
 
             setTimeout(() => {
                 // let scoreOdometer = createOdometer(userScoreElement, userScore);
