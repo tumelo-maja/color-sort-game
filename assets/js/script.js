@@ -281,6 +281,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * Extract the numerical digits displayed by an element animated using odometer instance
+     */
+    function getOdometerValue(element) {
+
+        let elementChildren = element.querySelectorAll('.odometer-value');
+        let stringDigits = '';
+        elementChildren.forEach(odometerSpan => {
+            stringDigits += odometerSpan.innerText;
+        });
+        let 
+        return parseInt(stringDigits);
+    }
+
+    /**
      * initialize levels and scores
      */
     function initializeUserProgress() {
