@@ -131,7 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let pointsOdometer = new Odometer({
         el: pointsDisplayElement,
-        // value: parseInt(pointsDisplayElement.innerHTML),
         duration: 5000,
     });
 
@@ -237,7 +236,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 runOdometer(scoreOdometer, userScore);
             }, 1000);
 
-            // let pointsDisplayElement = document.getElementById('pointsDisplay');
             pointsDisplayElement.innerText = 0;
 
             // save user progress
