@@ -289,13 +289,13 @@ h3 {
 /* game display */
 .game-display {
   /* border: 1px solid wheat; */
-  height: 70px;
+  height: 60px;
   width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* align-self: center; */
-  margin: 20px 0 10px ;
+  margin: 0 0 10px ;
   padding: 0;
   position: relative;
 }
@@ -518,6 +518,35 @@ h3 {
 .points-expanded p {
   margin: 5px;
 }
+
+/* Difficulty mode slider */
+.game-difficulty {
+  border: 1px solid red;
+  padding: 10px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-difficulty label{
+  color: white;
+}
+
+#difficultyMode {
+  appearance: none;     
+  color: yellow;   
+  font-weight: bold;
+  letter-spacing: 2px;            
+  text-align: center;  
+  background-color: #26a1ee;
+  border-radius: 5px;  
+  width: 90px;
+  border: 1px yellow;
+}
+
+
 
 /*--- Keyframes for raised nut ---*/
 /*--- Movement using transform ---*/
