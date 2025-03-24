@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 userScoreElement.innerHTML = currentScore + pointsEarned;
             }, 1000);
 
-            pointsDisplayElement.innerText = 0;
+            restoreDisplayPointsDigits();
 
             // save user progress
             saveUserProgress(difficultyMode);
@@ -275,8 +275,25 @@ document.addEventListener("DOMContentLoaded", function () {
         elementChildren.forEach(odometerSpan => {
             stringDigits += odometerSpan.innerText;
         });
-         
+
         return parseInt(stringDigits);
+    }
+
+    /**
+     * Restore pointsDisplay element to one digit
+     */
+    function restoreDisplayPointsDigits() {
+        let odometerInside = pointsDisplayElement.querySelector('.odometer-inside');
+        while (odometerInside.querySelectorAll('.odometer-digit').length > 1) {
+            odometerInside.lastElementChild.remove();
+        }
+        console.log("Points Display resotored");
+        console.log(odometerInside.querySelectorAll('.odometer-digit'))
+
+        // pointsDisplayElement.innerText = 0;
+        let odometerValue = pointsDisplayElement.querySelector('.odometer-value');
+        odometerValue.innerText = "0";
+
     }
 
     /**
