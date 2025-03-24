@@ -237,7 +237,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let currentScore = parseInt(currentScoreStr);
 
             // Get earned points
-            // let pointsEarned = calculatePointsWon();
             let pointsOdometerChildren = pointsDisplayElement.querySelectorAll('.odometer-value');
             let currentPointsStr = '';
             pointsOdometerChildren.forEach(odometerSpan => {
@@ -246,12 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let pointsEarned = parseInt(currentPointsStr);
 
             setTimeout(() => {
-                // let scoreOdometer = createOdometer(userScoreElement, userScore);
-                // userScore = userScore + pointsEarned;
-                // runOdometer(scoreOdometer, userScore);
                 userScoreElement.innerHTML = currentScore + pointsEarned;
-
-
             }, 1000);
 
             pointsDisplayElement.innerText = 0;
