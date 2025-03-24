@@ -111,6 +111,9 @@ document.addEventListener("DOMContentLoaded", function () {
     newGameButton.addEventListener('click', generateNewGame);
     const undoMoveButton = document.getElementById("undo-move"); //undo move
 
+    // difficultyMode
+    const difficultyModeSelect = document.getElementById("difficultyMode"); 
+    console.log(difficultyModeSelect);
 
     // const startGameButton = document.getElementById("start-button"); // start game
 
@@ -242,6 +245,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // start game button
         // startGameButton.addEventListener('click', generateNewGame);
+
+        // difficultyModeSelect
+        difficultyModeSelect.addEventListener('change', function() {
+
+            difficultyMode = this.value;
+            gameMode = gameModeObject[difficultyMode];
+
+            console.log("Difficukty mode changed");
+            console.log(gameMode)
+            console.log(`New mode is: ${difficultyMode}`)
+
+            generateNewGame();
+        })
 
         // Add extra rod
         extraRodButton.addEventListener('click', addExtraRod);
