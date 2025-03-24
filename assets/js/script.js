@@ -873,23 +873,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         shuffleColors(nutsColorArray);
 
-        function checkColorShuffle(nutsColorArray) {
-            for (let i = 0; i < nutsColorArray.length; i += 4) {
-                const rodGroup = nutsColorArray.slice(i, i + 4);
-                let occurrenceCount = 1;
-                for (let j = 1; j < rodGroup.length; j++) {
-                    if (rodGroup[j] === rodGroup[j - 1]) {
-                        occurrenceCount++;
-                        if (occurrenceCount > 2) return false;
-                    } else {
-                        occurrenceCount = 1;
-                    }
-                }
-            }
-            return true;
-        }
 
-        while (!checkColorShuffle(nutsColorArray)) {
+
+        while (!checkColorShuffleTriplicates(nutsColorArray)) {
             shuffleColors(nutsColorArray);
         }
 
@@ -910,6 +896,25 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
         return containers;
+    }
+
+    /**
+     * Check if the shuffled nut colors have more than 2 like colors as immediate siblings within a rod
+     */
+    function checkColorShuffleTriplicates(nutsColorArray) {
+        for (let i = 0; i < nutsColorArray.length; i += 4) {
+            const rodGroup = nutsColorArray.slice(i, i + 4);
+            let occurrenceCount = 1;
+            for (let j = 1; j < rodGroup.length; j++) {
+                if (rodGroup[j] === rodGroup[j - 1]) {
+                    occurrenceCount++;
+                    if (occurrenceCount > 2) return false;
+                } else {
+                    occurrenceCount = 1;
+                }
+            }
+        }
+        return true;
     }
 
     /**
