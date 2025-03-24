@@ -903,9 +903,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // for (let i = 0; i < gameMode.rodCapacity - 1; i++) {
         for (let i = 0; i < Object.keys(gameMode.nutColors).length; i++) {
 
+            let startIndex = i * gameMode.rodCapacity;
+
             containers.push({
                 name: "rod" + (i + 1),
-                nuts: nutsColorArray.slice(i * gameMode.rodCapacity, (i * gameMode.rodCapacity) + gameMode.rodCapacity)
+                nuts: nutsColorArray.slice(startIndex, startIndex + gameMode.rodCapacity)
                 // nuts: nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod)
             });
         }
