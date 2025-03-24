@@ -151,31 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Create an Odometer instance to create number counter animations
-     */
-    function createOdometer(object, startValue) {
-
-        object.innerHTML = `${startValue}`;
-
-        let odometerInstance = new Odometer({
-            el: object,
-            value: startValue,
-            duration: 5000,
-        });
-
-        return odometerInstance;
-    }
-
-    /**
-     * Run an update on the Odometer instance to animate number counting
-     */
-    function runOdometer(odometerInstance, finalValue) {
-        setTimeout(() => {
-            odometerInstance.update(finalValue);
-        }, 50);
-    }
-
-    /**
      * Undo last move
      */
     function undoLastMove() {
