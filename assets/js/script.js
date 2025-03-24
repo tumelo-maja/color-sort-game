@@ -194,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
         addRodEventListeners();
 
         const playInstructionElement = document.querySelector('.play-instructions');
-        console.log(playInstructionElement);
 
         if (playInstructionElement) {
             playInstructionElement.addEventListener('click', toggleHiddenItem);
@@ -203,9 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // modal eventlisteners - Game Loss
         modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
-            // location.reload();
             resetGame();
-            console.log("I'm not giving up!");
         });
 
         modalNewGameButton.addEventListener('click', function () {
@@ -284,13 +281,11 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function restoreDisplayPointsDigits() {
         let odometerInside = pointsDisplayElement.querySelector('.odometer-inside');
+
         while (odometerInside.querySelectorAll('.odometer-digit').length > 1) {
             odometerInside.lastElementChild.remove();
         }
-        console.log("Points Display resotored");
-        console.log(odometerInside.querySelectorAll('.odometer-digit'))
 
-        // pointsDisplayElement.innerText = 0;
         let odometerValue = pointsDisplayElement.querySelector('.odometer-value');
         odometerValue.innerText = "0";
 
@@ -360,7 +355,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let currentNutWrapper = currentNut.parentElement;
             let sourceRod = currentNutWrapper.parentElement;
-            console.log(currentNutWrapper);
 
             // Check if colors of neext match the nut to move - append to nutsToMove.
             let neighbourNutWrapper = currentNutWrapper.previousElementSibling;
@@ -379,7 +373,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const rodCapacity = parseInt(rodElement.getAttribute('data-capacity'));
             let availableSpace = rodCapacity - rodChildrenCount;
-            console.log(`This rod only space for ${availableSpace} nuts`);
 
             while ((currentNutColor === neighbourNutColor) && (nutsToMove.length < availableSpace)) {
 
@@ -415,8 +408,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
         } else {
-            // console.log(nutObjectTop);
-            // console.log(`neighbourNut: ${nutObjectTop.nextElementSibling}`);
 
             if (rodChildrenCount) {
                 raiseNut(nutObjectTop, rodChildrenCount);
@@ -431,8 +422,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setRaiseNutTransformY(nutObject, rodChildrenCount);
         nutObject.classList.add("raise-nut");
-        // console.log(`raiseNut: ${anyNut.offsetHeight}`)
-        // console.log(anyNut);
 
     }
 
@@ -448,8 +437,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const availableSpace = (rodCapacity - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
         const raiseValue = -availableSpace - verticalStep;
-
-        console.log(`anyNut.offsetHeight: ${anyNut.offsetHeight}`)
 
         nutObject.style.setProperty("--transform-y", raiseValue + "px");
     }
@@ -617,8 +604,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 nut.classList.add(animationName); // nutWrapper
                 nut.parentElement.classList.add(animationName); // nut element
 
-                console.log(`Nut number ${index + 1} Moved! - ${(nut.innerText)}`)
-
                 nut.parentElement.addEventListener("animationend", function handler() {
 
                     nut.parentElement.style.animation = "";
@@ -672,7 +657,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // 1) Check the destination rod is not the same as origin rod
             if (targetRod === sourceRod) {
-                console.log('Cannot move into self; Lowering Nut')
                 lowerNut(raisedNut);
                 return
             }
@@ -680,7 +664,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // 2) Check if the target rod has space
             const isSpaceAvailable = rodChildrenCount < rodCapacity;
             if (!isSpaceAvailable) {
-                console.log("There's no space in target; Lowering Nut")
                 lowerNut(raisedNut);
                 return
             }
@@ -691,7 +674,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const isColorMatch = raisedNutColor === targetNutColor;
             if (!isColorMatch) {
-                console.log("Colors don't match; Lowering Nut")
                 lowerNut(raisedNut);
                 return
             }
@@ -727,10 +709,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             newBarwidth = currentBarwidth + widthIncrements;
             ++userMoves;
-            console.log('Take it back');
         }
 
-        console.log(`newMovesValue ${newMovesValue}`);
         movesNumberElement.textContent = userMoves;
         movesBar.style.width = newBarwidth + '%';
     }
@@ -796,8 +776,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const movesRemainingBonus = parseInt(movesNumberElement.textContent) * 5;
         const extraRodBonus = extraRodButton.classList.contains('disable') ? 0 : 10;
-        console.log(`movesRemainingBonus: ${movesRemainingBonus}`);
-        console.log(`extraRodBonus: ${extraRodBonus}`);
 
         return (gameMode.rodCapacity * totalRodsToWin * pointsPerRod) + movesRemainingBonus + extraRodBonus;
     }
@@ -809,8 +787,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const allNuts = targetRod.querySelectorAll('.nut');
         const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
-
-        console.log(allNuts)
 
         if (allNuts.length === rodCapacity) { //confirm if it has the max nuts possible
             const firstNutColor = allNuts[0].getAttribute('data-color');
@@ -848,10 +824,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (completedRods === totalRodsToWin) {
             gameWon = true;
             gameOverWin();
-            console.log("You've done! Well done :-)");
         } else {
             gameWon = false;
-            console.log("Not there yet")
         }
 
         return gameWon
@@ -885,8 +859,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // repeated nut colors for total nuts
         // let nutsColorArray = Array(maxNutsPerRod).fill(Object.keys(nutColors)).flat();
         let nutsColorArray = Array(gameMode.rodCapacity).fill(Object.keys(gameMode.nutColors)).flat();
-        console.log(`nutsColorArray ${nutsColorArray.length}`);
-        console.log(nutsColorArray);
 
         // Shuffle colors
         function shuffleColors(colorArray) {
@@ -904,18 +876,23 @@ document.addEventListener("DOMContentLoaded", function () {
         function checkColorShuffle(nutsColorArray) {
             for (let i = 0; i < nutsColorArray.length; i += 4) {
                 const rodGroup = nutsColorArray.slice(i, i + 4);
-                let occurrenceCount = 0;
+                let occurrenceCount = 1;
                 for (let j = 1; j < rodGroup.length; j++) {
                     if (rodGroup[j] === rodGroup[j - 1]) {
-                        ++occurrenceCount;
+                        occurrenceCount++;
                         if (occurrenceCount > 2) return false;
                     } else {
-                        occurrenceCount = 0;
+                        occurrenceCount = 1;
                     }
                 }
             }
             return true;
         }
+
+        while (!checkColorShuffle(nutsColorArray)) {
+            shuffleColors(nutsColorArray);
+        }
+
 
         // separate shuffled colors into rod containers
         let containers = [];
@@ -1004,7 +981,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Update nut Element global style
         anyNut = document.querySelectorAll('.nut')[0];
         nutStyle = window.getComputedStyle(anyNut);
-        console.log("anyNut has been reset")
 
     }
 
@@ -1012,15 +988,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Generate and place containers and rods into game area
      */
     function generateGameLayout() {
-        // const gameAreaElement = document.querySelector('.game-area');
-        // console.log("gameAreaElement");
-        // console.log(gameAreaElement);
 
-
-        //Loop to create containers
-
-        // gameModeObject
-        // const totalRods = gameMode.containers * gameMode.rodsInContainers;
         const totalRods = gameMode.rodsInContainers.reduce((a, b) => a + b, 0);
 
         let rodNumber = 0;
@@ -1029,8 +997,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let containerElement = document.createElement("div");
             containerElement.setAttribute("class", 'rod-container');
 
-            // console.log(containerElement);
-            // console.log(`Container: ${i} created!`);
             let rodsInContainer = gameMode.rodsInContainers[i];
 
             // Cerate rod elements in each container
@@ -1063,7 +1029,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 containerElement.appendChild(rodElement);
 
             }
-            console.log(containerElement);
 
             //append each container to game-area div
             gameAreaElement.appendChild(containerElement);
@@ -1084,11 +1049,8 @@ document.addEventListener("DOMContentLoaded", function () {
      * Remove existing nuts before resetting or generating new game
      */
     function clearGameLayout() {
-        // let allRods = document.querySelectorAll('.rod');
-        // console.log("allRods:");
-        // console.log(allRods);
-        let allContainers = gameAreaElement.querySelectorAll('.rod-container');
 
+        let allContainers = gameAreaElement.querySelectorAll('.rod-container');
 
         // Reset moves/ bar
         movesNumberElement.textContent = gameMode.maximumMoves;
@@ -1101,18 +1063,6 @@ document.addEventListener("DOMContentLoaded", function () {
             gameAreaElement.removeChild(container);
         }
 
-
-        // for (let rod of allRods) {
-        //     //Remove .complete if any
-        //     let rodLid = rod.querySelector('.rod-lid');
-        //     rodLid.classList.remove('complete');
-        //     rod.addEventListener("click", rodClick);
-
-        //     let nutWrappers = rod.querySelectorAll('.nut-wrap');
-        //     for (let nutWrapper of nutWrappers) {
-        //         rod.removeChild(nutWrapper);
-        //     }
-        // }
     }
 
     /**
@@ -1134,15 +1084,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             console.log(userProgress);
-            // console.log(`This is my score: ${userScore}`);
-            // console.log(userScore);
-
-            // let userProgressStringified = JSON.stringify(userProgress);
-            // console.log(userProgressStringified);
 
             localStorage.setItem("userProgress", JSON.stringify(userProgress));
 
-            console.log("Your progress is saved!!");
         }, 3000);
 
     }
@@ -1152,16 +1096,13 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function getUserProgress() {
 
-        //check if there's anything there
         if (localStorage) {
-            console.log("There's something there");
-            let userProgress = localStorage.getItem('userProgress');
-            console.log(userProgress);
 
+            let userProgress = localStorage.getItem('userProgress');
             return JSON.parse(userProgress);
 
         } else {
-            console.log("Its empty! nothing saved")
+
             return null
         }
 
