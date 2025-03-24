@@ -901,6 +901,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         shuffleColors(nutsColorArray);
 
+        function checkColorShuffle(nutsColorArray) {
+            for (let i = 0; i < nutsColorArray.length; i += 4) {
+                const rodGroup = nutsColorArray.slice(i, i + 4);
+                let occurrenceCount = 0;
+                for (let j = 1; j < rodGroup.length; j++) {
+                    if (rodGroup[j] === rodGroup[j - 1]) {
+                        ++occurrenceCount;
+                        if (occurrenceCount > 2) return false;
+                    } else {
+                        occurrenceCount = 0;
+                    }
+                }
+            }
+            return true;
+        }
+
         // separate shuffled colors into rod containers
         let containers = [];
 

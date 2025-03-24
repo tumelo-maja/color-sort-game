@@ -273,3 +273,6 @@ Randomize array using  Durstenfeld Shuffle: (https://stackoverflow.com/questions
 more link - https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
 
 Repeat elements in an array: (https://stackoverflow.com/questions/12503146/create-an-array-with-same-element-repeated-multiple-times)
+
+Check if duplicate elements in the array are adjacent 
+(https://www.geeksforgeeks.org/check-if-all-duplicate-elements-in-the-array-are-adjacent-or-not)
