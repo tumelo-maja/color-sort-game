@@ -227,22 +227,8 @@ document.addEventListener("DOMContentLoaded", function () {
             modalWinContainer.style.display = 'none';
             gameLevelUp(); // Progress user level up
 
-
-            // let scoreOdometerChildren = userScoreElement.querySelectorAll('.odometer-value');
-            // let currentScoreStr = '';
-            // scoreOdometerChildren.forEach(odometerSpan => {
-            //     currentScoreStr += odometerSpan.innerText;
-            // });
-
-            // let currentScore = parseInt(currentScoreStr);
+            //Get current score and earned points
             let currentScore = getOdometerValue(userScoreElement);
-
-            // Get earned points
-            // let pointsOdometerChildren = pointsDisplayElement.querySelectorAll('.odometer-value');
-            // let currentPointsStr = '';
-            // pointsOdometerChildren.forEach(odometerSpan => {
-            //     currentPointsStr += odometerSpan.innerText;
-            // });
             let pointsEarned = getOdometerValue(pointsDisplayElement);
 
             setTimeout(() => {
@@ -253,8 +239,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // save user progress
             saveUserProgress(difficultyMode);
-            console.log(`difficultyMode: ${difficultyMode}`)
-            console.log(difficultyMode)
 
             generateNewGame();
         });
