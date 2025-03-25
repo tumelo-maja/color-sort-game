@@ -168,6 +168,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // difficultyMode
     const difficultyModeSelect = document.getElementById("difficultyMode");
 
+    // settings modal
+    const modalSettingsContainer = document.getElementById("settingsModal");
+
+
     // const startGameButton = document.getElementById("start-button"); // start game
 
     const extraRodButton = document.getElementById("add-rod"); // add extra rod
@@ -284,6 +288,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             generateNewGame();
+        })
+
+        //settings modal
+        modalSettingsContainer.addEventListener('click', function() {
+            modalSettingsContainer.style.display = 'none';
+
         })
 
         // Add extra rod
