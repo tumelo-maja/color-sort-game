@@ -204,12 +204,12 @@ Other goals:
     * Completing a rod
     * Winning a level
     * Losing a level
-  * Users can toggle the sound element to mute/unmute the sound with ease
+  * Users can toggle the sound element to turn sound effect on/off with ease
 
   - Tasks:
   * Implement HTML/CSS code for the sound toggle
   * Define and declare sound effect for specific actions
-  * Implement JavaScript code to play sounds when sound setting is set to on (default is off)
+  * Implement JavaScript code to play sounds when sound effect setting is set to on (default is off)
   * Ensure the file types for the sound effect are compatible with commonly used browsers
 
 
