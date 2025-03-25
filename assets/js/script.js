@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // let gameMode = gameModeObject.medium;
     // let gameMode = gameModeObject.hard;
 
-    // localStorage.removeItem('userProgress');
+    localStorage.removeItem('userProgress');
 
 
     // game area
