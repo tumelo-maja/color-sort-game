@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'whitesilver': '#c2b3d4',
             },
             nutCount: 12,
-            maximumMoves: 2,
+            maximumMoves: 15,
         },
         medium: {
             containers: 2,
