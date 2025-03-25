@@ -74,13 +74,25 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Sound effects Obj
-    let soundEffects =  {
-        moveNut: new Howl({
+    let soundEffects = {
+        raise: new Howl({
+            src: ['assets/sounds/start-move-nut-sfx.mp3',],
+            volume: 0.07,
+            sprite: { kickStart: [50, 300] },
+        }),
+
+        startMove: new Howl({
             src: ['assets/sounds/move-nut-sfx.mp3',],
             volume: 0.07,
-            sprite: {unscrewShort: [0, 300] },
+            sprite: { onRodMove: [0, 300] },
         }),
     };
+
+    // soundEffects.raise.play('kickStart');
+    // setTimeout(() => {
+    //     soundEffects.startMove.play('onRodMove');
+    // },400)
+
 
     // let difficultyMode = 'medium';
     // Set game mode
@@ -213,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
                 userScoreElement.innerHTML = newScore;
                 // save user progress
-                saveUserProgress(difficultyMode,newScore);
+                saveUserProgress(difficultyMode, newScore);
             }, 1000);
 
             console.log("userScoreElement After continue")
@@ -396,7 +408,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function raiseNut(nutObject, rodChildrenCount) {
 
         setRaiseNutTransformY(nutObject, rodChildrenCount);
-        soundEffects.moveNut.play('unscrewShort');
+        // soundEffects.moveNut.play('onRodMove');
+        soundEffects.raise.play('kickStart');
+        setTimeout(() => {
+            soundEffects.startMove.play('onRodMove');
+        }, 100)
         nutObject.classList.add("raise-nut");
 
     }
@@ -424,7 +440,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (nutObject) {
             nutObject.classList.remove("raise-nut");
-            soundEffects.moveNut.play('unscrewShort');
+            // soundEffects.moveNut.play('onRodMove');
+            soundEffects.raise.play('kickStart');
+            setTimeout(() => {
+                soundEffects.startMove.play('onRodMove');
+            }, 100)
 
         }
     }
@@ -587,7 +607,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     nut.parentElement.style.animation = "";
                     nut.style.animation = "";
-                    soundEffects.moveNut.play('unscrewShort');
+                    // soundEffects.moveNut.play('onRodMove');
+                    // soundEffects.raise.play('kickStart');
+                    soundEffects.startMove.play('onRodMove');
+                    setTimeout(() => {
+                        // soundEffects.startMove.play('onRodMove');
+                        soundEffects.raise.play('kickStart');
+                    }, 200)
 
                     nut.parentElement.appendChild(nut);
                     targetRod.appendChild(nut.parentElement);
@@ -1056,7 +1082,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Save user level and score to localStorage
      */
-    function saveUserProgress(difficultyMode,newScore) {
+    function saveUserProgress(difficultyMode, newScore) {
 
         setTimeout(() => {
 
@@ -1067,10 +1093,10 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("currentScore Before save")
             console.log(newScore)
 
-            if(Object.keys(localStorage).length) {
-                userProgress =  getUserProgress();
+            if (Object.keys(localStorage).length) {
+                userProgress = getUserProgress();
             } else {
-                userProgress =  createUserProgress();
+                userProgress = createUserProgress();
             }
 
             userProgress.userScore = newScore;
