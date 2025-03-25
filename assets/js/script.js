@@ -170,6 +170,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // settings modal
     const modalSettingsContainer = document.getElementById("settingsModal");
+    const openModalSettings = document.querySelector(".settings-open");
+    const closeModalSettings = document.querySelector(".settings-close");
 
 
     // const startGameButton = document.getElementById("start-button"); // start game
@@ -290,10 +292,14 @@ document.addEventListener("DOMContentLoaded", function () {
             generateNewGame();
         })
 
-        //settings modal
-        modalSettingsContainer.addEventListener('click', function() {
+        // close settings modal
+        closeModalSettings.addEventListener('click', function () {
             modalSettingsContainer.style.display = 'none';
+        })
 
+        // open settings modal
+        openModalSettings.addEventListener('click', function () {
+            modalSettingsContainer.style.display = 'flex';
         })
 
         // Add extra rod
@@ -770,7 +776,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function gameOverLoss() {
         modalLossContainer.style.display = 'flex';
         soundEffects.gameLoss.play();
-
     }
 
     /**
