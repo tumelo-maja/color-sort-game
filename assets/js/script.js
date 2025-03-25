@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'whitesilver': '#c2b3d4',
             },
             nutCount: 12,
-            maximumMoves: 15,
+            maximumMoves: 2,
         },
         medium: {
             containers: 2,
@@ -107,10 +107,16 @@ document.addEventListener("DOMContentLoaded", function () {
             volume: 0.09,
             // sprite: { rodWin: [0, 1000] },
         }),
+
+        gameLoss: new Howl({
+            src: ['assets/sounds/game-fail1-sfx.mp3',],
+            volume: 0.09,
+            // sprite: { rodWin: [0, 1000] },
+        }),
     };
 
 
-    soundEffects.collectPoints.play();
+    soundEffects.gameLoss.play();
     // soundEffects.completeRod.play('rodWin');
     // soundEffects.raise.play('kickStart');
     // setTimeout(() => {
@@ -658,7 +664,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         if (!isGameComplete) {
                             if (userMoves === 0) {
-                                gameOverLoss();
+                                setTimeout(() => {
+                                    gameOverLoss();
+                                }, 800);
                             }
                         }
                     }
@@ -751,6 +759,8 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function gameOverLoss() {
         modalLossContainer.style.display = 'flex';
+        soundEffects.gameLoss.play();
+
     }
 
     /**
