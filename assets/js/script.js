@@ -125,10 +125,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const pointDescriptionElement = document.getElementById("points-head"); // points calculations
 
     let pointsDisplayElement = document.getElementById("pointsDisplay"); // points display
-    let pointsOdometer = new Odometer({
-        el: pointsDisplayElement,
-        duration: 5000,
-    });
+    // let pointsOdometer = new Odometer({
+    //     el: pointsDisplayElement,
+    //     duration: 5000,
+    // });
 
     let userScoreElement = document.getElementById('scoreValue');
     let scoreOdometer = new Odometer({
@@ -198,7 +198,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //Get current score and earned points
             currentScore = getOdometerValue(userScoreElement);
-            let pointsEarned = getOdometerValue(pointsDisplayElement);
+            // let pointsEarned = getOdometerValue(pointsDisplayElement);
+            let pointsEarned = parseInt(pointsDisplayElement.textContent);
             let newScore = currentScore + pointsEarned;
 
             setTimeout(() => {
@@ -211,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(newScore)
             console.log(userScoreElement.innerHTML)
 
-            restoreDisplayPointsDigits();
+            // restoreDisplayPointsDigits();
 
 
 
@@ -265,18 +266,18 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Restore pointsDisplay element to one digit
      */
-    function restoreDisplayPointsDigits() {
-        let odometerInside = pointsDisplayElement.querySelector('.odometer-inside');
+    // function restoreDisplayPointsDigits() {
+    //     let odometerInside = pointsDisplayElement.querySelector('.odometer-inside');
 
-        while (odometerInside.querySelectorAll('.odometer-digit').length > 1) {
-            odometerInside.lastElementChild.remove();
-        }
+    //     while (odometerInside.querySelectorAll('.odometer-digit').length > 1) {
+    //         odometerInside.lastElementChild.remove();
+    //     }
 
-        let odometerValue = pointsDisplayElement.querySelector('.odometer-value');
-        odometerValue.innerText = "0";
-        console.log("Digits restored!!!!")
+    //     let odometerValue = pointsDisplayElement.querySelector('.odometer-value');
+    //     odometerValue.innerText = "0";
+    //     console.log("Digits restored!!!!")
 
-    }
+    // }
 
     /**
      * initialize levels and scores
@@ -747,11 +748,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500);
 
         let pointsEarned = calculatePointsWon();
+        pointsDisplayElement.innerHTML = pointsEarned;
 
-        setTimeout(() => {
-            pointsDisplayElement.innerHTML = pointsEarned;
-            console.log("New Points Logged")
-        }, 1500);
+
+        // setTimeout(() => {
+        //     pointsDisplayElement.innerHTML = pointsEarned;
+        //     console.log("New Points Logged")
+        // }, 1500);
 
     }
 
