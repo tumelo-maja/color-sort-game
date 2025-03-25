@@ -193,6 +193,26 @@ Other goals:
   * Show players a thank you message after feedback submission is completed.
 
 
+- **Suitable Game Sound Effects (could-have)**
+
+  - Story: 
+  As a player, I want the option to play the game with satisfying sound effects when I do certain moves, win or lose.
+
+  - Acceptance Criteria:
+  * There are suitable and satisfying sound effects for different actions during the game gameplay
+    * Raising or lowering a nut
+    * Completing a rod
+    * Winning a level
+    * Losing a level
+  * Users can toggle the sound element to mute/unmute the sound with ease
+
+  - Tasks:
+  * Implement HTML/CSS code for the sound toggle
+  * Define and declare sound effect for specific actions
+  * Implement JavaScript code to play sounds when sound setting is set to on (default is off)
+  * Ensure the file types for the sound effect are compatible with commonly used browsers
+
+
 ### Wireframes
 
 ## Testing 
