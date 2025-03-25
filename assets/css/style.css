@@ -660,7 +660,7 @@ h3 {
 }
 
 .toggle-text-on {
-  color: yellow;
+  color: rgba(255, 255, 0, 0.801);
   text-shadow: 
   0 0 4px rgba(255, 255, 0, 0.8),
   0 0 8px rgba(255, 255, 100, 0.6);
