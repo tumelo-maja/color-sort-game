@@ -84,7 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
         startMove: new Howl({
             src: ['assets/sounds/move-nut-sfx.mp3',],
             volume: 0.07,
-            sprite: { onRodMove: [0, 300] },
+            sprite: { onRodMove: [0, 300],
+                scoreCount: [0, 4500]
+             },
         }),
 
         gameWin: new Howl({
@@ -229,6 +231,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setTimeout(() => {
                 userScoreElement.innerHTML = newScore;
+                soundEffects.startMove.play('scoreCount');
+
                 // save user progress
                 saveUserProgress(difficultyMode, newScore);
             }, 1000);
