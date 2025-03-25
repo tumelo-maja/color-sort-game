@@ -304,3 +304,6 @@ Pixabay Sound effects (https://pixabay.com/sound-effects/)
 Sounds and Music in Javascript games (Tutorial)
 https://www.youtube.com/watch?v=hn7MhPt24L4
 
+Howler.js library (via cdn.js)
+https://howlerjs.com/
+
