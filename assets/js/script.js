@@ -582,10 +582,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 nut.classList.add(animationName); // nutWrapper
                 nut.parentElement.classList.add(animationName); // nut element
 
+
                 nut.parentElement.addEventListener("animationend", function handler() {
 
                     nut.parentElement.style.animation = "";
                     nut.style.animation = "";
+                    soundEffects.moveNut.play('unscrewShort');
 
                     nut.parentElement.appendChild(nut);
                     targetRod.appendChild(nut.parentElement);
