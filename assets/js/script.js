@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let movesBar = document.querySelector('.move-fill');
 
     let completedRods = 0; // initialize as 0
-    const pointsPerRod = 10; //point factor for each completed rod
     let gameInitialState = {}; // Var to store game state
 
     // nut colors
@@ -777,6 +776,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // totalRodsToWin 3
         // movesRemainingBonus 5 per move
         // extraRodBonus 10 if not used
+        const pointsPerRod = 10; //point factor for each completed rod
+
 
         const movesRemainingBonus = parseInt(movesNumberElement.textContent) * 5;
         const extraRodBonus = extraRodButton.classList.contains('disable') ? 0 : 10;
