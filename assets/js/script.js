@@ -175,9 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const soundToggleElement = document.getElementById("sound");
     const vibrationToggleElement = document.getElementById("vibration");
-    console.log(soundToggleElement)
-    console.log(vibrationToggleElement)
-
 
     // const startGameButton = document.getElementById("start-button"); // start game
 
@@ -307,6 +304,12 @@ document.addEventListener("DOMContentLoaded", function () {
             modalSettingsContainer.style.display = 'flex';
         })
 
+        // Sound toggle
+        soundToggleElement.addEventListener('click',setToggleOn);
+        vibrationToggleElement.addEventListener('click',setToggleOn);
+        // console.log(soundToggleElement)
+        // console.log(vibrationToggleElement)
+
         // Add extra rod
         extraRodButton.addEventListener('click', addExtraRod);
 
@@ -329,6 +332,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         return parseInt(stringDigits);
+    }
+
+    /**
+     * Toggle the *-on class for on elements in the toggle container, sound and vibration
+     */
+    function setToggleOn() {
+        this.querySelector('.toggle-slide').classList.toggle('toggle-slide-on');
+        this.querySelector('.toggle-text').classList.toggle('toggle-text-on');
+        this.querySelector('.toggle-item').classList.toggle('toggle-item-on');
     }
 
     /**
