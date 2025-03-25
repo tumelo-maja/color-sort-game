@@ -84,9 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
         startMove: new Howl({
             src: ['assets/sounds/move-nut-sfx.mp3',],
             volume: 0.07,
-            sprite: { onRodMove: [0, 300],
+            sprite: {
+                onRodMove: [0, 300],
                 scoreCount: [0, 4500]
-             },
+            },
         }),
 
         gameWin: new Howl({
@@ -108,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }),
     };
 
-    
+
     soundEffects.collectPoints.play();
     // soundEffects.completeRod.play('rodWin');
     // soundEffects.raise.play('kickStart');
@@ -860,7 +861,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let gameWon = false;
         if (completedRods === totalRodsToWin) {
             gameWon = true;
-            gameOverWin();
+            setTimeout(() => {
+                gameOverWin();
+            }, 1500);
         } else {
             gameWon = false;
         }
