@@ -294,13 +294,13 @@ document.addEventListener("DOMContentLoaded", function () {
             levelValueElement.innerText = userProgress[difficultyMode];
             gameMode = gameModeObject[difficultyMode];
 
-            console.log("We tried loading");
-            console.log(`difficultyMode: ${difficultyMode}`);
-            console.log(gameModeObject);
-            console.log(gameMode);
+            // console.log("We tried loading");
+            // console.log(`difficultyMode: ${difficultyMode}`);
+            // console.log(gameModeObject);
+            // console.log(gameMode);
 
-            console.log("userProgress");
-            console.log(userProgress);
+            // console.log("userProgress");
+            // console.log(userProgress);
 
 
             // userProgress[difficultyMode] = parseInt(levelValueElement.textContent);
