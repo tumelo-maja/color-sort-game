@@ -4,11 +4,11 @@
   --yellow: #f9b723;
   --blue: #26a1ee;
   --whitesilver: #c2b3d4;
-  --green: #8DCD3B;
+  --green: #8dcd3b;
   --purple: #911899;
-  --beige: #FFCFC1;
-  --pink: #FF90C8;
-  --red: #FF0C15;
+  --beige: #ffcfc1;
+  --pink: #ff90c8;
+  --red: #ff0c15;
 }
 
 /* Nut colors*/
@@ -192,8 +192,17 @@ h3 {
   width: 25px;
   height: 100px;
   /* background-color: #c0c0c0; */
-  background-image: linear-gradient(10deg, #808080 25%, #fff8f8 25%, #fff8f8 50%, #808080 50%, #808080 75%, #fff8f8 75%, #fff8f8 100%);
-background-size: 16.00px 2px;
+  background-image: linear-gradient(
+    10deg,
+    #808080 25%,
+    #fff8f8 25%,
+    #fff8f8 50%,
+    #808080 50%,
+    #808080 75%,
+    #fff8f8 75%,
+    #fff8f8 100%
+  );
+  background-size: 16px 2px;
   border: 1px solid #808080;
   margin: 25px 26.5px;
   position: relative;
@@ -204,7 +213,6 @@ background-size: 16.00px 2px;
 .rod.extra {
   height: 30px;
   align-self: flex-end;
-
 }
 
 .rod-lid {
@@ -297,7 +305,7 @@ background-size: 16.00px 2px;
   flex-direction: column;
   justify-content: center;
   /* align-self: center; */
-  margin: 0 0 10px ;
+  margin: 0 0 10px;
   padding: 0;
   position: relative;
 }
@@ -374,7 +382,6 @@ background-size: 16.00px 2px;
 .reverse-move {
   animation: moveNutToTarget 1s ease-in-out forwards;
   animation-direction: reverse;
-
 }
 
 .test-move {
@@ -422,8 +429,8 @@ background-size: 16.00px 2px;
   /* background-color: #091152; */
 }
 
-.game-score #scoreValue{
- font-weight: bold;
+.game-score #scoreValue {
+  font-weight: bold;
 }
 
 /* game loss modal */
@@ -440,7 +447,6 @@ background-size: 16.00px 2px;
   /* opacity: 0;
   pointer-events: none; */
 }
-
 
 .modal-title {
   color: #091152;
@@ -476,7 +482,7 @@ background-size: 16.00px 2px;
 
 .disable {
   pointer-events: none;
-  opacity: 0.7; 
+  opacity: 0.7;
 }
 
 .btn-close {
@@ -532,18 +538,18 @@ background-size: 16.00px 2px;
   flex-direction: column;
 }
 
-.game-difficulty label{
+.game-difficulty label {
   color: white;
 }
 
 #difficultyMode {
-  appearance: none;     
-  color: yellow;   
+  appearance: none;
+  color: yellow;
   font-weight: bold;
-  letter-spacing: 2px;            
-  text-align: center;  
+  letter-spacing: 2px;
+  text-align: center;
   background-color: #26a1ee;
-  border-radius: 5px;  
+  border-radius: 5px;
   width: 90px;
   border: 1px yellow;
 }
@@ -564,55 +570,84 @@ background-size: 16.00px 2px;
 }
 
 .settings-modal {
-  background-color: wheat;
+  background-color: #87ccec;
   width: 250px;
   max-width: 100%;
-  padding: 20px;
+  padding: 20px 15px 10px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
-  height: 250px;
+  height: 300px;
   border: 10px solid green;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items:center ;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.toggle-container { 
+.toggle-group {
   display: flex;
-  justify-content:space-between;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid black;
-  width: 180px;
+  width: 175px;
   margin: 5px 0;
-
 }
 
 .toggle-item {
   border: 2px solid red;
   border-radius: 30px;
   background-color: yellow;
-  padding: 2px; 
+  padding: 2px;
   height: 26px;
-  width: 60px; 
+  width: 60px;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.toggle-slide{
-  border: 1.8px solid red;
+.toggle-slide {
+  border: 1px solid red;
   border-radius: 30px;
-  background-color: white;  
+  background-color: white;
   height: 20px;
   width: 20px;
 }
 
 .toggle-text {
   margin: 0 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: yellow;
+
 }
 
+.home-link {
+  text-decoration: none;
+  border: 2px solid red;
+  border-radius: 30px;
+  width: 110px;
+  height: 35px;
+  text-align: center;
+  margin: 10px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-link i {
+  margin-right: 10px;
+}
 
 /*--- Keyframes for raised nut ---*/
 /*--- Movement using transform ---*/
