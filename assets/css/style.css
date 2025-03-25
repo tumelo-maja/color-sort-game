@@ -192,8 +192,8 @@ h3 {
   width: 25px;
   height: 100px;
   /* background-color: #c0c0c0; */
-  background-image: linear-gradient(5deg, #808080 25%, #c0c0c0 25%, #c0c0c0 50%, #808080 50%, #808080 75%, #c0c0c0 75%, #c0c0c0 100%);
-background-size: 45.89px 4.02px;
+  background-image: linear-gradient(10deg, #808080 25%, #fff8f8 25%, #fff8f8 50%, #808080 50%, #808080 75%, #fff8f8 75%, #fff8f8 100%);
+background-size: 16.00px 2px;
   border: 1px solid #808080;
   margin: 25px 26.5px;
   position: relative;
