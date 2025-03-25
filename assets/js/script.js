@@ -73,6 +73,14 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     };
 
+    // Sound effects Obj
+    let soundEffects =  {
+        moveNut: new Howl({
+            src: ['assets/sounds/move-nut-sfx.mp3',],
+            sprite: {unscrewShort: [0, 300] }
+        }),
+    };
+
     // let difficultyMode = 'medium';
     // Set game mode
     const defaultDifficulty = 'easy';
@@ -387,6 +395,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function raiseNut(nutObject, rodChildrenCount) {
 
         setRaiseNutTransformY(nutObject, rodChildrenCount);
+        soundEffects.moveNut.play('unscrewShort');
         nutObject.classList.add("raise-nut");
 
     }
@@ -414,6 +423,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (nutObject) {
             nutObject.classList.remove("raise-nut");
+            soundEffects.moveNut.play('unscrewShort');
+
         }
     }
 
