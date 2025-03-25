@@ -143,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // difficultyMode
     const difficultyModeSelect = document.getElementById("difficultyMode");
-    console.log(difficultyModeSelect);
 
     // const startGameButton = document.getElementById("start-button"); // start game
 
@@ -234,9 +233,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 saveUserProgress(difficultyMode, newScore);
             }, 1000);
 
-            console.log("userScoreElement After continue")
-            console.log(newScore)
-            console.log(userScoreElement.innerHTML)
+            // console.log("userScoreElement After continue")
+            // console.log(newScore)
+            // console.log(userScoreElement.innerHTML)
 
             generateNewGame();
         });
@@ -293,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // userProgress = getUserProgress();
         if (Object.keys(localStorage).length) {
             userProgress = getUserProgress();
-            console.log(userProgress)
+            // console.log(userProgress)
 
             userScoreElement.innerText = userProgress.userScore;
             difficultyMode = userProgress.currentDifficulty;
@@ -1100,8 +1099,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // let currentScore = getOdometerValue(userScoreElement);
 
-            console.log("currentScore Before save")
-            console.log(newScore)
+            // console.log("currentScore Before save")
+            // console.log(newScore)
 
             if (Object.keys(localStorage).length) {
                 userProgress = getUserProgress();
@@ -1116,7 +1115,7 @@ document.addEventListener("DOMContentLoaded", function () {
             userProgress.currentLevel = parseInt(levelValueElement.textContent);
 
 
-            console.log(userProgress);
+            // console.log(userProgress);
 
             localStorage.setItem("userProgress", JSON.stringify(userProgress));
 
