@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
-    soundEffects.gameLoss.play();
+    // soundEffects.gameLoss.play();
     // soundEffects.completeRod.play('rodWin');
     // soundEffects.raise.play('kickStart');
     // setTimeout(() => {
