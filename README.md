@@ -307,3 +307,6 @@ https://www.youtube.com/watch?v=hn7MhPt24L4
 Howler.js library (via cdn.js)
 https://howlerjs.com/
 
+Stripes generator CSS
+https://stripesgenerator.com/
+
