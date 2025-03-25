@@ -616,7 +616,6 @@ h3 {
 .toggle-item {
   border: 2px solid #525151;
   border-radius: 30px;
-  /* background-color: #525151; */
   background-color: #87ccec;
   padding: 2px;
   height: 26px;
@@ -644,14 +643,13 @@ h3 {
 }
 
 .toggle-slide-on {
-  background-color: yellow;
+  background-color: rgba(255, 255, 0, 0.801);
   border: 2px solid rgb(196, 196, 1);
   transform: translateX(20px);
   box-shadow: 0 0 6px rgba(255, 255, 0, 0.8), 0 0 12px rgba(255, 255, 100, 0.6);
 }
 
 .toggle-text {
-  /* margin: 0 10px; */
   font-weight: bold;
   font-size: 1rem;
   color: #525151;
@@ -663,6 +661,9 @@ h3 {
 
 .toggle-text-on {
   color: yellow;
+  text-shadow: 
+  0 0 4px rgba(255, 255, 0, 0.8),
+  0 0 8px rgba(255, 255, 100, 0.6);
 }
 
 .toggle-text .bi {
