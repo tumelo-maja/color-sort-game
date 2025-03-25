@@ -94,8 +94,15 @@ document.addEventListener("DOMContentLoaded", function () {
             volume: 0.9,
             // sprite: { onRodMove: [0, 300] },
         }),
+
+        completeRod: new Howl({
+            src: ['assets/sounds/complete-rod3-sfx.mp3',],
+            volume: 0.01,
+            sprite: { rodWin: [1000, 1000] },
+        }),
     };
 
+    soundEffects.completeRod.play('rodWin');
     // soundEffects.raise.play('kickStart');
     // setTimeout(() => {
     //     soundEffects.startMove.play('onRodMove');
@@ -820,6 +827,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const nutColorHex = [gameMode.nutColors[firstNutColor]];
 
                 confettiAnimation(startX, startY, [nutColorHex], 0.5);
+                soundEffects.completeRod.play('rodWin');
 
                 undoMoveButton.classList.add('disable');
                 let rodLid = targetRod.querySelector('.rod-lid');
