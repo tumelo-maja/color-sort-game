@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const difficultyModeSelect = document.getElementById("difficultyMode");
 
     // settings modal
-    const modalSettingsContainer = document.getElementById("settingsModal");
+    const modalSettingsContainer = document.getElementById("settingsModalContainer");
     const openModalSettings = document.querySelector(".settings-open");
     const closeModalSettings = document.querySelector(".settings-close");
 
