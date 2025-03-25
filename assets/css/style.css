@@ -583,6 +583,16 @@ h3 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  position: relative;
+}
+
+.settings-close{
+  border: 1px solid red;
+  background-color: #87ccec;
+  font-size: 1.6rem;
+  position: absolute;
+  top:0;
+  right: 0;
 }
 
 .toggle-group {
@@ -606,10 +616,10 @@ h3 {
 .toggle-item {
   border: 2px solid red;
   border-radius: 30px;
-  background-color: yellow;
+  background-color: #525151;
   padding: 2px;
   height: 26px;
-  width: 60px;
+  width: 50px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -624,11 +634,19 @@ h3 {
 }
 
 .toggle-text {
-  margin: 0 10px;
+  /* margin: 0 10px; */
   font-weight: bold;
   font-size: 1rem;
-  color: yellow;
+  color: #525151;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 120px;
+}
 
+.toggle-text .bi {
+  color: red;
+  font-size: 1.8rem;
 }
 
 .home-link {
