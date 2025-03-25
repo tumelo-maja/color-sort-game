@@ -77,7 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let soundEffects =  {
         moveNut: new Howl({
             src: ['assets/sounds/move-nut-sfx.mp3',],
-            sprite: {unscrewShort: [0, 300] }
+            volume: 0.07,
+            sprite: {unscrewShort: [0, 300] },
         }),
     };
 
