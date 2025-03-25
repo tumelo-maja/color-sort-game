@@ -173,6 +173,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const openModalSettings = document.querySelector(".settings-open");
     const closeModalSettings = document.querySelector(".settings-close");
 
+    const soundToggleElement = document.getElementById("sound");
+    const vibrationToggleElement = document.getElementById("vibration");
+    console.log(soundToggleElement)
+    console.log(vibrationToggleElement)
+
 
     // const startGameButton = document.getElementById("start-button"); // start game
 

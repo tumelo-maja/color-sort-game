@@ -614,10 +614,12 @@ h3 {
   margin: 5px 0;
 }
 
+
 .toggle-item {
-  border: 2px solid red;
+  border: 2px solid #525151;
   border-radius: 30px;
-  background-color: #525151;
+  /* background-color: #525151; */
+  background-color: #87ccec;
   padding: 2px;
   height: 26px;
   width: 50px;
@@ -626,12 +628,22 @@ h3 {
   align-items: center;
 }
 
+.toggle-item-on {
+  justify-content: end-start;
+  border: 2px solid yellow;
+}
+
 .toggle-slide {
-  border: 1px solid red;
+  border: 2px solid #525151;
   border-radius: 30px;
-  background-color: white;
+  background-color: rgb(201, 198, 198);
   height: 20px;
   width: 20px;
+}
+
+.toggle-slide-on {
+  background-color: yellow;
+  border: 2px solid rgb(196, 196, 1);
 }
 
 .toggle-text {
@@ -640,13 +652,18 @@ h3 {
   font-size: 1rem;
   color: #525151;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   width: 120px;
 }
 
+.toggle-text-on {
+  color: yellow;
+}
+
 .toggle-text .bi {
-  color: red;
+  /* color: red; */
+  margin-right: 10px;
   font-size: 1.8rem;
 }
 
