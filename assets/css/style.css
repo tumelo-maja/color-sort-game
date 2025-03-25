@@ -567,12 +567,16 @@ background-size: 16.00px 2px;
   background-color: wheat;
   width: 250px;
   max-width: 100%;
-  padding: 30px 50px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
   height: 250px;
   border: 10px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items:center ;
 }
 
 .toggle-container { 
@@ -580,12 +584,13 @@ background-size: 16.00px 2px;
   justify-content:space-between;
   align-items: center;
   border: 1px solid black;
-  width: 120px;
+  width: 180px;
+  margin: 5px 0;
 
 }
 
 .toggle-item {
-  border: 1px solid red;
+  border: 2px solid red;
   border-radius: 30px;
   background-color: yellow;
   padding: 2px; 
@@ -597,7 +602,7 @@ background-size: 16.00px 2px;
 }
 
 .toggle-slide{
-  border: 1px solid red;
+  border: 1.8px solid red;
   border-radius: 30px;
   background-color: white;  
   height: 20px;
