@@ -442,7 +442,7 @@ background-size: 16.00px 2px;
 }
 
 
-.modal-container h2 {
+.modal-title {
   color: #091152;
   margin: 0 0 15px;
   font-size: 1.5rem;
@@ -548,6 +548,65 @@ background-size: 16.00px 2px;
   border: 1px yellow;
 }
 
+/* toggle - sound */
+.modal-container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* opacity: 0;
+  pointer-events: none; */
+}
+
+.settings-modal {
+  background-color: wheat;
+  width: 250px;
+  max-width: 100%;
+  padding: 30px 50px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  height: 250px;
+  border: 10px solid green;
+}
+
+.toggle-container { 
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  border: 1px solid black;
+  width: 120px;
+
+}
+
+.toggle-item {
+  border: 1px solid red;
+  border-radius: 30px;
+  background-color: yellow;
+  padding: 2px; 
+  height: 26px;
+  width: 60px; 
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+
+.toggle-slide{
+  border: 1px solid red;
+  border-radius: 30px;
+  background-color: white;  
+  height: 20px;
+  width: 20px;
+}
+
+.toggle-text {
+  margin: 0 10px;
+}
 
 
 /*--- Keyframes for raised nut ---*/
