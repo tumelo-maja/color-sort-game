@@ -296,3 +296,11 @@ Repeat elements in an array: (https://stackoverflow.com/questions/12503146/creat
 
 Check if duplicate elements in the array are adjacent 
 (https://www.geeksforgeeks.org/check-if-all-duplicate-elements-in-the-array-are-adjacent-or-not)
+
+Mixkit Game Sound effects (https://mixkit.co/free-sound-effects/)
+
+Pixabay Sound effects (https://pixabay.com/sound-effects/)
+
+Sounds and Music in Javascript games (Tutorial)
+https://www.youtube.com/watch?v=hn7MhPt24L4
+
