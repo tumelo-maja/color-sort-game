@@ -86,6 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
             volume: 0.07,
             sprite: { onRodMove: [0, 300] },
         }),
+
+        gameWin: new Howl({
+            src: ['assets/sounds/game-win-sfx.mp3',],
+            volume: 0.9,
+            // sprite: { onRodMove: [0, 300] },
+        }),
     };
 
     // soundEffects.raise.play('kickStart');
@@ -749,6 +755,10 @@ document.addEventListener("DOMContentLoaded", function () {
             confettiAnimation(leftStartX, startY, Object.values(nutColorsAll), particleSize, angle = 45, spread = spread, startVelocity = startVelocity, ticks = ticks);
             confettiAnimation(rightStartX, startY, Object.values(nutColorsAll), particleSize, angle = 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
         }, 500);
+
+        setTimeout(() => {
+            soundEffects.gameWin.play();
+        }, 200)
 
         pointsDisplayElement.innerHTML = calculatePointsWon();
 
