@@ -100,9 +100,17 @@ document.addEventListener("DOMContentLoaded", function () {
             volume: 0.01,
             sprite: { rodWin: [1000, 1000] },
         }),
+
+        collectPoints: new Howl({
+            src: ['assets/sounds/collect-points-sfx.mp3',],
+            volume: 0.09,
+            // sprite: { rodWin: [0, 1000] },
+        }),
     };
 
-    soundEffects.completeRod.play('rodWin');
+    
+    soundEffects.collectPoints.play();
+    // soundEffects.completeRod.play('rodWin');
     // soundEffects.raise.play('kickStart');
     // setTimeout(() => {
     //     soundEffects.startMove.play('onRodMove');
@@ -769,6 +777,10 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             soundEffects.gameWin.play();
         }, 200)
+
+        setTimeout(() => {
+            soundEffects.collectPoints.play();
+        }, 2500)
 
         pointsDisplayElement.innerHTML = calculatePointsWon();
 
