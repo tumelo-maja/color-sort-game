@@ -198,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //Get current score and earned points
             currentScore = getOdometerValue(userScoreElement);
-            // let pointsEarned = getOdometerValue(pointsDisplayElement);
             let pointsEarned = parseInt(pointsDisplayElement.textContent);
             let newScore = currentScore + pointsEarned;
 
@@ -211,10 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("userScoreElement After continue")
             console.log(newScore)
             console.log(userScoreElement.innerHTML)
-
-            // restoreDisplayPointsDigits();
-
-
 
             generateNewGame();
         });
@@ -264,22 +259,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Restore pointsDisplay element to one digit
-     */
-    // function restoreDisplayPointsDigits() {
-    //     let odometerInside = pointsDisplayElement.querySelector('.odometer-inside');
-
-    //     while (odometerInside.querySelectorAll('.odometer-digit').length > 1) {
-    //         odometerInside.lastElementChild.remove();
-    //     }
-
-    //     let odometerValue = pointsDisplayElement.querySelector('.odometer-value');
-    //     odometerValue.innerText = "0";
-    //     console.log("Digits restored!!!!")
-
-    // }
-
-    /**
      * initialize levels and scores
      */
     function initializeUserProgress() {
@@ -294,20 +273,6 @@ document.addEventListener("DOMContentLoaded", function () {
             levelValueElement.innerText = userProgress[difficultyMode];
             gameMode = gameModeObject[difficultyMode];
 
-            // console.log("We tried loading");
-            // console.log(`difficultyMode: ${difficultyMode}`);
-            // console.log(gameModeObject);
-            // console.log(gameMode);
-
-            // console.log("userProgress");
-            // console.log(userProgress);
-
-
-            // userProgress[difficultyMode] = parseInt(levelValueElement.textContent);
-            // userProgress.currentDifficulty = difficultyMode;
-            // userProgress.currentLevel = parseInt(levelValueElement.textContent);
-
-
         } else {
             userProgress = createUserProgress();
             userScoreElement.innerText = 0;
@@ -317,8 +282,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //save to local storage
             createUserProgress();
-            // userProgress = getUserProgress();
-
         }
 
     }
@@ -747,14 +710,7 @@ document.addEventListener("DOMContentLoaded", function () {
             confettiAnimation(rightStartX, startY, Object.values(nutColorsAll), particleSize, angle = 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
         }, 500);
 
-        let pointsEarned = calculatePointsWon();
-        pointsDisplayElement.innerHTML = pointsEarned;
-
-
-        // setTimeout(() => {
-        //     pointsDisplayElement.innerHTML = pointsEarned;
-        //     console.log("New Points Logged")
-        // }, 1500);
+        pointsDisplayElement.innerHTML = calculatePointsWon();
 
     }
 
