@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // let gameMode = gameModeObject.medium;
     // let gameMode = gameModeObject.hard;
 
-    localStorage.removeItem('userProgress');
+    // localStorage.removeItem('userProgress');
 
 
     // game area
@@ -175,6 +175,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const soundToggleElement = document.getElementById("sound");
     const vibrationToggleElement = document.getElementById("vibration");
+
+    const removeAllProgress = document.querySelector(".remove-progress");
 
     // const startGameButton = document.getElementById("start-button"); // start game
 
@@ -307,6 +309,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // Sound toggle
         soundToggleElement.addEventListener('click', setToggleOn);
         vibrationToggleElement.addEventListener('click', setToggleOn);
+        removeAllProgress.addEventListener('click',  function () {
+            localStorage.removeItem('userProgress');
+            userProgress =createUserProgress();
+            initializeUserProgress();
+    });
         // console.log(soundToggleElement)
         // console.log(vibrationToggleElement)
 
@@ -1216,7 +1223,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function createUserProgress() {
         userProgress = {
-            userScore: currentScore,
+            userScore: 0,
             easy: 1,
             medium: 1,
             hard: 1,
