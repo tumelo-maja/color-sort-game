@@ -74,16 +74,17 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Sound effects Obj
+    const defaultVolume = 0.15;
     let soundEffects = {
         raise: new Howl({
             src: ['assets/sounds/start-move-nut-sfx.mp3',],
-            volume: 0.15,
+            volume: defaultVolume,
             sprite: { kickStart: [50, 300] },
         }),
 
         startMove: new Howl({
             src: ['assets/sounds/move-nut-sfx.mp3',],
-            volume: 0.15,
+            volume: defaultVolume,
             sprite: {
                 onRodMove: [0, 300],
                 scoreCount: [0, 4500]
@@ -92,37 +93,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         gameWin: new Howl({
             src: ['assets/sounds/game-win-sfx.mp3',],
-            volume: 0.9,
-            // sprite: { onRodMove: [0, 300] },
+            volume: defaultVolume,
         }),
 
         completeRod: new Howl({
             src: ['assets/sounds/complete-rod3-sfx.mp3',],
-            volume: 0.15,
+            volume: defaultVolume,
             sprite: { rodWin: [1000, 1000] },
         }),
 
         collectPoints: new Howl({
             src: ['assets/sounds/collect-points-sfx.mp3',],
-            volume: 0.15,
-            // sprite: { rodWin: [0, 1000] },
+            volume: defaultVolume,
         }),
 
         gameLoss: new Howl({
             src: ['assets/sounds/game-fail1-sfx.mp3',],
-            volume: 0.15,
-            // sprite: { rodWin: [0, 1000] },
+            volume: defaultVolume,
         }),
     };
-
-
-    // soundEffects.gameLoss.play();
-    // soundEffects.completeRod.play('rodWin');
-    // soundEffects.raise.play('kickStart');
-    // setTimeout(() => {
-    //     soundEffects.startMove.play('onRodMove');
-    // },400)
-
 
     // let difficultyMode = 'medium';
     // Set game mode
