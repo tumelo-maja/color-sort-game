@@ -89,6 +89,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 onRodMove: [0, 300],
                 scoreCount: [0, 4500]
             },
+            onplay: function () {
+                runVibration(100);
+                console.log("Play together");
+            }
         }),
 
         gameWin: new Howl({
@@ -354,12 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             console.log("Code to change vibration settings")
             isVibrationOn = !isVibrationOn;
-            if (navigator.vibrate && isVibrationOn) {
-                runVibration(100);
-            } else {
-                console.log("Cant vibrate");
-            };
-
+            runVibration(100);
         }
     }
 
@@ -367,7 +366,13 @@ document.addEventListener("DOMContentLoaded", function () {
      * Run vibration when this function is called
      */
     function runVibration(vibrationDuration) {
-        navigator.vibrate(vibrationDuration);
+
+        console.log("Lets vibrate together");
+        if (navigator.vibrate && isVibrationOn) {
+            navigator.vibrate(vibrationDuration);
+        } else {
+            console.log("Cant vibrate");
+        };
     }
 
     /**
