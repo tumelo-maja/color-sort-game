@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // let gameMode = gameModeObject.hard;
 
     // localStorage.removeItem('userProgress');
+    let isGameMuted = true; //default is without sound;
 
 
     // game area
@@ -309,16 +310,16 @@ document.addEventListener("DOMContentLoaded", function () {
         // Sound toggle
         // soundToggleElement.addEventListener('click', setToggleOn);
         // vibrationToggleElement.addEventListener('click', setToggleOn);
-        
+
         toggleElements.forEach(bucket => {
             bucket.addEventListener('click', changeToggleSettings)
         })
 
-        removeAllProgress.addEventListener('click',  function () {
+        removeAllProgress.addEventListener('click', function () {
             localStorage.removeItem('userProgress');
-            userProgress =createUserProgress();
+            userProgress = createUserProgress();
             initializeUserProgress();
-    });
+        });
         // console.log(soundToggleElement)
         // console.log(vibrationToggleElement)
 
@@ -355,7 +356,11 @@ document.addEventListener("DOMContentLoaded", function () {
         this.querySelector('.toggle-item').classList.toggle('toggle-item-on');
 
         if (this.classList.contains('sound')) {
-           console.log("Code to change soound  settings")
+            console.log("Code to change soound  settings");
+            isGameMuted = !isGameMuted;
+            Howler.mute(isGameMuted);
+            soundEffects.completeRod.play('rodWin');
+
         } else {
             console.log("Code to change vibration settings")
         }
