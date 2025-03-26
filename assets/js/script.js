@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 scoreCount: [0, 4500]
             },
             onplay: function () {
-                runVibration(100);
+                runVibration(50);
                 console.log("Play together");
             }
         }),
