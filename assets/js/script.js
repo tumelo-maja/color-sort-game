@@ -370,6 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Lets vibrate together");
         if (navigator.vibrate && isVibrationOn) {
             navigator.vibrate(vibrationDuration);
+            console.log("we di it - we vibrated");
         } else {
             console.log("Cant vibrate");
         };
