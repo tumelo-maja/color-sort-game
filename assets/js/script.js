@@ -354,13 +354,20 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             console.log("Code to change vibration settings")
             isVibrationOn = !isVibrationOn;
-            if (navigator.vibrate) {
-                navigator.vibrate(100);
+            if (navigator.vibrate && isVibrationOn) {
+                runVibration(100);
             } else {
                 console.log("Cant vibrate");
             };
 
         }
+    }
+
+    /**
+     * Run vibration when this function is called
+     */
+    function runVibration(vibrationDuration) {
+        navigator.vibrate(vibrationDuration);
     }
 
     /**
