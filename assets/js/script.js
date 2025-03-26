@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // let gameMode = gameModeObject.hard;
 
     // localStorage.removeItem('userProgress');
-    let isGameMuted = true; //default is without sound;
-    Howler.mute(isGameMuted);
+    let isSoundOn = false; //default is without sound;
+    Howler.mute(isSoundOn);
     let isVibrationOn = false;
 
     // game area
@@ -347,8 +347,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (this.classList.contains('sound')) {
             console.log("Code to change soound  settings");
-            isGameMuted = !isGameMuted;
-            Howler.mute(isGameMuted);
+            isSoundOn = !isSoundOn;
+            Howler.mute(isSoundOn);
             soundEffects.completeRod.play('rodWin');
 
         } else {
