@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // localStorage.removeItem('userProgress');
     let isGameMuted = true; //default is without sound;
     Howler.mute(isGameMuted);
+    let isVibrationOn = false;
 
     // game area
     const gameAreaElement = document.querySelector('.game-area');
@@ -352,11 +353,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } else {
             console.log("Code to change vibration settings")
+            isVibrationOn = !isVibrationOn;
             if (navigator.vibrate) {
                 navigator.vibrate(100);
             } else {
                 console.log("Cant vibrate");
-            }
+            };
+
         }
     }
 
