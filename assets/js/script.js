@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // localStorage.removeItem('userProgress');
     let isGameMuted = true; //default is without sound;
-
+    Howler.mute(isGameMuted);
 
     // game area
     const gameAreaElement = document.querySelector('.game-area');
