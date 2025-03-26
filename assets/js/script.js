@@ -173,8 +173,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const openModalSettings = document.querySelector(".settings-open");
     const closeModalSettings = document.querySelector(".settings-close");
 
-    const soundToggleElement = document.getElementById("sound");
-    const vibrationToggleElement = document.getElementById("vibration");
+    //get toggle sound and vibration elements
+    const toggleElements = document.querySelectorAll(".toggle-container");
 
     const removeAllProgress = document.querySelector(".remove-progress");
 
@@ -307,8 +307,13 @@ document.addEventListener("DOMContentLoaded", function () {
         })
 
         // Sound toggle
-        soundToggleElement.addEventListener('click', setToggleOn);
-        vibrationToggleElement.addEventListener('click', setToggleOn);
+        // soundToggleElement.addEventListener('click', setToggleOn);
+        // vibrationToggleElement.addEventListener('click', setToggleOn);
+        
+        toggleElements.forEach(bucket => {
+            bucket.addEventListener('click', changeToggleSettings)
+        })
+
         removeAllProgress.addEventListener('click',  function () {
             localStorage.removeItem('userProgress');
             userProgress =createUserProgress();
@@ -344,10 +349,16 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Toggle the *-on class for on elements in the toggle container, sound and vibration
      */
-    function setToggleOn() {
+    function changeToggleSettings() {
         this.querySelector('.toggle-slide').classList.toggle('toggle-slide-on');
         this.querySelector('.toggle-text').classList.toggle('toggle-text-on');
         this.querySelector('.toggle-item').classList.toggle('toggle-item-on');
+
+        if (this.classList.contains('sound')) {
+           console.log("Code to change soound  settings")
+        } else {
+            console.log("Code to change vibration settings")
+        }
     }
 
     /**
