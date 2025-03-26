@@ -305,8 +305,8 @@ document.addEventListener("DOMContentLoaded", function () {
         })
 
         // Sound toggle
-        soundToggleElement.addEventListener('click',setToggleOn);
-        vibrationToggleElement.addEventListener('click',setToggleOn);
+        soundToggleElement.addEventListener('click', setToggleOn);
+        vibrationToggleElement.addEventListener('click', setToggleOn);
         // console.log(soundToggleElement)
         // console.log(vibrationToggleElement)
 
@@ -666,6 +666,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 nut.classList.add(animationName); // nutWrapper
                 nut.parentElement.classList.add(animationName); // nut element
 
+                setRaiseNutTransformY(nut, targetChildrenCount + 1);
 
                 nut.parentElement.addEventListener("animationend", function handler() {
 

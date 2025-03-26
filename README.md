@@ -310,3 +310,5 @@ https://howlerjs.com/
 Stripes generator CSS
 https://stripesgenerator.com/
 
+Crazy 3D Rotation Effect Using CSS Only (https://www.youtube.com/watch?v=ymuBowcODVU)
+
