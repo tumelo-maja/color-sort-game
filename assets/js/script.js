@@ -352,6 +352,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } else {
             console.log("Code to change vibration settings")
+            if (navigator.vibrate) {
+                navigator.vibrate(300);
+            } else {
+                console.log("Cant vibrate");
+            }
         }
     }
 
