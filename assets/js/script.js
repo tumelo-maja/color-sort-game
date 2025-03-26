@@ -680,6 +680,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         soundEffects.raise.play('kickStart');
                     }, 200)
 
+
                     nut.parentElement.appendChild(nut);
                     targetRod.appendChild(nut.parentElement);
 
