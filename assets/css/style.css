@@ -9,6 +9,7 @@
   --beige: #ffcfc1;
   --pink: #ff90c8;
   --red: #ff0c15;
+  --left: 50%;
 }
 
 /* Nut colors*/
@@ -239,17 +240,23 @@ h3 {
   height: 20px;
   margin-bottom: 3px;
   border-radius: 5px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   align-self: center;
   justify-self: end;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.25s ease-in;
+  /* transition: transform 0.25s ease-in; */
   margin: 0 21px 3px;
+  background-image: url(../images/nut-outline.png);
+  background-position:  var(--left) 0;
+  background-size: cover;
+  transition: 0.5s;
+
 }
 
 .raise-nut {
   transform: translate(0, var(--transform-y));
+  --left: -360px;
 }
 
 .game-statistics {
