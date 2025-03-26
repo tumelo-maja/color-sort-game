@@ -77,13 +77,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let soundEffects = {
         raise: new Howl({
             src: ['assets/sounds/start-move-nut-sfx.mp3',],
-            volume: 0.07,
+            volume: 0.15,
             sprite: { kickStart: [50, 300] },
         }),
 
         startMove: new Howl({
             src: ['assets/sounds/move-nut-sfx.mp3',],
-            volume: 0.07,
+            volume: 0.15,
             sprite: {
                 onRodMove: [0, 300],
                 scoreCount: [0, 4500]
@@ -98,19 +98,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         completeRod: new Howl({
             src: ['assets/sounds/complete-rod3-sfx.mp3',],
-            volume: 0.01,
+            volume: 0.15,
             sprite: { rodWin: [1000, 1000] },
         }),
 
         collectPoints: new Howl({
             src: ['assets/sounds/collect-points-sfx.mp3',],
-            volume: 0.09,
+            volume: 0.15,
             // sprite: { rodWin: [0, 1000] },
         }),
 
         gameLoss: new Howl({
             src: ['assets/sounds/game-fail1-sfx.mp3',],
-            volume: 0.09,
+            volume: 0.15,
             // sprite: { rodWin: [0, 1000] },
         }),
     };
