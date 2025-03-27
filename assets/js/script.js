@@ -362,9 +362,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (this.classList.contains('sound')) {
             console.log("Code to change soound  settings");
-            isGameMuted = !isGameMuted;
-            Howler.mute(isGameMuted);
-            soundEffects.completeRod.play('rodWin');
+            // isGameMuted = !isGameMuted;
+            // Howler.mute(isGameMuted);
+            // soundEffects.completeRod.play('rodWin');
+
+            changeSoundSetting();
 
         } else {
             console.log("Code to change vibration settings")
@@ -385,6 +387,15 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             console.log("Cant vibrate");
         };
+    }
+
+    /**
+     * Function to change sound setting (on to off/ vice versa)
+     */
+    function changeSoundSetting() {
+        isGameMuted = !isGameMuted;
+        Howler.mute(isGameMuted);
+        soundEffects.completeRod.play('rodWin');
     }
 
     /**
