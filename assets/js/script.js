@@ -194,12 +194,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run game to load default game setup with level=1 and score=0
     runGame();
 
-    // keyboard events
-    window.addEventListener('keydown', function (e) {
-        // console.log("The key below was pressed");
-        // console.log(e.key);
+    function handleKeyboardPress(e) {
+
         let pressedKey = e.key;
-        // if (e.key === 'AudioVolumeMute') {
         if (pressedKey.toLowerCase() === 'm' && e.ctrlKey) {
             console.log('Mute key was pressed');
             changeSoundSetting();
@@ -207,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log('any other key');
             console.log(pressedKey.toLowerCase());
         }
-    })
+    }
 
     /**
      * Function to add eventlisteners to rod elements
@@ -259,6 +256,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // undo move button listener
         undoMoveButton.addEventListener('click', undoLastMove);
+
+        // keyboard events
+        window.addEventListener('keydown', handleKeyboardPress);
 
         // Win button -continue
         continueButton.addEventListener('click', function () {
