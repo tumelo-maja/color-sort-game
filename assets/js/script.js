@@ -194,41 +194,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run game to load default game setup with level=1 and score=0
     runGame();
 
-    function handleKeyboardPress(e) {
-
-        let pressedKey = e.key;
-        if (pressedKey.toLowerCase() === 'm' && e.ctrlKey) {
-            console.log('Mute key was pressed');
-            changeSoundSetting();
-        } else {
-            console.log('any other key');
-            console.log(pressedKey.toLowerCase());
-        }
-    }
-
     /**
-     * Function to add eventlisteners to rod elements
-     */
-    function addRodEventListeners() {
-        const rods = document.querySelectorAll(".rod");
-        for (let rod of rods) {
-            rod.addEventListener('click', rodClick);
-        }
-    }
-
-    /**
-     * Undo last move
-     */
-    function undoLastMove() {
-        let moveType = 'reverse';
-        moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'], moveType);
-        updateMovesRemaining(moveType);
-        undoMoveButton.classList.add('disable');
-    }
-
-    /**
-     * initialize the game play
-     */
+ * initialize the game play
+ */
     function runGame() {
         addRodEventListeners();
 
@@ -340,6 +308,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Run new game
         generateNewGame();
+    }
+
+    /**
+     * function to handle keyboard press events
+     */
+    function handleKeyboardPress(e) {
+
+        let pressedKey = e.key;
+        if (pressedKey.toLowerCase() === 'm' && e.ctrlKey) {
+            console.log('Mute key was pressed');
+            changeSoundSetting();
+        } else {
+            console.log('any other key');
+            console.log(pressedKey.toLowerCase());
+        }
+    }
+
+    /**
+     * Function to add eventlisteners to rod elements
+     */
+    function addRodEventListeners() {
+        const rods = document.querySelectorAll(".rod");
+        for (let rod of rods) {
+            rod.addEventListener('click', rodClick);
+        }
+    }
+
+    /**
+     * Undo last move
+     */
+    function undoLastMove() {
+        let moveType = 'reverse';
+        moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'], moveType);
+        updateMovesRemaining(moveType);
+        undoMoveButton.classList.add('disable');
     }
 
     /**
