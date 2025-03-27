@@ -198,10 +198,14 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('keydown', function (e) {
         // console.log("The key below was pressed");
         // console.log(e.key);
-        if (e.key === 'AudioVolumeMute') {
+        let pressedKey = e.key;
+        // if (e.key === 'AudioVolumeMute') {
+        if (pressedKey.toLowerCase() === 'm' && e.ctrlKey) {
             console.log('Mute key was pressed');
+            changeSoundSetting();
         } else {
             console.log('any other key');
+            console.log(pressedKey.toLowerCase());
         }
     })
 
