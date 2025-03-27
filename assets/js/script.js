@@ -194,6 +194,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run game to load default game setup with level=1 and score=0
     runGame();
 
+    // keyboard events
+    window.addEventListener('keydown', function (e) {
+        console.log("The key below was pressed");
+        console.log(e.key);
+    })
+
     /**
      * Function to add eventlisteners to rod elements
      */
