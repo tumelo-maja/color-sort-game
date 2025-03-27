@@ -323,15 +323,18 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (pressedKey === 'z' && e.ctrlKey) {
             console.log(`ctrl+${pressedKey}`);
             console.log('run undoMove');
-        } else if (pressedKey === 'x' && e.ctrlKey) {
+            undoLastMove();
+        } else if (pressedKey === 'x' && e.shiftKey) {
             console.log(`ctrl+${pressedKey}`);
             console.log('run add extra rod');
+            addExtraRod();
         } else if (pressedKey === 'r' && e.shiftKey ) {
             console.log(`ctrl+${pressedKey}`);
             console.log('run Game Reset');
-        } else if (pressedKey === 'n' && e.ctrlKey) {
+        } else if (pressedKey === 'n' && e.shiftKey) {
             console.log(`ctrl+${pressedKey}`);
             console.log('run Load new game');
+            generateNewGame();
         } else {
             console.log('Toggle mute setting');
             console.log(pressedKey.toLowerCase());
