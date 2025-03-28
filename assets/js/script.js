@@ -456,9 +456,12 @@ document.addEventListener("DOMContentLoaded", function () {
      * Activate the extra rod to be used
      */
     function addExtraRod() {
-        let extraRodElement = document.querySelector('.rod.extra');
-        extraRodElement.classList.remove('disable');
-        extraRodButton.classList.add('disable');
+        if (!extraRodButton.classList.contains('disable')) {
+
+            let extraRodElement = document.querySelector('.rod.extra');
+            extraRodElement.classList.remove('disable');
+            extraRodButton.classList.add('disable');
+        }
     }
 
     /**
