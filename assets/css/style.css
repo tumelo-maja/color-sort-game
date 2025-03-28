@@ -498,7 +498,7 @@ h3 {
 }
 
 /* Points caclulations */
-#points-head {
+.help-head {
   margin: 5px;
   cursor: pointer;
 }

@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const extraRodButton = document.getElementById("add-rod"); // add extra rod
 
-    const pointDescriptionElement = document.getElementById("points-head"); // points calculations
+    const helpModalElements = document.querySelectorAll(".help-head"); // help modal
 
     let pointsDisplayElement = document.getElementById("pointsDisplay"); // points display
     // let pointsOdometer = new Odometer({
@@ -249,11 +249,10 @@ document.addEventListener("DOMContentLoaded", function () {
             generateNewGame();
         });
 
-        pointDescriptionElement.addEventListener('click', function (e) {
 
-            const pointDescriptionExpanded = document.querySelector('.points-expanded');
-            pointDescriptionExpanded.classList.toggle('hidden-item');
-        });
+        helpModalElements.forEach(head => {
+            head.addEventListener('click', toggleDisplayHelpModal);
+        })
 
         // start game button
         // startGameButton.addEventListener('click', generateNewGame);
@@ -335,6 +334,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * Toggle display
+     */
+    function toggleDisplayHelpModal(e) {
+
+        // const pointDescriptionExpanded = document.querySelector('.points-expanded');
+        const headElement = e.target;
+        headElement.nextElementSibling.classList.toggle('hidden-item');
+        console.log("Help-head clicked")
+    }
+
+    /**
      * Undo last move
      */
     function undoLastMove() {
@@ -382,7 +392,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function runVibration(vibrationDuration) {
         if (navigator.vibrate && isVibrationOn) {
             navigator.vibrate(vibrationDuration);
-        } 
+        }
     }
 
     /**
