@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'whitesilver': '#c2b3d4',
             },
             nutCount: 12,
-            maximumMoves: 15,
+            maximumMoves: 12,
         },
         medium: {
             containers: 2,
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'orange': '#f25029',
             },
             nutCount: 20,
-            maximumMoves: 25,
+            maximumMoves: 20,
         },
         hard: {
             containers: 3,
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'red': '#FF0C15',
             },
             nutCount: 20,
-            maximumMoves: 42,
+            maximumMoves: 36,
         },
     };
 
