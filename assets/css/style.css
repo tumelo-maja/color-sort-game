@@ -504,6 +504,12 @@ h3 {
   padding: 30px 0 20px;
 }
 
+#helpOptionsModal .modal-title{
+  color: yellow;
+  text-align: center;
+  width: 100%;
+}
+
 .help-modal {
   background-color: #091152;
   width: 300px;
