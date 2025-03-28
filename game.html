@@ -26,12 +26,15 @@
     <div class="game-container">
         <div class="head-area">
             <a href="#settingsModalContainer" class="settings-open" aria-label="Open Settings menu"
-                title="Open Settings menu"><i class="fa-solid fa-bars"></i></a>
+                title="Open Settings menu (opens in a modal window)"><i class="fa-solid fa-bars"></i></a>
             <div class="game-score"><span id="scoreValue">0</span><i class="fa-solid fa-coins"></i></div>
-            <a href="#helpModal" data-bs-toggle="modal" data-bs-target="#helpModal"
+            <!-- <a href="#helpModal" data-bs-toggle="modal" data-bs-target="#helpModal"
                 aria-label="Shows instructions on how to play (opens in a modal window)"
                 title="Learn how to play the game"><i class="fa-solid fa-question"></i>
-            </a>
+            </a> -->
+            <a href="#helpOptionsModal" class="help-open"
+                aria-label="Shows instructions on how to play (opens in a modal window)" title="Open Help menu"><i
+                    class="fa-solid fa-question"></i></a>
         </div>
         <div class="game-difficulty">
             <label for="difficultyMode">Difficulty Mode </label>
@@ -83,7 +86,7 @@
 
     </div>
     <!-- Bootstrap Game instruction Help Modal -->
-    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -175,172 +178,171 @@
                 </div>
             </div>
         </div>
+    </div> -->
 
-        <!-- Custom modal for Help Options -->
-        <div id="helpOptionsModal" class="modal-container">
-            <div class="help-modal">
-                <h2 class="modal-title">Help</h2>
-                <button class="help-close"><i class="fa-solid fa-xmark"></i></button>
-                <div class="help play">
-                    <div class="help instructions">
-                        <p class="help-head"><i class="bi bi-chevron-double-down down-arrow"></i> How to play</p>
-                        <div class="help-expanded hidden-item">
-                            <ul>
-                                <li><i class="bi bi-nut-fill"></i><i class="bi bi-arrow-bar-up"></i><span>
-                                        Unscrew:</span> Click on a nut to unscrew it.</li>
-                                <li><i class="bi bi-nut-fill"></i><i class="bi bi-arrow-90deg-right"></i><span> Move
-                                        nut:</span> Click on the desired bolt to move it.</li>
-                                <li><i class="bi bi-info-circle-fill"></i><span>Stack smartly:</span> Nuts can <em>only
-                                        be placed on another nut of the same
-                                        color</em>.
-                                    If the bolt is empty, any nut can go there!</li>
-                                <li><i class="bi bi-sort-numeric-down-alt"></i><span>Limited moves:</span> If you run
-                                    out if moves before completing the sorting,
-                                    you
-                                    lose!</li>
-                                <li><i class="material-symbols-outlined game-icons">
-                                        undo
-                                    </i><span>Undo last move:</span> Click undo button "xxx" to reverse the last move -
-                                    one
-                                    use
-                                    per move</li>
-                                <li><i class="material-symbols-outlined game-icons">
-                                        add
-                                    </i><span>Extra bolt:</span> Click to add activate extra bolt</li>
-                                <li><i class="material-symbols-outlined game-icons">
-                                        settings_backup_restore
-                                    </i><span>Reset level</span> Click to restart the level</li>
-                                <li><i class="material-symbols-outlined game-icons">
-                                        splitscreen_vertical_add
-                                    </i><span>New game:</span> Click to load new game</li>
-                                <li><span>Win the game:</span> Stack all the colors correctly and become the stacking
-                                    champion!</li>
-                            </ul>
-                        </div>
+    <!-- Custom modal for Help Options -->
+    <div id="helpOptionsModal" class="modal-container">
+        <div class="help-modal">
+            <h2 class="modal-title">Help</h2>
+            <button class="help-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="help-container">
+                <div class="help instructions">
+                    <p class="help-head"><i class="bi bi-chevron-double-down down-arrow"></i> How to play</p>
+                    <div class="help-expanded hidden-item">
+                        <p><i class="bi bi-nut-fill"></i><i class="bi bi-arrow-bar-up"></i><span>
+                                Unscrew:</span> Click on a nut to unscrew it.</p>
+                        <p><i class="bi bi-nut-fill"></i><i class="bi bi-arrow-90deg-right"></i><span> Move
+                                nut:</span> Click on the desired bolt to move it.</p>
+                        <p><i class="bi bi-info-circle-fill"></i><span>Stack smartly:</span> Nuts can <em>only
+                                be placed on another nut of the same
+                                color</em>.
+                            If the bolt is empty, any nut can go there!</p>
+                        <p><i class="bi bi-sort-numeric-down-alt"></i><span>Limited moves:</span> If you run
+                            out if moves before completing the sorting,
+                            you
+                            lose!</p>
+                        <p><i class="material-symbols-outlined game-icons">
+                                undo
+                            </i><span>Undo last move:</span> Click undo button "xxx" to reverse the last move -
+                            one
+                            use
+                            per move</p>
+                        <p><i class="material-symbols-outlined game-icons">
+                                add
+                            </i><span>Extra bolt:</span> Click to add activate extra bolt</p>
+                        <p><i class="material-symbols-outlined game-icons">
+                                settings_backup_restore
+                            </i><span>Reset level</span> Click to restart the level</p>
+                        <p><i class="material-symbols-outlined game-icons">
+                                splitscreen_vertical_add
+                            </i><span>New game:</span> Click to load new game</p>
+                        <p><span>Win the game:</span> Stack all the colors correctly and become the stacking
+                            champion!</p>
                     </div>
-                    <div class="help points">
-                        <p class="help-head"><i class="bi bi-chevron-double-down down-arrow"></i> How points are
-                            calculated
+                </div>
+                <div class="help points">
+                    <p class="help-head"><i class="bi bi-chevron-double-down down-arrow"></i> Score calculation
+                    </p>
+                    <div class="help-expanded hidden-item">
+                        <p>You get:</p>
+                        <p><i class="fa-solid fa-coins"></i> 10 points for each completed bolt
                         </p>
-                        <div class="help-expanded hidden-item">
-                            <p>You get:</p>
-                            <ul>
-                                <li><i class="fa-solid fa-coins"></i><span>10 points</span> for each completed bolt
-                                </li>
-                                <li><i class="fa-solid fa-coins"></i><span>1 point</span> for every nut placed</li>
-                                <li><i class="fa-solid fa-coins"></i><span>10 bonus points</span> if you didn't use
-                                    the extra bolt</li>
-                                <li><i class="fa-solid fa-coins"></i><span>5 bonus points</span> for every move
-                                    remaining at the end</li>
-                            </ul>
-                        </div>
+                        <p><i class="fa-solid fa-coins"></i> 1 point for every nut placed</p>
+                        <p><i class="fa-solid fa-coins"></i> 10 bonus points if you didn't use
+                            the extra bolt</p>
+                        <p><i class="fa-solid fa-coins"></i> 5 bonus points for every move
+                            remaining at the end</p>
                     </div>
-                    <div class="help shortcuts">
-                        <p class="help-head"><i class="bi bi-chevron-double-down down-arrow"></i> Keyboard shortcuts
+                </div>
+                <div class="help shortcuts">
+                    <p class="help-head"><i class="bi bi-chevron-double-down down-arrow"></i> Keyboard shortcuts
+                    </p>
+                    <div class="shortcuts-list help-expanded hidden-item">
+                        <p><span><strong>Ctrl+Z:</strong> Undo last move</span> <i
+                                class="material-symbols-outlined game-icons">
+                                undo
+                            </i></p>
+                        <p><span><strong>Shift+X:</strong> Extra bolt</span> <i
+                                class="material-symbols-outlined game-icons">
+                                add
+                            </i></p>
+                        <p><span><strong>Shift+R:</strong> Restart level</span> <i
+                                class="material-symbols-outlined game-icons">
+                                settings_backup_restore
+                            </i></p>
+                        <p><span><strong>Shift+N:</strong> Load new game</span> <i
+                                class="material-symbols-outlined game-icons">
+                                splitscreen_vertical_add
+                            </i></p>
+                        <p><span><strong>Shift+M:</strong> Toggle sound</span> <i
+                                class="bi bi-music-note-beamed sound-icon"></i>
                         </p>
-                        <div class="shortcuts-list help-expanded hidden-item">
-                            <ul>
-                                <li><span>Ctrl+Z:</span> Undo last move <i class="material-symbols-outlined game-icons">
-                                        undo
-                                    </i></li>
-                                <li><span>Shift+X:</span> Extra bolt <i class="material-symbols-outlined game-icons">
-                                        add
-                                    </i></li>
-                                <li><span>Shift+R:</span> Restart level <i class="material-symbols-outlined game-icons">
-                                        settings_backup_restore
-                                    </i></li>
-                                <li><span>Shift+N:</span> Load new game <i class="material-symbols-outlined game-icons">
-                                        splitscreen_vertical_add
-                                    </i></li>
-                                <li><span>Shift+M:</span> Toggle sound <i
-                                        class="bi bi-music-note-beamed sound-icon"></i></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
-
-            </div>
-        </div>
-
-        <!-- Custom modal for game over Loss -->
-        <div id="gameOverLossModal" class="modal-container">
-            <div class="game-modal">
-                <h2 class="modal-title">Game Over - You lost</h2>
-                <p>Oh no! You're run out of moves to sort the colors</p>
-                <p>Why not try again or start a fresh new challenge?</p>
-                <div class="modal-buttons">
-                    <button id="game-retry" title="Reset game" class="reset">Retry</button>
-                    <button id="modal-new-game" title="Play a new game">New Game</button>
-                    <button id="game-quit" title="Quit game and return to home page">Quit Game</button>
-                </div>
-
             </div>
 
         </div>
+    </div>
 
-        <!-- Custom modal for game over Win -->
-        <div id="gameOverWinModal" class="modal-container">
-            <div class="game-modal">
-                <h2 class="modal-title">Hooray, You Win!</h2>
-                <p>You've sorted all the colors perfectly!</p>
-                <p>Your colorful adventure was a blast</p>
-                <p>You scored <span id="pointsDisplay">0</span> points!</p>
-                <div class="modal-buttons">
-                    <button id="modal-continue-game" title="Play another game">Continue</button>
-                </div>
-
+    <!-- Custom modal for game over Loss -->
+    <div id="gameOverLossModal" class="modal-container">
+        <div class="game-modal">
+            <h2 class="modal-title">Game Over - You lost</h2>
+            <p>Oh no! You're run out of moves to sort the colors</p>
+            <p>Why not try again or start a fresh new challenge?</p>
+            <div class="modal-buttons">
+                <button id="game-retry" title="Reset game" class="reset">Retry</button>
+                <button id="modal-new-game" title="Play a new game">New Game</button>
+                <button id="game-quit" title="Quit game and return to home page">Quit Game</button>
             </div>
+
         </div>
 
-        <!-- Custom Settings modal  -->
-        <div id="settingsModalContainer" class="modal-container">
-            <div class="settings-modal">
-                <h2 class="modal-title">Settings</h2>
-                <button class="settings-close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
 
-                <div class="toggle-group">
-                    <div class="toggle-container sound">
-                        <div class="toggle-text"><i class="bi bi-music-note-beamed"></i></i> Sound</div>
-                        <div class="toggle-item">
-                            <div class="toggle-slide"></div>
-                        </div>
-                    </div>
-                    <div class="toggle-container vibration">
-                        <div class="toggle-text"><i class="bi bi-phone-vibrate"></i></i> Vibration</div>
-                        <div class="toggle-item">
-                            <div class="toggle-slide"></div>
-                        </div>
+    <!-- Custom modal for game over Win -->
+    <div id="gameOverWinModal" class="modal-container">
+        <div class="game-modal">
+            <h2 class="modal-title">Hooray, You Win!</h2>
+            <p>You've sorted all the colors perfectly!</p>
+            <p>Your colorful adventure was a blast</p>
+            <p>You scored <span id="pointsDisplay">0</span> points!</p>
+            <div class="modal-buttons">
+                <button id="modal-continue-game" title="Play another game">Continue</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Custom Settings modal  -->
+    <div id="settingsModalContainer" class="modal-container">
+        <div class="settings-modal">
+            <h2 class="modal-title">Settings</h2>
+            <button class="settings-close"><i class="fa-solid fa-xmark"></i></button>
+
+            <div class="toggle-group">
+                <div class="toggle-container sound">
+                    <div class="toggle-text"><i class="bi bi-music-note-beamed"></i></i> Sound</div>
+                    <div class="toggle-item">
+                        <div class="toggle-slide"></div>
                     </div>
                 </div>
-                <button class="remove-progress">Clear all progress</i></button>
-
-                <a aria-current="page" href="index.html" class="home-link" aria-label="Go to home page"
-                    title="Go to home page"><i class="fa-solid fa-house"></i> Home</a>
-
-
+                <div class="toggle-container vibration">
+                    <div class="toggle-text"><i class="bi bi-phone-vibrate"></i></i> Vibration</div>
+                    <div class="toggle-item">
+                        <div class="toggle-slide"></div>
+                    </div>
+                </div>
             </div>
+            <button class="remove-progress">Clear all progress</i></button>
+
+            <a aria-current="page" href="index.html" class="home-link" aria-label="Go to home page"
+                title="Go to home page"><i class="fa-solid fa-house"></i> Home</a>
+
+
         </div>
+    </div>
 
-        <!-- Bootstrap Javascript -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
+    <!-- Bootstrap Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
-        <!-- Odometer CDN Javascript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
-            integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Odometer CDN Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
+        integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <!-- fontawesome JS script-->
-        <script src="https://kit.fontawesome.com/759c893288.js" crossorigin="anonymous"></script>
-        <!-- Canvas Confetti Javascript -->
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-        <!-- Howler CDN Javascript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
-            integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <!-- Custom Javascript -->
-        <script src="assets/js/script.js"></script>
+    <!-- fontawesome JS script-->
+    <script src="https://kit.fontawesome.com/759c893288.js" crossorigin="anonymous"></script>
+    <!-- Canvas Confetti Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <!-- Howler CDN Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
+        integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom Javascript -->
+    <script src="assets/js/script.js"></script>
 
 </body>
 

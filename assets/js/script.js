@@ -167,6 +167,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const openModalSettings = document.querySelector(".settings-open");
     const closeModalSettings = document.querySelector(".settings-close");
 
+    // Help options modal
+    const helpOptionsContainer = document.getElementById("helpOptionsModal");
+    const openModalHelp = document.querySelector(".help-open");
+    const closeModalHelp = document.querySelector(".help-close");
+
     //get toggle sound and vibration elements
     const toggleElements = document.querySelectorAll(".toggle-container");
 
@@ -276,6 +281,16 @@ document.addEventListener("DOMContentLoaded", function () {
         // open settings modal
         openModalSettings.addEventListener('click', function () {
             modalSettingsContainer.style.display = 'flex';
+        })
+
+        // close help modal
+        closeModalHelp.addEventListener('click', function () {
+            helpOptionsContainer.style.display = 'none';
+        })
+
+        // open help modal
+        openModalHelp.addEventListener('click', function () {
+            helpOptionsContainer.style.display = 'flex';
         })
 
         // Sound toggle
