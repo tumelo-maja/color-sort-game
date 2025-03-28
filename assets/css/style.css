@@ -291,8 +291,8 @@ h3 {
 }
 
 .game-controls button {
-  color: #091152;
-  background-color: wheat;
+  color: lightcyan;
+  background-color: #2f44e8;
   margin: 10px;
   border-radius: 50%;
   display: inline-block;
@@ -300,7 +300,7 @@ h3 {
   /* padding: 4px 10px; */
   height: 40px;
   width: 40px;
-  border: 2px solid green;
+  border: 2px solid lightcyan;
   align-content: center;
   display: flex;
   justify-content: center;
@@ -665,7 +665,7 @@ padding-left: 10px;
 
 /* Difficulty mode slider */
 .game-difficulty {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding: 10px;
   width: 150px;
   display: flex;
