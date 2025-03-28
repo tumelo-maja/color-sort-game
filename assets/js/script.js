@@ -316,24 +316,17 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleKeyboardPress(e) {
 
         let pressedKey = e.key.toLowerCase();
-        if (pressedKey === 'm' && e.ctrlKey) {
-            console.log(`ctrl+${pressedKey}`);
-            console.log('Toggle mute setting');
+        if (pressedKey === 'm' && e.shiftKey) {
+            // console.log(`shift+${pressedKey}`);
+            // console.log('Toggle mute setting');
             changeSoundSetting();
         } else if (pressedKey === 'z' && e.ctrlKey) {
-            console.log(`ctrl+${pressedKey}`);
-            console.log('run undoMove');
             undoLastMove();
         } else if (pressedKey === 'x' && e.shiftKey) {
-            console.log(`ctrl+${pressedKey}`);
-            console.log('run add extra rod');
             addExtraRod();
         } else if (pressedKey === 'r' && e.shiftKey ) {
-            console.log(`ctrl+${pressedKey}`);
-            console.log('run Game Reset');
+            resetGame();
         } else if (pressedKey === 'n' && e.shiftKey) {
-            console.log(`ctrl+${pressedKey}`);
-            console.log('run Load new game');
             generateNewGame();
         } else {
             console.log('Toggle mute setting');
