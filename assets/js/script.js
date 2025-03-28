@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function () {
             undoLastMove();
         } else if (pressedKey === 'x' && e.shiftKey) {
             addExtraRod();
-        } else if (pressedKey === 'r' && e.shiftKey ) {
+        } else if (pressedKey === 'r' && e.shiftKey) {
             resetGame();
         } else if (pressedKey === 'n' && e.shiftKey) {
             generateNewGame();
@@ -348,10 +348,12 @@ document.addEventListener("DOMContentLoaded", function () {
      * Undo last move
      */
     function undoLastMove() {
-        let moveType = 'reverse';
-        moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'], moveType);
-        updateMovesRemaining(moveType);
-        undoMoveButton.classList.add('disable');
+        if (!undoMoveButton.classList.contains('disable')) {
+            let moveType = 'reverse';
+            moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'], moveType);
+            updateMovesRemaining(moveType);
+            undoMoveButton.classList.add('disable');
+        }
     }
 
     /**
