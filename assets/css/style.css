@@ -47,11 +47,18 @@
 }
 
 body {
-  background-color: #091152;
+  background: linear-gradient(
+    to bottom,
+    #091152 0%,
+    #701962 25%,
+    #b73860 50%,
+    #701962 75%,
+    #091152 100%
+  );
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -410,6 +417,10 @@ h3 {
   align-items: center;
   text-align: center;
   font-size: 18px;
+}
+
+.button-style {
+
 }
 
 .hidden-item {
