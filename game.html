@@ -25,7 +25,8 @@
 
     <div class="game-container">
         <div class="head-area">
-            <a href="#settingsModalContainer" class="settings-open" aria-label="Open Settings menu" title="Open Settings menu"><i class="fa-solid fa-bars"></i></a>
+            <a href="#settingsModalContainer" class="settings-open" aria-label="Open Settings menu"
+                title="Open Settings menu"><i class="fa-solid fa-bars"></i></a>
             <div class="game-score"><span id="scoreValue">0</span><i class="fa-solid fa-coins"></i></div>
             <a href="#helpModal" data-bs-toggle="modal" data-bs-target="#helpModal"
                 aria-label="Shows instructions on how to play (opens in a modal window)"
@@ -86,35 +87,28 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">
+                    <h5 class="modal-title1" id="helpModalLabel">
                         How to play!
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Think you have what it takes to challenge your color sorting and coordination skills?. hhere are
-                        the
-                        rules on how to play the game:</p>
+                    <p>Here are the rules on how to play the game:</p>
                     <ul class="instructions-list">
-                        <li><strong>To select a nut:</strong> Click on a nut to select it.</li>
-                        <li><strong>To move the selected nut:</strong> Click on the desired bolt to drop it.</li>
+                        <li><strong>Unscrew:</strong> Click on a nut to unscrew it.</li>
+                        <li><strong>Move nut:</strong> Click on the desired bolt to move it.</li>
                         <li><strong>Stack smartly:</strong> Nuts can <em>only be placed on another nut of the same
                                 color</em>.
                             If the bolt is empty, any nut can go there!</li>
-                        <li><strong>Need more space?</strong> You can add <em>one extra bolt</em>, but it <em>only holds
-                                one
-                                nut</em> at a time!</li>
-                        <li><strong>Made a mistake?</strong> No worries! You can undo up to <em>2 moves per level</em>.
-                            Click
-                            undo button "xxx" </li>
-                        <li><strong>Limited moves:</strong> You have a <em>limited number of moves</em> to complete each
-                            level.
-                            If you run out, you lose!</li>
-                        <li><strong>Got stuck?</strong> Click reset button "xxx" to try again!</li>
+                        <li><strong>Limited moves:</strong> If you run out if moves before completing the sorting, you
+                            lose!</li>
+                        <li><strong>Undo last move:</strong> Click undo button "xxx" to reverse the last move - one use
+                            per move</li>
+                        <li><strong>Extra bolt:</strong> Click xxx to add activate extra bolt</li>
+                        <li><strong>Reset level</strong> Click reset button "xxx" to restart the level</li>
                         <li><strong>Win the game:</strong> Stack all the colors correctly and become the stacking
                             champion!</li>
                     </ul>
-                    <p class="last-p">Let's have fun and stack those colors like a pro!</p>
                     <p id="points-head">
                         See how points are calculated <i class="fa-solid fa-hand-point-left fa-beat"></i>
                     </p>
@@ -125,7 +119,8 @@
                             <li><i class="fa-solid fa-coins"></i><strong>1 point</strong> for every nut placed</li>
                             <li><i class="fa-solid fa-coins"></i><strong>10 point bonus</strong> if you didn't use the
                                 extra bolt</li>
-                            <li><i class="fa-solid fa-coins"></i><strong>5 points</strong> for every move remaining at
+                            <li><i class="fa-solid fa-coins"></i><strong>5 points bonus</strong> for every move
+                                remaining at
                                 the end</li>
                         </ul>
                     </div>
