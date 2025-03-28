@@ -339,9 +339,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function toggleDisplayHelpModal(e) {
 
         // const pointDescriptionExpanded = document.querySelector('.points-expanded');
-        const headElement = e.target;
+        const headElement = e.currentTarget;
         headElement.nextElementSibling.classList.toggle('hidden-item');
         console.log("Help-head clicked")
+        const arrowElement = headElement.querySelector(".bi-chevron-double-down");
+        arrowElement.classList.toggle('rotate');
+        console.log(arrowElement);
     }
 
     /**

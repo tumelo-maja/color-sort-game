@@ -496,11 +496,13 @@ h3 {
   background-color: white;
 }
 
-/* Points caclulations */
+/* Help Modal */
 .help-head {
   margin: 10px 0;
   cursor: pointer;
   font-size: 1.2rem;
+  font-weight: bold;
+  color: yellow;
 }
 
 .help-expanded {
@@ -577,6 +579,15 @@ h3 {
   border-radius: 50%;
   text-align: center;
   font-weight: bold;
+}
+
+.down-arrow {
+  transition: transform 0.5s ease-in-out;
+  display: inline-block; 
+}
+
+.rotate{
+  transform: rotate(-180deg);
 }
 
 /* Difficulty mode slider */
