@@ -165,9 +165,10 @@ h3 {
 }
 
 .game-container {
-  border: 2px solid red;
+  border: 2px solid lightcyan;
   height: 100%;
-  width: 320px;
+  width: 100%;
+  /* width: 320px; */
   /* background-color: #091152; */
   justify-items: center;
   padding: 0;
@@ -182,7 +183,7 @@ h3 {
 }
 
 .game-area {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   height: 455px;
   width: 320px;
   /* min-width: 320px; */
