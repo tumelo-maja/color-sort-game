@@ -282,6 +282,9 @@ Tutorial on inserting google icons: (https://www.youtube.com/watch?v=D9ciQq6cwmI
 
 Canvas confetti: (https://www.npmjs.com/package/canvas-confetti)
 
+Create element with attribute
+https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+
 Creating Custom Modal: (https://www.youtube.com/watch?v=XH5OW46yO8I)
 
 Odometer CDN for Number counter Animation: (https://www.youtube.com/watch?v=p2rV9tKvjFg)
@@ -293,6 +296,12 @@ Randomize array using  Durstenfeld Shuffle: (https://stackoverflow.com/questions
 more link - https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
 
 Repeat elements in an array: (https://stackoverflow.com/questions/12503146/create-an-array-with-same-element-repeated-multiple-times)
+
+Sum an array
+https://stackoverflow.com/questions/1230233/how-to-find-the-sum-of-an-array-of-numbers
+
+Array.From
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 
 Check if duplicate elements in the array are adjacent 
 (https://www.geeksforgeeks.org/check-if-all-duplicate-elements-in-the-array-are-adjacent-or-not)
