@@ -334,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Toggle display
+     * Toggle display of sibling elements of the head <p> elements in the Help Modal
      */
     function toggleDisplayHelpModal(e) {
 

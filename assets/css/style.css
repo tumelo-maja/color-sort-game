@@ -503,36 +503,29 @@ h3 {
   cursor: pointer;
 }
 
-.points-expanded ul {
+.help-expanded ul {
   margin: 5px;
   list-style-type: none;
   padding-left: 0;
 }
 
-.points-expanded li {
-  margin: 0 5px 5px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
+.help-expanded li {
+  margin: 0 5px 10px;
 }
 
-.points-expanded .fa-coins {
+.help-expanded .fa-coins {
   font-size: 20px;
   margin-right: 8px;
   color: wheat;
 }
 
-.points-expanded .fa-hand-point-left {
-  font-size: 20px;
-  margin-left: 5px;
-}
-
-.points-expanded strong {
-  margin-right: 5px;
-}
-
-.points-expanded p {
+.help-expanded p {
   margin: 5px;
+}
+
+.help-expanded span {
+  font-weight: bold;
+  /* color: red; */
 }
 
 /* Difficulty mode slider */
