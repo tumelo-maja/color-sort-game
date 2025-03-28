@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             onplay: function () {
                 runVibration(50);
-                console.log("Play together");
             }
         }),
 
@@ -247,10 +246,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 saveUserProgress(difficultyMode, newScore);
             }, 1000);
 
-            // console.log("userScoreElement After continue")
-            // console.log(newScore)
-            // console.log(userScoreElement.innerHTML)
-
             generateNewGame();
         });
 
@@ -297,8 +292,6 @@ document.addEventListener("DOMContentLoaded", function () {
             userProgress = createUserProgress();
             initializeUserProgress();
         });
-        // console.log(soundToggleElement)
-        // console.log(vibrationToggleElement)
 
         // Add extra rod
         extraRodButton.addEventListener('click', addExtraRod);
@@ -317,8 +310,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let pressedKey = e.key.toLowerCase();
         if (pressedKey === 'm' && e.shiftKey) {
-            // console.log(`shift+${pressedKey}`);
-            // console.log('Toggle mute setting');
             changeSoundSetting();
         } else if (pressedKey === 'z' && e.ctrlKey) {
             undoLastMove();
@@ -329,8 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (pressedKey === 'n' && e.shiftKey) {
             generateNewGame();
         } else {
-            console.log('Toggle mute setting');
-            console.log(pressedKey.toLowerCase());
+            return
         }
     }
 
@@ -379,15 +369,8 @@ document.addEventListener("DOMContentLoaded", function () {
         this.querySelector('.toggle-item').classList.toggle('toggle-item-on');
 
         if (this.classList.contains('sound')) {
-            console.log("Code to change soound  settings");
-            // isGameMuted = !isGameMuted;
-            // Howler.mute(isGameMuted);
-            // soundEffects.completeRod.play('rodWin');
-
             changeSoundSetting();
-
         } else {
-            console.log("Code to change vibration settings")
             isVibrationOn = !isVibrationOn;
             runVibration(100);
         }
@@ -397,14 +380,9 @@ document.addEventListener("DOMContentLoaded", function () {
      * Run vibration when this function is called
      */
     function runVibration(vibrationDuration) {
-
-        console.log("Lets vibrate together");
         if (navigator.vibrate && isVibrationOn) {
             navigator.vibrate(vibrationDuration);
-            console.log("we di it - we vibrated");
-        } else {
-            console.log("Cant vibrate");
-        };
+        } 
     }
 
     /**
@@ -424,7 +402,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // userProgress = getUserProgress();
         if (Object.keys(localStorage).length) {
             userProgress = getUserProgress();
-            // console.log(userProgress)
 
             userScoreElement.innerText = userProgress.userScore;
             difficultyMode = userProgress.currentDifficulty;
@@ -1246,9 +1223,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // let currentScore = getOdometerValue(userScoreElement);
 
-            // console.log("currentScore Before save")
-            // console.log(newScore)
-
             if (Object.keys(localStorage).length) {
                 userProgress = getUserProgress();
             } else {
@@ -1260,9 +1234,6 @@ document.addEventListener("DOMContentLoaded", function () {
             userProgress[difficultyMode] = parseInt(levelValueElement.textContent);
             userProgress.currentDifficulty = difficultyMode;
             userProgress.currentLevel = parseInt(levelValueElement.textContent);
-
-
-            // console.log(userProgress);
 
             localStorage.setItem("userProgress", JSON.stringify(userProgress));
 
