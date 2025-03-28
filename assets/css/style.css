@@ -498,7 +498,6 @@ h3 {
 
 /* Help Modal */
 #helpOptionsModal {
-  /* display: flex; */
   flex-direction: column;
   justify-content: start;
   align-items: center;
@@ -508,12 +507,10 @@ h3 {
 .help-modal {
   background-color: #091152;
   width: 300px;
-  /* max-width: 100%; */
   padding: 20px 10px 10px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
-  /* height: 350px; */
   height: max-content;
   border: 10px solid green;
   display: flex;
@@ -526,7 +523,8 @@ h3 {
 
 .help-close {
   border: none;
-  background-color: #87ccec;
+  background-color: #091152;
+  color: yellow;
   font-size: 1.6rem;
   position: absolute;
   top: 0;
@@ -539,29 +537,21 @@ h3 {
   justify-content: start;
   align-items: start;
   width: 260px;
-  border: 1px solid red;
   color: wheat;
 }
 
 .help {
-  border: 1px solid orange;
   width: 100%;
   text-align: start;
 }
 .help-expanded {
-/* display: flex; */
 flex-direction: column;
 justify-content: start;
 align-items: start;
-border: 1px solid greenyellow;
 margin: 0;
 width: 100%;
 padding-left: 10px;
 }
-
-
-
-
 
 .help-head {
   margin: 10px 0;
