@@ -528,7 +528,7 @@ h3 {
   font-size: 1.6rem;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 5px;
 }
 
 .help-container {
