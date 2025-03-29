@@ -292,19 +292,11 @@ h3 {
   margin: 0 0 10px;
   width: 300px;
   border: 6px double lightcyan;
-  /* background-color: #7fce3f; */
-  /* background: rgb(185,228,149); */
-  /* background: radial-gradient(circle, rgba(185,228,149,1) 0%, rgba(159,218,111,1) 35%, rgba(127,206,63,1) 100%); */
   background: radial-gradient(
     circle at center,
     #b9e495 0%,
     #9fda6f 60%,
     #7fce3f 100%
-    /* #7fce3f 0%,
-    #9fda6f 60%,
-    #b9e495 100% */
-    /* #9fda6f 75%, */
-    /* #7fce3f 100% */
   );
   border-radius: 50px;
   display: flex;
@@ -319,7 +311,6 @@ h3 {
   border-radius: 50%;
   display: inline-block;
   cursor: pointer;
-  /* padding: 4px 10px; */
   height: 40px;
   width: 40px;
   border: 2px solid lightcyan;
@@ -355,13 +346,11 @@ h3 {
 
 /* game display */
 .game-display {
-  /* border: 1px solid wheat; */
   height: 60px;
   width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-self: center; */
   margin: 0 0 10px;
   padding: 0;
   position: relative;
@@ -370,13 +359,11 @@ h3 {
 .game-level {
   color: white;
   align-self: center;
-  /* border: 1px solid red; */
   margin: 0;
   text-align: center;
 }
 
 #game-moves {
-  /* position: relative; */
   background-color: #26a1ee;
   border-radius: 5px;
   width: 170px;
@@ -398,14 +385,11 @@ h3 {
   right: 15px;
   font-size: 105%;
   font-weight: bold;
-  /* letter-spacing: 0.08rem; */
 }
 
 /* head-area */
 .head-area {
-  /* border: 2px solid white; */
   height: 50px;
-  /* width: 250px; */
   width: 100%;
   padding: 10px;
   display: flex;
@@ -427,15 +411,9 @@ h3 {
 
 .head-area i {
   color: #9fda6f;
-
-  /* margin: 10px; */
   font-size: 1.2rem;
 }
 
-
-  /* #b9e495 0%,
-  #9fda6f 60%,
-  #7fce3f 100% */
 
 /* animations */
 .success-move {
@@ -460,7 +438,6 @@ h3 {
   border-radius: 50px;
   display: flex;
   cursor: pointer;
-  /* padding: 10px; */
   height: 35px;
   width: 110px;
   border: 2px solid #e0ffff;
@@ -496,7 +473,6 @@ h3 {
   align-items: center;
   padding: 3px 10px;
   border-radius: 20px;
-  /* background-color: wheat; */
 }
 
 .game-score i {
@@ -519,8 +495,6 @@ h3 {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
-  /* opacity: 0;
-  pointer-events: none; */
 }
 
 .modal-title {
@@ -537,7 +511,6 @@ h3 {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
-  /* height: 250px; */
 }
 
 .game-modal p {
@@ -737,21 +710,7 @@ h3 {
   border: 1px yellow;
 }
 
-/* toggle - sound */
-.modal-container1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
-  /* opacity: 0;
-  pointer-events: none; */
-}
-
+/* settings modal */
 .settings-modal {
   background-color: #091152;
   width: 250px;
@@ -769,10 +728,9 @@ h3 {
   align-items: center;
   position: relative;
 }
-.settings-modal .modal-title{
+.settings-modal .modal-title {
   color: lightcyan;
 }
-
 
 .settings-close {
   /* border: 1px solid red; */
@@ -892,7 +850,6 @@ h3 {
   background-color: #ff0c1473;
   color: lightcyan;
   border: 2px solid lightcyan;
-
 }
 
 /*--- Keyframes for raised nut ---*/
