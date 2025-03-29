@@ -323,3 +323,5 @@ Crazy 3D Rotation Effect Using CSS Only (https://www.youtube.com/watch?v=ymuBowc
 
 Setting vibration on mobile devices
 (https://www.youtube.com/shorts/Yw9xyLJ8tRo)
+
+classic derivv for resizing the nut outline (https://classic.derivv.com/)
