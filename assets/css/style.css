@@ -391,6 +391,7 @@ h3 {
 .head-area {
   height: 50px;
   width: 100%;
+  max-width: 500px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
