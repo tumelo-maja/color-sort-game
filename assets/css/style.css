@@ -460,9 +460,9 @@ h3 {
   border-radius: 50px;
   display: flex;
   cursor: pointer;
-  padding: 10px;
-  height: 30px;
-  width: 90px;
+  /* padding: 10px; */
+  height: 35px;
+  width: 110px;
   border: 2px solid #e0ffff;
   align-items: center;
   justify-content: center;
