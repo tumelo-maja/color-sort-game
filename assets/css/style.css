@@ -739,7 +739,7 @@ h3 {
 }
 
 .settings-modal {
-  background-color: #87ccec;
+  background-color: #091152;
   width: 250px;
   max-width: 100%;
   padding: 20px 15px 10px;
@@ -747,21 +747,28 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
   height: 350px;
-  border: 10px solid green;
+  /* border: 10px solid green; */
+  border: 6px double lightcyan;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
 }
+.settings-modal .modal-title{
+  color: lightcyan;
+}
+
 
 .settings-close {
   /* border: 1px solid red; */
-  background-color: #87ccec;
+  background-color: #091152;
   font-size: 1.6rem;
   position: absolute;
   top: 0;
   right: 0;
+  color: lightcyan;
+  border: none;
 }
 
 .toggle-group {
@@ -777,15 +784,15 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 175px;
   margin: 5px 0;
 }
 
 .toggle-item {
-  border: 2px solid #525151;
+  border: 2px solid lightcyan;
   border-radius: 30px;
-  background-color: #87ccec;
+  background-color: #0f1d8b;
   padding: 2px;
   height: 26px;
   width: 50px;
@@ -801,9 +808,9 @@ h3 {
 }
 
 .toggle-slide {
-  border: 2px solid #525151;
+  border: 2px solid lightcyan;
   border-radius: 30px;
-  background-color: rgb(201, 198, 198);
+  background-color: #0f1d8b;
   height: 20px;
   width: 20px;
   position: absolute;
@@ -813,7 +820,7 @@ h3 {
 
 .toggle-slide-on {
   background-color: rgba(255, 255, 0, 0.801);
-  border: 2px solid rgb(196, 196, 1);
+  border: 2px solid #686829;
   transform: translateX(20px);
   box-shadow: 0 0 6px rgba(255, 255, 0, 0.8), 0 0 12px rgba(255, 255, 100, 0.6);
 }
@@ -821,7 +828,7 @@ h3 {
 .toggle-text {
   font-weight: bold;
   font-size: 1rem;
-  color: #525151;
+  color: lightcyan;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -841,7 +848,7 @@ h3 {
 
 .home-link {
   text-decoration: none;
-  border: 2px solid red;
+  border: 2px solid lightcyan;
   border-radius: 30px;
   width: 110px;
   height: 35px;
@@ -851,6 +858,14 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-color: lightcyan; */
+  color: lightcyan;
+  font-weight: bold;
+
+
+  /* #b9e495 0%,
+  #9fda6f 60%,
+  #7fce3f 100% */
 }
 
 .home-link i {
@@ -865,8 +880,10 @@ h3 {
   padding: 2px;
   border-radius: 30px;
   text-transform: capitalize;
-  background-color: rgba(255, 0, 0, 0.781);
-  color: white;
+  background-color: #ff0c1473;
+  color: lightcyan;
+  border: 2px solid lightcyan;
+
 }
 
 /*--- Keyframes for raised nut ---*/
