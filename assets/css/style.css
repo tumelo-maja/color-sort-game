@@ -504,13 +504,23 @@ h3 {
 }
 
 .game-modal {
-  background-color: wheat;
+  /* background-color: wheat; */
+  background: radial-gradient(
+    circle at center,
+    #b9e495 0%,
+    #9fda6f 60%,
+    #7fce3f 100%
+  );
   width: 500px;
   max-width: 100%;
-  padding: 30px 50px;
+  padding: 30px 5px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .game-modal p {
@@ -522,10 +532,31 @@ h3 {
   justify-content: space-evenly;
   align-items: baseline;
   margin: 20px 10px;
+  height: max-content;
+  width: 250px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .modal-buttons button {
-  border-radius: 5px;
+  border-radius: 50px;
+  border: 2px solid lightcyan;
+  color: lightcyan;
+  background-color: #2f44e8;
+  box-shadow: 0 4px #1b5e20;
+  transition: all 0.2s ease-in-out;
+  height: 50px;
+  width: 150px;
+}
+
+.modal-buttons button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px #1b5e20;
+}
+
+.modal-buttons button:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px #1b5e20;
 }
 
 .disable {
@@ -720,7 +751,6 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
   height: 350px;
-  /* border: 10px solid green; */
   border: 6px double lightcyan;
   display: flex;
   flex-direction: column;
@@ -733,7 +763,6 @@ h3 {
 }
 
 .settings-close {
-  /* border: 1px solid red; */
   background-color: #091152;
   font-size: 1.6rem;
   position: absolute;
@@ -756,7 +785,6 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: 1px solid black; */
   width: 175px;
   margin: 5px 0;
 }
@@ -813,7 +841,6 @@ h3 {
 }
 
 .toggle-text .bi {
-  /* color: red; */
   margin-right: 10px;
   font-size: 1.8rem;
 }
@@ -830,7 +857,6 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: lightcyan; */
   color: lightcyan;
   font-weight: bold;
 }
