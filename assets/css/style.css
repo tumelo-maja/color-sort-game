@@ -166,7 +166,7 @@ h3 {
 
 .game-container {
   border: 2px solid lightcyan;
-  height: 740px;
+  height: 100%;
   width: 100%;
   /* width: 320px; */
   /* background-color: #091152; */
@@ -511,7 +511,7 @@ h3 {
     #9fda6f 60%,
     #7fce3f 100%
   );
-  width: 500px;
+  width: 300px;
   max-width: 100%;
   padding: 30px 5px;
   border-radius: 10px;
