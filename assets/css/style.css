@@ -455,21 +455,28 @@ h3 {
 #start-button {
   text-decoration: none;
   color: white;
-  background-color: darkblue;
+  background-color: #00008b;
   margin: 20px;
-  border-radius: 5px;
+  border-radius: 50px;
   display: flex;
   cursor: pointer;
   padding: 10px;
   height: 30px;
   width: 90px;
-  border: 2px solid lightcyan;
+  border: 2px solid #e0ffff;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   font-size: 18px;
+  transition: all 0.2s ease-in-out;
 }
 
-.button-style {
+#start-button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 12px #e0ffff;
+}
+
+#start-button:active {
+  transform: scale(0.96);
 }
 
 .hidden-item {
