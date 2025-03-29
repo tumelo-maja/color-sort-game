@@ -327,6 +327,18 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px #1b5e20;
+  transition: all 0.2s ease-in-out;
+}
+
+.game-controls button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px #1b5e20;
+}
+
+.game-controls button:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px #1b5e20;
 }
 
 .game-controls ul {
