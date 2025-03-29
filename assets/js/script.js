@@ -1153,6 +1153,12 @@ document.addEventListener("DOMContentLoaded", function () {
         gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
         addNutsToRods();
 
+        // reste extra rod if disabled
+        if (extraRodButton.classList.contains('disable')) {
+            extraRodButton.classList.remove('disable');
+        }
+
+
         // Update nut Element global style
         anyNut = document.querySelectorAll('.nut')[0];
         nutStyle = window.getComputedStyle(anyNut);
