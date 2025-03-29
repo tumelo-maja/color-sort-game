@@ -436,6 +436,9 @@ document.addEventListener("DOMContentLoaded", function () {
             levelValueElement.innerText = userProgress[difficultyMode];
             gameMode = gameModeObject[difficultyMode];
 
+            difficultyModeSelect.value =difficultyMode;
+
+
         } else {
             userProgress = createUserProgress();
             userScoreElement.innerText = 0;
