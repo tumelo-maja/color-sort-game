@@ -413,7 +413,7 @@ h3 {
 }
 
 .head-area a {
-  border: 2px solid white;
+  border: 2px solid lightcyan;
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -426,10 +426,16 @@ h3 {
 }
 
 .head-area i {
-  color: wheat;
+  color: #9fda6f;
+
   /* margin: 10px; */
   font-size: 1.2rem;
 }
+
+
+  /* #b9e495 0%,
+  #9fda6f 60%,
+  #7fce3f 100% */
 
 /* animations */
 .success-move {
@@ -472,11 +478,11 @@ h3 {
 
 /* game scores */
 .game-score {
-  border: 3px solid yellow;
+  border: 3px solid lightcyan;
   width: 150px;
   height: 35px;
   text-align: center;
-  color: wheat;
+  color: yellow;
   font-size: 15px;
   display: flex;
   justify-content: space-around;
@@ -487,7 +493,8 @@ h3 {
 }
 
 .game-score i {
-  /* background-color: #091152; */
+  color: yellow;
+  text-shadow: 0 0 4px #ffff00cc, 0 0 8px #ffff6499;
 }
 
 .game-score #scoreValue {
@@ -663,7 +670,7 @@ h3 {
   width: 30px;
   text-align: center;
   display: inline-block;
-  text-shadow: 0 0 4px rgba(255, 255, 0, 0.8), 0 0 8px rgba(255, 255, 100, 0.6);
+  text-shadow: 0 0 4px #ffff00cc, 0 0 8px #ffff6499;
 }
 
 .help-expanded .bi-nut-fill {
@@ -861,11 +868,6 @@ h3 {
   /* background-color: lightcyan; */
   color: lightcyan;
   font-weight: bold;
-
-
-  /* #b9e495 0%,
-  #9fda6f 60%,
-  #7fce3f 100% */
 }
 
 .home-link i {
