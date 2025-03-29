@@ -209,7 +209,7 @@ h3 {
   width: 25px;
   height: 100px;
   /* background-color: #c0c0c0; */
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     10deg,
     #808080 25%,
     #fff8f8 25%,
@@ -219,7 +219,11 @@ h3 {
     #fff8f8 75%,
     #fff8f8 100%
   );
-  background-size: 16px 2px;
+  background-size: 16px 2px; */
+  background-image: url(../images/bolt-image-short-30x100.png);
+  background-position: 50% 50%;
+  background-size: cover;
+
   border: 1px solid #808080;
   margin: 25px 26.5px;
   position: relative;
@@ -233,7 +237,7 @@ h3 {
 }
 
 .rod-lid {
-  width: 23px;
+  width: 26px;
   height: 8px;
   background-color: #fff8f8;
   border: 1px solid #808080;
