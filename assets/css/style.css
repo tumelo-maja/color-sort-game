@@ -623,7 +623,7 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
   height: max-content;
-  border: 10px solid green;
+  border: 6px double lightcyan;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -648,7 +648,7 @@ h3 {
   justify-content: start;
   align-items: start;
   width: 260px;
-  color: wheat;
+  color: lightcyan;
 }
 
 .help {
@@ -680,7 +680,7 @@ h3 {
 .help-expanded .fa-coins {
   font-size: 20px;
   margin-right: 8px;
-  color: wheat;
+  color: yellow;
 }
 
 .help-expanded p {
@@ -695,8 +695,11 @@ h3 {
 .help-expanded .game-icons {
   font-size: 25px;
   margin-right: 8px;
-  color: #091152;
-  background-color: wheat;
+  /* color: #091152;
+  background-color: wheat; */
+
+  color: lightcyan;
+  background-color: #2f44e8;
   border-radius: 50%;
   padding: 2px;
   height: 30px;
