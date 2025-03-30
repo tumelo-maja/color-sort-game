@@ -555,6 +555,8 @@ h3 {
   transition: all 0.2s ease-in-out;
   height: 50px;
   width: 150px;
+  font-weight: 700;
+  text-shadow: -2px 1px 0 black;
 }
 
 .modal-buttons button:hover {
