@@ -80,6 +80,11 @@ h1 {
   text-align: center;
 }
 
+.logo img{
+  height: 100px;
+  width: 100px;
+}
+
 footer {
   text-align: center;
   background-color: #f1f1f1;
