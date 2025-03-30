@@ -1,3 +1,6 @@
+/* import Oswald Google font */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
 /*------------- CSS variables --*/
 :root {
   --orange: #f25029;
@@ -63,6 +66,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Oswald", sans-serif;
 }
 
 h1 {
