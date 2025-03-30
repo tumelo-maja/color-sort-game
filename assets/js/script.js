@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
             src: ['assets/sounds/game-win-sfx.mp3',],
             volume: defaultVolume,
             onplay: function () {
-                runVibration(100);
+                runVibration(400);
             }
         }),
 
