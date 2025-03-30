@@ -11,7 +11,8 @@
   --purple: #911899;
   --beige: #ffcfc1;
   --pink: #ff90c8;
-  --red: #ff0c15;
+  /* --red: #ff0c15; */
+  --darkgrey: #656469;
   --left: 50%;
 }
 
@@ -28,15 +29,12 @@
 .whitesilver {
   background-color: var(--whitesilver);
 }
-
 .green {
   background-color: var(--green);
 }
-
 .purple {
   background-color: var(--purple);
 }
-
 .beige {
   background-color: var(--beige);
 }
@@ -45,8 +43,11 @@
   background-color: var(--pink);
 }
 
-.red {
+/* .red {
   background-color: var(--red);
+} */
+.darkgrey {
+  background-color: var(--darkgrey);
 }
 
 body {

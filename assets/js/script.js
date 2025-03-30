@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
         'purple': '#911899',
         'beige': '#FFCFC1',
         'pink': '#FF90C8',
-        'red': '#FF0C15',
+        // 'red': '#FF0C15',
+        'darkgrey': '#656469'
+
     }
 
     const gameModeObject = {
@@ -66,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'purple': '#911899',
                 'beige': '#FFCFC1',
                 'pink': '#FF90C8',
-                'red': '#FF0C15',
+                'darkgrey': '#656469'
             },
             nutCount: 20,
             maximumMoves: 36,
