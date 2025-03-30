@@ -556,6 +556,7 @@ h3 {
   width: 150px;
   font-weight: 700;
   text-shadow: -2px 1px 0 black;
+  text-transform: uppercase;
 }
 
 .modal-buttons button:hover {
