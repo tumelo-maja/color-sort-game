@@ -155,9 +155,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalWinContainer = document.getElementById("gameOverWinModal");
 
     //game control  buttons
-    const newGameButton = document.getElementById("new-game"); // new-game
-    newGameButton.addEventListener('click', generateNewGame);
     const undoMoveButton = document.getElementById("undo-move"); //undo move
+    const extraRodButton = document.getElementById("add-rod"); // add extra rod
+    const resetGameButton = document.getElementById("game-reset"); // reset game
+    const newGameButton = document.getElementById("new-game"); // new-game
 
     // difficultyMode
     const difficultyModeSelect = document.getElementById("difficultyMode");
@@ -179,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // const startGameButton = document.getElementById("start-button"); // start game
 
-    const extraRodButton = document.getElementById("add-rod"); // add extra rod
 
     const helpModalElements = document.querySelectorAll(".help-head"); // help modal
 
@@ -213,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // modal eventlisteners - Game Loss
         modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
+            console.log("Reset game")
             resetGame();
         });
 
@@ -228,6 +229,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // undo move button listener
         undoMoveButton.addEventListener('click', undoLastMove);
+        extraRodButton.addEventListener('click', addExtraRod); // Add extra rod
+        newGameButton.addEventListener('click', generateNewGame);
+        resetGameButton.addEventListener('click', resetGame);
 
         // keyboard events
         window.addEventListener('keydown', handleKeyboardPress);
@@ -307,8 +311,6 @@ document.addEventListener("DOMContentLoaded", function () {
             initializeUserProgress();
         });
 
-        // Add extra rod
-        extraRodButton.addEventListener('click', addExtraRod);
 
         // get previous levels and scores
         initializeUserProgress();
