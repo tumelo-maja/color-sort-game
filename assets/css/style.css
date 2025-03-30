@@ -1,5 +1,5 @@
 /* import Oswald Google font */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 
 /*------------- CSS variables --*/
 :root {
@@ -419,7 +419,6 @@ h3 {
   font-size: 1.2rem;
 }
 
-
 /* animations */
 .success-move {
   animation: moveNutToTarget 1s ease-in-out forwards;
@@ -494,7 +493,7 @@ h3 {
 
 /* game loss modal */
 .modal-container {
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -521,7 +520,7 @@ h3 {
   );
   width: 300px;
   max-width: 100%;
-  padding: 30px 5px;
+  padding: 30px 10px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -567,6 +566,29 @@ h3 {
 .modal-buttons button:active {
   transform: scale(0.96);
   box-shadow: 0 2px #1b5e20;
+}
+
+.game-emoji {
+  width: 210px;
+  height: 50px;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.game-emoji i {
+  color: orange;
+  font-size: 40px;
+  background-color: #091152;
+  border-radius: 50px;
+  display: flex;
+  height: 42px;
+  width: 42px;
+  align-items: center;
+  justify-content: center;
 }
 
 .disable {
