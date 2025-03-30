@@ -106,9 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
             src: ['assets/sounds/complete-rod3-sfx.mp3',],
             volume: defaultVolume,
             sprite: { rodWin: [1000, 1000] },
-            onplay: function () {
-                runVibration(100);
-            }
         }),
 
         collectPoints: new Howl({
@@ -119,6 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
         gameLoss: new Howl({
             src: ['assets/sounds/game-fail1-sfx.mp3',],
             volume: defaultVolume,
+            onplay: function () {
+                runVibration(100);
+            }
         }),
     };
 
@@ -408,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
             changeSoundSetting();
         } else {
             isVibrationOn = !isVibrationOn;
-            runVibration(100);
+            runVibration(300);
         }
     }
 
