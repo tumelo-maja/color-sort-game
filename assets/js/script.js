@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nutColorsAll = {
         'yellow': '#f9b723',
         'blue': '#26a1ee',
-        'whitesilver': '#c2b3d4',
+        'whitesilver': '#dadbdd',
         'orange': '#f25029',
         'green': '#8DCD3B',
         'purple': '#911899',
