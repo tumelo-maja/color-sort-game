@@ -86,10 +86,10 @@ h1 {
   font-size: 40px;
   color: #00b0f0;
   font-family: "Arial Black", Gadget, sans-serif;
-  text-shadow: 0px 0px 0 rgb(-7,169,233),
-               -1px 0px 0 rgb(-14,162,226),
-               -2px 0px 0 rgb(-21,155,219),
-               -3px 0px  0 rgb(-28,148,212),
+  text-shadow: 0px 0px 0 rgb(-17,159,223),
+               -1px 0px 0 rgb(-24,152,216),
+               -2px 0px 0 rgb(-31,145,209),
+               -3px 0px  0 rgb(-38,138,202),
                -4px 0px 3px rgba(0,0,0,0),
                -4px 0px 1px rgba(0,0,0,0.5),
                0px 0px 3px rgba(0,0,0,.2);
