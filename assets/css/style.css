@@ -437,7 +437,7 @@ h3 {
 
 #start-button {
   text-decoration: none;
-  color: white;
+  color: #e0ffff;
   background-color: #00008b;
   margin: 20px;
   border-radius: 50px;
@@ -450,6 +450,9 @@ h3 {
   justify-content: center;
   font-size: 18px;
   transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: 0 0 10px #e0ffff;
 }
 
 #start-button:hover {
