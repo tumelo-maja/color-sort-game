@@ -325,3 +325,6 @@ Setting vibration on mobile devices
 (https://www.youtube.com/shorts/Yw9xyLJ8tRo)
 
 classic derivv for resizing the nut outline (https://classic.derivv.com/)
+
+3D CSS text Generator
+https://zoptv.github.io/3dcss/index.html
