@@ -219,7 +219,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // modal eventlisteners - Game Loss
         modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
-            console.log("Reset game")
             resetGame();
         });
 
@@ -278,8 +277,6 @@ document.addEventListener("DOMContentLoaded", function () {
             difficultyMode = this.value;
             gameMode = gameModeObject[difficultyMode];
             levelValueElement.innerText = userProgress[difficultyMode];
-
-
             generateNewGame();
         })
 
@@ -364,10 +361,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // const pointDescriptionExpanded = document.querySelector('.points-expanded');
         const headElement = e.currentTarget;
         headElement.nextElementSibling.classList.toggle('hidden-item');
-        console.log("Help-head clicked")
         const arrowElement = headElement.querySelector(".bi-chevron-double-down");
         arrowElement.classList.toggle('rotate');
-        console.log(arrowElement);
     }
 
     /**
@@ -443,9 +438,7 @@ document.addEventListener("DOMContentLoaded", function () {
             difficultyMode = userProgress.currentDifficulty;
             levelValueElement.innerText = userProgress[difficultyMode];
             gameMode = gameModeObject[difficultyMode];
-
             difficultyModeSelect.value =difficultyMode;
-
 
         } else {
             userProgress = createUserProgress();
@@ -1150,9 +1143,6 @@ document.addEventListener("DOMContentLoaded", function () {
      * Generate new game and clear previous nuts
      */
     function generateNewGame() {
-
-
-
         // Save game sate for use in reset
         gameInitialState['gameRodContainers'] = generateNutsWithColors();
         let nutsAndWrappers = [];
@@ -1160,15 +1150,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let nutsAndWrapper = createNutsAndWrappers(rodItem.nuts);
             nutsAndWrappers.push(nutsAndWrapper);
         }
-
         gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
         addNutsToRods();
 
-        // reste extra rod if disabled
+        // reset extra rod if disabled
         if (extraRodButton.classList.contains('disable')) {
             extraRodButton.classList.remove('disable');
         }
-
 
         // Update nut Element global style
         anyNut = document.querySelectorAll('.nut')[0];
@@ -1291,7 +1279,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function getUserProgress() {
 
-        if (localStorage) {
+        if (Object.keys(localStorage).length) {
 
             userProgress = localStorage.getItem('userProgress');
             return JSON.parse(userProgress);
