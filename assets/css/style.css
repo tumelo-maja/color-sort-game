@@ -1,6 +1,5 @@
 /* import Oswald Google font */
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Oswald:wght@200..700&display=swap");
 /*------------- CSS variables --*/
 :root {
   --orange: #f25029;
@@ -70,29 +69,14 @@ body {
   font-family: "Oswald", sans-serif;
 }
 
-/* h1 {
-  background-color: lightgray;
-  border: 2px solid black;
-  height: 40px;
-  padding: 10px;
-  margin: 0;
-  font-size: 2rem;
-  text-align: center;
-} */
-
-/* Apply this class to some text to add 3d text effect! */
-
 h1 {
   font-size: 40px;
-  color: #00b0f0;
-  font-family: "Arial Black", Gadget, sans-serif;
-  text-shadow: 0px 0px 0 rgb(-17,159,223),
-               -1px 0px 0 rgb(-24,152,216),
-               -2px 0px 0 rgb(-31,145,209),
-               -3px 0px  0 rgb(-38,138,202),
-               -4px 0px 3px rgba(0,0,0,0),
-               -4px 0px 1px rgba(0,0,0,0.5),
-               0px 0px 3px rgba(0,0,0,.2);
+  color: lightcyan;
+  font-family: "Carter One", sans-serif;
+  text-shadow: -2px 0px 2px lightcyan;
+  letter-spacing: 3px;
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .logo img {
