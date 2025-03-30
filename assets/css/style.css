@@ -81,19 +81,18 @@ body {
 } */
 
 /* Apply this class to some text to add 3d text effect! */
+
 h1 {
-  font-family: "IconicStroke";
-  line-height: 1em;
-  color: #00b0f0;
-  font-weight: bold;
   font-size: 40px;
-  text-shadow: 0px 0px 0 rgb(-82, 94, 158), -1px 0px 0 rgb(-95, 81, 145),
-    -2px 0px 0 rgb(-108, 68, 132), -3px 0px 0 rgb(-121, 55, 119),
-    -4px 0px 0 rgb(-134, 42, 106), -5px 0px 0 rgb(-147, 29, 93),
-    -6px 0px 0 rgb(-160, 16, 80), -7px 0px 0 rgb(-173, 3, 67),
-    -8px 0px 0 rgb(-186, -10, 54), -9px 0px 0 rgb(-199, -23, 41),
-    -10px 0px 9px rgba(0, 0, 0, 0.4), -10px 0px 1px rgba(0, 0, 0, 0.5),
-    0px 0px 9px rgba(0, 0, 0, 0.2);
+  color: #00b0f0;
+  font-family: "Arial Black", Gadget, sans-serif;
+  text-shadow: 0px 0px 0 rgb(-7,169,233),
+               -1px 0px 0 rgb(-14,162,226),
+               -2px 0px 0 rgb(-21,155,219),
+               -3px 0px  0 rgb(-28,148,212),
+               -4px 0px 3px rgba(0,0,0,0),
+               -4px 0px 1px rgba(0,0,0,0.5),
+               0px 0px 3px rgba(0,0,0,.2);
 }
 
 .logo img {
