@@ -101,9 +101,8 @@ main {
   margin: 0 10px;
 }
 
-h2,
 h3 {
-  color: wheat;
+  color: lightcyan;
   text-transform: uppercase;
   text-align: center;
   margin: 15px 0;
