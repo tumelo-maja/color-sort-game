@@ -24,10 +24,13 @@ In this section, we provide all tasks related to project planning. User stories 
 
 ### Key business goals
 
-Primary goal: 
+Primary goal: Design an interactive, user-friendly and appealing color stacking game that gives a positive user experience to all users.
 
 Other goals:
-- 
+- Encourage user partiticipation  in the game play through game rewards
+- Enhance user experience with appealing design and sound effects 
+- Attract and retain users to play regularly through various difficulty levels
+
 
 ### User stories
 
