@@ -18,6 +18,8 @@ project desription (full)
 - **Feature title**
  
 ### Features Left to Implement
+1. User feedback form
+This would allow users to share their experience about the stacking game with the developers. Comments, complaints and suggestion would all be submitted through this form.
 
 ## Project planning
 In this section, we provide all tasks related to project planning. User stories and business goals are defined in this section
