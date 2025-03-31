@@ -100,6 +100,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   /* padding: 10px;
   margin: 0 10px; */
   flex: 1 0 auto;
@@ -140,10 +141,11 @@ h3 {
   justify-self: center;
 }
 
-.game-instructions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.game-instructions.help-expanded {
+  justify-self: center;
+  padding: 15px;
+  width: 280px;
+  max-width: 500px;
 }
 
 .game-instructions p {
