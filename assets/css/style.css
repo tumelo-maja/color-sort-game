@@ -62,7 +62,7 @@ body {
   padding: 0;
   /* width: 100%;
   height: 100vh; */
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -181,7 +181,7 @@ h3 {
   border: 2px solid lightcyan;
   height: 100vh;
   /* max-height: 100vh; */
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
