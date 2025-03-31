@@ -437,7 +437,7 @@ h3 {
   transform: translateX(-30px);
 }
 
-#start-button {
+.start-button {
   text-decoration: none;
   color: #e0ffff;
   background-color: #00008b;
@@ -457,12 +457,12 @@ h3 {
   text-shadow: 0 0 10px #e0ffff;
 }
 
-#start-button:hover {
+.start-button:hover {
   transform: scale(1.04);
   box-shadow: 0 0 12px #e0ffff;
 }
 
-#start-button:active {
+.start-button:active {
   transform: scale(0.96);
 }
 
