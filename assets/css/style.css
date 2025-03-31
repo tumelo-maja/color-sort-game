@@ -976,6 +976,14 @@ h3 {
   }
 }
 
+/*---------- Breakpoint for medium mobile screens (375px) and above */
+@media screen and (min-width: 375px) {
+
+  .game-controls {
+    margin-bottom: 30px ;
+  }
+}
+
 /*---------- Breakpoint for medium screens (768px) and above */
 @media screen and (min-width: 768px) {
 
