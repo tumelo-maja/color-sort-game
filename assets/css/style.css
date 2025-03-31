@@ -403,7 +403,8 @@ h3 {
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  justify-self: flex-end;
+  align-items: center;
+  /* justify-self: flex-end; */
 }
 
 .head-area a {
@@ -919,6 +920,9 @@ h3 {
   border: 2px solid lightcyan;
 }
 
+.desktop {
+  display: none;
+}
 /*--- Keyframes for raised nut ---*/
 /*--- Movement using transform ---*/
 /* @keyframes moveNutToTarget {
@@ -963,3 +967,31 @@ h3 {
     z-index: 100;
   }
 } */
+
+/*---------- Breakpoint for medium screens (768px) and above */
+@media screen and (min-width: 768px) {
+
+  .game-controls {
+    margin-bottom: 10% ;
+  }
+
+  .head-area {
+    height: 80px;
+    border: 1px solid red;
+  }
+  
+  .head-area a {
+    height: 50px;
+    width: 50px;
+  }
+  
+  .head-area i {
+    font-size: 1.8rem;
+  }
+
+  .game-score {
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+}
