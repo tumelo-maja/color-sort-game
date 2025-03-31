@@ -15,8 +15,81 @@ project desription (full)
 ## Features 
 
 ### Existing Features
-- **Feature title**
- 
+- **Index: Logo Icon**
+
+
+- **Index: Play Game Button**
+
+
+- **Index: How to Play header**
+
+
+- **Index: Footer**
+- Disclaimer 
+
+- **Game: Game header - Hamburger Icon (modal)**
+
+- Sound settings (toggle)
+
+- vibration settings (toggle - mobile only)
+
+- Clear All Progress button
+
+- Home icon (navigation)
+
+
+- **Game: Game header - Score Display**
+
+- score display
+
+- odometer counter
+
+
+- **Game: Game header - Help Icon (modal)**
+
+- how to play
+
+- score calculation 
+
+- Keyboard shortcuts
+
+
+- **Game: Game Mode and moves display**
+
+- Mode select element
+
+- Remaining moves bar and counts
+
+
+- **Game: Game area**
+
+- bolts layout and nuts (for different difficulty modes)
+- Extra bolt
+
+- **Game: Game win modal**
+- win display
+
+- **Game: Game loss modal**
+- loss display
+
+- **Game: Game Button controls**
+
+- undo move button
+
+- Add extra bolt button
+
+- restart/reset button
+
+- Load new game button
+
+
+- **Game: User progress and localStorage**
+
+- localStorage
+
+
+
+
 ### Features Left to Implement
 Features that would be good to have in the game and will be reserved for future version releases fo the game.
 
