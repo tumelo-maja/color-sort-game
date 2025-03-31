@@ -197,6 +197,13 @@ h3 {
   );
 }
 
+.game-current{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .game-area {
   /* border: 2px solid green; */
   height: 400px;
