@@ -972,16 +972,18 @@ h3 {
 @media screen and (min-width: 320px) {
 
   .game-controls {
-    margin-bottom: 10% ;
+    /* margin-bottom: 10% ; */
+    margin-bottom: 50px ;
+
   }
 }
 
 /*---------- Breakpoint for medium mobile screens (375px) and above */
 @media screen and (min-width: 375px) {
 
-  .game-controls {
+  /* .game-controls {
     margin-bottom: 50px ;
-  }
+  } */
 }
 
 /*---------- Breakpoint for medium screens (768px) and above */
