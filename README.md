@@ -12,6 +12,9 @@ Project intro
 
 project desription (full)
 
+**Site Mockup:** 
+
+
 ## Features 
 
 ### Existing Features
@@ -29,7 +32,7 @@ project desription (full)
 
 - **Game: Game header - Hamburger Icon (modal)**
 
-- Sound settings (toggle)
+- Sound settings (toggle) - effects and clips
 
 - vibration settings (toggle - mobile only)
 
@@ -66,11 +69,14 @@ project desription (full)
 - bolts layout and nuts (for different difficulty modes)
 - Extra bolt
 
+
 - **Game: Game win modal**
 - win display
 
+
 - **Game: Game loss modal**
 - loss display
+
 
 - **Game: Game Button controls**
 
@@ -295,6 +301,10 @@ Other goals:
 
 ### Wireframes
 
+
+## Technologies
+
+
 ## Testing 
 
 ### Feature Testing
@@ -314,12 +324,14 @@ The website's layout and responsiveness was tested on the commonly used browsers
 | Microsoft Edge  |                     |                         |  
 
 ### Responsive Testing 
+- screen for few screen sizes (index and game pages)
 
 ### Code validation
 
 | Page Tested | Screenshot of Errors | Solution Applied   | Screenshot of Clear Validator Output |  
 |------------ |------------          |------------        |------------                          |
 | index.html  |------------          |------------        |------------                          |    
+| game.html  |------------          |------------        |------------                          |    
 
 ### Bugs
 
