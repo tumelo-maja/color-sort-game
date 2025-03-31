@@ -127,6 +127,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 15px;
 }
 
 .welcome-section p {
