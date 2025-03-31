@@ -325,3 +325,5 @@ Setting vibration on mobile devices
 (https://www.youtube.com/shorts/Yw9xyLJ8tRo)
 
 classic derivv for resizing the nut outline (https://classic.derivv.com/)
+
+Generate Favicons (https://favicon.io/favicon-converter/)
