@@ -2,14 +2,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // Global variables.
-    // const maxNutsPerRod = 4;
     const verticalStep = 25;
     const horizontalStep = 42
 
-    // let userScore = 0;
-    // let userLevel = 1;
     let movesBar = document.querySelector('.move-fill');
-
     let completedRods = 0; // initialize as 0
     let gameInitialState = {}; // Var to store game state
 
@@ -23,9 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         'purple': '#911899',
         'beige': '#FFCFC1',
         'pink': '#FF90C8',
-        // 'red': '#FF0C15',
         'darkgrey': '#656469'
-
     }
 
     const gameModeObject = {
@@ -124,16 +118,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }),
     };
 
-    // let difficultyMode = 'medium';
-    // Set game mode
     const defaultDifficulty = 'easy';
-    let difficultyMode = '';//defaultDifficulty;
-    let gameMode = '';//gameModeObject[defaultDifficulty];
-    // let gameMode = gameModeObject.medium;
-    // let gameMode = gameModeObject.hard;
+    let difficultyMode = '';
+    let gameMode = '';
 
-    // localStorage.removeItem('userProgress');
-    let isGameMuted = true; //default is without sound;
+    let isGameMuted = true;
     Howler.mute(isGameMuted);
     let isVibrationOn = false;
 
@@ -141,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const gameAreaElement = document.querySelector('.game-area');
     let movesNumberElement = document.getElementById('move-value');
     let levelValueElement = document.getElementById('level-value');
-
 
     // Intialize variables
     let userMoves = 0;
@@ -163,10 +151,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalWinContainer = document.getElementById("gameOverWinModal");
 
     //game control  buttons
-    const undoMoveButton = document.getElementById("undo-move"); //undo move
-    const extraRodButton = document.getElementById("add-rod"); // add extra rod
-    const resetGameButton = document.getElementById("game-reset"); // reset game
-    const newGameButton = document.getElementById("new-game"); // new-game
+    const undoMoveButton = document.getElementById("undo-move");
+    const extraRodButton = document.getElementById("add-rod");
+    const resetGameButton = document.getElementById("game-reset");
+    const newGameButton = document.getElementById("new-game");
 
     // difficultyMode
     const difficultyModeSelect = document.getElementById("difficultyMode");
@@ -175,44 +163,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalSettingsContainer = document.getElementById("settingsModalContainer");
     const openModalSettings = document.querySelector(".settings-open");
     const closeModalSettings = document.querySelector(".settings-close");
+    const toggleElements = document.querySelectorAll(".toggle-container");
+    const removeAllProgress = document.querySelector(".remove-progress");
 
     // Help options modal
     const helpOptionsContainer = document.getElementById("helpOptionsModal");
     const openModalHelp = document.querySelector(".help-open");
     const closeModalHelp = document.querySelector(".help-close");
+    const helpModalElements = document.querySelectorAll(".help-head");
 
-    //get toggle sound and vibration elements
-    const toggleElements = document.querySelectorAll(".toggle-container");
-
-    const removeAllProgress = document.querySelector(".remove-progress");
-
-    // const startGameButton = document.getElementById("start-button"); // start game
-
-
-    const helpModalElements = document.querySelectorAll(".help-head"); // help modal
-
-    let pointsDisplayElement = document.getElementById("pointsDisplay"); // points display
-    // let pointsOdometer = new Odometer({
-    //     el: pointsDisplayElement,
-    //     duration: 5000,
-    // });
-
+    let pointsDisplayElement = document.getElementById("pointsDisplay");
     let userScoreElement = document.getElementById('scoreValue');
     let scoreOdometer = new Odometer({
         el: userScoreElement,
         duration: 5000,
     });
 
-    // Run game to load default game setup with level=1 and score=0
     runGame();
 
     /**
- * initialize the game play
- */
+     * initialize the game play
+     */
     function runGame() {
         addRodEventListeners();
 
-        // modal eventlisteners - Game Loss
         modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
             resetGame();
@@ -228,9 +202,9 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "index.html";
         })
 
-        // undo move button listener
+        // Game control buttons
         undoMoveButton.addEventListener('click', undoLastMove);
-        extraRodButton.addEventListener('click', addExtraRod); // Add extra rod
+        extraRodButton.addEventListener('click', addExtraRod); 
         newGameButton.addEventListener('click', generateNewGame);
         resetGameButton.addEventListener('click', resetGame);
 
@@ -241,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
         continueButton.addEventListener('click', function () {
 
             modalWinContainer.style.display = 'none';
-            gameLevelUp(); // Progress user level up
+            gameLevelUp();
 
             //Get current score and earned points
             currentScore = getOdometerValue(userScoreElement);
@@ -252,20 +226,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 userScoreElement.innerHTML = newScore;
                 soundEffects.startMove.play('scoreCount');
 
-                // save user progress
                 saveUserProgress(difficultyMode, newScore);
             }, 1000);
 
             generateNewGame();
         });
 
-
         helpModalElements.forEach(head => {
             head.addEventListener('click', toggleDisplayHelpModal);
         })
-
-        // start game button
-        // startGameButton.addEventListener('click', generateNewGame);
 
         // difficultyModeSelect
         difficultyModeSelect.addEventListener('change', function () {
@@ -296,10 +265,6 @@ document.addEventListener("DOMContentLoaded", function () {
             helpOptionsContainer.style.display = 'flex';
         })
 
-        // Sound toggle
-        // soundToggleElement.addEventListener('click', setToggleOn);
-        // vibrationToggleElement.addEventListener('click', setToggleOn);
-
         toggleElements.forEach(bucket => {
             bucket.addEventListener('click', changeToggleSettings)
         })
@@ -309,7 +274,6 @@ document.addEventListener("DOMContentLoaded", function () {
             userProgress = createUserProgress();
             initializeUserProgress();
         });
-
 
         // get previous levels and scores
         initializeUserProgress();
@@ -322,7 +286,6 @@ document.addEventListener("DOMContentLoaded", function () {
      * function to handle keyboard press events
      */
     function handleKeyboardPress(e) {
-
         let pressedKey = e.key.toLowerCase();
         if (pressedKey === 'm' && e.shiftKey) {
             changeSoundSetting();
@@ -353,8 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
      * Toggle display of sibling elements of the head <p> elements in the Help Modal
      */
     function toggleDisplayHelpModal(e) {
-
-        // const pointDescriptionExpanded = document.querySelector('.points-expanded');
         const headElement = e.currentTarget;
         headElement.nextElementSibling.classList.toggle('hidden-item');
         const arrowElement = headElement.querySelector(".bi-chevron-double-down");
@@ -377,7 +338,6 @@ document.addEventListener("DOMContentLoaded", function () {
      * Extract the numerical digits displayed by an element animated using odometer instance
      */
     function getOdometerValue(element) {
-
         let elementChildren = element.querySelectorAll('.odometer-value');
         let stringDigits = '';
         elementChildren.forEach(odometerSpan => {
@@ -425,8 +385,6 @@ document.addEventListener("DOMContentLoaded", function () {
      * initialize levels and scores
      */
     function initializeUserProgress() {
-
-        // userProgress = getUserProgress();
         if (Object.keys(localStorage).length) {
             userProgress = getUserProgress();
 
@@ -434,7 +392,7 @@ document.addEventListener("DOMContentLoaded", function () {
             difficultyMode = userProgress.currentDifficulty;
             levelValueElement.innerText = userProgress[difficultyMode];
             gameMode = gameModeObject[difficultyMode];
-            difficultyModeSelect.value =difficultyMode;
+            difficultyModeSelect.value = difficultyMode;
 
         } else {
             userProgress = createUserProgress();
@@ -443,10 +401,8 @@ document.addEventListener("DOMContentLoaded", function () {
             difficultyMode = defaultDifficulty;
             gameMode = gameModeObject[defaultDifficulty];
 
-            //save to local storage
             createUserProgress();
         }
-
     }
 
     /**
@@ -467,16 +423,13 @@ document.addEventListener("DOMContentLoaded", function () {
      * If the move is not allowed, the raised nut is lowered
      */
     function rodClick(e) {
-        // handle click to move raised nut or lower raised nut
         const raisedNut = document.querySelector(".raise-nut");
         const rodElement = e.currentTarget;
         const nutObjectTop = rodElement.lastElementChild.firstElementChild;
         let rodChildrenCount = rodElement.querySelectorAll('.nut-wrap').length;
 
         if (raisedNut) {
-
             let currentNut = raisedNut;
-
             let currentNutWrapper = currentNut.parentElement;
             let sourceRod = currentNutWrapper.parentElement;
 
@@ -500,16 +453,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             while ((currentNutColor === neighbourNutColor) && (nutsToMove.length < availableSpace)) {
 
-                //append wrapper to array
                 nutWrappersToMove.unshift(neighbourNutWrapper);
                 nutsToMove.unshift(neighbourNutWrapper.firstElementChild);
 
-                //update current and neighbour colors
                 currentNut = neighbourNutWrapper.firstElementChild;
                 currentNutWrapper = neighbourNutWrapper;
 
                 neighbourNutWrapper = currentNutWrapper.previousElementSibling;
-
                 if (!neighbourNutWrapper.classList.contains('nut-wrap')) {
                     break
                 }
@@ -526,7 +476,6 @@ document.addEventListener("DOMContentLoaded", function () {
             lastMoveHistory['nutsToMove'] = nutsToMove;
             lastMoveHistory['rodChildrenCount'] = sourceRod.querySelectorAll('.nut-wrap').length - nutsToMove.length;
 
-            // Remove 'disable class after successful move
             if (undoMoveButton.classList.contains('disable')) {
                 undoMoveButton.classList.remove('disable');
             }
@@ -543,15 +492,12 @@ document.addEventListener("DOMContentLoaded", function () {
      * Raise the top nut &wrapper  above the rod when clicked
      */
     function raiseNut(nutObject, rodChildrenCount) {
-
         setRaiseNutTransformY(nutObject, rodChildrenCount);
-        // soundEffects.moveNut.play('onRodMove');
         soundEffects.raise.play('kickStart');
         setTimeout(() => {
             soundEffects.startMove.play('onRodMove');
         }, 100)
         nutObject.classList.add("raise-nut");
-
     }
 
     /**
@@ -559,11 +505,9 @@ document.addEventListener("DOMContentLoaded", function () {
      * The nut must always be raised slightly above the clicked rod
      */
     function setRaiseNutTransformY(nutObject, rodChildrenCount) {
-
         const anyNutMargin = getCssStyleValue(anyNut, 'margin-bottom');
         const rodObject = nutObject.parentElement.parentElement;
         const rodCapacity = parseInt(nutObject.parentElement.parentElement.getAttribute('data-capacity'));
-
         const availableSpace = (rodCapacity - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
         const raiseValue = -availableSpace - verticalStep;
 
@@ -574,15 +518,12 @@ document.addEventListener("DOMContentLoaded", function () {
      * Lower nut to the base if it cannot be moved
      */
     function lowerNut(nutObject) {
-
         if (nutObject) {
             nutObject.classList.remove("raise-nut");
-            // soundEffects.moveNut.play('onRodMove');
             soundEffects.raise.play('kickStart');
             setTimeout(() => {
                 soundEffects.startMove.play('onRodMove');
             }, 100)
-
         }
     }
 
@@ -600,23 +541,18 @@ document.addEventListener("DOMContentLoaded", function () {
      * Calculate the 'lid' position - entry/exit points for all nuts
      */
     function calculateLidCenter(targetRod, sourceRod, nut) {
-
         const sourceRow = sourceRod.getAttribute("data-row");
         const sourceColumn = sourceRod.getAttribute("data-column");
-
         const targetRow = targetRod.getAttribute("data-row");
         const targetColumn = targetRod.getAttribute("data-column");
-
         const stepsColumn = sourceColumn - targetColumn;
         const stepsRow = sourceRow - targetRow;
 
         const transY = nut.style.getPropertyValue('--transform-y');
-
         const lidCenterPosition = {
             xValue: -(horizontalStep * (stepsColumn)) - 6,
             yValue: targetRow == sourceRow ? parseFloat(transY) + (verticalStep * (stepsRow)) : (parseFloat(transY) - (verticalStep * (stepsRow) * 7)),
         };
-
         return lidCenterPosition;
     }
 
@@ -628,16 +564,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const targetRodRect = targetRod.getBoundingClientRect();
         const sourceRodRect = sourceRod.getBoundingClientRect();
-
         rodYDifference = targetRodRect.top - sourceRodRect.top;
         rodXDifference = targetRodRect.left - sourceRodRect.left;
 
-        // anyNut is global to avoud redefining 
         const nutFinalPosition = {
             xValue: rodXDifference,
             yValue: rodYDifference,
         }
-
         return nutFinalPosition;
     }
 
@@ -646,9 +579,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * The position after being 'raised' 
      */
     function calculateNutStartPosition(nutObject) {
-
         const transY = nutObject.style.getPropertyValue('--transform-y');
-
         const nutStartPosition = {
             xValue: 0,
             yValue: parseFloat(transY),
@@ -661,16 +592,13 @@ document.addEventListener("DOMContentLoaded", function () {
      * The value is used at
      */
     function calculateNutMidOffset(sourceRod, targetRod, nut) {
-
         const sourceColumn = sourceRod.getAttribute("data-column");
         const targetColumn = targetRod.getAttribute("data-column");
         const transY = nut.style.getPropertyValue('--transform-y');
-
         const offsetPosition = {
             xValue: targetColumn >= sourceColumn ? horizontalStep : -horizontalStep + 10,
             yValue: parseFloat(transY) - verticalStep,
         };
-
         return offsetPosition;
     }
 
@@ -680,17 +608,11 @@ document.addEventListener("DOMContentLoaded", function () {
      * @param {The final rod for the nut} targetRod 
      */
     function setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
-
-        // let tranformIncreaseValue = 0;
         let sourceChildrenCount = sourceRod.querySelectorAll('.nut-wrap').length;
         const heighExistingChildren = (targetChildrenCount * (parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom)));
-
         for (let nut of nutsToMove) {
 
-            // height offset
             let heightOffset = parseFloat(nutStyle.height) - heighExistingChildren;
-
-            //set raise values first
             setRaiseNutTransformY(nut, sourceChildrenCount);
 
             // --- Calculate start position for animation --- //
@@ -715,9 +637,8 @@ document.addEventListener("DOMContentLoaded", function () {
             nut.style.setProperty("--target-position-x", nutFinalPosition.xValue + "px");
             nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue + heightOffset) + "px");
 
-            targetChildrenCount++; // increase after each loop
-            sourceChildrenCount--; //remove 1 child eacj loop
-
+            targetChildrenCount++;
+            sourceChildrenCount--; 
         }
     }
 
@@ -730,44 +651,31 @@ document.addEventListener("DOMContentLoaded", function () {
         const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
         setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount); // Set the transform positions for the animation motion
 
-        //Add animation class
         const animationName = "success-move";
-
         nutsToMove.forEach((nut, index) => {
             setTimeout(() => {
 
-                nut.classList.add(animationName); // nutWrapper
-                nut.parentElement.classList.add(animationName); // nut element
+                nut.classList.add(animationName); 
+                nut.parentElement.classList.add(animationName);
 
                 setRaiseNutTransformY(nut, targetChildrenCount + 1);
-
                 nut.parentElement.addEventListener("animationend", function handler() {
-
                     nut.parentElement.style.animation = "";
                     nut.style.animation = "";
-                    // soundEffects.moveNut.play('onRodMove');
-                    // soundEffects.raise.play('kickStart');
                     soundEffects.startMove.play('onRodMove');
                     setTimeout(() => {
-                        // soundEffects.startMove.play('onRodMove');
                         soundEffects.raise.play('kickStart');
                     }, 200)
-
 
                     nut.parentElement.appendChild(nut);
                     targetRod.appendChild(nut.parentElement);
 
                     nut.classList.remove(animationName, "raise-nut");
                     nut.parentElement.classList.remove(animationName);
-
                     nut.parentElement.removeEventListener("animationend", handler);
 
-                    // only check for full rods
                     if (rodCapacity !== 1) {
-                        // check the rod completion
                         checkRodCompletion(targetRod);
-
-                        //check game completion
                         let isGameComplete = checkGameCompletion();
 
                         if (!isGameComplete) {
@@ -787,51 +695,41 @@ document.addEventListener("DOMContentLoaded", function () {
      * Move raised nut to another rod
      */
     function moveNut(targetRod, raisedNut, nutsToMove, rodChildrenCount, moveType) {
-        // Get raised nut
+
         const raisedNutWrapper = raisedNut.parentElement;
         const sourceRod = raisedNutWrapper.parentElement;
         const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
-
 
         if (moveType === 'reverse') {
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
         }
 
-        // Move nut right away if target rod is empty
         if (rodChildrenCount) {
-
             const targetNut = targetRod.lastElementChild.firstElementChild;
-
-            // 1) Check the destination rod is not the same as origin rod
             if (targetRod === sourceRod) {
                 lowerNut(raisedNut);
                 return
             }
 
-            // 2) Check if the target rod has space
             const isSpaceAvailable = rodChildrenCount < rodCapacity;
             if (!isSpaceAvailable) {
                 lowerNut(raisedNut);
                 return
             }
 
-            // 3) Check if the raised nut and topChild of target rod have same colors
             const targetNutColor = targetNut.getAttribute("data-color");
             const raisedNutColor = raisedNut.getAttribute("data-color");
-
             const isColorMatch = raisedNutColor === targetNutColor;
             if (!isColorMatch) {
                 lowerNut(raisedNut);
                 return
             }
-
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
 
         } else {
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
         }
 
-        // Decreament moves after completed move
         updateMovesRemaining(moveType);
     }
 
@@ -840,16 +738,11 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function updateMovesRemaining(moveType) {
         const gameMoves = document.getElementById('game-moves');
-        // const maximumMoves = 10;
         const widthIncrements = Math.round(100 / gameMode.maximumMoves, 2);
-
         userMoves = movesNumberElement.textContent;
 
         let currentBarwidth = (getCssStyleValue(movesBar, 'width') / getCssStyleValue(gameMoves, 'width')) * 100;
-
         let newBarwidth = 0;
-        let newMovesValue = 0;
-
         if (moveType === 'forward') {
             newBarwidth = currentBarwidth - widthIncrements;
             --userMoves;
@@ -876,7 +769,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function gameOverWin() {
 
         modalWinContainer.style.display = 'flex';
-
         const winModalRect = modalWinContainer.querySelector('.game-modal').getBoundingClientRect();
         const leftStartX = (winModalRect.left) / window.innerWidth;
         const rightStartX = (winModalRect.left + winModalRect.width) / window.innerWidth;
@@ -901,7 +793,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 2500)
 
         pointsDisplayElement.innerHTML = calculatePointsWon();
-
     }
 
     /**
@@ -912,7 +803,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let levelValueElement = document.getElementById('level-value');
         let levelValue = parseInt(levelValueElement.innerText);
         ++levelValue;
-
         levelValueElement.innerText = levelValue;
     }
 
@@ -920,14 +810,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Calculate total points won
      */
     function calculatePointsWon() {
-        // point perRod 10
-        // Maxnuts per rod 4
-        // totalRodsToWin 3
-        // movesRemainingBonus 5 per move
-        // extraRodBonus 10 if not used
         const pointsPerRod = 10; //point factor for each completed rod
-
-
         const movesRemainingBonus = parseInt(movesNumberElement.textContent) * 5;
         const extraRodBonus = extraRodButton.classList.contains('disable') ? 0 : 10;
 
@@ -941,17 +824,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const allNuts = targetRod.querySelectorAll('.nut');
         const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
-
-        if (allNuts.length === rodCapacity) { //confirm if it has the max nuts possible
+        if (allNuts.length === rodCapacity) { 
             const firstNutColor = allNuts[0].getAttribute('data-color');
             const nutSameColor = Array.from(allNuts).every(nut => nut.getAttribute('data-color') === firstNutColor);
 
             if (nutSameColor) {
 
                 targetRod.removeEventListener("click", rodClick);
-
                 const targetRodRect = targetRod.getBoundingClientRect();
-                // calcluate relative positon of the rod - center / convert ro ratio
                 const startX = (targetRodRect.left + targetRodRect.width / 2) / window.innerWidth;
                 const startY = (targetRodRect.top - 10) / window.innerHeight;
                 const nutColorHex = [gameMode.nutColors[firstNutColor]];
@@ -963,9 +843,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let rodLid = targetRod.querySelector('.rod-lid');
                 rodLid.classList.add('complete');
 
-                // update total rods
                 ++completedRods;
-
             }
         }
     }
@@ -974,7 +852,6 @@ document.addEventListener("DOMContentLoaded", function () {
      * Check if all rods are completed
      */
     function checkGameCompletion() {
-
         let gameWon = false;
         if (completedRods === totalRodsToWin) {
             gameWon = true;
@@ -1002,8 +879,7 @@ document.addEventListener("DOMContentLoaded", function () {
             colors: nutColor,
             shapes: ['circle'],
             scalar: particleSize,
-            startVelocity: startVelocity,
-
+            startVelocity: startVelocity
         });
 
     }
@@ -1012,31 +888,20 @@ document.addEventListener("DOMContentLoaded", function () {
      * Generate a new game based on random inputs  
      */
     function generateNutsWithColors() {
-
-        // repeated nut colors for total nuts
-        // let nutsColorArray = Array(maxNutsPerRod).fill(Object.keys(nutColors)).flat();
         let nutsColorArray = Array(gameMode.rodCapacity).fill(Object.keys(gameMode.nutColors)).flat();
 
-        // Shuffle colors
         shuffleColors(nutsColorArray);
-
         while (!checkColorTriplicates(nutsColorArray)) {
             shuffleColors(nutsColorArray);
         }
 
-        // separate shuffled colors into rod containers
         let containers = [];
-
-        // for (let i = 0; i < maxNutsPerRod - 1; i++) {
-        // for (let i = 0; i < gameMode.rodCapacity - 1; i++) {
         for (let i = 0; i < Object.keys(gameMode.nutColors).length; i++) {
 
             let startIndex = i * gameMode.rodCapacity;
-
             containers.push({
                 name: "rod" + (i + 1),
                 nuts: nutsColorArray.slice(startIndex, startIndex + gameMode.rodCapacity)
-                // nuts: nutsColorArray.slice(i * maxNutsPerRod, (i * maxNutsPerRod) + maxNutsPerRod)
             });
         }
         return containers;
@@ -1080,12 +945,8 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function addNutsToRods() {
 
-        //clear and containers 
         clearGameLayout();
-
-        //generate game Layout
         generateGameLayout();
-
         addRodEventListeners();
 
         gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
@@ -1098,8 +959,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         movesNumberElement.textContent = gameMode.maximumMoves;
         totalRodsToWin = Object.values(gameMode.nutColors).length;
-
-
     }
 
     /** 
@@ -1108,7 +967,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function createNutsAndWrappers(nutsArray) {
 
         let nutsAndWrappers = [];
-        //Loop througth nuts arayy
         nutsArray.forEach((nutColor, index) => {
 
             let nutElement = document.createElement("div");
@@ -1131,7 +989,6 @@ document.addEventListener("DOMContentLoaded", function () {
      * Generate new game and clear previous nuts
      */
     function generateNewGame() {
-        // Save game sate for use in reset
         gameInitialState['gameRodContainers'] = generateNutsWithColors();
         let nutsAndWrappers = [];
         for (let rodItem of gameInitialState.gameRodContainers) {
@@ -1141,15 +998,12 @@ document.addEventListener("DOMContentLoaded", function () {
         gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
         addNutsToRods();
 
-        // reset extra rod if disabled
         if (extraRodButton.classList.contains('disable')) {
             extraRodButton.classList.remove('disable');
         }
 
-        // Update nut Element global style
         anyNut = document.querySelectorAll('.nut')[0];
         nutStyle = window.getComputedStyle(anyNut);
-
     }
 
     /**
@@ -1158,7 +1012,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function generateGameLayout() {
 
         const totalRods = gameMode.rodsInContainers.reduce((a, b) => a + b, 0);
-
         let rodNumber = 0;
         for (let i = 0; i < gameMode.containers; i++) {
 
@@ -1166,12 +1019,9 @@ document.addEventListener("DOMContentLoaded", function () {
             containerElement.setAttribute("class", 'rod-container');
 
             let rodsInContainer = gameMode.rodsInContainers[i];
-
-            // Cerate rod elements in each container
             for (let j = 0; j < rodsInContainer; j++) {
 
                 ++rodNumber;
-
                 let rodElement = document.createElement("div");
                 rodElement.setAttribute("id", `rod${rodNumber}`);
 
@@ -1186,24 +1036,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 rodElement.setAttribute("data-row", `${i + 1}`);
                 rodElement.setAttribute("data-column", `${j + 1}`);
 
-                // Create lid element for each rod
                 let lidElement = document.createElement("div");
                 lidElement.setAttribute("class", 'rod-lid');
 
-                //append lid to rod
                 rodElement.appendChild(lidElement);
-
-                //append rod to container;
                 containerElement.appendChild(rodElement);
-
             }
-
-            //append each container to game-area div
             gameAreaElement.appendChild(containerElement);
-
-
         }
-
     }
 
     /**
@@ -1219,18 +1059,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function clearGameLayout() {
 
         let allContainers = gameAreaElement.querySelectorAll('.rod-container');
-
-        // Reset moves/ bar
         movesNumberElement.textContent = gameMode.maximumMoves;
         movesBar.style = "";
 
-        //reset ompleted rods
         completedRods = 0;
-
         for (let container of allContainers) {
             gameAreaElement.removeChild(container);
         }
-
     }
 
     /**
@@ -1241,9 +1076,6 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
 
             let levelValueElement = document.getElementById('level-value');
-
-            // let currentScore = getOdometerValue(userScoreElement);
-
             if (Object.keys(localStorage).length) {
                 userProgress = getUserProgress();
             } else {
@@ -1257,9 +1089,7 @@ document.addEventListener("DOMContentLoaded", function () {
             userProgress.currentLevel = parseInt(levelValueElement.textContent);
 
             localStorage.setItem("userProgress", JSON.stringify(userProgress));
-
         }, 3000);
-
     }
 
     /**
@@ -1268,15 +1098,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function getUserProgress() {
 
         if (Object.keys(localStorage).length) {
-
             userProgress = localStorage.getItem('userProgress');
             return JSON.parse(userProgress);
-
         } else {
-
             return null
         }
-
     }
 
     /**
@@ -1291,10 +1117,7 @@ document.addEventListener("DOMContentLoaded", function () {
             currentDifficulty: defaultDifficulty,
             currentLevel: 1,
         };
-
         localStorage.setItem("userProgress", JSON.stringify(userProgress));
-
         return userProgress;
     }
-
 })
