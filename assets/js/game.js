@@ -212,12 +212,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function runGame() {
         addRodEventListeners();
 
-        const playInstructionElement = document.querySelector('.play-instructions');
-
-        if (playInstructionElement) {
-            playInstructionElement.addEventListener('click', toggleHiddenItem);
-        }
-
         // modal eventlisteners - Game Loss
         modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
@@ -453,14 +447,6 @@ document.addEventListener("DOMContentLoaded", function () {
             createUserProgress();
         }
 
-    }
-
-    /**
-     * Function to display/hide items
-     */
-    function toggleHiddenItem() {
-        const targetElement = document.querySelector('.game-instructions');
-        targetElement.classList.toggle('hidden-item');
     }
 
     /**
