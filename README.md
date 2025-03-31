@@ -348,14 +348,14 @@ The website's layout and responsiveness was tested on the commonly used browsers
 This section provides the steps to follow when deploying the project.
 
 - The site was deployed to GitHub pages. The steps to deploy are as follows: 
-  - In the GitHub repository, navigate to the Settings tab 
+  - In the GitHub repository (https://github.com/tumelo-maja/color-sort-game), navigate to the Settings tab 
   - Scroll to and select 'GitHub pages'
   - Under the 'Source' drop-down menu, select the 'main'(master) as the branch.
   - Once the master branch has been selected, the page will be automatically refreshed. There should be a ribbon displayed at the top of the page indicating successful deployment.
   - The website is now live and can be accessed from repository home page by clicking 'github-pages' under 'Deployments' on the right-side.
   - The link to the website should be displayed at the top showing the latest deployed version.   
 
-Alternatively the site's live link can be found here - ()
+Alternatively the site's live link can be found here - (https://tumelo-maja.github.io/color-sort-game/)
 
 ## Credits 
 Youtube video on using getBoundingClientRect() - (https://www.youtube.com/watch?v=MKpZadkuT-0)
