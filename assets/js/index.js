@@ -1,7 +1,6 @@
 // Add Event Listener to run only after DOM has loaded
 document.addEventListener("DOMContentLoaded", function () {
 
-
     const playInstructionElement = document.querySelector('.play-instructions');
     const targetElement = document.querySelector('.game-instructions');
 
@@ -9,5 +8,4 @@ document.addEventListener("DOMContentLoaded", function () {
     playInstructionElement.addEventListener('click', function () {
         targetElement.classList.toggle('hidden-item')
     });
-
 })
