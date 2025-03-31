@@ -181,7 +181,7 @@ h3 {
 .game-container {
   border: 2px solid lightcyan;
   height: 100%;
-  width: 100vh;
+  width: 100vw;
   /* width: 320px; */
   /* background-color: #091152; */
   justify-items: center;
