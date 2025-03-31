@@ -968,12 +968,20 @@ h3 {
   }
 } */
 
-/*---------- Breakpoint for medium screens (768px) and above */
-@media screen and (min-width: 768px) {
+/*---------- Breakpoint for mobile screens (320px) and above */
+@media screen and (min-width: 320px) {
 
   .game-controls {
     margin-bottom: 10% ;
   }
+}
+
+/*---------- Breakpoint for medium screens (768px) and above */
+@media screen and (min-width: 768px) {
+
+  /* .game-controls {
+    margin-bottom: 10% ;
+  } */
 
   .head-area {
     height: 80px;
