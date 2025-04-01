@@ -88,7 +88,14 @@ footer {
   color: #091152;
 }
 
-/* landing page - instructions*/
+/* index page */
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 main {
   display: flex;
   flex-direction: column;
