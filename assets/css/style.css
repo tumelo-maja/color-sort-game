@@ -522,7 +522,7 @@ h3 {
     #7fce3f 100%
   );
   width: 300px;
-  max-width: 100%;
+  /* max-width: 100%; */
   padding: 30px 10px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -606,7 +606,7 @@ h3 {
 /* Help Modal */
 #helpOptionsModal {
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   padding: 30px 0 20px;
 }
@@ -619,7 +619,7 @@ h3 {
 
 .help-modal {
   background-color: #091152;
-  width: 300px;
+  width: 320px;
   padding: 20px 10px 10px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -632,6 +632,7 @@ h3 {
   align-items: start;
   position: relative;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .help-close {
