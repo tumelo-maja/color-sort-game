@@ -633,6 +633,8 @@ h3 {
   position: relative;
   overflow: scroll;
   overflow-x: hidden;
+  scrollbar-color: lightcyan #091152;
+  scrollbar-width: thin;
 }
 
 .help-close {
