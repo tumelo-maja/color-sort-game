@@ -29,13 +29,17 @@ project desription (full)
 
   - **Play Game Button** - When clicked, it allows user to navigate to the game.html page where the game can be played.
 
+
+  - **How to Play header** - a clickable header to display a guide on how to play the game
+
   <figure>
     <img src="docs/site-screenshots/index-how-to-play-large-screen.png" width="300px">
     <br>
     <figcaption><strong><em>Index: How to Play header</em></strong></figcaption>
   </figure>
 
-  - **How to Play header** - a clickable header to display a guide on how to play the game
+
+  - **Page footer** - contains a disclaimer about the game and its purpose. 
 
   <figure>
     <img src="docs/site-screenshots/index-footer-large-screen.png" width="600px">
@@ -43,7 +47,6 @@ project desription (full)
     <figcaption><strong><em>Index: Page footer</em></strong></figcaption>
   </figure>
 
-  - **Page footer** - contains a disclaimer about the game and its purpose. 
 
 
 - **Game: Game header - Hamburger Icon (modal)**
@@ -53,6 +56,8 @@ project desription (full)
     <figcaption><strong><em>Game: Full view</em></strong></figcaption>
   </figure>
 
+
+  - **Setting button** - when the hamburger icon is clicked, a settings modal appears. Items in the modal and their use are outlined below
   <figure>
     <img src="docs/site-screenshots/game-header-settings-button-large-screen.png" width="200px">
     <img src="docs/site-screenshots/game-modal-settings-off-large-screen.png" width="200px">
@@ -61,34 +66,42 @@ project desription (full)
     <figcaption><strong><em>Game: Settings button</em></strong></figcaption>
   </figure>
 
-  - **Setting button** - when the hamburger icon is clicked, a settings modal appears. Items in the modal and their use are outlined below
+    - **Sound settings (toggle)** - this can be activated to include sound effects in the gameplay.
 
-    - Sound settings (toggle) - this can be activated to include sound effects in the gameplay.
+    - **vibration settings (toggle - mobile only)** - for vibration effects on mobile devices
 
-    - vibration settings (toggle - mobile only) - for vibration effects on mobile devices
+    - **Clear All Progress button** - to clear the game progress, levels and score will be restored to default values 
 
-    - Clear All Progress button - to clear the game progress, levels and score will be restored to default values 
+    - **Home icon (navigation)** - to navigate users back to the home page.
 
-    - Home icon (navigation) - to navigate users back to the home page.
 
+- **Game: Game header - Score Display**
 
   <figure>
     <img src="docs/site-screenshots/game-header-score-display-large-screen.png" width="250px">
     <br>
     <figcaption><strong><em>Game: Score Display</em></strong></figcaption>
   </figure>
-- **Game: Game header - Score Display**
 
   - Score display - the user's earned points are displayed here. After the each level has been completed, the score number is animated using odometer counter to increase the score by earned points.
 
 
 - **Game: Game header - Help Icon (modal)**
 
-- how to play
+  <figure>
+    <img src="docs/site-screenshots/game-header-help-button-large-screen.png" width="200px">
+    <img src="docs/site-screenshots/game-modal-help-all-large-screen.png" width="200px">
+    <img src="docs/site-screenshots/game-modal-help-expanded-large-screen.png" width="200px">
+    <br>
+    <figcaption><strong><em>Game: Help button</em></strong></figcaption>
+  </figure>
 
-- score calculation 
+    Help modal features 3 expandable headings:
+  - **How to play** - has same content as the index page
 
-- Keyboard shortcuts
+  - **Score calculation** - provides a breakdown of how points are earned including bonus points which the user could win if conditions are met.
+
+  - **Keyboard shortcuts (desktop only)** - display a list of keyboard shortcuts that desktop users can use as an alternative to the game's button controls
 
 
 - **Game: Game Mode and moves display**
