@@ -18,17 +18,33 @@ project desription (full)
 ## Features 
 
 ### Existing Features
-- **Index: Logo Icon**
+- **Index: Full view**
+  <figure>
+    <img src="docs/site-screenshots/index-fullview-large-screen.png" width="300px">
+    <br>
+    <figcaption><strong><em>Index: Full view</em></strong></figcaption>
+  </figure>
 
+  - **Logo** - page features an appealing and colorful logo with a clear heading for the name of the game.
 
-- **Index: Play Game Button**
+  - **Play Game Button** - When clicked, it allows user to navigate to the game.html page where the game can be played.
 
+  <figure>
+    <img src="docs/site-screenshots/index-how-to-play-large-screen.png" width="300px">
+    <br>
+    <figcaption><strong><em>Index: How to Play header</em></strong></figcaption>
+  </figure>
 
-- **Index: How to Play header**
+  - **How to Play header** - a clickable header to display a guide on how to play the game
 
+  <figure>
+    <img src="docs/site-screenshots/index-footer-large-screen.png" width="600px">
+    <br>
+    <figcaption><strong><em>Index: Page footer</em></strong></figcaption>
+  </figure>
 
-- **Index: Footer**
-- Disclaimer 
+  - **Page footer** - contains a disclaimer about the game and its purpose. 
+
 
 - **Game: Game header - Hamburger Icon (modal)**
 
