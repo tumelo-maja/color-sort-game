@@ -86,7 +86,6 @@ footer {
   padding: 0 15px;
   width: 100%;
   color: #091152;
-
 }
 
 /* landing page - instructions*/
@@ -191,7 +190,7 @@ h3 {
   );
 }
 
-.game-current{
+.game-current {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -390,10 +389,10 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  /* position: fixed;
   top:5px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 50%; 
+  transform: translateX(-50%);*/
   border: 1px solid red;
 }
 
@@ -951,19 +950,17 @@ h3 {
   }
 } */
 
-
 /*---------- Breakpoint for medium screens (768px) and above */
 @media screen and (min-width: 768px) {
-
   .head-area {
     height: 80px;
   }
-  
+
   .head-area a {
     height: 50px;
     width: 50px;
   }
-  
+
   .head-area i {
     font-size: 1.8rem;
   }
@@ -972,5 +969,4 @@ h3 {
     height: 40px;
     font-size: 1.1rem;
   }
-
 }
