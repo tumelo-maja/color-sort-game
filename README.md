@@ -106,9 +106,16 @@ project desription (full)
 
 - **Game: Game Mode and moves display**
 
-- Mode select element
+  <figure>
+    <img src="docs/site-screenshots/game-current-difficulty-mode-display-large-screen.png" width="300px">
+    <img src="docs/site-screenshots/game-current-moves-display-large-screen.png" width="300px">
+    <br>
+    <figcaption><strong><em>Game: Help button</em></strong></figcaption>
+  </figure>
 
-- Remaining moves bar and counts
+  - **Difficulty mode select** - users can choose to play different modes of difficulty they want to play. They can switch across different modes any time during gameplay.
+
+  - **Remaining moves bar and counts** - The bar show's the remaining move in a life-bar form and the actual count of moves is displayed besides the bar.
 
 
 - **Game: Game area**
