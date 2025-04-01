@@ -2,8 +2,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // Global variables.
-    const verticalStep = 25;
-    const horizontalStep = 42
+    const verticalStep = 35;
+    const verticalRaiseValue = 15;
+    const horizontalStep = 40;
 
     let movesBar = document.querySelector('.move-fill');
     let completedRods = 0; // initialize as 0
@@ -204,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Game control buttons
         undoMoveButton.addEventListener('click', undoLastMove);
-        extraRodButton.addEventListener('click', addExtraRod); 
+        extraRodButton.addEventListener('click', addExtraRod);
         newGameButton.addEventListener('click', generateNewGame);
         resetGameButton.addEventListener('click', resetGame);
 
@@ -545,13 +546,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const sourceColumn = sourceRod.getAttribute("data-column");
         const targetRow = targetRod.getAttribute("data-row");
         const targetColumn = targetRod.getAttribute("data-column");
-        const stepsColumn = sourceColumn - targetColumn;
+        const stepsColumn = targetColumn - sourceColumn;
         const stepsRow = sourceRow - targetRow;
+        const rowDirection = Math.sign(stepsColumn);
 
-        const transY = nut.style.getPropertyValue('--transform-y');
+        const adjustSameColum = stepsColumn == 0 ? 0 : 1;
+
+        const offsetPosition = calculateNutMidOffset(sourceRod, targetRod, nut);
+
         const lidCenterPosition = {
-            xValue: -(horizontalStep * (stepsColumn)) - 6,
-            yValue: targetRow == sourceRow ? parseFloat(transY) + (verticalStep * (stepsRow)) : (parseFloat(transY) - (verticalStep * (stepsRow) * 7)),
+            xValue: rowDirection * ((2 * Math.abs(stepsColumn) - 1) * horizontalStep) + (offsetPosition.xValue * adjustSameColum),
+            yValue: offsetPosition.yValue - (verticalStep * (stepsRow * 4)),
         };
         return lidCenterPosition;
     }
@@ -597,7 +602,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const transY = nut.style.getPropertyValue('--transform-y');
         const offsetPosition = {
             xValue: targetColumn >= sourceColumn ? horizontalStep : -horizontalStep + 10,
-            yValue: parseFloat(transY) - verticalStep,
+            yValue: parseFloat(transY) - verticalRaiseValue,
         };
         return offsetPosition;
     }
@@ -638,7 +643,7 @@ document.addEventListener("DOMContentLoaded", function () {
             nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue + heightOffset) + "px");
 
             targetChildrenCount++;
-            sourceChildrenCount--; 
+            sourceChildrenCount--;
         }
     }
 
@@ -655,7 +660,7 @@ document.addEventListener("DOMContentLoaded", function () {
         nutsToMove.forEach((nut, index) => {
             setTimeout(() => {
 
-                nut.classList.add(animationName); 
+                nut.classList.add(animationName);
                 nut.parentElement.classList.add(animationName);
 
                 setRaiseNutTransformY(nut, targetChildrenCount + 1);
@@ -824,7 +829,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const allNuts = targetRod.querySelectorAll('.nut');
         const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
-        if (allNuts.length === rodCapacity) { 
+        if (allNuts.length === rodCapacity) {
             const firstNutColor = allNuts[0].getAttribute('data-color');
             const nutSameColor = Array.from(allNuts).every(nut => nut.getAttribute('data-color') === firstNutColor);
 

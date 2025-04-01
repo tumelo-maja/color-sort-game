@@ -916,7 +916,7 @@ h3 {
   display: none;
 }
 /*--- Keyframes ---*/
-/* @keyframes moveNutToTarget {
+@keyframes moveNutToTarget {
   0% {
     transform: translate(var(--raise-start-x), var(--raise-start-y));
     z-index: 100;
@@ -931,9 +931,9 @@ h3 {
     transform: translate(var(--target-position-x), var(--target-position-y));
     z-index: 100;
   }
-} */
+}
 
-@keyframes moveNutToTarget {
+/* @keyframes moveNutToTarget {
   0% {
     transform: translate(var(--raise-start-x), var(--raise-start-y));
     z-index: 100;
@@ -942,11 +942,10 @@ h3 {
     transform: translate(var(--raise-max-x), var(--raise-max-y));
   }
   100% {
-    /* transform: translate(var(--lid-position-x), var(--lid-position-y)); */
     transform: translate(var(--target-position-x), var(--target-position-y));
     z-index: 100;
   }
-}
+} */
 /* 
 @keyframes moveNutToTarget {
   0% {
