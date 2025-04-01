@@ -57,6 +57,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -84,8 +85,11 @@ footer {
   text-align: center;
   background-color: lightcyan;
   padding: 0 15px;
-  width: 100%;
+  /* width: 100%; */
   color: #091152;
+  display: flex;
+  flex-direction: column;
+  flex-grow: auto;
 }
 
 /* index page */
@@ -100,8 +104,9 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex: 1 0 auto;
+  width: 100vw;
 }
 
 h3 {
@@ -395,7 +400,6 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .head-area a {
@@ -954,6 +958,21 @@ h3 {
 
 /*---------- Breakpoint for medium screens (768px) and above */
 @media screen and (min-width: 768px) {
+  .welcome-section p,
+  h3 {
+    font-size: 150%;
+  }
+
+  .start-button {
+    font-size: 150%;
+    width: 150px;
+    height: 40px;
+  }
+
+  footer {
+    font-size: 120%;
+  }
+
   .head-area {
     height: 80px;
   }
