@@ -47,14 +47,29 @@ project desription (full)
 
 
 - **Game: Game header - Hamburger Icon (modal)**
+  <figure>
+    <img src="docs/site-screenshots/game-fullview-large-screen.png" width="300px">
+    <br>
+    <figcaption><strong><em>Game: Full view</em></strong></figcaption>
+  </figure>
 
-- Sound settings (toggle) - effects and clips
+  <figure>
+    <img src="docs/site-screenshots/game-header-settings-button-large-screen.png" width="200px">
+    <img src="docs/site-screenshots/game-modal-settings-off-large-screen.png" width="200px">
+    <img src="docs/site-screenshots/game-modal-settings-on-large-screen.png" width="200px">
+    <br>
+    <figcaption><strong><em>Game: Full view</em></strong></figcaption>
+  </figure>
 
-- vibration settings (toggle - mobile only)
+  - **Setting button** - when the hamburger icon is clicked, a settings modal appears. Items in the modal and their use are outlined below
 
-- Clear All Progress button
+    - Sound settings (toggle) - this can be activated to include sound effects in the gameplay.
 
-- Home icon (navigation)
+    - vibration settings (toggle - mobile only) - for vibration effects on mobile devices
+
+    - Clear All Progress button - to clear the game progress, levels and score will be restored to default values 
+
+    - Home icon (navigation) - to navigate users back to the home page.
 
 
 - **Game: Game header - Score Display**
