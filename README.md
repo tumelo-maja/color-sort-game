@@ -48,7 +48,7 @@ project desription (full)
 
 - **Game: Game header - Hamburger Icon (modal)**
   <figure>
-    <img src="docs/site-screenshots/game-fullview-large-screen.png" width="300px">
+    <img src="docs/site-screenshots/game-fullview-large-screen.png" width="250px">
     <br>
     <figcaption><strong><em>Game: Full view</em></strong></figcaption>
   </figure>
@@ -58,7 +58,7 @@ project desription (full)
     <img src="docs/site-screenshots/game-modal-settings-off-large-screen.png" width="200px">
     <img src="docs/site-screenshots/game-modal-settings-on-large-screen.png" width="200px">
     <br>
-    <figcaption><strong><em>Game: Full view</em></strong></figcaption>
+    <figcaption><strong><em>Game: Settings button</em></strong></figcaption>
   </figure>
 
   - **Setting button** - when the hamburger icon is clicked, a settings modal appears. Items in the modal and their use are outlined below
@@ -72,11 +72,14 @@ project desription (full)
     - Home icon (navigation) - to navigate users back to the home page.
 
 
+  <figure>
+    <img src="docs/site-screenshots/game-header-score-display-large-screen.png" width="250px">
+    <br>
+    <figcaption><strong><em>Game: Score Display</em></strong></figcaption>
+  </figure>
 - **Game: Game header - Score Display**
 
-- score display
-
-- odometer counter
+  - Score display - the user's earned points are displayed here. After the each level has been completed, the score number is animated using odometer counter to increase the score by earned points.
 
 
 - **Game: Game header - Help Icon (modal)**
