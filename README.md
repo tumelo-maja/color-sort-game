@@ -120,8 +120,16 @@ project desription (full)
 
 - **Game: Game area**
 
-- bolts layout and nuts (for different difficulty modes)
-- Extra bolt
+  <figure>
+    <img src="docs/site-screenshots/game-area-easy-large-screen.png" width="250px" height="250px">
+    <img src="docs/site-screenshots/game-area-medium-large-screen.png" width="250px" height="250px">
+    <img src="docs/site-screenshots/game-area-hard-large-screen.png" width="250px" height="250px">
+    <br>
+    <figcaption><strong><em>Game: Help button</em></strong></figcaption>
+  </figure>
+
+  - bolts layout and nuts (for different difficulty modes)
+  - Extra bolt
 
 
 - **Game: Game win modal**
