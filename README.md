@@ -128,8 +128,8 @@ project desription (full)
     <figcaption><strong><em>Game: Help button</em></strong></figcaption>
   </figure>
 
-  - bolts layout and nuts (for different difficulty modes)
-  - Extra bolt
+  - **Bolts layout and nuts** - number of colors and layout of the bolts will differ according to the difficulty mode the user has selected.
+  - **Extra bolt** - Users can click the 'Add Extra bolt' button to activate the small bolt on the bottom right.
 
 
 - **Game: Game win modal**
