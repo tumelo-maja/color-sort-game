@@ -170,11 +170,13 @@ project desription (full)
 
   - <img src="docs/site-screenshots/game-controls-description-large-screen.png" width="400px" height="200px">
 
-- **Game: User progress and localStorage**
+- **Game: User progress**
 
-- localStorage
+- As the user progresses up the levels, their score and level are stored using localStorage on the browser.
 
+- Refreshing/Reloading the page will not result is progress loss. The highest level for each difficulty mode and overall score are saved after each win. 
 
+- Users have the option to clear all the progress and reset the game to default levels and score. The button is under the 'Settings' modal.
 
 
 ### Features Left to Implement
