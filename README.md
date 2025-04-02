@@ -121,9 +121,9 @@ project desription (full)
 - **Game: Game area**
 
   <figure>
-    <img src="docs/site-screenshots/game-area-easy-large-screen.png" width="250px" height="250px">
-    <img src="docs/site-screenshots/game-area-medium-large-screen.png" width="250px" height="250px">
-    <img src="docs/site-screenshots/game-area-hard-large-screen.png" width="250px" height="250px">
+    <img src="docs/site-screenshots/game-area-easy-large-screen.png" width="250px" height="400px">
+    <img src="docs/site-screenshots/game-area-medium-large-screen.png" width="250px" height="400px">
+    <img src="docs/site-screenshots/game-area-hard-large-screen.png" width="250px" height="400px">
     <br>
     <figcaption><strong><em>Game: Help button</em></strong></figcaption>
   </figure>
@@ -132,12 +132,30 @@ project desription (full)
   - **Extra bolt** - Users can click the 'Add Extra bolt' button to activate the small bolt on the bottom right.
 
 
-- **Game: Game win modal**
-- win display
+- **Game: Win modal**
+
+  <figure>
+    <img src="docs/site-screenshots/game-modal-win-large-screen.png" width="300px" height="400px">
+    <br>
+    <figcaption><strong><em>Game: Win modal</em></strong></figcaption>
+  </figure>
+
+  - **Win modal display** - When users successfully stack the nuts in the right colors, the win modal will appear and display points won. 
+  - **Continue button** - The 'Continue' button can be clicked to proceed to the next level. 
 
 
-- **Game: Game loss modal**
-- loss display
+- **Game: Loss modal**
+
+  <figure>
+    <img src="docs/site-screenshots/game-modal-loss-large-screen.png" width="300px" height="400px">
+    <br>
+    <figcaption><strong><em>Game: Loss modal</em></strong></figcaption>
+  </figure>
+
+  - **Loss modal display** - When users run out of moves before they stack the nuts in the right colors, the loss modal will appear. 
+  - **Retry button** - The 'Retry' button can be clicked to restart the level with the same layout of nuts.
+  - **New Game button** - The 'New Game' button can be clicked to generate a new layout of nuts for the failed level.
+  - **Quit button** - The 'Quit' button can be clicked to exit the game and return to the home page.
 
 
 - **Game: Game Button controls**
