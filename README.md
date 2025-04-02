@@ -160,14 +160,15 @@ project desription (full)
 
 - **Game: Game Button controls**
 
-- undo move button
+  <figure>
+    <img src="docs/site-screenshots/game-controls-large-screen.png" width="200px" height="100px">
+    <br>
+    <figcaption><strong><em>Game: Control buttons</em></strong></figcaption>
+  </figure>
 
-- Add extra bolt button
+  - Description of control buttons (taken for help modal)
 
-- restart/reset button
-
-- Load new game button
-
+  - <img src="docs/site-screenshots/game-controls-description-large-screen.png" width="400px" height="200px">
 
 - **Game: User progress and localStorage**
 
