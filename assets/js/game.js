@@ -389,7 +389,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Undo last move
+     * Reverses the most recent move made by the user.
+     * Checks if button is enabled (for shortcuts calls)
+     * uses moves details for 'lastMoveHistory' object to call 'moveNut() to reverse the nut move'
+     * Revert the moves by calling updateMovesRemaining()
+     * disables the undo move button - single use per move
      */
     function undoLastMove() {
         if (!undoMoveButton.classList.contains('disable')) {
