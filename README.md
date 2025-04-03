@@ -386,7 +386,7 @@ Other goals:
 
 ## Technologies
 
-
+  - To ensure compatibility across different browsers, <a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">Autoprefixer CSS online</a> was used to add vendor prefixes to CSS properties.
 ## Testing 
 
 ### Feature Testing
