@@ -421,12 +421,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Toggle the *-on class for on elements in the toggle container, sound and vibration
+     * Toggles classes in child elements of the .toggle-container element (sound / vibration)
+     * For the clicked container:
+     * 'toggle-slide-on' class is toggled for the slider element 
+     * 'toggle-item-on' class is toggled for the slider's parent element 
+     * 'toggle-text-on' class is toggled for the text and icon elements 
+     * 
+     * The corresponding setting setting is triggered depending on the class contained in the .toggle-container element
+     * If it contains '.sound' class changeSoundSetting() is called;
+     * else runVibration() is called and 'isVibrationOn' variable is reversed.
      */
     function changeToggleSettings() {
         this.querySelector('.toggle-slide').classList.toggle('toggle-slide-on');
-        this.querySelector('.toggle-text').classList.toggle('toggle-text-on');
         this.querySelector('.toggle-item').classList.toggle('toggle-item-on');
+        this.querySelector('.toggle-text').classList.toggle('toggle-text-on');
 
         if (this.classList.contains('sound')) {
             changeSoundSetting();
