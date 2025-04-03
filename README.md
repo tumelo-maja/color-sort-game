@@ -424,7 +424,7 @@ The website's layout, responsiveness and sound effects were tested on the common
 |------------ |------------          |------------        |------------                          |
 | index.html  |<img src="docs/validation-screenshots/index-initial-validator-results.png" width="500px" height="500px">          | No further changes required  | N/A      |    
 | game.html  |<img src="docs/validation-screenshots/game-initial-validator-results.png" width="500px" height="500px">          |**error:** Stray closing 'i' tags were removed <br><br>**info:** redundant forward slashes in self closing elements were removed |<img src="docs/validation-screenshots/game-final-validator-results.png" width="500px" height="500px">                         |    
-| style.css  |<img src="docs/validation-screenshots/styles-css-initial-validator-results.png" width="450px" height="300px">          |------------        |<img src="docs/validation-screenshots/styles-css-initial-validator-results.png" width="450px" height="300px">                      |    
+| style.css  |<img src="docs/validation-screenshots/styles-css-initial-validator-results.png" width="450px" height="300px">          |------------        |<img src="docs/validation-screenshots/styles-css-final-validator-results.png" width="450px" height="300px">                      |    
 | index.js  |------------          |------------        |------------                          |    
 | game.js  |------------          |------------        |------------                          |    
 
