@@ -312,22 +312,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //Game win modal buttons (1) continue
         continueButton.addEventListener('click', function () {
-
             modalWinContainer.style.display = 'none';
-            gameLevelUp();
-
-            //Get current score and earned points
-            currentScore = getOdometerValue(userScoreElement);
-            let pointsEarned = parseInt(pointsDisplayElement.textContent);
-            let newScore = currentScore + pointsEarned;
-
-            setTimeout(() => {
-                userScoreElement.innerHTML = newScore;
-                soundEffects.startMove.play('scoreCount');
-
-                saveUserProgress(difficultyMode, newScore);
-            }, 1000);
-
+            gameLevelScoreUpdate();
             generateNewGame();
         });
 
@@ -871,12 +857,24 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Increase the level after win
      */
-    function gameLevelUp() {
+    function gameLevelScoreUpdate() {
         // level-value"
         let levelValueElement = document.getElementById('level-value');
         let levelValue = parseInt(levelValueElement.innerText);
         ++levelValue;
         levelValueElement.innerText = levelValue;
+
+        //Get current score and earned points
+        currentScore = getOdometerValue(userScoreElement);
+        let pointsEarned = parseInt(pointsDisplayElement.textContent);
+        let newScore = currentScore + pointsEarned;
+
+        setTimeout(() => {
+            userScoreElement.innerHTML = newScore;
+            soundEffects.startMove.play('scoreCount');
+
+            saveUserProgress(difficultyMode, newScore);
+        }, 1000);
     }
 
     /**
