@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
         addRodEventListeners();
 
         // function to add eventListeners to other page elements except .rod
-        addObjectEventlisterners();
+        addNonRodEventListener();
 
         // initialize odometer for the score element
         new Odometer({
@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * addObjectEventlisterners() adds event listener to page elements:
+     * addNonRodEventListener() adds event listener to non-rod elements:
      * --Settings modal elements--: (1) open modal, (2) close modal, (3) toggle setting, (4) clearProgress 
      * --help modal elements--: (1) open modal, (2) close modal, (3) toggle display,
      * --difficultyModeSelect element--: (1) change game mode 
@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * --Game win modal elements--: (1)continue 
      * --Game loss modal elements--:  (1) retry, (2) new game, (3) quit
      */
-    function addObjectEventlisterners() {
+    function addNonRodEventListener() {
 
         // Settings modal elements (1) - open
         openModalSettings.addEventListener('click', function () {
