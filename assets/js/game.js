@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Shift + R: Reset the game
      * Shift + N: Start a new game
      * 
-     *  @param {KeyboardEvent} e - The keyboard event triggered by a key press.
+     *  @param {KeyboardEvent} e - keyboard event triggered by a key press.
      */
     function handleKeyboardPress(e) {
         let pressedKey = e.key.toLowerCase();
