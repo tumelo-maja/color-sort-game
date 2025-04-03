@@ -17,6 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let completedRods = 0; // initialize as 0
     let gameInitialState = {}; // Var to store game state
     const defaultVolume = 0.15; // volume of sounds effects
+    const defaultDifficulty = 'easy';
+    let difficultyMode = '';
+    let gameMode = '';
+    let isGameMuted = true;
+    let isVibrationOn = false;
+
 
     // Declare nutColorsAll to store all color names and hex codes
     const nutColorsAll = {
@@ -151,13 +157,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }),
     };
 
-    const defaultDifficulty = 'easy';
-    let difficultyMode = '';
-    let gameMode = '';
-
-    let isGameMuted = true;
+    // Set the howler to default setting i.e. muted
     Howler.mute(isGameMuted);
-    let isVibrationOn = false;
 
     // game area
     const gameAreaElement = document.querySelector('.game-area');
