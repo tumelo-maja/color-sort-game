@@ -125,9 +125,6 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: auto;
-      -ms-flex-positive: auto;
-          flex-grow: auto;
 }
 
 footer p {
