@@ -386,7 +386,10 @@ Other goals:
 
 ## Technologies
 
-  - To ensure compatibility across different browsers, <a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">Autoprefixer CSS online</a> was used to add vendor prefixes to CSS properties.
+- **HTML/CSS validation**
+  - <a href="https://validator.w3.org/" target="_blank" rel="noopener">W3C HTML validator</a> used to validate the website's HTML code
+  - <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">W3C CSS validator</a> used to validate the website's CSS style code.
+  - **Autoprefixer** - To ensure compatibility across different browsers, <a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">Autoprefixer CSS online</a> was used to add vendor prefixes to CSS properties.
 ## Testing 
 
 ### Feature Testing
