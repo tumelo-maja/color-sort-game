@@ -338,7 +338,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * function to handle keyboard press events
+     * function to handle keyboard press events for game control
+     * Specific key press combinations have different uses:
+     * Shift + M: Toggle sound settings
+     * Ctrl + Z: Undo last move
+     * Shift + X: Add an extra rod
+     * Shift + R: Reset the game
+     * Shift + N: Start a new game
+     * 
+     *  @param {KeyboardEvent} e - The keyboard event triggered by a key press.
      */
     function handleKeyboardPress(e) {
         let pressedKey = e.key.toLowerCase();
