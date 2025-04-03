@@ -212,7 +212,12 @@ document.addEventListener("DOMContentLoaded", function () {
     runGame();
 
     /**
-     * initialize the game play
+     * Initializes the game play by:
+     * 1) setting up event listeners for .rod elements (used during gameplay)
+     * 2) setting up event listeners for all other page elements (used onload only)
+     * 3) Initializing odometer instance for score display
+     * 4) Loads and applies the user's stored score and level progress or creates one.
+     * 5) Generates a new game layout based on the last played mode or default game mode.
      */
     function runGame() {
 
