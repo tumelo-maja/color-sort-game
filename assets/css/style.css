@@ -52,6 +52,23 @@
 }
 
 body {
+  background: -webkit-gradient(
+    linear,
+    left top, left bottom,
+    from(#091152),
+    color-stop(25%, #091152),
+    color-stop(50%, #0f1d8b),
+    color-stop(75%, #091152),
+    to(#091152)
+  );
+  background: -o-linear-gradient(
+    top,
+    #091152 0%,
+    #091152 25%,
+    #0f1d8b 50%,
+    #091152 75%,
+    #091152 100%
+  );
   background: linear-gradient(
     to bottom,
     #091152 0%,
@@ -64,10 +81,19 @@ body {
   padding: 0;
   height: 100vh;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: "Oswald", sans-serif;
 }
 
@@ -92,9 +118,16 @@ footer {
   background-color: lightcyan;
   width: 100%;
   color: #091152;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-grow: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: auto;
+      -ms-flex-positive: auto;
+          flex-grow: auto;
 }
 
 footer p {
@@ -103,18 +136,38 @@ footer p {
 
 /* index page */
 header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  flex: 1 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
   width: 100vw;
 }
 
@@ -127,19 +180,37 @@ h3 {
 
 .play-instructions {
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
+  -o-transition: transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
-  user-select: none;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .play-instructions:hover {
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .welcome-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 15px;
 }
 
@@ -150,11 +221,13 @@ h3 {
 }
 
 .welcome-section a {
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
 .game-instructions.help-expanded {
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
   padding: 15px;
   width: 280px;
   max-width: 500px;
@@ -189,12 +262,37 @@ h3 {
   border: 2px solid lightcyan;
   height: 100vh;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
   padding: 0;
+  background: -webkit-gradient(
+    linear,
+    left top, left bottom,
+    from(#091152),
+    color-stop(25%, #091152),
+    color-stop(50%, #0f1d8b),
+    color-stop(75%, #091152),
+    to(#091152)
+  );
+  background: -o-linear-gradient(
+    top,
+    #091152 0%,
+    #091152 25%,
+    #0f1d8b 50%,
+    #091152 75%,
+    #091152 100%
+  );
   background: linear-gradient(
     to bottom,
     #091152 0%,
@@ -206,32 +304,61 @@ h3 {
 }
 
 .game-current {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .game-area {
   height: 400px;
   width: 320px;
   padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-content: end;
-  flex-direction: column;
-  justify-content: center;
+  -ms-flex-line-pack: end;
+      align-content: end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .rod-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .rod {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 25px;
   height: 100px;
   background-image: url(../images/bolt-image-short-30x100.png);
@@ -243,7 +370,8 @@ h3 {
 
 .rod.extra {
   height: 30px;
-  align-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .rod-lid {
@@ -255,7 +383,9 @@ h3 {
   border-radius: 50%;
   top: -5px;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .rod-lid.complete {
@@ -270,19 +400,26 @@ h3 {
   height: 20px;
   margin-bottom: 3px;
   border-radius: 5px;
-  align-self: center;
-  justify-self: end;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: end;
+      justify-self: end;
   text-align: center;
   cursor: pointer;
   margin: 0 21px 3px;
   background-image: url(../images/nut-outline-40x20.png);
   background-position: var(--left) 0;
   background-size: cover;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
   transition: 0.5s;
 }
 
 .raise-nut {
-  transform: translate(0, var(--transform-y));
+  -webkit-transform: translate(0, var(--transform-y));
+      -ms-transform: translate(0, var(--transform-y));
+          transform: translate(0, var(--transform-y));
   --left: -360px;
 }
 
@@ -290,7 +427,8 @@ h3 {
   border: 2px solid wheat;
   height: 40px;
   padding: 10px;
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
   margin: 20px 0;
   color: white;
 }
@@ -300,6 +438,13 @@ h3 {
   margin: 10px 0;
   width: 300px;
   border: 6px double lightcyan;
+  background: -o-radial-gradient(
+    center,
+    circle,
+    #b9e495 0%,
+    #9fda6f 60%,
+    #7fce3f 100%
+  );
   background: radial-gradient(
     circle at center,
     #b9e495 0%,
@@ -307,9 +452,15 @@ h3 {
     #7fce3f 100%
   );
   border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .game-controls button {
@@ -322,27 +473,47 @@ h3 {
   height: 40px;
   width: 40px;
   border: 2px solid lightcyan;
-  align-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px #1b5e20;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 4px #1b5e20;
+          box-shadow: 0 4px #1b5e20;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
 .game-controls button:hover {
-  transform: scale(1.04);
-  box-shadow: 0 6px #1b5e20;
+  -webkit-transform: scale(1.04);
+      -ms-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-box-shadow: 0 6px #1b5e20;
+          box-shadow: 0 6px #1b5e20;
 }
 
 .game-controls button:active {
-  transform: scale(0.96);
-  box-shadow: 0 2px #1b5e20;
+  -webkit-transform: scale(0.96);
+      -ms-transform: scale(0.96);
+          transform: scale(0.96);
+  -webkit-box-shadow: 0 2px #1b5e20;
+          box-shadow: 0 2px #1b5e20;
 }
 
 .game-controls ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -356,9 +527,16 @@ h3 {
 .game-display {
   height: 80px;
   width: 205px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 0;
   padding: 0;
   position: relative;
@@ -366,7 +544,9 @@ h3 {
 
 .game-level {
   color: white;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   margin: 0;
   text-align: center;
   font-size: 1.3rem;
@@ -402,9 +582,15 @@ h3 {
   width: 100%;
   max-width: 500px;
   padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .head-area a {
@@ -414,9 +600,15 @@ h3 {
   width: 40px;
   text-align: center;
   margin: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-decoration: none;
 }
 
@@ -427,17 +619,21 @@ h3 {
 
 /* animations */
 .success-move {
-  animation: moveNutToTarget 1s ease-in-out forwards;
+  -webkit-animation: moveNutToTarget 1s ease-in-out forwards;
+          animation: moveNutToTarget 1s ease-in-out forwards;
   --left: 1000px;
 }
 
 .reverse-move {
-  animation: moveNutToTarget 1s ease-in-out forwards;
+  -webkit-animation: moveNutToTarget 1s ease-in-out forwards;
+          animation: moveNutToTarget 1s ease-in-out forwards;
   animation-direction: reverse;
 }
 
 .test-move {
-  transform: translateX(-30px);
+  -webkit-transform: translateX(-30px);
+      -ms-transform: translateX(-30px);
+          transform: translateX(-30px);
 }
 
 .start-button {
@@ -446,14 +642,22 @@ h3 {
   background-color: #00008b;
   margin: 20px;
   border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   cursor: pointer;
   height: 35px;
   width: 110px;
   border: 2px solid #e0ffff;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 18px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   text-transform: uppercase;
   font-weight: 700;
@@ -461,12 +665,17 @@ h3 {
 }
 
 .start-button:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 12px #e0ffff;
+  -webkit-transform: scale(1.04);
+      -ms-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-box-shadow: 0 0 12px #e0ffff;
+          box-shadow: 0 0 12px #e0ffff;
 }
 
 .start-button:active {
-  transform: scale(0.96);
+  -webkit-transform: scale(0.96);
+      -ms-transform: scale(0.96);
+          transform: scale(0.96);
 }
 
 .hidden-item {
@@ -481,9 +690,14 @@ h3 {
   text-align: center;
   color: yellow;
   font-size: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 3px 10px;
   border-radius: 20px;
 }
@@ -500,8 +714,12 @@ h3 {
 /* game loss modal */
 .modal-container {
   display: none;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -517,6 +735,13 @@ h3 {
 }
 
 .game-modal {
+  background: -o-radial-gradient(
+    center,
+    circle,
+    #b9e495 0%,
+    #9fda6f 60%,
+    #7fce3f 100%
+  );
   background: radial-gradient(
     circle at center,
     #b9e495 0%,
@@ -526,12 +751,22 @@ h3 {
   width: 300px;
   padding: 30px 10px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border: 2px solid lightcyan;
 }
 
@@ -540,13 +775,22 @@ h3 {
 }
 
 .modal-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
-  align-items: baseline;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   margin: 20px 10px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
   width: 250px;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -555,7 +799,10 @@ h3 {
   border: 2px solid lightcyan;
   color: lightcyan;
   background-color: #2f44e8;
-  box-shadow: 0 4px #1b5e20;
+  -webkit-box-shadow: 0 4px #1b5e20;
+          box-shadow: 0 4px #1b5e20;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   height: 50px;
   width: 150px;
@@ -565,21 +812,33 @@ h3 {
 }
 
 .modal-buttons button:hover {
-  transform: scale(1.04);
-  box-shadow: 0 6px #1b5e20;
+  -webkit-transform: scale(1.04);
+      -ms-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-box-shadow: 0 6px #1b5e20;
+          box-shadow: 0 6px #1b5e20;
 }
 
 .modal-buttons button:active {
-  transform: scale(0.96);
-  box-shadow: 0 2px #1b5e20;
+  -webkit-transform: scale(0.96);
+      -ms-transform: scale(0.96);
+          transform: scale(0.96);
+  -webkit-box-shadow: 0 2px #1b5e20;
+          box-shadow: 0 2px #1b5e20;
 }
 
 .game-emoji {
   width: 210px;
   height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 5px;
   margin-bottom: 20px;
 }
@@ -589,11 +848,17 @@ h3 {
   font-size: 40px;
   background-color: #091152;
   border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 42px;
   width: 42px;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .disable {
@@ -607,9 +872,16 @@ h3 {
 
 /* Help Modal */
 #helpOptionsModal {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 30px 0 20px;
 }
 
@@ -624,14 +896,26 @@ h3 {
   width: 320px;
   padding: 20px 10px 10px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
   border: 6px double lightcyan;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   position: relative;
   overflow: scroll;
   overflow-x: hidden;
@@ -650,10 +934,19 @@ h3 {
 }
 
 .help-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   width: 260px;
   color: lightcyan;
 }
@@ -663,9 +956,16 @@ h3 {
   text-align: start;
 }
 .help-expanded {
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   margin: 0;
   width: 100%;
   padding-left: 10px;
@@ -694,8 +994,12 @@ h3 {
   text-align: start;
 }
 .shortcuts .help-expanded p {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   text-align: start;
 }
 
@@ -746,22 +1050,37 @@ h3 {
 }
 
 .down-arrow {
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  -o-transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   display: inline-block;
 }
 
 .rotate {
-  transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+          transform: rotate(-180deg);
 }
 
 /* Difficulty mode slider */
 .game-difficulty {
   padding: 5px 10px;
   width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-bottom: 10px;
 }
 
@@ -772,7 +1091,9 @@ h3 {
 }
 
 #difficultyMode {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   color: yellow;
   font-weight: bold;
   letter-spacing: 2px;
@@ -792,14 +1113,24 @@ h3 {
   max-width: 100%;
   padding: 20px 15px 10px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
   height: 350px;
   border: 6px double lightcyan;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
 }
 .settings-modal .modal-title {
@@ -817,18 +1148,33 @@ h3 {
 }
 
 .toggle-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 120px;
   margin-bottom: 20px;
 }
 
 .toggle-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 175px;
   margin: 5px 0;
 }
@@ -840,14 +1186,22 @@ h3 {
   padding: 2px;
   height: 26px;
   width: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
 }
 
 .toggle-item-on {
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   border: 2px solid yellow;
 }
 
@@ -859,23 +1213,36 @@ h3 {
   width: 20px;
   position: absolute;
   left: 3px;
+  -webkit-transition: -webkit-transform 0.4s ease-in-out;
+  transition: -webkit-transform 0.4s ease-in-out;
+  -o-transition: transform 0.4s ease-in-out;
   transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
 
 .toggle-slide-on {
   background-color: rgba(255, 255, 0, 0.801);
   border: 2px solid #686829;
-  transform: translateX(20px);
-  box-shadow: 0 0 6px rgba(255, 255, 0, 0.8), 0 0 12px rgba(255, 255, 100, 0.6);
+  -webkit-transform: translateX(20px);
+      -ms-transform: translateX(20px);
+          transform: translateX(20px);
+  -webkit-box-shadow: 0 0 6px rgba(255, 255, 0, 0.8), 0 0 12px rgba(255, 255, 100, 0.6);
+          box-shadow: 0 0 6px rgba(255, 255, 0, 0.8), 0 0 12px rgba(255, 255, 100, 0.6);
 }
 
 .toggle-text {
   font-weight: bold;
   font-size: 1rem;
   color: lightcyan;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 120px;
 }
 
@@ -898,9 +1265,15 @@ h3 {
   text-align: center;
   margin: 10px;
   padding: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: lightcyan;
   font-weight: bold;
 }
@@ -926,19 +1299,43 @@ h3 {
   display: none;
 }
 /*--- Keyframes ---*/
-@keyframes moveNutToTarget {
+@-webkit-keyframes moveNutToTarget {
   0% {
-    transform: translate(var(--raise-start-x), var(--raise-start-y));
+    -webkit-transform: translate(var(--raise-start-x), var(--raise-start-y));
+            transform: translate(var(--raise-start-x), var(--raise-start-y));
     z-index: 100;
   }
   33.33% {
-    transform: translate(var(--raise-max-x), var(--raise-max-y));
+    -webkit-transform: translate(var(--raise-max-x), var(--raise-max-y));
+            transform: translate(var(--raise-max-x), var(--raise-max-y));
   }
   66.67% {
-    transform: translate(var(--lid-position-x), var(--lid-position-y));
+    -webkit-transform: translate(var(--lid-position-x), var(--lid-position-y));
+            transform: translate(var(--lid-position-x), var(--lid-position-y));
   }
   100% {
-    transform: translate(var(--target-position-x), var(--target-position-y));
+    -webkit-transform: translate(var(--target-position-x), var(--target-position-y));
+            transform: translate(var(--target-position-x), var(--target-position-y));
+    z-index: 100;
+  }
+}
+@keyframes moveNutToTarget {
+  0% {
+    -webkit-transform: translate(var(--raise-start-x), var(--raise-start-y));
+            transform: translate(var(--raise-start-x), var(--raise-start-y));
+    z-index: 100;
+  }
+  33.33% {
+    -webkit-transform: translate(var(--raise-max-x), var(--raise-max-y));
+            transform: translate(var(--raise-max-x), var(--raise-max-y));
+  }
+  66.67% {
+    -webkit-transform: translate(var(--lid-position-x), var(--lid-position-y));
+            transform: translate(var(--lid-position-x), var(--lid-position-y));
+  }
+  100% {
+    -webkit-transform: translate(var(--target-position-x), var(--target-position-y));
+            transform: translate(var(--target-position-x), var(--target-position-y));
     z-index: 100;
   }
 }
