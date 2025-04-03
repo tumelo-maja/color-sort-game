@@ -397,13 +397,15 @@ For each interactive feature, a testing was conducted and the results are outlin
 | feature item  | ------- |------    |
 
 ### Browser Compatibility
-The website's layout and responsiveness was tested on the commonly used browsers. The test is based on the quality of browser rendering of the website as intended and its responsiveness to screen width variations. 
+The website's layout, responsiveness and sound effects were tested on the commonly used browsers. The test is based on the quality of browser rendering of the website as intended, its responsiveness to screen width variations and whether sound effects are supported for the browser. 
 
-| Browser         | Intended Appearance | Intended Responsiveness |  
-|---------------  |---------------------|-------------------------|  
-| Google Chrome   |                     |                         |  
-| Mozilla Firefox |                     |                         |  
-| Microsoft Edge  |                     |                         |  
+| Browser        | Intended Appearance| Intended Responsiveness | Sound Effects | Vibration Effects|  
+|--------------- |--------------------|-------------------------|---------------|---------------|  
+| Google Chrome  |  Good              |   Good                  |   Good        |   Good        |  
+| Mozilla Firefox|  Good              |   Good                  |   Good        |   Not supported        | 
+| Microsoft Edge |  Good              |   Good                  |   Good        |   Good        | 
+
+  - **Note** - Vibration API is not supported and therefore not available for Firefox and Safari browsers, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API" target="_blank" rel="noopener">Vibration API - Supported browsers</a> 
 
 ### Responsive Testing 
 - Screenshots of responsiveness test
