@@ -215,7 +215,31 @@ document.addEventListener("DOMContentLoaded", function () {
      * initialize the game play
      */
     function runGame() {
+
+        // function to add eventListeners to .rod elements
         addRodEventListeners();
+
+        // function to add eventListeners to other page elements except .rod
+        addObjectEventlisterners();
+
+        // initialize odometer for the score element
+        new Odometer({
+            el: userScoreElement,
+            duration: 5000,
+        });
+
+        // function to set/update user scores and levels on load
+        initializeUserProgress();
+
+        // Run new game
+        // function to create a game layout based on last played mode/ default setup
+        generateNewGame();
+    }
+
+    /**
+     * Add even tlisteners
+     */
+    function addObjectEventlisterners() {
 
         modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
@@ -305,17 +329,6 @@ document.addEventListener("DOMContentLoaded", function () {
             initializeUserProgress();
         });
 
-        // initialize odometer for the score element
-        new Odometer({
-            el: userScoreElement,
-            duration: 5000,
-        });
-
-        // get previous levels and scores
-        initializeUserProgress();
-
-        // Run new game
-        generateNewGame();
     }
 
     /**
