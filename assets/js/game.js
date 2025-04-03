@@ -30,7 +30,17 @@ document.addEventListener("DOMContentLoaded", function () {
         'darkgrey': '#656469'
     }
 
-    // Declare gameModeObject to store game mode settings/configurations
+    // Declare gameModeObject to store game mode layouts/configurations
+    /**
+     * Declare gameModeObject to store game mode settings/configurations
+     * --Game modes--: 'easy', 'medium' and 'hard'. For each mode:
+     * --containers--: number of rod-container elements i.e. rows
+     * --rodsInContainers--: number of .rod elements in each .rod-container.
+     * --rodCapacity--: maximum number of nut allowed to be stacked in a single .rod element.
+     * --nutColors--: object of colors to be used for the specific game mode. keys() used as css classes and values for confetti.
+     * --nutCount--: total number of .nut elements to be created for the game mode.
+     * --maximumMoves--: Number of moves that user has to complete stacking for the game mode.
+     */
     const gameModeObject = {
         easy: {
             containers: 2,
