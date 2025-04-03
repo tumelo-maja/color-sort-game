@@ -367,6 +367,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Function to add event listeners to .rod elements
+     * rodClick callback function is passed for to handle 'click' events on any .rod element 
      */
     function addRodEventListeners() {
         const rods = document.querySelectorAll(".rod");
@@ -376,7 +377,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Toggle display of sibling elements of the head <p> elements in the Help Modal
+     * Toggles display of sibling elements of the head <p> elements in the Help Modal
+     * when clicked: (1) the 'hidden-item' class of immediate sibling will be toggle to display/hide
+     * (2) the arrow element's rotate class will be toggled.
      */
     function toggleDisplayHelpModal(e) {
         const headElement = e.currentTarget;
