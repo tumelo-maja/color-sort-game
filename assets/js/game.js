@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initilize variables when game page loads/ is reloaded.
     let completedRods = 0; // initialize as 0
     let gameInitialState = {}; // Var to store game state
+    const defaultVolume = 0.15; // volume of sounds effects
 
     // Declare nutColorsAll to store all color names and hex codes
     const nutColorsAll = {
@@ -30,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
         'darkgrey': '#656469'
     }
 
-    // Declare gameModeObject to store game mode layouts/configurations
     /**
      * Declare gameModeObject to store game mode settings/configurations
      * --Game modes--: 'easy', 'medium' and 'hard'. For each mode:
@@ -89,14 +89,22 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Sound effects Obj
-    const defaultVolume = 0.15;
+    /**
+     * Declare soundEffects to types of sound clips using 'Howler.js' audio library to play when sound in set to 'on' 
+     * For each key: 
+     * --src--: path to the clip
+     * --volume--: volume of the clip
+     * --sprite--: create a subset of to play sound between two specified timestamps
+     * --onplay--: function to run simultaneously as SFX e.g. vibrate
+     * Keys():
+     * --startMove--: SFX to play at the start/end of .nut movement
+     * --raise--: SFX to play when a .nut is raised (socket wrench sound)
+     * --completeRod--: SFX to play when a rod has been completed.
+     * --gameWin--: SFX to play when a level is won.
+     * --gameLoss--: SFX to play when a level is lost.
+     * --collectPoints--: SFX to play to indicate points won.
+     */
     let soundEffects = {
-        raise: new Howl({
-            src: ['assets/sounds/start-move-nut-sfx.mp3',],
-            volume: defaultVolume,
-            sprite: { kickStart: [50, 300] },
-        }),
-
         startMove: new Howl({
             src: ['assets/sounds/move-nut-sfx.mp3',],
             volume: defaultVolume,
@@ -109,12 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }),
 
-        gameWin: new Howl({
-            src: ['assets/sounds/game-win-sfx.mp3',],
+        raise: new Howl({
+            src: ['assets/sounds/start-move-nut-sfx.mp3',],
             volume: defaultVolume,
-            onplay: function () {
-                runVibration(400);
-            }
+            sprite: { kickStart: [50, 300] },
         }),
 
         completeRod: new Howl({
@@ -123,9 +129,12 @@ document.addEventListener("DOMContentLoaded", function () {
             sprite: { rodWin: [1000, 1000] },
         }),
 
-        collectPoints: new Howl({
-            src: ['assets/sounds/collect-points-sfx.mp3',],
+        gameWin: new Howl({
+            src: ['assets/sounds/game-win-sfx.mp3',],
             volume: defaultVolume,
+            onplay: function () {
+                runVibration(400);
+            }
         }),
 
         gameLoss: new Howl({
@@ -134,6 +143,11 @@ document.addEventListener("DOMContentLoaded", function () {
             onplay: function () {
                 runVibration(100);
             }
+        }),
+
+        collectPoints: new Howl({
+            src: ['assets/sounds/collect-points-sfx.mp3',],
+            volume: defaultVolume,
         }),
     };
 
