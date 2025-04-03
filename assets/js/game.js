@@ -207,10 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalWinContainer = document.getElementById("gameOverWinModal");
     let pointsDisplayElement = document.getElementById("pointsDisplay");
 
-    let scoreOdometer = new Odometer({
-        el: userScoreElement,
-        duration: 5000,
-    });
+
 
     runGame();
 
@@ -306,6 +303,12 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.removeItem('userProgress');
             userProgress = createUserProgress();
             initializeUserProgress();
+        });
+
+        // initialize odometer for the score element
+        new Odometer({
+            el: userScoreElement,
+            duration: 5000,
         });
 
         // get previous levels and scores
