@@ -514,3 +514,5 @@ Setting vibration on mobile devices
 classic derivv for resizing the nut outline (https://classic.derivv.com/)
 
 Generate Favicons (https://favicon.io/favicon-converter/)
+
+Doc strings for eventlisteners (https://stackoverflow.com/questions/62576757/jsdoc-documenting-event-listeners-properly)
