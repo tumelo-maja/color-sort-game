@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
     runGame();
 
     /**
-     * Initializes the game play by:
+     * runGame() initializes the game play by:
      * 1) setting up event listeners for .rod elements (used during gameplay)
      * 2) setting up event listeners for all other page elements (used onload only)
      * 3) Initializing odometer instance for score display
@@ -236,41 +236,81 @@ document.addEventListener("DOMContentLoaded", function () {
         // function to set/update user scores and levels on load
         initializeUserProgress();
 
-        // Run new game
         // function to create a game layout based on last played mode/ default setup
         generateNewGame();
     }
 
     /**
-     * Add even tlisteners
+     * addObjectEventlisterners() adds event listener to page elements:
+     * --Settings modal elements--: (1) open modal, (2) close modal, (3) toggle setting, (4) clearProgress 
+     * --help modal elements--: (1) open modal, (2) close modal, (3) toggle display,
+     * --difficultyModeSelect element--: (1) change game mode 
+     * --Game control elements--: (1) undo move, (2) Add extra rod, (3) reset game, (4) new game 
+     * --Keyboard listeners--: (1) keypress - listens for combination keypress  
+     * --Game win modal elements--: (1)continue 
+     * --Game loss modal elements--:  (1) retry, (2) new game, (3) quit
      */
     function addObjectEventlisterners() {
 
-        modalRetryGameButton.addEventListener('click', function () {
-            modalLossContainer.style.display = 'none';
-            resetGame();
-        });
-
-        modalNewGameButton.addEventListener('click', function () {
-            modalLossContainer.style.display = 'none';
-            generateNewGame();
-        });
-
-        modalQuitGameButton.addEventListener('click', function () {
-            modalLossContainer.style.display = 'none';
-            window.location.href = "index.html";
+        // Settings modal elements (1) - open
+        openModalSettings.addEventListener('click', function () {
+            modalSettingsContainer.style.display = 'flex';
         })
 
-        // Game control buttons
-        undoMoveButton.addEventListener('click', undoLastMove);
-        extraRodButton.addEventListener('click', addExtraRod);
-        newGameButton.addEventListener('click', generateNewGame);
-        resetGameButton.addEventListener('click', resetGame);
+        // Settings modal elements (2) - close
+        closeModalSettings.addEventListener('click', function () {
+            modalSettingsContainer.style.display = 'none';
+        })
 
-        // keyboard events
+        // Settings modal elements (3) - toggles
+        toggleElements.forEach(bucket => {
+            bucket.addEventListener('click', changeToggleSettings)
+        })
+
+        // Settings modal elements (4) - clearProgress
+        removeAllProgress.addEventListener('click', function () {
+            localStorage.removeItem('userProgress');
+            userProgress = createUserProgress();
+            initializeUserProgress();
+        });
+
+        // Help modal elements (1) - open
+        openModalHelp.addEventListener('click', function () {
+            helpOptionsContainer.style.display = 'flex';
+        });
+
+        // Help modal elements (2) - close
+        closeModalHelp.addEventListener('click', function () {
+            helpOptionsContainer.style.display = 'none';
+        });
+
+        // Help modal elements (3) - toggle display
+        helpModalElements.forEach(head => {
+            head.addEventListener('click', toggleDisplayHelpModal);
+        })
+
+        // difficultyModeSelect (1)
+        difficultyModeSelect.addEventListener('change', function () {
+
+            difficultyMode = this.value;
+            gameMode = gameModeObject[difficultyMode];
+            levelValueElement.innerText = userProgress[difficultyMode];
+            generateNewGame();
+        })
+
+        // Game control buttons (1) undo move
+        undoMoveButton.addEventListener('click', undoLastMove);
+        // Game control buttons (2) add extra rod
+        extraRodButton.addEventListener('click', addExtraRod);
+        // Game control buttons (3) reset
+        resetGameButton.addEventListener('click', resetGame);
+        // Game control buttons (4) new game
+        newGameButton.addEventListener('click', generateNewGame);
+
+        // keyboard events (1)
         window.addEventListener('keydown', handleKeyboardPress);
 
-        // Win button -continue
+        //Game win modal buttons (1) continue
         continueButton.addEventListener('click', function () {
 
             modalWinContainer.style.display = 'none';
@@ -291,47 +331,22 @@ document.addEventListener("DOMContentLoaded", function () {
             generateNewGame();
         });
 
-        helpModalElements.forEach(head => {
-            head.addEventListener('click', toggleDisplayHelpModal);
-        })
+        //Game Loss modal buttons (1) retry
+        modalRetryGameButton.addEventListener('click', function () {
+            modalLossContainer.style.display = 'none';
+            resetGame();
+        });
 
-        // difficultyModeSelect
-        difficultyModeSelect.addEventListener('change', function () {
-
-            difficultyMode = this.value;
-            gameMode = gameModeObject[difficultyMode];
-            levelValueElement.innerText = userProgress[difficultyMode];
+        //Game Loss modal buttons (2) new game
+        modalNewGameButton.addEventListener('click', function () {
+            modalLossContainer.style.display = 'none';
             generateNewGame();
-        })
+        });
 
-        // close settings modal
-        closeModalSettings.addEventListener('click', function () {
-            modalSettingsContainer.style.display = 'none';
-        })
-
-        // open settings modal
-        openModalSettings.addEventListener('click', function () {
-            modalSettingsContainer.style.display = 'flex';
-        })
-
-        // close help modal
-        closeModalHelp.addEventListener('click', function () {
-            helpOptionsContainer.style.display = 'none';
-        })
-
-        // open help modal
-        openModalHelp.addEventListener('click', function () {
-            helpOptionsContainer.style.display = 'flex';
-        })
-
-        toggleElements.forEach(bucket => {
-            bucket.addEventListener('click', changeToggleSettings)
-        })
-
-        removeAllProgress.addEventListener('click', function () {
-            localStorage.removeItem('userProgress');
-            userProgress = createUserProgress();
-            initializeUserProgress();
+        //Game Loss modal buttons (3) quit
+        modalQuitGameButton.addEventListener('click', function () {
+            modalLossContainer.style.display = 'none';
+            window.location.href = "index.html";
         });
 
     }
