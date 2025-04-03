@@ -406,6 +406,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Extract the numerical digits displayed by an element animated using odometer instance
+     * combines individual digits wrapped in '.odometer-value' spans into a complete number (user score). 
+     * @param {HTMLElement} element - userScoreElement element containing Odometer digit spans.
+     * @returns {number} the numeric value currently displayed by the Odometer.
      */
     function getOdometerValue(element) {
         let elementChildren = element.querySelectorAll('.odometer-value');
