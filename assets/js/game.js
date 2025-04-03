@@ -5,16 +5,19 @@
  */
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Global variables.
+    // Global variables for nut movements (px)
     const verticalStep = 35;
     const verticalRaiseValue = 15;
     const horizontalStep = 40;
 
+    // Declare movesbar element for displaying remaining moves as a 'life-bar'
     let movesBar = document.querySelector('.move-fill');
+
+    // Initilize variables when game page loads/ is reloaded.
     let completedRods = 0; // initialize as 0
     let gameInitialState = {}; // Var to store game state
 
-    // nut colors
+    // Declare nutColorsAll to store all color names and hex codes
     const nutColorsAll = {
         'yellow': '#f9b723',
         'blue': '#26a1ee',
@@ -27,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         'darkgrey': '#656469'
     }
 
+    // Declare gameModeObject to store game mode settings/configurations
     const gameModeObject = {
         easy: {
             containers: 2,
