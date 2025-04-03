@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Function to add eventlisteners to rod elements
+     * Function to add event listeners to .rod elements
      */
     function addRodEventListeners() {
         const rods = document.querySelectorAll(".rod");
