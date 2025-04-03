@@ -406,7 +406,12 @@ The website's layout and responsiveness was tested on the commonly used browsers
 | Microsoft Edge  |                     |                         |  
 
 ### Responsive Testing 
-- screen for few screen sizes (index and game pages)
+- Screenshots of responsiveness test
+
+- | Page Tested | 320px   | 425px   | 768px   |  1024px |  
+  |------------ |------   |-------  |-------  |-------  |
+  | index.html  |<img src="docs/responsiveness-screenshots/index-fullview-320px-screen.png" width="200px" height="400px">  |<img src="docs/responsiveness-screenshots/index-fullview-425px-screen.png" width="200px" height="400px">   |<img src="docs/responsiveness-screenshots/index-fullview-768px-screen.png" width="300px" height="400px">   |<img src="docs/responsiveness-screenshots/index-fullview-1024px-screen.png" width="300px" height="400px">   |  
+  | game.html  |<img src="docs/responsiveness-screenshots/game-fullview-320px-screen.png" width="200px" height="400px">  |<img src="docs/responsiveness-screenshots/game-fullview-425px-screen.png" width="200px" height="400px">   |<img src="docs/responsiveness-screenshots/game-fullview-768px-screen.png" width="300px" height="400px">   |<img src="docs/responsiveness-screenshots/game-fullview-1024px-screen.png" width="300px" height="400px">   | 
 
 ### Code validation
 
