@@ -20,8 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const defaultDifficulty = 'easy';
     let difficultyMode = '';
     let gameMode = '';
+
     let isGameMuted = true;
     let isVibrationOn = false;
+
+    let userMoves = 0;
+    let totalRodsToWin = 0;
+    let lastMoveHistory = {};
+    let anyNut = null;
+    let nutStyle = null;
+    let userProgress = {};
 
 
     // Declare nutColorsAll to store all color names and hex codes
@@ -160,54 +168,45 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set the howler to default setting i.e. muted
     Howler.mute(isGameMuted);
 
-    // game area
-    const gameAreaElement = document.querySelector('.game-area');
-    let movesNumberElement = document.getElementById('move-value');
-    let levelValueElement = document.getElementById('level-value');
-
-    // Intialize variables
-    let userMoves = 0;
-    let totalRodsToWin = 0;
-    let lastMoveHistory = {};
-    let anyNut = null;
-    let nutStyle = null;
-    let userProgress = {};
-    currentScore = 0;
-
-    // handle modal elements - Game Loss
-    const modalRetryGameButton = document.getElementById("game-retry");
-    const modalNewGameButton = document.getElementById("modal-new-game");
-    const modalQuitGameButton = document.getElementById("game-quit");
-    const modalLossContainer = document.getElementById("gameOverLossModal");
-
-    // handle modal elements - Game Win
-    const continueButton = document.getElementById("modal-continue-game");
-    const modalWinContainer = document.getElementById("gameOverWinModal");
-
-    //game control  buttons
-    const undoMoveButton = document.getElementById("undo-move");
-    const extraRodButton = document.getElementById("add-rod");
-    const resetGameButton = document.getElementById("game-reset");
-    const newGameButton = document.getElementById("new-game");
-
-    // difficultyMode
-    const difficultyModeSelect = document.getElementById("difficultyMode");
-
-    // settings modal
+    // 1) Declare settings modal and child buttons
     const modalSettingsContainer = document.getElementById("settingsModalContainer");
     const openModalSettings = document.querySelector(".settings-open");
     const closeModalSettings = document.querySelector(".settings-close");
     const toggleElements = document.querySelectorAll(".toggle-container");
     const removeAllProgress = document.querySelector(".remove-progress");
 
-    // Help options modal
+    // 2) Declare user score display element
+    let userScoreElement = document.getElementById('scoreValue');
+
+    // 3) Declare settings modal and child headings
     const helpOptionsContainer = document.getElementById("helpOptionsModal");
     const openModalHelp = document.querySelector(".help-open");
     const closeModalHelp = document.querySelector(".help-close");
     const helpModalElements = document.querySelectorAll(".help-head");
 
+    // 4) Declare game-area, moves, level and game mode elements 
+    const gameAreaElement = document.querySelector('.game-area');
+    let movesNumberElement = document.getElementById('move-value');
+    let levelValueElement = document.getElementById('level-value');
+    const difficultyModeSelect = document.getElementById("difficultyMode");
+
+    // 5) Declare game control buttons
+    const undoMoveButton = document.getElementById("undo-move");
+    const extraRodButton = document.getElementById("add-rod");
+    const resetGameButton = document.getElementById("game-reset");
+    const newGameButton = document.getElementById("new-game");
+
+    // 6) Declare game loss modal and child buttons
+    const modalRetryGameButton = document.getElementById("game-retry");
+    const modalNewGameButton = document.getElementById("modal-new-game");
+    const modalQuitGameButton = document.getElementById("game-quit");
+    const modalLossContainer = document.getElementById("gameOverLossModal");
+
+    // 7) Declare game win modal, child buttons and points display elements
+    const continueButton = document.getElementById("modal-continue-game");
+    const modalWinContainer = document.getElementById("gameOverWinModal");
     let pointsDisplayElement = document.getElementById("pointsDisplay");
-    let userScoreElement = document.getElementById('scoreValue');
+
     let scoreOdometer = new Odometer({
         el: userScoreElement,
         duration: 5000,
