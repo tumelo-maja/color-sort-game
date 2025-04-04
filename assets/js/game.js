@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function undoLastMove() {
         if (!undoMoveButton.classList.contains('disable')) {
             let moveType = 'reverse';
-            moveNut(lastMoveHistory['targetRod'], lastMoveHistory['raisedNut'], lastMoveHistory['nutsToMove'], lastMoveHistory['rodChildrenCount'], moveType);
+            moveNut(lastMoveHistory.targetRod, lastMoveHistory.raisedNut, lastMoveHistory.nutsToMove, lastMoveHistory.rodChildrenCount, moveType);
             updateMovesRemaining(moveType);
             undoMoveButton.classList.add('disable');
         }
@@ -598,10 +598,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let moveType = 'forward';
             moveNut(rodElement, raisedNut, nutsToMove, rodChildrenCount, moveType);
 
-            lastMoveHistory['targetRod'] = sourceRod;
-            lastMoveHistory['raisedNut'] = nutsToMove.slice(-1)[0];
-            lastMoveHistory['nutsToMove'] = nutsToMove;
-            lastMoveHistory['rodChildrenCount'] = sourceRod.querySelectorAll('.nut-wrap').length - nutsToMove.length;
+            lastMoveHistory.targetRod = sourceRod;
+            lastMoveHistory.raisedNut = nutsToMove.slice(-1)[0];
+            lastMoveHistory.nutsToMove = nutsToMove;
+            lastMoveHistory.rodChildrenCount = sourceRod.querySelectorAll('.nut-wrap').length - nutsToMove.length;
 
             if (undoMoveButton.classList.contains('disable')) {
                 undoMoveButton.classList.remove('disable');
@@ -1132,13 +1132,13 @@ document.addEventListener("DOMContentLoaded", function () {
      * Generate new game and clear previous nuts
      */
     function generateNewGame() {
-        gameInitialState['gameRodContainers'] = generateNutsWithColors();
+        gameInitialState.gameRodContainers = generateNutsWithColors();
         let nutsAndWrappers = [];
         for (let rodItem of gameInitialState.gameRodContainers) {
             let nutsAndWrapper = createNutsAndWrappers(rodItem.nuts);
             nutsAndWrappers.push(nutsAndWrapper);
         }
-        gameInitialState['nutsAndWrappers'] = nutsAndWrappers;
+        gameInitialState.nutsAndWrappers = nutsAndWrappers;
         addNutsToRods();
 
         if (extraRodButton.classList.contains('disable')) {
