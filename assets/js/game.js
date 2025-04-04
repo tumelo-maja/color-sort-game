@@ -810,7 +810,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         let isGameComplete = checkGameCompletion();
 
                         if (!isGameComplete) {
-                            if (userMoves === 0) {
+                            if (userMoves < 1) {
                                 setTimeout(() => {
                                     gameOverLoss();
                                 }, 800);
