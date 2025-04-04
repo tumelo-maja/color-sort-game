@@ -816,6 +816,10 @@ h3 {
           box-shadow: 0 6px #1b5e20;
 }
 
+.game-quit.win,
+.game-quit.loss {
+background-color: #ed2d2de2;
+}
 .modal-buttons button:active {
   -webkit-transform: scale(0.96);
       -ms-transform: scale(0.96);
@@ -1287,7 +1291,7 @@ h3 {
   padding: 2px;
   border-radius: 30px;
   text-transform: capitalize;
-  background-color: #ff0c1473;
+  background-color: #ed2d2de2;
   color: lightcyan;
   border: 2px solid lightcyan;
 }
