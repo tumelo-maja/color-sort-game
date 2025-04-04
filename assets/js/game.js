@@ -283,9 +283,16 @@ document.addEventListener("DOMContentLoaded", function () {
             helpOptionsContainer.style.display = 'flex';
         });
 
-        // Help modal elements (2) - close
+        // Help modal elements (2) - close and collapse expanded child elements
         closeModalHelp.addEventListener('click', function () {
             helpOptionsContainer.style.display = 'none';
+            let arrowElements = document.querySelectorAll(".bi-chevron-double-down");
+            let expandedElements = document.querySelectorAll(".help-expanded");
+
+            for (let i = 0; i < arrowElements.length; i++) {
+                expandedElements[i].classList.add('hidden-item');
+                arrowElements[i].classList.remove('rotate');
+            }
         });
 
         // Help modal elements (3) - toggle display
@@ -466,22 +473,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-/**
- * Checks if vibration is supported by the current browser.
- * If not supported, the vibration toggle will b disabled
- */
-function checkVibrationSupport() {
-    // .vibration-note
-    if (!('vibrate' in navigator)) {
-        console.log("It cannot vibrate");
+    /**
+     * Checks if vibration is supported by the current browser.
+     * If not supported, the vibration toggle will b disabled
+     */
+    function checkVibrationSupport() {
+        // .vibration-note
+        if (!('vibrate' in navigator)) {
+            console.log("It cannot vibrate");
 
-        let vibrationToggle = document.querySelector(".toggle-container.vibration");
-        vibrationToggle.classList.add('disable');
-        let vibrationNote = document.querySelector('.vibration-note');
-        vibrationNote.style.display = 'inline-block';
+            let vibrationToggle = document.querySelector(".toggle-container.vibration");
+            vibrationToggle.classList.add('disable');
+            let vibrationNote = document.querySelector('.vibration-note');
+            vibrationNote.style.display = 'inline-block';
 
+        }
     }
-}
 
     /**
      * Triggers vibration effect on mobile devices if enable and supported by the browser
