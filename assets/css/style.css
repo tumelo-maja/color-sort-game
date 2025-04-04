@@ -1365,6 +1365,10 @@ h2 {
 
 /*---------- Breakpoint for medium screens (768px) and above */
 @media screen and (min-width: 768px) {
+.game-instructions.help-expanded {
+  width: 500px;
+}
+
   .welcome-section p,
   h3 {
     font-size: 150%;
