@@ -776,8 +776,8 @@ document.addEventListener("DOMContentLoaded", function () {
     * (1) This position is bottom position where the nut 'settles' on the target rod
     * (2) This will be the final position before 'appendChild' is applied
     *  
-    * @param {HTMLElement} sourceRod - The rod element the nut is moving from.
-    * @param {HTMLElement} targetRod - The rod element the nut is moving to.
+    * @param {HTMLElement} sourceRod - The rod element the nut is being moving from.
+    * @param {HTMLElement} targetRod - The rod element the nut is being moving to.
     * @returns {{xValue: number, yValue: number}} - The calculated x/y transform values to reach the bottom on the target rod.
     */
     function calculateNutFinalPosition(sourceRod, targetRod) {
@@ -800,8 +800,8 @@ document.addEventListener("DOMContentLoaded", function () {
      * (2) Use a loop to iterate and apply position property ensuring nut do not overlaps in their relative positions
      * (3) target/source children variables are updated and used to offset the trailing nuts (if more than 1 nut is being moved)
      *
-     * @param {HTMLElement} sourceRod - The rod the nut(s) are being moved from.
-     * @param {HTMLElement} targetRod - The rod the nut(s) are being moved to.
+     * @param {HTMLElement} sourceRod - The rod element the nut(s) are being moved from.
+     * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
      * @param {HTMLElement[]} nutsToMove - Array of nut elements to be animated.
      * @param {number} targetChildrenCount - Number of nuts currently in the target rod (used to determine final Y offset).
      */
@@ -849,7 +849,11 @@ document.addEventListener("DOMContentLoaded", function () {
      * (5) Checks if all rods have been completed by calling checkGameCompletion()
      * (6) Checks if the remaining moves have not reached 0 before the game is won, if so then the game is lost, 'gameOverLoss()' is called
      * (7) For aesthetic purposes, there is a delay in the animation between each nut and subsequent sibling nuts 
-     * Specify the animation class name
+     *
+     * @param {HTMLElement} sourceRod - The rod element the nut(s) are being moved from.
+     * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
+     * @param {HTMLElement[]} nutsToMove - An array of nut elements to animate.
+     * @param {number} targetChildrenCount - The number of nuts currently in the target rod (used for positioning).
      */
     function runAnimation(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
 
