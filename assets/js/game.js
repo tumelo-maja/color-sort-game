@@ -705,13 +705,12 @@ document.addEventListener("DOMContentLoaded", function () {
      * (1) This position is used in the nut movement animation to ensure nut 'enter' and 'leave' through the top of the rod
      * (2) Uses relative positions between the source and target rods
      * (3) Adjust horizontal direction of the nut movement depending on the relative position of source &target rods
-     * (4) position value is calculated relative to the previous position of the nut ie. second position set by calculateNutMidOffset()
+     * (4) position value is calculated relative to the previous position of the nut ie. second position in nut movement set by calculateNutMidOffset()
      *
      * @param {HTMLElement} targetRod - The rod element the nut is moving to.
      * @param {HTMLElement} sourceRod - The rod element the nut is moving from.
      * @param {HTMLElement} nut - The nut element being moved.
      * @returns {{xValue: number, yValue: number}} - The calculated x/y transform values to reach the lid center (floats - no units).
- 
      */
     function calculateLidCenter(targetRod, sourceRod, nut) {
         const sourceRow = sourceRod.getAttribute("data-row");
@@ -734,10 +733,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Calculate the final position of the nut at the end of the move animation.
-     * This will be the final position before 'appendChild' is applied 
-     */
-    function calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount) {
+    * Calculates the final position of the nut at the end of the move animation (fourth/last position in nut movement).
+    * (1) This position is bottom position where the nut 'settles' on the target rod
+    * (2) This will be the final position before 'appendChild' is applied
+    *  
+    * @param {HTMLElement} sourceRod - The rod element the nut is moving from.
+    * @param {HTMLElement} targetRod - The rod element the nut is moving to.
+    * @returns {{xValue: number, yValue: number}} - The calculated x/y transform values to reach the bottom on the target rod.
+    */
+    function calculateNutFinalPosition(sourceRod, targetRod) {
 
         const targetRodRect = targetRod.getBoundingClientRect();
         const sourceRodRect = sourceRod.getBoundingClientRect();
