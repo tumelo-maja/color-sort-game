@@ -688,9 +688,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Function to return the CSS value of a attribute from an object. 
-     * Made to clear the code and make it readable
-     * Takes 'object' and 'attribute' as arguments
+     * Function to return the CSS value of a attribute from a UI element with CSS attributes. 
+     * (1) Made to clear the code and make it readable
+     * 
+     * @param {HTMLElement} object - The element from which to get the css style (e.g div).
+     * @param {string} attribute - The CSS property name (e.g. 'height').
+     * @returns {number} The numeric value of the requested CSS property (units not included).
      */
     function getCssStyleValue(object, attribute) {
         const attributeValue = parseFloat(getComputedStyle(object).getPropertyValue(attribute));
