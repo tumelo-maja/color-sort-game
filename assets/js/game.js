@@ -639,6 +639,9 @@ document.addEventListener("DOMContentLoaded", function () {
      * (1) calls setRaiseNutTransformY() which calculate the transformY values to ensure the nut rises to the top of the rod
      * (2) Could include sound effects in enabled
      * (3) adds class 'raise-nut' to initiate the transform-y animation
+     *
+     * @param {HTMLElement} nutObject - The nut element being raised.
+     * @param {number} rodChildrenCount - Number of nuts on the rod (used to calculate relative lift distance in transform-y).     
      */
     function raiseNut(nutObject, rodChildrenCount) {
         setRaiseNutTransformY(nutObject, rodChildrenCount);
@@ -650,12 +653,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Set the transformY value for the raise-nut class.
-     * The nut must always be raised slightly above the clicked rod
+     * Calculates and sets the transformY value for the nut to be raised.
+     * (1) transform-y value ensures nut will always be raised slightly above the clicked rod
+     * (2) transform-y value is then set as a custom property on the nut element to be accessed by 'raise-nut' class.
+     * 
+     * @param {HTMLElement} nutObject - The nut element to raise.
+     * @param {number} rodChildrenCount - Number of nuts currently on the rod.
      */
     function setRaiseNutTransformY(nutObject, rodChildrenCount) {
         const anyNutMargin = getCssStyleValue(anyNut, 'margin-bottom');
-        const rodObject = nutObject.parentElement.parentElement;
         const rodCapacity = parseInt(nutObject.parentElement.parentElement.getAttribute('data-capacity'));
         const availableSpace = (rodCapacity - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
         const raiseValue = -availableSpace - verticalStep;
