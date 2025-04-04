@@ -199,11 +199,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // 6) Declare game loss modal and child buttons
     const modalRetryGameButton = document.getElementById("game-retry");
     const modalNewGameButton = document.getElementById("modal-new-game");
-    const modalQuitGameButton = document.getElementById("game-quit");
+    const modalQuitLossGameButton = document.querySelector(".game-quit.loss");
     const modalLossContainer = document.getElementById("gameOverLossModal");
 
     // 7) Declare game win modal, child buttons and points display elements
     const continueButton = document.getElementById("modal-continue-game");
+    const modalQuitWinGameButton = document.querySelector(".game-quit.win");
     const modalWinContainer = document.getElementById("gameOverWinModal");
     let pointsDisplayElement = document.getElementById("pointsDisplay");
 
@@ -317,6 +318,12 @@ document.addEventListener("DOMContentLoaded", function () {
             generateNewGame();
         });
 
+        modalQuitWinGameButton.addEventListener('click', function () {
+            modalWinContainer.style.display = 'none';
+            gameLevelScoreUpdate();
+            window.location.href = "index.html";
+        });
+
         //Game Loss modal buttons (1) retry
         modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
@@ -330,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         //Game Loss modal buttons (3) quit
-        modalQuitGameButton.addEventListener('click', function () {
+        modalQuitLossGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
             window.location.href = "index.html";
         });
@@ -445,7 +452,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Run vibration when this function is called
+     * Triggers vibration effect on mobile devices if enable and su
      */
     function runVibration(vibrationDuration) {
         if (navigator.vibrate && isVibrationOn) {
