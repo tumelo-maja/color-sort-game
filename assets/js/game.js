@@ -701,7 +701,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Calculate the 'lid' position - entry/exit points for all nuts
+     * Calculates the horizontal center of the '.lid' element on the rod (third position in nut movement)
+     * (1) This position is used in the nut movement animation to ensure nut 'enter' and 'leave' through the top of the rod
+     * (2) Uses relative positions between the source and target rods
+     * (3) Adjust horizontal direction of the nut movement depending on the relative position of source &target rods
+     * (4) position value is calculated relative to the previous position of the nut ie. second position set by calculateNutMidOffset()
+     *
+     * @param {HTMLElement} targetRod - The rod element the nut is moving to.
+     * @param {HTMLElement} sourceRod - The rod element the nut is moving from.
+     * @param {HTMLElement} nut - The nut element being moved.
+     * @returns {{xValue: number, yValue: number}} - The calculated x/y transform values to reach the lid center (floats - no units).
+ 
      */
     function calculateLidCenter(targetRod, sourceRod, nut) {
         const sourceRow = sourceRod.getAttribute("data-row");
