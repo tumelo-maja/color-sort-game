@@ -670,7 +670,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Lower nut to the base if it cannot be moved
+     * Opposite of raiseNut()
+     * Lowers a raised nut back to its original place if it cannot be moved (e.g. non-matching colors or no space)
+     * (1) 'raise-nut' class is remove from the raised nut to remove the transform-y.
+     * (2) may have sound effects if enabled.
+     * 
+     * @param {HTMLElement} nutObject - The nut element to be lowered.
      */
     function lowerNut(nutObject) {
         if (nutObject) {
