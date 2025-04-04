@@ -1038,7 +1038,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Increase the level after win
+     * Increases the user's level and update the score after a level is won.
+     * 
+     * - current level value is retrieved and increase by 1. 
+     * - current score values is retrieved using getOdometerValue()
+     * - the score is updated with a delay value specified by 'waitDuration'
+     * 
+     * @param {number} waitDuration - duration (in ms) to delay score update.
      */
     function gameLevelScoreUpdate(waitDuration) {
         // level-value"
