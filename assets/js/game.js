@@ -701,6 +701,45 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * Calculates the starting position of the nut as the move animation begins (first position in nut movement).
+     * The position has the same transform-y value as the 'raised-nut' calculated by setRaiseNutTransformY().
+     * This function is made for the purpose of consistency with other 'calculate position' functions for nut animation
+     *
+     * @param {HTMLElement} nutObject - The nut element whose starting position is being calculated.
+     * @returns {{xValue: number, yValue: number}} - The initial x/y transform values for the animation (y = 0, y is 'raised position').
+     */
+    function calculateNutStartPosition(nutObject) {
+        const transY = nutObject.style.getPropertyValue('--transform-y');
+        const nutStartPosition = {
+            xValue: 0,
+            yValue: parseFloat(transY),
+        }
+        return nutStartPosition;
+    }
+
+    /**
+     * Calculates a position slightly between the neighbor rod of the source (second position in nut movement).
+     * The value is used to create a smooth curved path when moving a nut from one rod to another.
+     * y transform value uses the raised position value and raises it slightly more
+     * x transform value is 1 x the width of the nuts, stored as 'horizontalStep'
+     *
+     * @param {HTMLElement} sourceRod - The rod the nut is moving from.
+     * @param {HTMLElement} targetRod - The rod the nut is moving to.
+     * @param {HTMLElement} nut - The nut element being animated.
+     * @returns {{xValue: number, yValue: number}} - The x/y transform values for the 'midpoint' of the move animation. 
+     */
+    function calculateNutMidOffset(sourceRod, targetRod, nut) {
+        const sourceColumn = sourceRod.getAttribute("data-column");
+        const targetColumn = targetRod.getAttribute("data-column");
+        const transY = nut.style.getPropertyValue('--transform-y');
+        const offsetPosition = {
+            xValue: targetColumn >= sourceColumn ? horizontalStep : -horizontalStep + 10,
+            yValue: parseFloat(transY) - verticalRaiseValue,
+        };
+        return offsetPosition;
+    }    
+
+    /**
      * Calculates the horizontal center of the '.lid' element on the rod (third position in nut movement)
      * (1) This position is used in the nut movement animation to ensure nut 'enter' and 'leave' through the top of the rod
      * (2) Uses relative positions between the source and target rods
@@ -753,45 +792,6 @@ document.addEventListener("DOMContentLoaded", function () {
             yValue: rodYDifference,
         }
         return nutFinalPosition;
-    }
-
-    /**
-     * Calculates the starting position of the nut as the move animation begins (first position in nut movement).
-     * The position has the same transform-y value as the 'raised-nut' calculated by setRaiseNutTransformY().
-     * This function is made for the purpose of consistency with other 'calculate position' functions for nut animation
-     *
-     * @param {HTMLElement} nutObject - The nut element whose starting position is being calculated.
-     * @returns {{xValue: number, yValue: number}} - The initial x/y transform values for the animation (y = 0, y is 'raised position').
-     */
-    function calculateNutStartPosition(nutObject) {
-        const transY = nutObject.style.getPropertyValue('--transform-y');
-        const nutStartPosition = {
-            xValue: 0,
-            yValue: parseFloat(transY),
-        }
-        return nutStartPosition;
-    }
-
-    /**
-     * Calculates a position slightly between the neighbor rod of the source (second position in nut movement).
-     * The value is used to create a smooth curved path when moving a nut from one rod to another.
-     * y transform value uses the raised position value and raises it slightly more
-     * x transform value is 1 x the width of the nuts, stored as 'horizontalStep'
-     *
-     * @param {HTMLElement} sourceRod - The rod the nut is moving from.
-     * @param {HTMLElement} targetRod - The rod the nut is moving to.
-     * @param {HTMLElement} nut - The nut element being animated.
-     * @returns {{xValue: number, yValue: number}} - The x/y transform values for the 'midpoint' of the move animation. 
-     */
-    function calculateNutMidOffset(sourceRod, targetRod, nut) {
-        const sourceColumn = sourceRod.getAttribute("data-column");
-        const targetColumn = targetRod.getAttribute("data-column");
-        const transY = nut.style.getPropertyValue('--transform-y');
-        const offsetPosition = {
-            xValue: targetColumn >= sourceColumn ? horizontalStep : -horizontalStep + 10,
-            yValue: parseFloat(transY) - verticalRaiseValue,
-        };
-        return offsetPosition;
     }
 
     /**
