@@ -992,7 +992,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Display modal for game loss and give user option to retry or start a new game
+     * Displays the modal for game loss 
+     * - May include sound effects if they are enabled
      */
     function gameOverLoss() {
         modalLossContainer.style.display = 'flex';
