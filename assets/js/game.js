@@ -1,6 +1,7 @@
 /**
  * Add Event Listener to run only after HTML document has completely loaded
- * All code within this eventlistener will be accessible to the browser once the page has loaded.
+ * - All code within this eventlistener will be accessible to the browser once the page has loaded.
+ * 
  * @listens document#DOMContentLoaded - the namespace and name of the event
  */
 document.addEventListener("DOMContentLoaded", function () {
@@ -47,13 +48,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Declare gameModeObject to store game mode settings/configurations
-     * --Game modes--: 'easy', 'medium' and 'hard'. For each mode:
-     * --containers--: number of rod-container elements i.e. rows
-     * --rodsInContainers--: number of .rod elements in each .rod-container.
-     * --rodCapacity--: maximum number of nut allowed to be stacked in a single .rod element.
-     * --nutColors--: object of colors to be used for the specific game mode. keys() used as css classes and values for confetti.
-     * --nutCount--: total number of .nut elements to be created for the game mode.
-     * --maximumMoves--: Number of moves that user has to complete stacking for the game mode.
+     * - Game modes: 'easy', 'medium' and 'hard'. For each mode:
+     * - containers: number of rod-container elements i.e. rows
+     * - rodsInContainers: number of .rod elements in each .rod-container.
+     * - rodCapacity: maximum number of nut allowed to be stacked in a single .rod element.
+     * - nutColors: object of colors to be used for the specific game mode. keys() used as css classes and values for confetti.
+     * - nutCount: total number of .nut elements to be created for the game mode.
+     * - maximumMoves: Number of moves that user has to complete stacking for the game mode.
      */
     const gameModeObject = {
         easy: {
@@ -102,21 +103,22 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     };
 
-    // Sound effects Obj
     /**
-     * Declare soundEffects to types of sound clips using 'Howler.js' audio library to play when sound in set to 'on' 
+     * Declare soundEffects to types of sound clips using 'Howler.js' audio library to play when sound in set to 'on'
+     *  
      * For each key: 
-     * --src--: path to the clip
-     * --volume--: volume of the clip
-     * --sprite--: create a subset of to play sound between two specified timestamps
-     * --onplay--: function to run simultaneously as SFX e.g. vibrate
+     * - src: path to the clip
+     * - volume: volume of the clip
+     * - sprite: create a subset of to play sound between two specified timestamps
+     * - onplay: function to run simultaneously as SFX e.g. vibrate
+     * 
      * Keys():
-     * --startMove--: SFX to play at the start/end of .nut movement
-     * --raise--: SFX to play when a .nut is raised (socket wrench sound)
-     * --completeRod--: SFX to play when a rod has been completed.
-     * --gameWin--: SFX to play when a level is won.
-     * --gameLoss--: SFX to play when a level is lost.
-     * --collectPoints--: SFX to play to indicate points won.
+     * - startMove: SFX to play at the start/end of .nut movement
+     * - raise: SFX to play when a .nut is raised (socket wrench sound)
+     * - completeRod: SFX to play when a rod has been completed.
+     * - gameWin: SFX to play when a level is won.
+     * - gameLoss: SFX to play when a level is lost.
+     * - collectPoints: SFX to play to indicate points won.
      */
     let soundEffects = {
         startMove: new Howl({
@@ -214,11 +216,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * runGame() initializes the game play by:
-     * 1) setting up event listeners for .rod elements (used during gameplay)
-     * 2) setting up event listeners for all other page elements (used onload only)
-     * 3) Initializing odometer instance for score display
-     * 4) Loads and applies the user's stored score and level progress or creates one.
-     * 5) Generates a new game layout based on the last played mode or default game mode.
+     * - setting up event listeners for .rod elements (used during gameplay)
+     * - setting up event listeners for all other page elements (used onload only)
+     * - Initializing odometer instance for score display
+     * - Loads and applies the user's stored score and level progress or creates one.
+     * - Generates a new game layout based on the last played mode or default game mode.
      */
     function runGame() {
 
@@ -246,13 +248,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * addNonRodEventListener() adds event listener to non-rod elements:
-     * --Settings modal elements--: (1) open modal, (2) close modal, (3) toggle setting, (4) clearProgress 
-     * --help modal elements--: (1) open modal, (2) close modal, (3) toggle display,
-     * --difficultyModeSelect element--: (1) change game mode 
-     * --Game control elements--: (1) undo move, (2) Add extra rod, (3) reset game, (4) new game 
-     * --Keyboard listeners--: (1) keypress - listens for combination keypress  
-     * --Game win modal elements--: (1)continue 
-     * --Game loss modal elements--:  (1) retry, (2) new game, (3) quit
+     * - Settings modal elements: (1) open modal, (2) close modal, (3) toggle setting, (4) clearProgress 
+     * - help modal elements: (1) open modal, (2) close modal, (3) toggle display,
+     * - difficultyModeSelect element: (1) change game mode 
+     * - Game control elements: (1) undo move, (2) Add extra rod, (3) reset game, (4) new game 
+     * - Keyboard listeners: (1) keypress - listens for combination keypress  
+     * - Game win modal elements: (1)continue 
+     * - Game loss modal elements:  (1) retry, (2) new game, (3) quit
      */
     function addNonRodEventListener() {
 
@@ -356,12 +358,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * function to handle keyboard press events for game control
+     * 
      * Specific key press combinations have different uses:
-     * Shift + M: Toggle sound settings
-     * Ctrl + Z: Undo last move
-     * Shift + X: Add an extra rod
-     * Shift + R: Reset the game
-     * Shift + N: Start a new game
+     * - Shift + M: Toggle sound settings
+     * - Ctrl + Z: Undo last move
+     * - Shift + X: Add an extra rod
+     * - Shift + R: Reset the game
+     * - Shift + N: Start a new game
      * 
      *  @param {KeyboardEvent} e - keyboard event triggered by a key press.
      */
@@ -384,7 +387,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Function to add event listeners to .rod elements
-     * rodClick callback function is passed for to handle 'click' events on any .rod element 
+     * - rodClick callback function is passed for to handle 'click' events on any .rod element 
      */
     function addRodEventListeners() {
         const rods = document.querySelectorAll(".rod");
@@ -395,8 +398,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Toggles display of sibling elements of the head <p> elements in the Help Modal
-     * when clicked: (1) the 'hidden-item' class of immediate sibling will be toggle to display/hide
-     * (2) the arrow element's rotate class will be toggled.
+     * 
+     * when clicked: 
+     * - the 'hidden-item' class of immediate sibling will be toggle to display/hide
+     * - the arrow element's rotate class will be toggled.
      */
     function toggleDisplayHelpModal(e) {
         const headElement = e.currentTarget;
@@ -407,10 +412,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Reverses the most recent move made by the user.
-     * Checks if button is enabled (for shortcuts calls)
-     * uses moves details for 'lastMoveHistory' object to call 'moveNut() to reverse the nut move'
-     * Revert the moves by calling updateMovesRemaining()
-     * disables the undo move button - single use per move
+     * - Checks if button is enabled (for shortcuts calls)
+     * - uses moves details for 'lastMoveHistory' object to call 'moveNut() to reverse the nut move'
+     * - Revert the moves by calling updateMovesRemaining()
+     * - disables the undo move button - single use per move
      */
     function undoLastMove() {
         if (!undoMoveButton.classList.contains('disable')) {
@@ -423,7 +428,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Extract the numerical digits displayed by an element animated using odometer instance
-     * combines individual digits wrapped in '.odometer-value' spans into a complete number (user score). 
+     * - combines individual digits wrapped in '.odometer-value' spans into a complete number (user score). 
+     * 
      * @param {HTMLElement} element - userScoreElement element containing Odometer digit spans.
      * @returns {number} the numeric value currently displayed by the Odometer.
      */
@@ -439,16 +445,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Toggles classes in child elements of the .toggle-container element (sound / vibration)
-     * For the clicked container:
-     * 'toggle-slide-on' class is toggled for the slider element 
-     * 'toggle-item-on' class is toggled for the slider's parent element 
-     * 'toggle-text-on' class is toggled for the text and icon elements 
      * 
-     * The corresponding setting setting is triggered depending on the class contained in the .toggle-container element
-     * If it contains '.sound' class changeSoundSetting() is called;
-     * else the function checks if vibration is supported on the current browser.
-     * If vibration is not supported an alert will pop up to inform the user.
-     * If vibration is supported, runVibration() is called and 'isVibrationOn' variable is reversed .
+     * For the clicked container:
+     * - 'toggle-slide-on' class is toggled for the slider element 
+     * - 'toggle-item-on' class is toggled for the slider's parent element 
+     * - 'toggle-text-on' class is toggled for the text and icon elements 
+     * 
+     * - The corresponding setting setting is triggered depending on the class contained in the .toggle-container element
+     * - If it contains '.sound' class changeSoundSetting() is called;
+     * - else the function checks if vibration is supported on the current browser.
+     * - If vibration is not supported an alert will pop up to inform the user.
+     * - If vibration is supported, runVibration() is called and 'isVibrationOn' variable is reversed .
      */
     function changeToggleSettings() {
         this.querySelector('.toggle-slide').classList.toggle('toggle-slide-on');
@@ -475,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Checks if vibration is supported by the current browser.
-     * If not supported, the vibration toggle will b disabled
+     * - If not supported, the vibration toggle will b disabled
      */
     function checkVibrationSupport() {
         // .vibration-note
@@ -500,10 +507,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Function to change sound settings ()
-     * Changes to the 'isGameMuted' to the opposite boolean
-     * Passes the 'isGameMuted' variable to Howler.mute
-     * Plays a short SFX clip to alert user sound settings have changed
+     * Function to toggle sound settings
+     * - Changes to the 'isGameMuted' to the opposite boolean
+     * - Passes the 'isGameMuted' variable to Howler.mute
+     * - Plays a short SFX clip to alert user sound settings have changed
      */
     function changeSoundSetting() {
         isGameMuted = !isGameMuted;
@@ -513,13 +520,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Initialize levels and scores using 'userPorgress' object stored on localStorage
+     * 
      * If 'userStorage' exist in localStorage the function will:
-     * (1) retrieve the last played level, user score and difficulty mode
-     * (2) Update the UI elements with the correct values (score/level/game mode)
+     * - retrieve the last played level, user score and difficulty mode
+     * - Update the UI elements with the correct values (score/level/game mode)
      * 
      * If 'userStorage' does not exist/has been removed:
-     * (1) Fn will create one using default values (score=0, level=1 and mode= 'easy')
-     * (2) UI elements will be updated accordingly
+     * - Fn will create one using default values (score=0, level=1 and mode= 'easy')
+     * - UI elements will be updated accordingly
      */
     function initializeUserProgress() {
         if (Object.keys(localStorage).length) {
@@ -544,8 +552,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Activates the extra rod to be used if it is still inactive
-     * This function runs once per level. 
-     * After the rod becomes active, the 'extraRodButton' button will be disabled
+     * - This function runs once per level. 
+     * - After the rod becomes active, the 'extraRodButton' button will be disabled
      */
     function addExtraRod() {
         if (!extraRodButton.classList.contains('disable')) {
@@ -558,14 +566,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Handles click events on the rod elements.
-     * (a) If there is no 'raised' nut, the top nut of the clicked rod will be raised by calling raiseNut().
-     * (b) If there is a 'rasied' nut:
+     * - If there is no 'raised' nut, the top nut of the clicked rod will be raised by calling raiseNut().
+     * - If there is a 'rasied' nut:
      * 
-     * (1) checks if immediate siblings of the raised nut have the same color
-     * (2) Checks how much space there is in the target rod
-     * (3) Appends all imediate siblings of the same color to 'nutsToMove' array but not exceeding availableSpace in the target rod.
-     * (4) the 'nutsToMove' array and other input arguments are passed to moveNut() which initiate the nut movement
-     * (5) The position details of the move is added to lastMoveHistory object (global scope) to be access if undoLastMove() is called.
+     * - Checks if immediate siblings of the raised nut have the same color
+     * - Checks how much space there is in the target rod
+     * - Appends all imediate siblings of the same color to 'nutsToMove' array but not exceeding availableSpace in the target rod.
+     * - the 'nutsToMove' array and other input arguments are passed to moveNut() which initiate the nut movement
+     * - The position details of the move is added to lastMoveHistory object (global scope) to be access if undoLastMove() is called.
      *  
      */
     function rodClick(e) {
@@ -636,9 +644,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Raises the top nut above the rod when clicked
-     * (1) calls setRaiseNutTransformY() which calculate the transformY values to ensure the nut rises to the top of the rod
-     * (2) Could include sound effects in enabled
-     * (3) adds class 'raise-nut' to initiate the transform-y animation
+     * - calls setRaiseNutTransformY() which calculate the transformY values to ensure the nut rises to the top of the rod
+     * - Could include sound effects in enabled
+     * - adds class 'raise-nut' to initiate the transform-y animation
      *
      * @param {HTMLElement} nutObject - The nut element being raised.
      * @param {number} rodChildrenCount - Number of nuts on the rod (used to calculate relative lift distance in transform-y).     
@@ -654,8 +662,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Calculates and sets the transformY value for the nut to be raised.
-     * (1) transform-y value ensures nut will always be raised slightly above the clicked rod
-     * (2) transform-y value is then set as a custom property on the nut element to be accessed by 'raise-nut' class.
+     * - transform-y value ensures nut will always be raised slightly above the clicked rod
+     * - transform-y value is then set as a custom property on the nut element to be accessed by 'raise-nut' class.
      * 
      * @param {HTMLElement} nutObject - The nut element to raise.
      * @param {number} rodChildrenCount - Number of nuts currently on the rod.
@@ -671,9 +679,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Opposite of raiseNut()
-     * Lowers a raised nut back to its original place if it cannot be moved (e.g. non-matching colors or no space)
-     * (1) 'raise-nut' class is remove from the raised nut to remove the transform-y.
-     * (2) may have sound effects if enabled.
+     * - Lowers a raised nut back to its original place if it cannot be moved (e.g. non-matching colors or no space)
+     * - 'raise-nut' class is remove from the raised nut to remove the transform-y.
+     * - may have sound effects if enabled.
      * 
      * @param {HTMLElement} nutObject - The nut element to be lowered.
      */
@@ -689,7 +697,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Function to return the CSS value of a attribute from a UI element with CSS attributes. 
-     * (1) Made to clear the code and make it readable
+     * - Made to clear the code and make it readable
      * 
      * @param {HTMLElement} object - The element from which to get the css style (e.g div).
      * @param {string} attribute - The CSS property name (e.g. 'height').
@@ -702,8 +710,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Calculates the starting position of the nut as the move animation begins (first position in nut movement).
-     * The position has the same transform-y value as the 'raised-nut' calculated by setRaiseNutTransformY().
-     * This function is made for the purpose of consistency with other 'calculate position' functions for nut animation
+     * - The position has the same transform-y value as the 'raised-nut' calculated by setRaiseNutTransformY().
+     * - This function is made for the purpose of consistency with other 'calculate position' functions for nut animation
      *
      * @param {HTMLElement} nutObject - The nut element whose starting position is being calculated.
      * @returns {{xValue: number, yValue: number}} - The initial x/y transform values for the animation (y = 0, y is 'raised position').
@@ -719,9 +727,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Calculates a position slightly between the neighbor rod of the source (second position in nut movement).
-     * The value is used to create a smooth curved path when moving a nut from one rod to another.
-     * y transform value uses the raised position value and raises it slightly more
-     * x transform value is 1 x the width of the nuts, stored as 'horizontalStep'
+     * - The value is used to create a smooth curved path when moving a nut from one rod to another.
+     * - y transform value uses the raised position value and raises it slightly more
+     * - x transform value is 1 x the width of the nuts, stored as 'horizontalStep'
      *
      * @param {HTMLElement} sourceRod - The rod the nut is moving from.
      * @param {HTMLElement} targetRod - The rod the nut is moving to.
@@ -741,10 +749,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Calculates the horizontal center of the '.lid' element on the rod (third position in nut movement)
-     * (1) This position is used in the nut movement animation to ensure nut 'enter' and 'leave' through the top of the rod
-     * (2) Uses relative positions between the source and target rods
-     * (3) Adjust horizontal direction of the nut movement depending on the relative position of source &target rods
-     * (4) position value is calculated relative to the previous position of the nut ie. second position in nut movement set by calculateNutMidOffset()
+     * - This position is used in the nut movement animation to ensure nut 'enter' and 'leave' through the top of the rod
+     * - Uses relative positions between the source and target rods
+     * - Adjust horizontal direction of the nut movement depending on the relative position of source &target rods
+     * - position value is calculated relative to the previous position of the nut ie. second position in nut movement set by calculateNutMidOffset()
      *
      * @param {HTMLElement} targetRod - The rod element the nut is moving to.
      * @param {HTMLElement} sourceRod - The rod element the nut is moving from.
@@ -773,8 +781,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
     * Calculates the final position of the nut at the end of the move animation (fourth/last position in nut movement).
-    * (1) This position is bottom position where the nut 'settles' on the target rod
-    * (2) This will be the final position before 'appendChild' is applied
+    * - This position is bottom position where the nut 'settles' on the target rod
+    * - This will be the final position before 'appendChild' is applied
     *  
     * @param {HTMLElement} sourceRod - The rod element the nut is being moving from.
     * @param {HTMLElement} targetRod - The rod element the nut is being moving to.
@@ -796,9 +804,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Calculates and sets the CSS custom properties to animate motion of the nut(s) from source rod to target rod.
-     * (1) calculates the four animation positions for each nut i.e. starting, 'midpoint', lid-center and final positions
-     * (2) Use a loop to iterate and apply position property ensuring nut do not overlaps in their relative positions
-     * (3) target/source children variables are updated and used to offset the trailing nuts (if more than 1 nut is being moved)
+     * - calculates the four animation positions for each nut i.e. starting, 'midpoint', lid-center and final positions
+     * - Use a loop to iterate and apply position property ensuring nut do not overlaps in their relative positions
+     * - target/source children variables are updated and used to offset the trailing nuts (if more than 1 nut is being moved)
      *
      * @param {HTMLElement} sourceRod - The rod element the nut(s) are being moved from.
      * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
@@ -842,13 +850,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Runs the animation move the nut and check if rod(s) are completed
-     * (1) calls 'setPositionalValues()' to calculate and set all required transform positions.
-     * (2) Adds the 'success-move' to each nut and wrapper elements
-     * (3) Has an event listener for 'animationend' to remove the 'success-move' class and append the nut and wrapper in the target rod
-     * (4) Checks if the target rod has been completed ie. has all nuts of the same color by calling 'checkRodCompletion()'
-     * (5) Checks if all rods have been completed by calling checkGameCompletion()
-     * (6) Checks if the remaining moves have not reached 0 before the game is won, if so then the game is lost, 'gameOverLoss()' is called
-     * (7) For aesthetic purposes, there is a delay in the animation between each nut and subsequent sibling nuts 
+     * - calls 'setPositionalValues()' to calculate and set all required transform positions.
+     * - Adds the 'success-move' to each nut and wrapper elements
+     * - Has an event listener for 'animationend' to remove the 'success-move' class and append the nut and wrapper in the target rod
+     * - Checks if the target rod has been completed ie. has all nuts of the same color by calling 'checkRodCompletion()'
+     * - Checks if all rods have been completed by calling checkGameCompletion()
+     * - Checks if the remaining moves have not reached 0 before the game is won, if so then the game is lost, 'gameOverLoss()' is called
+     * - For aesthetic purposes, there is a delay in the animation between each nut and subsequent sibling nuts 
      *
      * @param {HTMLElement} sourceRod - The rod element the nut(s) are being moved from.
      * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
