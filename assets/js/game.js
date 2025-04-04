@@ -756,8 +756,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Calculate the position of the nut at the start of the move animation.
-     * The position after being 'raised' 
+     * Calculates the starting position of the nut as the move animation begins (first position in nut movement).
+     * The position has the same transform-y value as the 'raised-nut' calculated by setRaiseNutTransformY().
+     * This function is made for the purpose of consistency with other 'calculate position' functions for nut animation
+     *
+     * @param {HTMLElement} nutObject - The nut element whose starting position is being calculated.
+     * @returns {{xValue: number, yValue: number}} - The initial x/y transform values for the animation (y = 0, y is 'raised position').
      */
     function calculateNutStartPosition(nutObject) {
         const transY = nutObject.style.getPropertyValue('--transform-y');
