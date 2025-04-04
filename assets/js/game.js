@@ -314,13 +314,13 @@ document.addEventListener("DOMContentLoaded", function () {
         //Game win modal buttons (1) continue
         continueButton.addEventListener('click', function () {
             modalWinContainer.style.display = 'none';
-            gameLevelScoreUpdate();
+            gameLevelScoreUpdate(1000);
             generateNewGame();
         });
 
         modalQuitWinGameButton.addEventListener('click', function () {
             modalWinContainer.style.display = 'none';
-            gameLevelScoreUpdate();
+            gameLevelScoreUpdate(0);
             window.location.href = "index.html";
         });
 
@@ -890,7 +890,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Increase the level after win
      */
-    function gameLevelScoreUpdate() {
+    function gameLevelScoreUpdate(waitDuration) {
         // level-value"
         let levelValueElement = document.getElementById('level-value');
         let levelValue = parseInt(levelValueElement.innerText);
@@ -907,7 +907,7 @@ document.addEventListener("DOMContentLoaded", function () {
             soundEffects.startMove.play('scoreCount');
 
             saveUserProgress(difficultyMode, newScore);
-        }, 1000);
+        }, waitDuration);
     }
 
     /**
