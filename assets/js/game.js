@@ -773,8 +773,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Calculate the mid-point position of the source and target rods for the animation.
-     * The value is used at
+     * Calculates a position slightly between the neighbor rod of the source (second position in nut movement).
+     * The value is used to create a smooth curved path when moving a nut from one rod to another.
+     * y transform value uses the raised position value and raises it slightly more
+     * x transform value is 1 x the width of the nuts, stored as 'horizontalStep'
+     *
+     * @param {HTMLElement} sourceRod - The rod the nut is moving from.
+     * @param {HTMLElement} targetRod - The rod the nut is moving to.
+     * @param {HTMLElement} nut - The nut element being animated.
+     * @returns {{xValue: number, yValue: number}} - The x/y transform values for the 'midpoint' of the move animation. 
      */
     function calculateNutMidOffset(sourceRod, targetRod, nut) {
         const sourceColumn = sourceRod.getAttribute("data-column");
