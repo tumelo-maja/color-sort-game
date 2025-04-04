@@ -795,9 +795,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Calculate and set the CSS values for the animation motion of the nut
-     * @param {The parent rod of the raised nut} sourceRod 
-     * @param {The final rod for the nut} targetRod 
+     * Calculates and sets the CSS custom properties to animate motion of the nut(s) from source rod to target rod.
+     * (1) calculates the four animation positions for each nut i.e. starting, 'midpoint', lid-center and final positions
+     * (2) Use a loop to iterate and apply position property ensuring nut do not overlaps in their relative positions
+     * (3) target/source children variables are updated and used to offset the trailing nuts (if more than 1 nut is being moved)
+     *
+     * @param {HTMLElement} sourceRod - The rod the nut(s) are being moved from.
+     * @param {HTMLElement} targetRod - The rod the nut(s) are being moved to.
+     * @param {HTMLElement[]} nutsToMove - Array of nut elements to be animated.
+     * @param {number} targetChildrenCount - Number of nuts currently in the target rod (used to determine final Y offset).
      */
     function setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
         let sourceChildrenCount = sourceRod.querySelectorAll('.nut-wrap').length;
