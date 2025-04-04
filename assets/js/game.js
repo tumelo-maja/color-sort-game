@@ -558,7 +558,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Handles click events on the rod elements.
-     * (a) If there is no 'raised' nut, the top nut of the clicked rod will be raised.
+     * (a) If there is no 'raised' nut, the top nut of the clicked rod will be raised by calling raiseNut().
      * (b) If there is a 'rasied' nut:
      * 
      * (1) checks if immediate siblings of the raised nut have the same color
@@ -635,7 +635,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Raise the top nut &wrapper  above the rod when clicked
+     * Raises the top nut above the rod when clicked
+     * (1) calls setRaiseNutTransformY() which calculate the transformY values to ensure the nut rises to the top of the rod
+     * (2) Could include sound effects in enabled
+     * (3) adds class 'raise-nut' to initiate the transform-y animation
      */
     function raiseNut(nutObject, rodChildrenCount) {
         setRaiseNutTransformY(nutObject, rodChildrenCount);
