@@ -512,7 +512,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * initialize levels and scores
+     * Initialize levels and scores using 'userPorgress' object stored on localStorage
+     * If 'userStorage' exist in localStorage the function will:
+     * (1) retrieve the last played level, user score and difficulty mode
+     * (2) Update the UI elements with the correct values (score/level/game mode)
+     * 
+     * If 'userStorage' does not exist/has been removed:
+     * (1) Fn will create one using default values (score=0, level=1 and mode= 'easy')
+     * (2) UI elements will be updated accordingly
      */
     function initializeUserProgress() {
         if (Object.keys(localStorage).length) {
