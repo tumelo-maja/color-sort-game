@@ -841,7 +841,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Run the animation for the input move
+     * Runs the animation move the nut and check if rod(s) are completed
+     * (1) calls 'setPositionalValues()' to calculate and set all required transform positions.
+     * (2) Adds the 'success-move' to each nut and wrapper elements
+     * (3) Has an event listener for 'animationend' to remove the 'success-move' class and append the nut and wrapper in the target rod
+     * (4) Checks if the target rod has been completed ie. has all nuts of the same color by calling 'checkRodCompletion()'
+     * (5) Checks if all rods have been completed by calling checkGameCompletion()
+     * (6) Checks if the remaining moves have not reached 0 before the game is won, if so then the game is lost, 'gameOverLoss()' is called
+     * (7) For aesthetic purposes, there is a delay in the animation between each nut and subsequent sibling nuts 
      * Specify the animation class name
      */
     function runAnimation(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
