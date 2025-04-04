@@ -1183,6 +1183,22 @@ h3 {
   margin: 5px 0;
 }
 
+.toggle-container.vibration {
+  position: relative;
+
+}
+
+.vibration-note {
+  color: lightcyan;
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  width: 200px;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  display: none;
+}
+
 .toggle-item {
   border: 2px solid lightcyan;
   border-radius: 30px;

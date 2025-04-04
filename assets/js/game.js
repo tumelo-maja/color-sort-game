@@ -234,6 +234,9 @@ document.addEventListener("DOMContentLoaded", function () {
             duration: 5000,
         });
 
+        // check browser support for vibration on mobile devices
+        checkVibrationSupport();
+
         // function to set/update user scores and levels on load
         initializeUserProgress();
 
@@ -436,7 +439,9 @@ document.addEventListener("DOMContentLoaded", function () {
      * 
      * The corresponding setting setting is triggered depending on the class contained in the .toggle-container element
      * If it contains '.sound' class changeSoundSetting() is called;
-     * else runVibration() is called and 'isVibrationOn' variable is reversed.
+     * else the function chekcs if virbation is supported on the current browser.
+     * If vibration is not supported an alert will pop up to inform the user.
+     * If vibration is supported, runVibration() is called and 'isVibrationOn' variable is reversed .
      */
     function changeToggleSettings() {
         this.querySelector('.toggle-slide').classList.toggle('toggle-slide-on');
@@ -446,13 +451,40 @@ document.addEventListener("DOMContentLoaded", function () {
         if (this.classList.contains('sound')) {
             changeSoundSetting();
         } else {
-            isVibrationOn = !isVibrationOn;
-            runVibration(300);
+            if (navigator.vibrate) {
+                isVibrationOn = !isVibrationOn;
+                runVibration(300);
+                console.log('Supported');
+            } else {
+                alert('Vibration is not supported for your current browser');
+                console.log('Not supported');
+                this.querySelector('.toggle-slide').classList.remove('toggle-slide-on');
+                this.querySelector('.toggle-item').classList.remove('toggle-item-on');
+                this.querySelector('.toggle-text').classList.remove('toggle-text-on');
+            }
+
         }
     }
 
+/**
+ * Checks if vibration is supported by the current browser.
+ * If not supported, the vibration toggle will b disabled
+ */
+function checkVibrationSupport() {
+    // .vibration-note
+    if (!('vibrate' in navigator)) {
+        console.log("It cannot vibrate");
+
+        let vibrationToggle = document.querySelector(".toggle-container.vibration");
+        vibrationToggle.classList.add('disable');
+        let vibrationNote = document.querySelector('.vibration-note');
+        vibrationNote.style.display = 'inline-block';
+
+    }
+}
+
     /**
-     * Triggers vibration effect on mobile devices if enable and su
+     * Triggers vibration effect on mobile devices if enable and supported by the browser
      */
     function runVibration(vibrationDuration) {
         if (navigator.vibrate && isVibrationOn) {
