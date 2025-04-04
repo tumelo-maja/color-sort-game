@@ -820,6 +820,7 @@ h3 {
 .game-quit.loss {
 background-color: #ed2d2de2;
 }
+
 .modal-buttons button:active {
   -webkit-transform: scale(0.96);
       -ms-transform: scale(0.96);
