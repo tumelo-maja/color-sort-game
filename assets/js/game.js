@@ -1001,7 +1001,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Display game over modal for Win case
+     * Displays the modal for game win
+     * 
+     * - calculate position to display confetti animations
+     * - calls confettiAnimation() for confetti animations
+     * - May include sound effects if they are enabled
+     * - Displays earned points calculated by calculatePointsWon()
      */
     function gameOverWin() {
 
