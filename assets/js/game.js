@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * 
      * The corresponding setting setting is triggered depending on the class contained in the .toggle-container element
      * If it contains '.sound' class changeSoundSetting() is called;
-     * else the function chekcs if virbation is supported on the current browser.
+     * else the function checks if vibration is supported on the current browser.
      * If vibration is not supported an alert will pop up to inform the user.
      * If vibration is supported, runVibration() is called and 'isVibrationOn' variable is reversed .
      */
@@ -500,7 +500,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Function to change sound setting (on to off/ vice versa)
+     * Function to change sound settings ()
+     * Changes to the 'isGameMuted' to the opposite boolean
+     * Passes the 'isGameMuted' variable to Howler.mute
+     * Plays a short SFX clip to alert user sound settings have changed
      */
     function changeSoundSetting() {
         isGameMuted = !isGameMuted;
