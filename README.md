@@ -257,8 +257,6 @@ Other goals:
   **Tasks:**
    - Implement an HTML and css-styled button to load a new game
    - Implement JavaScript code to ensure a new game loaded with different configurations for the same level & difficulty setting
-   - Implement a confirmation prompt to ensure user can confirm if they want to load a new game (also when reloading the page)
-
 
 - **Game Scores and Progress (should-have)**
 
