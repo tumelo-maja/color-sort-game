@@ -543,7 +543,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Activate the extra rod to be used
+     * Activates the extra rod to be used if it is still inactive
+     * This function runs once per level. 
+     * After the rod becomes active, the 'extraRodButton' button will be disabled
      */
     function addExtraRod() {
         if (!extraRodButton.classList.contains('disable')) {
