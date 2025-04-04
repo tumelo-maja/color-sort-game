@@ -1300,8 +1300,8 @@ h3 {
   border: 2px solid lightcyan;
 }
 
-.desktop {
-  display: none;
+.mobile {
+  display:flex;
 }
 /*--- Keyframes ---*/
 @-webkit-keyframes moveNutToTarget {
@@ -1384,5 +1384,12 @@ h3 {
   .game-score {
     height: 40px;
     font-size: 1.1rem;
+  }
+}
+
+/*---------- Breakpoint for laptop screens (992px) and above */
+@media screen and (min-width: 992px) {
+  .mobile {
+    display:none;
   }
 }
