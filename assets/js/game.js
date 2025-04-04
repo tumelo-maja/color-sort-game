@@ -737,7 +737,7 @@ document.addEventListener("DOMContentLoaded", function () {
             yValue: parseFloat(transY) - verticalRaiseValue,
         };
         return offsetPosition;
-    }    
+    }
 
     /**
      * Calculates the horizontal center of the '.lid' element on the rod (third position in nut movement)
@@ -852,7 +852,7 @@ document.addEventListener("DOMContentLoaded", function () {
      *
      * @param {HTMLElement} sourceRod - The rod element the nut(s) are being moved from.
      * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
-     * @param {HTMLElement[]} nutsToMove - An array of nut elements to animate.
+     * @param {HTMLElement[]} nutsToMove - An array of nut elements to move.
      * @param {number} targetChildrenCount - The number of nuts currently in the target rod (used for positioning).
      */
     function runAnimation(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
@@ -901,8 +901,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Move raised nut to another rod
-     */
+    * Moves raised nut element from source rod to target rod if given conditions are met, else the raised nut is lowered by calling lowerNut()
+    * - If the target rod is empty (not nuts), the raised nut(s) are moved without further checks 
+    * - If target and source rods are the same, move fails.
+    * - If the target rod has no more space to accommodate the nut(s) being moved, move fails.
+    * - If the top nut in the target and raised nut to not have the same color, move fails.
+    * - If all conditions are met, the move passes and the animation is rub by calling runAnimation().
+    * - After the animation has been completed, updateMovesRemaining() is called passing the 'moveType' arguments.
+    * - If the moveType='reverse' (ie. called by undoLastMove()), the move runs without checks
+    * 
+    * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
+    * @param {HTMLElement} raisedNut - The nut element that is currently raised.
+    * @param {HTMLElement[]} nutsToMove - An array of nut elements to move.
+    * @param {number} targetChildrenCount - The number of nuts currently in the rod.
+    * @param {number} rodChildrenCount - Number of nuts currently in the target rod.
+    * @param {string} moveType - The type of move, can be 'forward'(normal) or 'reverse'(undoLastMove).
+    */
     function moveNut(targetRod, raisedNut, nutsToMove, rodChildrenCount, moveType) {
 
         const raisedNutWrapper = raisedNut.parentElement;
@@ -934,11 +948,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 return
             }
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
-
         } else {
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
         }
-
         updateMovesRemaining(moveType);
     }
 
