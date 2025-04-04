@@ -557,9 +557,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * hand clicks on the rod element.
-     * when clicked, a 'raised' nut is moved to it. 
-     * If the move is not allowed, the raised nut is lowered
+     * Handles click events on the rod elements.
+     * (a) If there is no 'raised' nut, the top nut of the clicked rod will be raised.
+     * (b) If there is a 'rasied' nut:
+     * 
+     * (1) checks if immediate siblings of the raised nut have the same color
+     * (2) Checks how much space there is in the target rod
+     * (3) Appends all imediate siblings of the same color to 'nutsToMove' array but not exceeding availableSpace in the target rod.
+     * (4) the 'nutsToMove' array and other input arguments are passed to moveNut() which initiate the nut movement
+     * (5) The position details of the move is added to lastMoveHistory object (global scope) to be access if undoLastMove() is called.
+     *  
      */
     function rodClick(e) {
         const raisedNut = document.querySelector(".raise-nut");
