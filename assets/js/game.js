@@ -963,7 +963,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Update number of moves remaining 
+     * Updates the number of moves remaining and adjust the width of the movesBar element
+     * - derives width increments based on number of moves for the given game mode
+     * - If moveType= 'forward', moves and bard width are decreased
+     * - If moveType= 'reverse', moves and bard width are increased/ restored to previous value.
+     * - updates the 'userMoves' element with the new value. 
+     * - updated the bar width with the new bar width. 
+     * 
+     * @param {string} moveType - The type of move, can be 'forward'(normal) or 'reverse'(undoLastMove).
      */
     function updateMovesRemaining(moveType) {
         const gameMoves = document.getElementById('game-moves');
