@@ -792,8 +792,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const targetRodRect = targetRod.getBoundingClientRect();
         const sourceRodRect = sourceRod.getBoundingClientRect();
-        rodYDifference = targetRodRect.top - sourceRodRect.top;
-        rodXDifference = targetRodRect.left - sourceRodRect.left;
+        let rodYDifference = targetRodRect.top - sourceRodRect.top;
+        let rodXDifference = targetRodRect.left - sourceRodRect.left;
 
         const nutFinalPosition = {
             xValue: rodXDifference,
