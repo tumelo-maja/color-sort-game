@@ -1229,7 +1229,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Check if the shuffled nut colors have more than 2 like colors as immediate siblings within a rod
+     * Checks if the shuffled nut color array does not have more than 2 like colors as immediate siblings within a rod
+     * 
+     * - If there are more than 2 adjacent nuts of the same color, it returns `false`
+     * - Else it returns `true` if there were no adjacent triplicates found in all rods
+     *
+     * @param {string[]} shuffledNutsColorArray - The shuffled array of nut colors.
+     * @returns {boolean} `true` if all rods pass the validation, else returns `false` if any rod has >2 adjacent nuts of the same color. 
      */
     function checkColorTriplicates(shuffledNutsColorArray) {
         for (let i = 0; i < shuffledNutsColorArray.length; i += 4) {
