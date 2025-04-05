@@ -1469,7 +1469,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Create 'userProgress' with default values and save to localStorage
+     * Creates 'userProgress' with default values and save it to localStorage
+     * 
+     * - userScore is set to 0
+     * - all game mode levels are set to 1
+     * - currentDifficulty is set to the value of defaultDifficulty (ie. 'easy')
+     * - current level is set to 1
+     * - the updated 'userProgress' object is saved to the localStorage before being return to the function caller.
+     * 
+     * @returns {Object} The 'userProgress' object with default values.
      */
     function createUserProgress() {
         userProgress = {
