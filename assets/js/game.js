@@ -1339,7 +1339,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Generate and place containers and rods into game area
+     * Generates and places rod-containers and rods elements on the game-area container
+     * 
+     * - Generates rod-containers according to details in the 'gameMode' object
+     * - Adds 'rod-container' class to the rod-container elements
+     * - Generate rod elements and adds '.rod' classes 
+     * - Sets 'id' and 'data-capacity' attributes on the rod elements
+     * - Class of 'extra' is added to the last rods which becomes the extra rod
+     * - All elements are appended to the game-area container.
      */
     function generateGameLayout() {
 
