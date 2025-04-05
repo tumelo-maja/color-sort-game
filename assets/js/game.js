@@ -1127,7 +1127,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Check if all rods are completed
+     * Checks if the level is won by checking if number of rods completed is equal to total rods required to win
+     * 
+     * - Compares (strictly) if the 'completedRods' with 'totalRodsToWin'.
+     * - If they match, gameOverWin() is called and gameWon is set to 'true'
+     * - If they do not match (not equal), gameWon is set to 'false'
+     * - the value of 'gameWon' is returned to the function that called 'checkGameCompletion()'
+     * 
+     * @returns {boolean} `true` if the game is complete (when win conditions are met), otherwise `false`.
      */
     function checkGameCompletion() {
         let gameWon = false;
@@ -1139,7 +1146,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             gameWon = false;
         }
-
         return gameWon
     }
 
