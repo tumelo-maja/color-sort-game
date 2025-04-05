@@ -16,4 +16,4 @@ document.addEventListener("DOMContentLoaded", function () {
         targetElement.classList.toggle('hidden-item');
         arrowElement.classList.toggle('rotate');
     });
-})
+});
