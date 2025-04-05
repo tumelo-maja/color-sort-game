@@ -1281,7 +1281,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /** 
-     * Create nut elements based on color arrays including the wrapper
+     * Creates nut elements and their nut-wrapper containers based on color arrays.
+     * 
+     * - Adds '.nut' class to div elements and applied custom 'data-color' and specific color class for the nut elements.
+     * - Add '.nut-wrapper' class to a div wrapping the nut element.
+     * - An array of nut elements in their respective wrappers are returned.
+     *
+     * @param {string[]} nutsArray - Array of nut color names (strings).
+     * @returns {Array<{ name: string, wrapper: HTMLElement }>} An array of nut wrapper objects, each with a name and wrapper element.
      */
     function createNutsAndWrappers(nutsArray) {
 
