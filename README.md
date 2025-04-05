@@ -517,6 +517,6 @@ Doc strings for eventlisteners (https://stackoverflow.com/questions/62576757/jsd
 
 Write your own Javascript contracts and docstrings: (https://dev.to/stephencweiss/write-your-own-javascript-contracts-and-docstrings-42ho)
 
-Docstrings for Function return objects: https://stackoverflow.com/questions/28763257/jsdoc-return-object-structure
+Docstrings for Function return objects: (https://stackoverflow.com/questions/28763257/jsdoc-return-object-structure)
 
-CSS prefixer
+Fix 'undefine variable' js-hint error:  (https://stackoverflow.com/questions/17359232/how-to-tell-jshint-to-ignore-all-undefined-variables-in-one-file)
