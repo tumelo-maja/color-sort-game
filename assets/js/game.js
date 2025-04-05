@@ -1254,7 +1254,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Place shuffled nuts into rod containers
+     * Places shuffled nuts and rods into their respective rod-containers (rows)
+     * 
+     * - calls 'clearGameLayout()' to clear/remove the current layout of nuts,rods and rod-containers
+     * - Calls 'generateGameLayout()' to generate the new game layout and save configurations in the 'gameInitialState' object
+     * - Calls 'addRodEventListeners()' to add event listeners to newly generated rod elements
+     * - layout configurations stored in 'gameInitialState' are used to append layout to the game area.
+     * - Total moves and total complete rods required to win are updated according to the game-mode specs.
      */
     function addNutsToRods() {
 
