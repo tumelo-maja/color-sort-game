@@ -1396,7 +1396,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Remove existing nuts before resetting or generating new game
+     * Clears the current game layout by removing all rod-container and their descendants before resetting or generating new game
+     * 
+     * - Removes all elements in the game area
+     * - Resets the moves counter to the game's maximum moves as given by 'gameMode' object
+     * - Removes any width styles that may have been applied to the move progress bar 'movesBar'
+     * - Resets the variable 'completedRods' to 0.
      */
     function clearGameLayout() {
 
