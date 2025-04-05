@@ -1086,15 +1086,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Checks whether the rod has been completed i.e. is full and has nut of the same color
+     * Checks whether a rod has been completed i.e. is full and has nut of the same color
      * 
-     * If rod is complete:
+     * If a rod is complete:
      * - Removes the eventlistener of the completed rod to prevent further interaction
      * - Prepares and runs the confetti animation with the same color as the nuts
      * - Adds a 'disable' class to the undoMove button to present users from undoing a complete rod.
      * - Adds a 'complete' class to the rod element (enlarges the rod lid to cover the top of the rod)
      * - Increases the 'completedRods' by 1, this is used in 'checkGameCompletion()'
      * - may have sound effects if enabled.
+     * 
+     * @param {HTMLElement} targetRod - The rod element to check if it has been completed.
      */
     function checkRodCompletion(targetRod) {
 
