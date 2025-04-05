@@ -1184,7 +1184,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Generates randomized nut colors for a new game layout.
      * 
      * - Uses the gameMode object (for mode type) to get the required colors and total nuts to generate subsets of nuts for each color
-     * - Colors in the array are shuffled and checked that no more 2 nuts of the same color are immediate neighbours
+     * - Colors in the array are shuffled and checked that no more 2 nuts of the same color are immediate neighbors in the same rod.
      * -  'checkColorTriplicates()' is called to prevent a layout with completed rods at the start of the game.
      * - Nut colors and corresponding rod are appened as objects to an array of 'rods'/containers.
      * 
@@ -1211,7 +1211,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Shuffle the nut colors to get a random mix for the game
+     * Shuffles the array nut colors to get a random mix for the game
+     * - Ensure each game is generated with randomly distributed colors
+     *
+     * @param {string[]} colorArray - An array of nut colors to be shuffled.
+     * @returns {string[]} An array of nut colors with its elements shuffled randomly.
      */
     function shuffleColors(colorArray) {
         let shuffledColorArray = colorArray;
