@@ -1450,7 +1450,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Retrieve 'userProgress' if available on localStorage
+     * Retrieves the user's saved game progress stored as 'userProgress' on localStorage, if available
+     * 
+     * - Checks if localStorage contains any data.
+     * - if found, it retrieves and parses the 'userProgress' JSON object
+     * - if not, it returns `null`.
+     * 
+     * @returns {Object} parsed `userProgress` object if found on localStorage, else `null` is returned.
      */
     function getUserProgress() {
 
