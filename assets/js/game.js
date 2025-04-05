@@ -1022,8 +1022,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let ticks = 150;
 
         setTimeout(() => {
-            confettiAnimation(leftStartX, startY, Object.values(nutColorsAll), particleSize, angle = 45, spread = spread, startVelocity = startVelocity, ticks = ticks);
-            confettiAnimation(rightStartX, startY, Object.values(nutColorsAll), particleSize, angle = 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
+            confettiAnimation(leftStartX, startY, Object.values(nutColorsAll), particleSize, 45, spread = spread, startVelocity = startVelocity, ticks = ticks);
+            confettiAnimation(rightStartX, startY, Object.values(nutColorsAll), particleSize, 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
         }, 500);
 
         setTimeout(() => {
