@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         'beige': '#FFCFC1',
         'pink': '#FF90C8',
         'darkgrey': '#656469'
-    }
+    };
 
     /**
      * Declare gameModeObject to store game mode settings/configurations
@@ -261,17 +261,17 @@ document.addEventListener("DOMContentLoaded", function () {
         // Settings modal elements (1) - open
         openModalSettings.addEventListener('click', function () {
             modalSettingsContainer.style.display = 'flex';
-        })
+        });
 
         // Settings modal elements (2) - close
         closeModalSettings.addEventListener('click', function () {
             modalSettingsContainer.style.display = 'none';
-        })
+        });
 
         // Settings modal elements (3) - toggles
         toggleElements.forEach(bucket => {
-            bucket.addEventListener('click', changeToggleSettings)
-        })
+            bucket.addEventListener('click', changeToggleSettings);
+        });
 
         // Settings modal elements (4) - clearProgress
         removeAllProgress.addEventListener('click', function () {
@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Help modal elements (3) - toggle display
         helpModalElements.forEach(head => {
             head.addEventListener('click', toggleDisplayHelpModal);
-        })
+        });
 
         // difficultyModeSelect (1)
         difficultyModeSelect.addEventListener('change', function () {
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
             gameMode = gameModeObject[difficultyMode];
             levelValueElement.innerText = userProgress[difficultyMode];
             generateNewGame();
-        })
+        });
 
         // Game control buttons (1) undo move
         undoMoveButton.addEventListener('click', undoLastMove);
@@ -381,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (pressedKey === 'n' && e.shiftKey) {
             generateNewGame();
         } else {
-            return
+            return;
         }
     }
 
@@ -615,7 +615,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 neighbourNutWrapper = currentNutWrapper.previousElementSibling;
                 if (!neighbourNutWrapper.classList.contains('nut-wrap')) {
-                    break
+                    break;
                 }
 
                 neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color");
@@ -656,7 +656,7 @@ document.addEventListener("DOMContentLoaded", function () {
         soundEffects.raise.play('kickStart');
         setTimeout(() => {
             soundEffects.startMove.play('onRodMove');
-        }, 100)
+        }, 100);
         nutObject.classList.add("raise-nut");
     }
 
@@ -691,7 +691,7 @@ document.addEventListener("DOMContentLoaded", function () {
             soundEffects.raise.play('kickStart');
             setTimeout(() => {
                 soundEffects.startMove.play('onRodMove');
-            }, 100)
+            }, 100);
         }
     }
 
@@ -705,7 +705,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function getCssStyleValue(object, attribute) {
         const attributeValue = parseFloat(getComputedStyle(object).getPropertyValue(attribute));
-        return attributeValue
+        return attributeValue;
     }
 
     /**
@@ -721,7 +721,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const nutStartPosition = {
             xValue: 0,
             yValue: parseFloat(transY),
-        }
+        };
         return nutStartPosition;
     }
 
@@ -798,7 +798,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const nutFinalPosition = {
             xValue: rodXDifference,
             yValue: rodYDifference,
-        }
+        };
         return nutFinalPosition;
     }
 
@@ -882,7 +882,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     soundEffects.startMove.play('onRodMove');
                     setTimeout(() => {
                         soundEffects.raise.play('kickStart');
-                    }, 200)
+                    }, 200);
 
                     nut.parentElement.appendChild(nut);
                     targetRod.appendChild(nut.parentElement);
@@ -939,13 +939,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const targetNut = targetRod.lastElementChild.firstElementChild;
             if (targetRod === sourceRod) {
                 lowerNut(raisedNut);
-                return
+                return;
             }
 
             const isSpaceAvailable = rodChildrenCount < rodCapacity;
             if (!isSpaceAvailable) {
                 lowerNut(raisedNut);
-                return
+                return;
             }
 
             const targetNutColor = targetNut.getAttribute("data-color");
@@ -953,7 +953,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const isColorMatch = raisedNutColor === targetNutColor;
             if (!isColorMatch) {
                 lowerNut(raisedNut);
-                return
+                return;
             }
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
         } else {
@@ -1028,11 +1028,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(() => {
             soundEffects.gameWin.play();
-        }, 200)
+        }, 200);
 
         setTimeout(() => {
             soundEffects.collectPoints.play();
-        }, 2500)
+        }, 2500);
 
         pointsDisplayElement.innerHTML = calculatePointsWon();
     }
@@ -1146,7 +1146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             gameWon = false;
         }
-        return gameWon
+        return gameWon;
     }
 
     /**
@@ -1464,7 +1464,7 @@ document.addEventListener("DOMContentLoaded", function () {
             userProgress = localStorage.getItem('userProgress');
             return JSON.parse(userProgress);
         } else {
-            return null
+            return null;
         }
     }
 
@@ -1491,4 +1491,4 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("userProgress", JSON.stringify(userProgress));
         return userProgress;
     }
-})
+});
