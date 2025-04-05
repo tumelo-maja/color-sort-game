@@ -1312,7 +1312,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Generate new game and clear previous nuts
+     * Generates new game and clear previous nuts
+     * 
+     * - Generates new nut colors by calling 'generateNutsWithColors()', result update 'gameInitialState' object
+     * - Updates 'gameInitialState' with a new array nut wrappers and their child nut elements.
+     * - calls 'addNutsToRods()' to place new game layout and nuts in the game area
+     * - If the 'add extra rod' was disabled, it get re-enabled.
+     * - the global 'nutStyle' variable is updated to be used in other functions
      */
     function generateNewGame() {
         gameInitialState.gameRodContainers = generateNutsWithColors();
