@@ -1416,7 +1416,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Save user level and score to localStorage
+     * Saves user's last played difficulty mode level, scores, and highest levels achieved in all 3 difficulty modes to localStorage
+     * 
+     * - If there is no 'userProgress' in local storage, 'createUserProgress()' is called to create one.
+     * - If 'userProgress' exists in local storage, 'getUserProgress()' is called to return the 'userProgress' object
+     * - 'userScore' key is updated score with the latest score, including points recently earned.
+     * - difficulty mode is updated with the recently played game mode.
+     * - currentLevel and currentDifficulty are saved to be used on reloads.
+     * - the updated 'userProgress' is converted using JSON.stringify() and passed to updated the object in localStorage
+     *
+     * @param {string} difficultyMode - The current difficulty mode.
+     * @param {number} newScore - The updated score to be saved.
      */
     function saveUserProgress(difficultyMode, newScore) {
 
