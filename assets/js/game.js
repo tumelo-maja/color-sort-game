@@ -1,3 +1,4 @@
+/*globals Howl, confetti, Howler, Odometer*/
 /**
  * Add Event Listener to run only after HTML document has completely loaded
  * - All code within this eventlistener will be accessible to the browser once the page has loaded.
