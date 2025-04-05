@@ -1067,10 +1067,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Calculate total points won
+     * Calculates total number of points won by player after winning the game
+     * 
+     * - Total rods to win: number of rods to be completed before winning the game.
+     * - All nuts in all rods: 1 point for each nut in all the completed rods (gameMode.rodCapacity * totalRodsToWin).
+     * - Points per rod: fixed points (10) are awarded for each completed rod. (pointsPerRod).
+     * - Remaining moves bonus points: 5 bonus points for each remaining move at the end of the game (movesRemainingBonus).
+     * - Extra rod bonus points: 10 bonus points if the extra rod was not used to win the game (extraRodBonus).  
+     * 
+     * @returns {number} The total number of points earned for the current game level.
      */
     function calculatePointsWon() {
-        const pointsPerRod = 10; //point factor for each completed rod
+        const pointsPerRod = 10;
         const movesRemainingBonus = parseInt(movesNumberElement.textContent) * 5;
         const extraRodBonus = extraRodButton.classList.contains('disable') ? 0 : 10;
 
