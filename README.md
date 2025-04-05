@@ -514,3 +514,7 @@ classic derivv for resizing the nut outline (https://classic.derivv.com/)
 Generate Favicons (https://favicon.io/favicon-converter/)
 
 Doc strings for eventlisteners (https://stackoverflow.com/questions/62576757/jsdoc-documenting-event-listeners-properly)
+
+Write your own Javascript contracts and docstrings: (https://dev.to/stephencweiss/write-your-own-javascript-contracts-and-docstrings-42ho)
+
+CSS prefixer

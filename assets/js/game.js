@@ -1150,7 +1150,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Show animation after a rod has been completed corectly 
+     * Runs the confetti animation with the specs (location, colors etc.) given by input arguments
+     * 
+     * - This is used when a rod has been completed or when the game is won.
+     * - It uses external library imported in the game.html
+     * - The input arguments were added in provide more control on how the animation is run. 
+     *
+     * @param {number} startX - Horizontal origin for the confetti (0 to 1, relative to screen width).
+     * @param {number} startY - Vertical origin for the confetti (0 to 1, relative to screen height).
+     * @param {string[]} nutColor - Array of hex colors for the confetti particles.
+     * @param {number} particleSize - Scalar value to adjust particle size.
+     * @param {number} angle - Direction of the confetti burst in degrees.(default=90)
+     * @param {number} spread - Spread angle of the burst (how wide the particles scatter).(default=55)
+     * @param {number} startVelocity - Initial speed of the particles.(default=10)
+     * @param {number} ticks - How many times the confetti will move before disappearing.(default=50)
      */
     function confettiAnimation(startX, startY, nutColor, particleSize, angle = 90, spread = 55, startVelocity = 10, ticks = 50) {
 
@@ -1165,7 +1178,6 @@ document.addEventListener("DOMContentLoaded", function () {
             scalar: particleSize,
             startVelocity: startVelocity
         });
-
     }
 
     /**
