@@ -1054,7 +1054,7 @@ document.addEventListener("DOMContentLoaded", function () {
         levelValueElement.innerText = levelValue;
 
         //Get current score and earned points
-        currentScore = getOdometerValue(userScoreElement);
+        let currentScore = getOdometerValue(userScoreElement);
         let pointsEarned = parseInt(pointsDisplayElement.textContent);
         let newScore = currentScore + pointsEarned;
 
