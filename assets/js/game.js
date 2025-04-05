@@ -1386,7 +1386,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Reset game to saved gameInitialState
+     *  Resets the game layout to the previously saved 'gameInitialState' object
+     * 
+     * - calls 'addNutsToRods()' to reapply the initial nut element and rods layout. 
+     * - Allows user to retry/restart the same level with the same nut color arrangement.
      */
     function resetGame() {
         addNutsToRods();
