@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Play Nut Stacker. Enjoy stacking matching color nuts on bolts">
+    <meta name="description" content="Play Nut Stacker. Enjoy stacking matching color nuts on bolts">
     <meta name="keywords"
         content="Play Nut Stacker, color stacking game, nut stacking, nuts and bolts game, play game online, fun color game, free online game">
 
@@ -33,63 +32,64 @@
 </head>
 
 <body>
-    <div class="game-container">
-        <div class="head-area">
-            <a href="#" class="settings-open" aria-label="Open Settings menu"
-                title="Open Settings menu (opens in a modal window)"><i class="fa-solid fa-bars"></i></a>
-            <div class="game-score"><span id="scoreValue">0</span><i class="fa-solid fa-coins"></i></div>
-            <a href="#" class="help-open"
-                aria-label="Shows instructions on how to play (opens in a modal window)" title="Open Help menu"><i
-                    class="fa-solid fa-question"></i></a>
-        </div>
-        <div class="game-current">
-            <div class="game-difficulty">
-                <label for="difficultyMode">Difficulty Mode </label>
-                <select name="difficultyMode" id="difficultyMode">
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
+    <main>
+        <div class="game-container">
+            <div class="head-area">
+                <a href="#" class="settings-open" aria-label="Open Settings menu"
+                    title="Open Settings menu (opens in a modal window)"><i class="fa-solid fa-bars"></i></a>
+                <div class="game-score"><span id="scoreValue">0</span><i class="fa-solid fa-coins"></i></div>
+                <a href="#" class="help-open" aria-label="Shows instructions on how to play (opens in a modal window)"
+                    title="Open Help menu"><i class="fa-solid fa-question"></i></a>
             </div>
-            <div class="game-stats">
-                <div class="game-display">
-                    <p class="game-level">Level <span id="level-value">1</span></p>
-                    <div id="game-moves">
-                        <div class="move-fill"></div>
-                        <span id="move-value">3</span>
+            <div class="game-current">
+                <div class="game-difficulty">
+                    <label for="difficultyMode">Difficulty Mode </label>
+                    <select name="difficultyMode" id="difficultyMode">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <div class="game-stats">
+                    <div class="game-display">
+                        <p class="game-level">Level <span id="level-value">1</span></p>
+                        <div id="game-moves">
+                            <div class="move-fill"></div>
+                            <span id="move-value">3</span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="game-area">
+            </div>
+            <div class="game-controls">
+                <ul>
+                    <li>
+                        <button id="undo-move" class="disable" title="Undo the last move"><i
+                                class="material-symbols-outlined game-icons">
+                                undo
+                            </i></button>
+                    </li>
+                    <li>
+                        <button id="add-rod" title="Add an extra rod"><i class="material-symbols-outlined game-icons">
+                                add
+                            </i></button>
+                    </li>
+                    <li>
+                        <button id="game-reset" title="Reset game" class="reset"><i
+                                class="material-symbols-outlined game-icons">
+                                settings_backup_restore
+                            </i></button>
+                    </li>
+                    <li>
+                        <button id="new-game" title="Play a new game"><i class="material-symbols-outlined game-icons">
+                                splitscreen_vertical_add
+                            </i></button>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="game-area">
-        </div>
-        <div class="game-controls">
-            <ul>
-                <li>
-                    <button id="undo-move" class="disable" title="Undo the last move"><i
-                            class="material-symbols-outlined game-icons">
-                            undo
-                        </i></button>
-                </li>
-                <li>
-                    <button id="add-rod" title="Add an extra rod"><i class="material-symbols-outlined game-icons">
-                            add
-                        </i></button>
-                </li>
-                <li>
-                    <button id="game-reset" title="Reset game" class="reset"><i
-                            class="material-symbols-outlined game-icons">
-                            settings_backup_restore
-                        </i></button>
-                </li>
-                <li>
-                    <button id="new-game" title="Play a new game"><i class="material-symbols-outlined game-icons">
-                            splitscreen_vertical_add
-                        </i></button>
-                </li>
-            </ul>
-        </div>
-    </div>
+    </main>
 
     <!-- Custom modal for Help Options -->
     <div id="helpOptionsModal" class="modal-container">
