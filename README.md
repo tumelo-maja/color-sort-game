@@ -1,16 +1,25 @@
-# Color Sort Game
+# Nut Stacker Game
 
 **Authors:** Tumelo Maja (GitHub username: tumelo-maja)
 
-Project intro  
+Nut Stacker is a fun and exciting color-stacking game where the player is challenged to stack colorful nuts onto bolts. The nuts are stacked following rules in the game. The game is easy to learn and play while still giving players a challenge at each level.  
 
 **The website is aimed at helping users to:** 
-  - Aim #1
+  - Enjoy a fun and relaxing game experience
+  - Get a sense of satisfaction when they win a level and earn game points.
+  - Challenge and test their coordination/strategy skills in a playful setting.
+  - Improve their strategy and scores as they play the game frequently.
+  -
 
 **Target audience:** 
-  - target #1
+  - Anyone who enjoys simple and fun games
+  - Puzzle enthusiasts who enjoy challenging online games (color-matching/stacking)
+  - Individuals looking for a quick gameplay experience without having to commit to playing in future.
 
-project desription (full)
+
+Nut Stacker can be played on mobile and desktop screens. It features easy-to-use controls to undo moves, restart game and more. The game also offers options to enable sound effects (and vibration effects for players using mobile devices - only supported for edge and chrome browsers). The rule are simple, stacking is only allowed for matching colors. Players need to strategize and think about their moves wisely as there are limited number of moves in each level; the least moves used to win a level, there more bonus points the player earns. 
+
+There are 3 difficulty modes to choose from; 'easy', 'medium' and 'hard'. Players can choose a difficulty mode that suits their skills; the game gets more challenging at higher difficulty modes. The player's progress will not be lost if the refresh or accidentally close the page. Furthermore, players can switch between different modes and their highest achieved level in each mode will be remembered by the game.    
 
 **Site Mockup:** 
 
@@ -382,7 +391,6 @@ Other goals:
 ### Wireframes
 
 **Changes to the initial wireframes:**
-
 - Home page: Additional text below the logo was removed, only one appealing sentence remains.
 - Game page: A 'new game' button was included in the game controls at the bottom to the viewport.
 - Game page: How to play icon on the top left which launched play instructions, was revised to 'help' modal to show other help information to the player.
