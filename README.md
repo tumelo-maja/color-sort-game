@@ -24,7 +24,7 @@ There are 3 difficulty modes to choose from; 'easy', 'medium' and 'hard'. Player
 **Site Mockup:** 
 
 <figure>
-  <img src="docs/site-screenshots/full-site-mockup.png" width="80%" height="50%">
+  <img src="docs/site-screenshots/full-site-mockup.png" width="900px" >
   <br>
   <figcaption><strong><em>Site mockup</em></strong></figcaption>
 </figure>
