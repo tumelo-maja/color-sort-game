@@ -381,6 +381,29 @@ Other goals:
 
 ### Wireframes
 
+**Changes to the initial wireframes:**
+
+- Home page: Additional text below the logo was removed, only one appealing sentence remains.
+- Game page: A 'new game' button was included in the game controls at the bottom to the viewport.
+- Game page: How to play icon on the top left which launched play instructions, was revised to 'help' modal to show other help information to the player.
+
+**Notes:** 
+- Only the 'easy' difficulty mode is shown, the general outlook is the same across the modes but the rod layout will be different.
+- Modals (Settings, Help, Win and loss) are not shown in these wireframes.
+
+<figure>
+  <img src="docs/wireframes/wireframe-index.png" width="600px">
+  <br>
+  <figcaption><strong><em>Wireframe: Index page</em></strong></figcaption>
+</figure>
+
+<br>
+<br>
+<figure>
+  <img src="docs/wireframes/wireframe-game.png" width="600px">
+  <br>
+  <figcaption><strong><em>Wireframe: Game page</em></strong></figcaption>
+</figure>
 
 ## Technologies
 
@@ -421,9 +444,13 @@ The website's layout, responsiveness and sound effects were tested on the common
 | Page Tested | Screenshot of Errors | Solution Applied   | Screenshot of Clear Validator Output |  
 |------------ |------------          |------------        |------------                          |
 | index.html  |<img src="docs/validation-screenshots/index-initial-validator-results.png" width="800px" height="600px">          | No further changes required  | N/A      |    
-| game.html  |<img src="docs/validation-screenshots/game-initial-validator-results.png" width="800px" height="600px">          |**error:** Stray closing 'i' tags were removed <br><br>**info:** redundant forward slashes in self closing elements were removed |<img src="docs/validation-screenshots/game-final-validator-results.png" width="800px" height="500px">                         |    
+
+| game.html  |<img src="docs/validation-screenshots/game-initial-validator-results.png" width="800px" height="600px">          |**error:** Stray closing 'i' tags were removed <br><br>**info:** redundant forward slashes in self closing elements were removed |<img src="docs/validation-screenshots/game-final-validator-results.png" width="800px" height="500px">                         |  
+
 | style.css  |<img src="docs/validation-screenshots/styles-css-initial-validator-results.png" width="800px" height="500px">          |**error:** flex-grow property with value of 'auto' was removed <br><br>**warnings:** All warinings are due to the use of external vendors i.e. CSS prefixer       |<img src="docs/validation-screenshots/styles-css-final-validator-results.png" width="800px" height="500px">                      |    
-| index.js  |<img src="docs/validation-screenshots/index-js-initial-validator-results.png">         |**warnings:** Missing semicolon added        |<img src="docs/validation-screenshots/index-js-final-validator-results.png">                          |    
+
+| index.js  |<img src="docs/validation-screenshots/index-js-initial-validator-results.png">         |**warnings:** Missing semicolon added        |<img src="docs/validation-screenshots/index-js-final-validator-results.png">                          |   
+
 | game.js  |<img src="docs/validation-screenshots/game-js-initial-validator-results.png"> <br> <img src="docs/validation-screenshots/game-js-initial-validator-results2.png">          |**Warnings:** <br> 1) Missing semicolons were added <br><br> 2) "Do not use 'new' for side effects" warning remains unresolved <br><br> **Undefined variables:** <br> 1) Undeclared variables 'userScore', 'rodYDifference' and 'rodXDifference' were declared <br><br> 2) Variables from external libraries were defined at the top script using the format: /*globals externalVar1, externalVa2 */        |<img src="docs/validation-screenshots/game-js-final-validator-results.png">                          |    
 
 ### Bugs
