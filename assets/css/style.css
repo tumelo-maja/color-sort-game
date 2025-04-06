@@ -99,19 +99,20 @@ body {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 30px;
   color: lightcyan;
   font-family: "Carter One", sans-serif;
   text-shadow: -2px 0px 1px lightcyan;
   letter-spacing: 3px;
   text-transform: capitalize;
   text-align: center;
+  margin: 10px;
 }
 
 .logo img {
-  height: 200px;
-  width: 200px;
-  margin-top: 20px;
+  height: 100px;
+  width: 100px;
+  margin-top: 15px;
 }
 
 footer {
@@ -167,6 +168,8 @@ main {
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
   width: 100vw;
+  border: 1px solid red;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -174,6 +177,7 @@ h2 {
   text-transform: uppercase;
   text-align: center;
   margin: 15px 0;
+  font-size: 1.2rem;
 }
 
 .play-instructions {
@@ -215,7 +219,7 @@ h2 {
 .welcome-section p {
   color: white;
   text-align: center;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .welcome-section a {
@@ -639,7 +643,7 @@ h2 {
   text-decoration: none;
   color: #e0ffff;
   background-color: #00008b;
-  margin: 20px;
+  margin: 10px;
   border-radius: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
