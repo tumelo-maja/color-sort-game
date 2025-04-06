@@ -23,6 +23,11 @@ There are 3 difficulty modes to choose from; 'easy', 'medium' and 'hard'. Player
 
 **Site Mockup:** 
 
+<figure>
+  <img src="docs/site-screenshots/full-site-mockup.png" width="80%" height="50%">
+  <br>
+  <figcaption><strong><em>Site mockup</em></strong></figcaption>
+</figure>
 
 ## Features 
 
@@ -555,3 +560,5 @@ Write your own Javascript contracts and docstrings: (https://dev.to/stephencweis
 Docstrings for Function return objects: (https://stackoverflow.com/questions/28763257/jsdoc-return-object-structure)
 
 Fix 'undefine variable' js-hint error:  (https://stackoverflow.com/questions/17359232/how-to-tell-jshint-to-ignore-all-undefined-variables-in-one-file)
+
+Website mockup generator : (https://ui.dev/amiresponsive)
