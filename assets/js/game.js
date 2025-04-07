@@ -327,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Game win modal buttons (1) continue
         continueButton.addEventListener('click', function () {
             modalWinContainer.style.display = 'none';
-            gameLevelScoreUpdate(1000);
+            gameLevelScoreUpdate(300);
             generateNewGame();
         });
 
@@ -900,7 +900,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             if (userMoves < 1) {
                                 setTimeout(() => {
                                     gameOverLoss();
-                                }, 800);
+                                }, 300);
                             }
                         }
                     }
@@ -1143,7 +1143,7 @@ document.addEventListener("DOMContentLoaded", function () {
             gameWon = true;
             setTimeout(() => {
                 gameOverWin();
-            }, 1500);
+            }, 300);
         } else {
             gameWon = false;
         }
