@@ -706,7 +706,6 @@ h2 {
 
 .game-score i {
   color: yellow;
-  text-shadow: 0 0 4px #ffff00cc, 0 0 8px #ffff6499;
 }
 
 .game-score #scoreValue {
