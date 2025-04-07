@@ -431,7 +431,35 @@ For each interactive feature, a testing was conducted and the results are outlin
 
 | Feature       | Testing | Outcome  |
 | --------      | ------- |-------   |
-| feature item  | ------- |------    |
+| "PLAY GAME" button   | Click on the button | User is directed to the game page  |
+| "HOW TO PLAY" heading   | Click on the heading | 'How to play' instructions are displayed below the heading - Clicks toggle between displaying and hiding the instructions element  |
+| Settings (hamburger) icon   | Click on the icon | settings modal pop's up  |
+| Settings: sound toggle   | any click on sound icon, 'sound' text or toggle element | the sound is toggled and changes to a yellow color. A sound clip is played to confirm the setting has changed.    |
+| Settings: vibration toggle <br> (mobile devices only)  | any click on vibration icon, 'vibration' text or toggle element | the vibration is toggled and changes to a yellow color. A vibration effect triggered to confirm the setting has changed. <br>Feature not support on Firefox and Safari browsers, for these or any unsupported browser, a text "Not supported on your browser" is displayed and the toggle is disabled  |
+| Settings: "Clear All Progress" button   | Click on the button | User score is reset to 0, difficulty mode is reset to a default value ('easy'), game level is restored to 1. These default values are saved under the userProgress stored on localStorage of the browser.  |
+| Settings: "Home" button    | Click on the button | User is directed to the home page   |
+| Settings: "X" close icon  | Click on the icon | the settings modal is closed  |
+| Help ("?") icon   | Click on the icon | Help modal pop's up showing showing 3 headings "How to play", "Score calculation" and "Keyboard shortcuts"  |
+| Help: Headings   | click on any heading in the modal | Content is expanded below the clicked heading - clicks on the toggle expand and collapse the heading's body text |
+| Help: "X" close icon  | Click on the icon | the help modal is closed and any expanded headings are collapsed  |
+| Game: Difficulty mode select element | Click on select element | A drop down is shown displaying the three difficulty options for the user to choose. If a different mode is selected, a game layout for the selected mode is loaded. On mobile devices, a click might show a select modal    |
+| Game: Rod click (raise)   | click anywhere on a specific bolt | if there is no raised nut in the game area, the top nut of the clicked rod will be raised. May have sound and or vibration effects if enabled  |
+| Game: Rod click (move)   | click anywhere on a specific bolt | if there is a raised nut in the game area, the raised nut will be moved to the clicked rod if the move is permissible (ie. like-colors, space available or empty rod). May have sound and or vibration effects if enabled  |
+| Game: Rod completion   | Stack all matching colors on a specific rod to its capacity | small single-color confetti display is triggered, lod lid becomes enlarged and cover the rod top, rod becomes inactive and undo move button is disabled to prevent undoing a completed rod   |
+| Game: Game completion   | Stack all matching colors on all rods in the game | multi-colored confetti display is triggered, a win modal is displayed showing points earned and congratulatory text. 'Continue' and 'Quit' buttons are displayed as options to select  |
+| Game: Win modal 'Continue' button  | Click on the button | a new game is loaded, scores value is increased with earned points, level is increased by 1   |
+| Game: Win modal 'Quit' button  | Click on the button | scores value is increased with earned points, level is increased by 1 and user is directed to the home page  |
+| Game: Game loss   | fail to stack all matching colors on all rods in the game before the moves get to 0 | a game loss modal is displayed. "Retry", "New game" and "Quit" buttons are displayed in the modal  |
+| Game: Loss modal 'Retry' button  | Click on the button | the game layout and nuts are restored to the initial state at the beginning of the level (like reset button)  |
+| Game: Loss modal 'New game' button  | Click on the button | a new game is generated for the same level and difficulty mode.  |
+| Game: Loss modal 'Quit' button  | Click on the button | user is directed to the home page  |
+| Game controls: undo move button    | Click on the button | most recent move is reversed, the undo button becomes disabled, number of moves and the bars are reversed to the previous states. This cannot be use immediately after completing a rod  |
+| Game controls: extra rod button   | Click on the button | the small  extra rod is enable and only 1 nut can be stacked on it. The extra rod button becomes disabled; only one use per level.  |
+| Game controls: reset button    | Click on the button  | the game layout and nuts are restored to the initial state at the beginning of the level  |
+| Game controls: new game button    | Click on the button | a new game is generated for the same level and difficulty mode.    |
+| Keyboard shortcuts   | Press any short  combination | All shortcuts have been tested and work correctly   |
+
+
 
 ### Browser Compatibility
 The website's layout, responsiveness and sound effects were tested on the commonly used browsers. The test is based on the quality of browser rendering of the website as intended, its responsiveness to screen width variations and whether sound effects are supported for the browser. 
