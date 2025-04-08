@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const playInstructionElement = document.querySelector('.play-instructions');
     const targetElement = document.querySelector('.game-instructions');
-    const arrowElement = playInstructionElement.querySelector(".bi-chevron-double-down");
+    const arrowElement = playInstructionElement.querySelector(".arrow-icons");
 
     /**
      * Add eventListener to toggle the visibility of the gameplay instructions

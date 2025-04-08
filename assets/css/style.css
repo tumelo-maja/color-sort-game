@@ -1010,7 +1010,13 @@ h2 {
   height: 22px;
   aspect-ratio: 1;
   margin-right: 6px;
-  /* width: 20px; */
+}
+
+.arrow-icons.home {
+  filter: invert(94%) sepia(25%) saturate(393%) hue-rotate(147deg) brightness(104%) contrast(104%);
+  height: 22px;
+  aspect-ratio: 1;
+  margin-right: 6px;
 }
 
 .help-expanded ul {
@@ -1189,7 +1195,7 @@ aspect-ratio: 1;
   border-radius: 5px;
   width: 100px;
   height: 30px;
-  border: 3px solid lightcyan;
+  border: 3px solid #e0ffff;
   text-transform: uppercase;
 }
 
