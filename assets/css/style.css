@@ -494,7 +494,7 @@ h2 {
 }
 
 .game-controls .game-icons {
-  color: #e0ffff;
+  /* color: #e0ffff; */
   filter: invert(92%) sepia(10%) saturate(436%) hue-rotate(130deg) brightness(106%) contrast(106%);
   height: 30px;
   aspect-ratio: 1;
@@ -1018,10 +1018,17 @@ h2 {
   padding-left: 0;
 }
 
-.help-expanded .fa-coins {
+/* .help-expanded .fa-coins {
   font-size: 20px;
   margin-right: 8px;
   color: yellow;
+} */
+
+.coin-icons-help {
+  margin-right: 8px;
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
+height:20px;
+aspect-ratio: 1;
 }
 
 .help-expanded p {
@@ -1037,59 +1044,105 @@ h2 {
   text-align: start;
 }
 
-.help-expanded .game-icons {
+/* .help-expanded .game-icons {
   font-size: 25px;
   margin-right: 8px;
-  color: lightcyan;
+  color: #e0ffff;
   background-color: #2f44e8;
   border-radius: 50%;
   padding: 2px;
   height: 30px;
   width: 30px;
   text-align: center;
+} */
+
+.sound-icon {
+  /* font-size: 20px; */
+    /* text-align: center; */
+  /* display: inline-block; */
+  /* text-shadow: 0 0 4px #ffff00cc, 0 0 8px #ffff6499; */
+  /* color: yellow; */
+  /* background-color: #091152; */
+  /* border-radius: 50%; */
+  margin-right: 12px;
+  height: 25px;
+  width: 25px;
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
 }
 
-.help-expanded .sound-icon {
-  font-size: 20px;
-  margin-right: 8px;
-  color: yellow;
-  background-color: #091152;
-  border-radius: 50%;
-  height: 30px;
-  width: 30px;
-  text-align: center;
-  display: inline-block;
-  text-shadow: 0 0 4px #ffff00cc, 0 0 8px #ffff6499;
-}
-
-.help-expanded .bi-nut-fill {
+/* .help-expanded .bi-nut-fill {
   font-size: 25px;
   margin-right: 4px;
   color: #26a1ee;
+} */
+
+.nut-icons {
+  margin-right: 4px;
+  filter: invert(45%) sepia(97%) saturate(881%) hue-rotate(177deg) brightness(99%) contrast(89%);
+  height: 25px;
+  aspect-ratio: 1;
 }
 
-.help-expanded .bi-info-circle-fill {
+.text-icons {
+  filter: invert(100%) sepia(64%) saturate(1719%) hue-rotate(165deg) brightness(110%) contrast(112%);
+  height: 20px;
+  aspect-ratio: 1;
+}
+
+/* .help-expanded .bi-info-circle-fill {
   font-size: 25px;
   margin-right: 8px;
   color: #8dcd3b;
+} */
+
+.info-icons {
+  filter: invert(85%) sepia(12%) saturate(2104%) hue-rotate(34deg) brightness(85%) contrast(98%);
+  height: 25px;
+  aspect-ratio: 1;
+  margin-right: 8px;
 }
 
-.help-expanded .bi-sort-numeric-down-alt {
+/* .help-expanded .bi-sort-numeric-down-alt {
   font-size: 30px;
   margin-right: 8px;
   color: #8dcd3b;
   border-radius: 50%;
   text-align: center;
   font-weight: bold;
+} */
+
+.decrease-icons {
+  filter: invert(85%) sepia(12%) saturate(2104%) hue-rotate(34deg) brightness(85%) contrast(98%);
+  height: 30px;
+  aspect-ratio: 1;
+  margin-right: 8px;  
 }
 
 .arrow-icons {
-  -webkit-transition: -webkit-transform 0.5s ease-in-out;
-  transition: -webkit-transform 0.5s ease-in-out;
-  -o-transition: transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
   display: inline-block;
+}
+
+.game-icons-help {
+    background-color: #2f44e8;
+    border-radius: 50%;
+    padding: 2px;
+    height: 34px;
+    width: 34px;
+    display: inline-block;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-right: 8px;  
+    text-align: center;
+}
+.game-icons-help img {
+  filter: invert(92%) sepia(10%) saturate(436%) hue-rotate(130deg) brightness(106%) contrast(106%);
+  height: 28px;
+  aspect-ratio: 1;
 }
 
 .rotate {
