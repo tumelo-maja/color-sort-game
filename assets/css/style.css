@@ -494,7 +494,6 @@ h2 {
 }
 
 .game-controls .game-icons {
-  /* color: #e0ffff; */
   filter: invert(92%) sepia(10%) saturate(436%) hue-rotate(130deg) brightness(106%) contrast(106%);
   height: 30px;
   aspect-ratio: 1;
@@ -527,10 +526,6 @@ h2 {
   padding: 0;
   margin: 0;
 }
-
-/* .game-icons {
-  font-size: 25px;
-} */
 
 /* game display */
 .game-display {
@@ -622,10 +617,7 @@ h2 {
 }
 
 .head-area img {
-  /* color: #9fda6f;
-  font-size: 1.2rem; */
   filter: invert(97%) sepia(3%) saturate(6458%) hue-rotate(38deg) brightness(87%) contrast(93%);
-  /* height: 38px; */
   width: 25px;
   aspect-ratio: 1;
 }
@@ -716,7 +708,6 @@ h2 {
 }
 
 .game-score img {
-  /* color: #ffff00; */
   filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
 }
 
@@ -944,8 +935,6 @@ h2 {
 .help-close {
   border: none;
   background-color: #091152;
-  /* color: yellow; */
-  /* font-size: 1.6rem; */
   position: absolute;
   top: 0;
   right: 5px;
@@ -1024,12 +1013,6 @@ h2 {
   padding-left: 0;
 }
 
-/* .help-expanded .fa-coins {
-  font-size: 20px;
-  margin-right: 8px;
-  color: yellow;
-} */
-
 .coin-icons-help {
   margin-right: 8px;
   filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
@@ -1050,37 +1033,12 @@ aspect-ratio: 1;
   text-align: start;
 }
 
-/* .help-expanded .game-icons {
-  font-size: 25px;
-  margin-right: 8px;
-  color: #e0ffff;
-  background-color: #2f44e8;
-  border-radius: 50%;
-  padding: 2px;
-  height: 30px;
-  width: 30px;
-  text-align: center;
-} */
-
 .sound-icon {
-  /* font-size: 20px; */
-    /* text-align: center; */
-  /* display: inline-block; */
-  /* text-shadow: 0 0 4px #ffff00cc, 0 0 8px #ffff6499; */
-  /* color: yellow; */
-  /* background-color: #091152; */
-  /* border-radius: 50%; */
   margin-right: 12px;
   height: 25px;
   width: 25px;
   filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
 }
-
-/* .help-expanded .bi-nut-fill {
-  font-size: 25px;
-  margin-right: 4px;
-  color: #26a1ee;
-} */
 
 .nut-icons {
   margin-right: 4px;
@@ -1095,27 +1053,12 @@ aspect-ratio: 1;
   aspect-ratio: 1;
 }
 
-/* .help-expanded .bi-info-circle-fill {
-  font-size: 25px;
-  margin-right: 8px;
-  color: #8dcd3b;
-} */
-
 .info-icons {
   filter: invert(85%) sepia(12%) saturate(2104%) hue-rotate(34deg) brightness(85%) contrast(98%);
   height: 25px;
   aspect-ratio: 1;
   margin-right: 8px;
 }
-
-/* .help-expanded .bi-sort-numeric-down-alt {
-  font-size: 30px;
-  margin-right: 8px;
-  color: #8dcd3b;
-  border-radius: 50%;
-  text-align: center;
-  font-weight: bold;
-} */
 
 .decrease-icons {
   filter: invert(85%) sepia(12%) saturate(2104%) hue-rotate(34deg) brightness(85%) contrast(98%);
@@ -1274,7 +1217,6 @@ aspect-ratio: 1;
 
 .toggle-container.vibration {
   position: relative;
-
 }
 
 .vibration-note {
@@ -1367,11 +1309,6 @@ aspect-ratio: 1;
 .toggle-text-on img{
   filter: invert(85%) sepia(74%) saturate(1316%) hue-rotate(5deg) brightness(109%) contrast(103%);
 }
-
-/* .toggle-text .bi {
-  margin-right: 10px;
-  font-size: 1.8rem;
-} */
 
 .home-link {
   text-decoration: none;
