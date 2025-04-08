@@ -1496,32 +1496,4 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("userProgress", JSON.stringify(userProgress));
         return userProgress;
     }
-
-    /**
-     * Function to add external libraries to prevent render blocking 
-     * 
-     * - Add Odometer javascript tag
-     * 
-     */
-    function addExternalLibraries() {
-        let scriptOdometer = document.createElement('script');
-        scriptOdometer.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js");
-        scriptOdometer.setAttribute("integrity", "sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw==");
-        scriptOdometer.setAttribute("crossorigin", "anonymous");
-        scriptOdometer.setAttribute("referrerpolicy", "no-referrer");
-        scriptOdometer.setAttribute("test", "value");
-   
-
-        document.body.appendChild(scriptOdometer);
-
-        //<script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
-        // integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
-        // crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
-
-        //<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
-
-        // nutWrapperElement.setAttribute("class", "nut-wrap");
-
-    }
 });
