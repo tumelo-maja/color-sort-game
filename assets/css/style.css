@@ -493,6 +493,13 @@ h2 {
   transition: all 0.2s ease-in-out;
 }
 
+.game-controls .game-icons {
+  color: #e0ffff;
+  filter: invert(92%) sepia(10%) saturate(436%) hue-rotate(130deg) brightness(106%) contrast(106%);
+  height: 30px;
+  aspect-ratio: 1;
+}
+
 .game-controls button:hover {
   -webkit-transform: scale(1.04);
   -ms-transform: scale(1.04);
@@ -521,9 +528,9 @@ h2 {
   margin: 0;
 }
 
-.game-icons {
+/* .game-icons {
   font-size: 25px;
-}
+} */
 
 /* game display */
 .game-display {
@@ -614,9 +621,13 @@ h2 {
   text-decoration: none;
 }
 
-.head-area i {
-  color: #9fda6f;
-  font-size: 1.2rem;
+.head-area img {
+  /* color: #9fda6f;
+  font-size: 1.2rem; */
+  filter: invert(97%) sepia(3%) saturate(6458%) hue-rotate(38deg) brightness(87%) contrast(93%);
+  /* height: 38px; */
+  width: 25px;
+  aspect-ratio: 1;
 }
 
 /* animations */
@@ -691,7 +702,7 @@ h2 {
   height: 35px;
   text-align: center;
   color: yellow;
-  font-size: 15px;
+  font-size: 1.3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -704,8 +715,9 @@ h2 {
   border-radius: 20px;
 }
 
-.game-score i {
-  color: yellow;
+.game-score img {
+  /* color: #ffff00; */
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
 }
 
 .game-score #scoreValue {
@@ -932,11 +944,17 @@ h2 {
 .help-close {
   border: none;
   background-color: #091152;
-  color: yellow;
-  font-size: 1.6rem;
+  /* color: yellow; */
+  /* font-size: 1.6rem; */
   position: absolute;
   top: 0;
   right: 5px;
+}
+
+.close-icons{
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
+  height: 30px;
+  width: 20px;
 }
 
 .help-container {
@@ -983,6 +1001,16 @@ h2 {
   font-size: 1.2rem;
   font-weight: bold;
   color: yellow;
+  display: flex;
+  align-items: center;
+}
+
+.arrow-icons {
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
+  height: 22px;
+  aspect-ratio: 1;
+  margin-right: 6px;
+  /* width: 20px; */
 }
 
 .help-expanded ul {
@@ -1055,7 +1083,7 @@ h2 {
   font-weight: bold;
 }
 
-.down-arrow {
+.arrow-icons {
   -webkit-transition: -webkit-transform 0.5s ease-in-out;
   transition: -webkit-transform 0.5s ease-in-out;
   -o-transition: transform 0.5s ease-in-out;

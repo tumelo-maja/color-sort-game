@@ -590,3 +590,6 @@ Docstrings for Function return objects: (https://stackoverflow.com/questions/287
 Fix 'undefine variable' js-hint error:  (https://stackoverflow.com/questions/17359232/how-to-tell-jshint-to-ignore-all-undefined-variables-in-one-file)
 
 Website mockup generator : (https://ui.dev/amiresponsive)
+
+- **Image Coloring - filter**: <a href="https://codepen.io/sosuke/pen/Pjoqqp" target="_blank" rel="noopener">CSS filter generator</a>  
+  This tool was utilized to create custom-colored SVG icons.

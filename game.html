@@ -33,10 +33,19 @@
         <div class="game-container">
             <div class="head-area">
                 <a href="#" class="settings-open" aria-label="Open Settings menu"
-                    title="Open Settings menu (opens in a modal window)"><i class="fa-solid fa-bars"></i></a>
-                <div class="game-score"><span id="scoreValue">0</span><i class="fa-solid fa-coins"></i></div>
+                    title="Open Settings menu (opens in a modal window)">
+                    <!-- <i class="fa-solid fa-bars"></i> -->
+                    <img src="assets/icons/fa-bars-solid.svg" class="icon" alt="Settings icon" />
+                </a>
+                <div class="game-score"><span id="scoreValue">0</span>
+                    <!-- <i class="fa-solid fa-coins"></i> -->
+                    <img src="assets/icons/fa-coins-solid.svg" class="icon" alt="User score icon" />
+                </div>
                 <a href="#" class="help-open" aria-label="Shows instructions on how to play (opens in a modal window)"
-                    title="Open Help menu"><i class="fa-solid fa-question"></i></a>
+                    title="Open Help menu">
+                    <!-- <i class="fa-solid fa-question"></i> -->
+                    <img src="assets/icons/fa-question-solid.svg" class="icon" alt="Help icon" />
+                </a>
             </div>
             <div class="game-current">
                 <div class="game-difficulty">
@@ -62,26 +71,28 @@
             <div class="game-controls">
                 <ul>
                     <li>
-                        <button id="undo-move" class="disable" title="Undo the last move"><i
-                                class="material-symbols-outlined game-icons">
-                                undo
-                            </i></button>
+                        <button id="undo-move" class="disable" title="Undo the last move">
+                            <!-- <i class="material-symbols-outlined game-icons"> undo </i> -->
+                            <img src="assets/icons/gfi-undo.svg" class="icon game-icons" alt="Undo button" />
+                        </button>
                     </li>
                     <li>
-                        <button id="add-rod" title="Add an extra rod"><i class="material-symbols-outlined game-icons">
-                                add
-                            </i></button>
+                        <button id="add-rod" title="Add an extra rod">
+                            <!-- <i class="material-symbols-outlined game-icons">add</i> -->
+                            <img src="assets/icons/gfi-add.svg" class="icon game-icons" alt="Extra rod button" />
+                        </button>
                     </li>
                     <li>
-                        <button id="game-reset" title="Reset game" class="reset"><i
-                                class="material-symbols-outlined game-icons">
-                                settings_backup_restore
-                            </i></button>
+                        <button id="game-reset" title="Reset game" class="reset">
+                            <!-- <i class="material-symbols-outlined game-icons">settings_backup_restore</i> -->
+                            <img src="assets/icons/gfi-settings-backup-restore.svg" class="icon game-icons" alt="Reset game  button" />
+                        </button>
                     </li>
                     <li>
-                        <button id="new-game" title="Play a new game"><i class="material-symbols-outlined game-icons">
-                                splitscreen_vertical_add
-                            </i></button>
+                        <button id="new-game" title="Play a new game">
+                            <!-- <i class="material-symbols-outlined game-icons">splitscreen_vertical_add</i> -->
+                            <img src="assets/icons/gfi-splitscreen-vertical-add.svg" class="icon game-icons" alt="New game button" />
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -92,10 +103,16 @@
     <div id="helpOptionsModal" class="modal-container">
         <div class="help-modal">
             <h2 class="modal-title">Help</h2>
-            <button class="help-close"><i class="fa-solid fa-xmark"></i></button>
+            <button class="help-close">
+                <!-- <i class="fa-solid fa-xmark"></i> -->
+                <img src="assets/icons/fa-xmark-solid.svg" class="icon close-icons" alt="close modal icon" />
+            </button>
             <div class="help-container">
                 <div class="help instructions">
-                    <p class="help-head"><i class="bi bi-chevron-double-down down-arrow"></i> How to play</p>
+                    <p class="help-head">
+                        <!-- <i class="bi bi-chevron-double-down down-arrow"></i> -->
+                        <img src="assets/icons/bi-chevron-double-down.svg" class="icon arrow-icons" alt="arrow icon" />
+                        How to play</p>
                     <div class="help-expanded hidden-item">
                         <p><i class="bi bi-nut-fill"></i><i class="bi bi-arrow-bar-up"></i><span>
                                 Unscrew:</span> Click on a nut to unscrew it.</p>
@@ -234,17 +251,17 @@
     </div>
 
     <!-- Odometer CDN Javascript -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
         integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- fontawesome JS script-->
-    <!-- <script src="https://kit.fontawesome.com/759c893288.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/759c893288.js" crossorigin="anonymous"></script>
     <!-- Canvas Confetti Javascript -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <!-- Howler CDN Javascript -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
         integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom Javascript -->
     <script src="assets/js/game.js"></script>
 
