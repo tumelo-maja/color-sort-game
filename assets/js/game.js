@@ -242,8 +242,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // function to create a game layout based on last played mode/ default setup
         generateNewGame();
 
-        addExternalLibraries();
-
         // initialize odometer for the score element
         new Odometer({
             el: userScoreElement,
@@ -543,6 +541,8 @@ document.addEventListener("DOMContentLoaded", function () {
             levelValueElement.innerText = userProgress[difficultyMode];
             gameMode = gameModeObject[difficultyMode];
             difficultyModeSelect.value = difficultyMode;
+            console.log("New score below");
+            console.log(userProgress.userScore);
 
         } else {
             userProgress = createUserProgress();
