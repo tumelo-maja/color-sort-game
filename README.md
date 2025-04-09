@@ -514,10 +514,10 @@ To ensure our site is accessible to assistive technology like screen readers and
 
 **Lighthouse - Accessibility**
 
-| Page tested  | Initial audit  | Solution | Final validator output  |
-| ------------ | ------------   | -------  | ---------------------   | 
-| index.html   | <img src="docs/lighthouse-screenshots/index-lighthouse-accessibility-initial.png" > | Additional manual checks and no further actions were necessary    |    |
-| game.html    | <img src="docs/lighthouse-screenshots/game-lighthouse-accessibility-initial.png" > | Added a hover effect to make the nut elements glow when hovered over. |    |
+| Page tested  | Initial audit  | Solution |
+| ------------ | ------------   | -------  | 
+| index.html   | <img src="docs/lighthouse-screenshots/index-lighthouse-accessibility-initial.png" > | Additional manual checks and no further actions were necessary    | 
+| game.html    | <img src="docs/lighthouse-screenshots/game-lighthouse-accessibility-initial.png" > | Added a hover effect to make the nut elements glow when hovered over. | 
 
 **WebAIM - Contrast Checker**
 
@@ -557,68 +557,54 @@ link to example of animate in JS - (https://stackoverflow.com/questions/59573722
 
 ### Game inspiration
 
-### Images
+This Nut Stacker project was inspired by similar games including 'Nut sort' by <a href="https://tripledotstudios.com/" target="_blank" rel="noopener">Tripledot Studios Limited</a>. 
+
+### Icons
+
+- **<a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome Icons</a>** - used for help modal and the game-head section.
+
+- **<a href="https://fonts.google.com/icons/" target="_blank" rel="noopener">Google Fonts Icons</a>** - used for game control buttons.
+
+- **<a href="https://icons.getbootstrap.com/" target="_blank" rel="noopener">Bootstrap Icons</a>** - used in the settings modal, emojis for win/loss modals and play instructions.
 
 ### Tutorials and other resources
-Tutorial on inserting google icons: (https://www.youtube.com/watch?v=D9ciQq6cwmI)
 
-Canvas confetti: (https://www.npmjs.com/package/canvas-confetti)
+- **<a href="https://www.npmjs.com/package/canvas-confetti/" target="_blank" rel="noopener">Canvas confetti Javascript</a>** - used for confetti animation for rod complete and game wins.
 
-Create element with attribute
-https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+- **<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement" target="_blank" rel="noopener">Create element with attribute</a>** - used in generating game layout elements.
 
-Creating Custom Modal: (https://www.youtube.com/watch?v=XH5OW46yO8I)
+- **<a href="https://www.youtube.com/watch?v=XH5OW46yO8I" target="_blank" rel="noopener">Creating custom modal (youtube)</a>** - used in creating custom modal for settings, help and win/loss modals.
 
-Odometer CDN for Number counter Animation: (https://www.youtube.com/watch?v=p2rV9tKvjFg)
-Odometer Library: (https://cdnjs.com/libraries/odometer.js/0.4.7)
+- **<a href="https://www.youtube.com/watch?v=p2rV9tKvjFg" target="_blank" rel="noopener">Odometer Number counter Animation (youtube)</a>** - used as guide for creating animated number counter for user scores. library used: <a href="https://cdnjs.com/libraries/odometer.js/0.4.7" target="_blank" rel="noopener">CDN Odometer</a>.
 
-IntersectionObserver: (https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+- **<a href="https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array" target="_blank" rel="noopener">Shuffling random array</a>** - used as guide to implementing code to generate and shuffle color array for nuts using Durstenfeld method.
 
-Randomize array using  Durstenfeld Shuffle: (https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
-more link - https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+- **<a href="https://stackoverflow.com/questions/12503146/create-an-array-with-same-element-repeated-multiple-times" target="_blank" rel="noopener">Repeat elements in an array</a>** - used to replicate nut color array for different game modes.
 
-Repeat elements in an array: (https://stackoverflow.com/questions/12503146/create-an-array-with-same-element-repeated-multiple-times)
+- **<a href="https://www.geeksforgeeks.org/check-if-all-duplicate-elements-in-the-array-are-adjacent-or-not" target="_blank" rel="noopener">Checking for duplicates in arrays</a>** - used to implement a check methods to prevent randomly generating too many adjacent colors in a rod, ie. prevents generation of a completed rod and therefore maintain difficulty level for a given game mode.
 
-Sum an array
-https://stackoverflow.com/questions/1230233/how-to-find-the-sum-of-an-array-of-numbers
+- **<a href="https://www.youtube.com/watch?v=hn7MhPt24L4" target="_blank" rel="noopener">Sounds and Music in Javascript games (youtube)</a>** - used as a guide to implement sound effect in the game.
 
-Array.From
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+- **<a href="https://mixkit.co/free-sound-effects/" target="_blank" rel="noopener">Mixkit Game Sound effects</a>** - used as a source for sound clips implemented for game sound effects.
 
-Check if duplicate elements in the array are adjacent 
-(https://www.geeksforgeeks.org/check-if-all-duplicate-elements-in-the-array-are-adjacent-or-not)
+- **<a href="https://pixabay.com/sound-effects/" target="_blank" rel="noopener">Pixabay Sound effects</a>** - used as a source for other sound clips implemented for game sound effects.
 
-Mixkit Game Sound effects (https://mixkit.co/free-sound-effects/)
+- **<a href="https://www.youtube.com/watch?v=ymuBowcODVU" target="_blank" rel="noopener">Crazy 3D Rotation Effect Using CSS Only (youtube)</a>** - used as a guide to implement nut rotation effect in the game.
 
-Pixabay Sound effects (https://pixabay.com/sound-effects/)
+- **<a href="https://www.youtube.com/shorts/Yw9xyLJ8tRo" target="_blank" rel="noopener">Setting vibration on mobile devices (youtube)</a>** - used as a guide to implement vibration effects for mobile phones gameplay.
 
-Sounds and Music in Javascript games (Tutorial)
-https://www.youtube.com/watch?v=hn7MhPt24L4
+- **<a href="https://classic.derivv.com/" target="_blank" rel="noopener">Derivv</a>** - used resize logo, nut and rod outline images.
 
-Howler.js library (via cdn.js)
-https://howlerjs.com/
+- **<a href="https://favicon.io/favicon-converter/" target="_blank" rel="noopener">Favicon converter</a>** - used to create favicon files using the logo image.
 
-Stripes generator CSS
-https://stripesgenerator.com/
+- **<a href="https://dev.to/stephencweiss/write-your-own-javascript-contracts-and-docstrings-42ho" target="_blank" rel="noopener">Writing doc strings</a>** - used as guide to writing comprehensive and concise docstrings for javascript functions.
 
-Crazy 3D Rotation Effect Using CSS Only (https://www.youtube.com/watch?v=ymuBowcODVU)
+- **<a href="https://stackoverflow.com/questions/62576757/jsdoc-documenting-event-listeners-properly" target="_blank" rel="noopener">Writing doc strings (additional 1)</a>** - used as guide to writing comprehensive and concise docstrings for javascript functions.
 
-Setting vibration on mobile devices
-(https://www.youtube.com/shorts/Yw9xyLJ8tRo)
+- **<a href="https://stackoverflow.com/questions/28763257/jsdoc-return-object-structure" target="_blank" rel="noopener">Writing doc strings (additional 2)</a>** - used as guide to writing comprehensive and concise docstrings for javascript functions.
 
-classic derivv for resizing the nut outline (https://classic.derivv.com/)
+- **<a href="https://stackoverflow.com/questions/17359232/how-to-tell-jshint-to-ignore-all-undefined-variables-in-one-file" target="_blank" rel="noopener">Fix: JS Hint - undefined variable</a>** - used as to resolve a warning/error from js-hint due to the use of variables/instances from external libraries.
 
-Generate Favicons (https://favicon.io/favicon-converter/)
+- **<a href="https://ui.dev/amiresponsive" target="_blank" rel="noopener">Website mockup generator</a>** - used as to a mockup for the project site.
 
-Doc strings for eventlisteners (https://stackoverflow.com/questions/62576757/jsdoc-documenting-event-listeners-properly)
-
-Write your own Javascript contracts and docstrings: (https://dev.to/stephencweiss/write-your-own-javascript-contracts-and-docstrings-42ho)
-
-Docstrings for Function return objects: (https://stackoverflow.com/questions/28763257/jsdoc-return-object-structure)
-
-Fix 'undefine variable' js-hint error:  (https://stackoverflow.com/questions/17359232/how-to-tell-jshint-to-ignore-all-undefined-variables-in-one-file)
-
-Website mockup generator : (https://ui.dev/amiresponsive)
-
-- **Image Coloring - filter**: <a href="https://codepen.io/sosuke/pen/Pjoqqp" target="_blank" rel="noopener">CSS filter generator</a>  
-  This tool was utilized to create custom-colored SVG icons.
+- **<a href="https://codepen.io/sosuke/pen/Pjoqqp" target="_blank" rel="noopener">CSS filter generator</a>** - used to create custom-colored SVG icons using 'filter' css property.
