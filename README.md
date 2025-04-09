@@ -420,10 +420,28 @@ Other goals:
 
 ## Technologies
 
-- **HTML/CSS validation**
-  - <a href="https://validator.w3.org/" target="_blank" rel="noopener">W3C HTML validator</a> used to validate the website's HTML code
-  - <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">W3C CSS validator</a> used to validate the website's CSS style code.
-  - **Autoprefixer** - To ensure compatibility across different browsers, <a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">Autoprefixer CSS online</a> was used to add vendor prefixes to CSS properties.
+- **HTML** - The structure of the Website was developed using HTML as the main language.
+- **CSS** - The Website was styled using custom CSS in an external file.
+- **Bootstrap** - The website layout used some Bootstrap code and styled with custom CSS.
+- **JavaScript** - JavaScript was used for the core interactivity of the game project
+- **Visual Studio Code** - The website was developed using Visual Studio Code IDE
+- **GitHub Projects** - Development tasks and progress monitoring was done through GitHub projects, see <a href="https://github.com/users/tumelo-maja/projects/4" target="_blank" rel="noopener">PP2: Nut Stacker Game</a>
+- **GitHub** - Source code is hosted on GitHub and deployed using Git Pages.
+- **Git** - Used to commit and push code during the development opf the Website
+- **CSS filter generator** - <a href="https://codepen.io/sosuke/pen/Pjoqqp" target="_blank" rel="noopener">CSS filter generator</a> tool was utilized to create custom-colored PNG icons used in the services section and contact page
+- **Derivv** - <a href="https://derivv.com/" target="_blank" rel="noopener">Derivv</a> tool was utilized to resize images to the optimal dimensions for web display, to improve the loading time and performance of the website.
+- **Favicon.io** - favicon files were created using <a href="https://favicon.io/favicon-converter/" target="_blank" rel="noopener">favicon-converter</a>
+- **balsamiq** - Wireframes were created using <a href="https://balsamiq.com/wireframes/desktop/" target="_blank" rel="noopener">Balsamiq Wireframes</a>
+- **Lighthouse (Chrome DevTools)** - This feature of DevTools was used to assess the website performance and overall loading time. 
+- **HTML, CSS and Javascript validation**
+  - **<a href="https://validator.w3.org/" target="_blank" rel="noopener">W3C HTML validator</a>** used to validate the website's HTML code
+  - **<a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">W3C CSS validator</a>** used to validate the website's CSS style code.
+  - **<a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">Autoprefixer CSS</a>** - used to add vendor prefixes to CSS properties for compatibility with more browsers.
+  - **<a href="https://validator.w3.org/" target="_blank" rel="noopener">JS Hint</a>** used to validate the website's Javascript code
+- **Compatibility** - To ensure compatibility across different browsers, <a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">Autoprefixer CSS online</a> was used to add vendor prefixes to CSS properties.
+- **Accessibility** - <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener">WebAIM Contrast Checker</a> was used to test and ensure that background and foreground color contrast allows text to be readable against its background. The test was applied for both text and UI (buttons/icons) elements
+- **Python tutor** - <a href="https://pythontutor.com/render.html#mode=edit" target="_blank" rel="noopener">Tool</a> was used to test and debug small javascript functions. 
+
 ## Testing 
 
 ### Feature Testing
