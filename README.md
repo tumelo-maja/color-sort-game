@@ -512,6 +512,11 @@ Lighthouse testing was performed for all pages (desktop and mobile views)
 
 **Lighthouse - Accessibility**
 
+| Page tested  | Initial audit  | Solution | Final validator output  |
+| ------------ | ------------   | -------  | ---------------------   | 
+| index.html   | <img src="docs/lighthouse-screenshots/game-lighthouse-accessibility-initial.png" > | Additional manual checks and no further actions were necessary    |    |
+| game.html    | <img src="docs/lighthouse-screenshots/game-lighthouse-accessibility-initial.png" > | Added a hover effect to make the nut elements glow when hovered over.   |    |
+
 **WebAIM - Contrast Checker**
 
 ## Deployment
