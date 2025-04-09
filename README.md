@@ -498,6 +498,16 @@ The website's layout, responsiveness and sound effects were tested on the common
 
 ### Lighthouse Testing
 
+Lighthouse testing was performed for all pages (desktop and mobile views)
+
+| Screen Type   | Initial audit  | Solution | Screenshots of Clear Validation  |
+| ------------  | ------------   | -------  | ------------------------------   | 
+| Mobile - index.html       | <img src="docs/lighthouse-screenshots/index-lighthouse-initial-output-mobile.png" >    | No further actions           |    |
+| Desktop - index.html      | <img src="docs/lighthouse-screenshots/index-lighthouse-initial-output-desktop.png" >   | No further actions           |    |
+| Mobile - game.html       | <img src="docs/lighthouse-screenshots/game-lighthouse-initial-output-mobile.png" >    | - Low performance score due to render blocking elements. <br>- There were too many external javascript and css link tags for icons. <br>- svg format of the google font icons, fontawesome and bootstrap icons were downloaded. <br>- 'i' tags got icons where replaced by 'img' tags. <br>- Removing the need to load entire libraries improved the performance score greatly.            |  <img src="docs/lighthouse-screenshots/game-lighthouse-final-output-mobile.png" >  |
+| Desktop - game.html      | <img src="docs/lighthouse-screenshots/game-lighthouse-initial-output-desktop.png" >   |  - Low performance score due to render blocking elements. <br>- There were too many external javascript and css link tags for icons. <br>- svg format of the google font icons, fontawesome and bootstrap icons were downloaded. <br>- 'i' tags got icons where replaced by 'img' tags. <br>- Removing the need to load entire libraries improved the performance score greatly.          | <img src="docs/lighthouse-screenshots/game-lighthouse-final-output-desktop.png" >   |
+
+
 ### Accessibility Testing
 
 **Lighthouse - Accessibility**
