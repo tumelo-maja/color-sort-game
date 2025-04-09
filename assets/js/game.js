@@ -231,7 +231,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // function to add eventListeners to other page elements except .rod
         addNonRodEventListener();
 
-
+        // initialize odometer for the score element
+        new Odometer({
+            el: userScoreElement,
+            duration: 5000,
+        });
 
         // check browser support for vibration on mobile devices
         checkVibrationSupport();
@@ -242,11 +246,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // function to create a game layout based on last played mode/ default setup
         generateNewGame();
 
-        // initialize odometer for the score element
-        new Odometer({
-            el: userScoreElement,
-            duration: 5000,
-        });
     }
 
     /**
