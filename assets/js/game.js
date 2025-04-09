@@ -395,8 +395,39 @@ document.addEventListener("DOMContentLoaded", function () {
         const rods = document.querySelectorAll(".rod");
         for (let rod of rods) {
             rod.addEventListener('click', rodClick);
+            rod.addEventListener('mouseenter', rodHoverOn);
+            rod.addEventListener('mouseleave', rodHoverOff);
         }
     }
+
+    /**
+     * Make the top nut of the rod glow when hovered over
+     * 
+     * @param {MouseEvent} e - mouse event triggered by mouse movements relative to rod elements.
+     */
+    function rodHoverOn(e) {
+        let targetRod = e.target;
+
+        if (targetRod.querySelectorAll('.nut-wrap').length) {
+            const nutObjectTop = targetRod.lastElementChild.firstElementChild;
+            nutObjectTop.classList.add('nut-hover');
+        }
+    }
+
+    /**
+     * Remove glow effect class from the top nut of the rod when mouse leaves the rod
+     * 
+     * @param {MouseEvent} e - mouse event triggered by mouse movements relative to rod elements.
+     */
+    function rodHoverOff(e) {
+        let targetRod = e.target;
+        console.log(targetRod.querySelectorAll('.nut-wrap').length)
+
+        if (targetRod.querySelectorAll('.nut-wrap').length) {
+            const nutObjectTop = targetRod.lastElementChild.firstElementChild;
+            nutObjectTop.classList.remove('nut-hover');
+        }
+    }    
 
     /**
      * Toggles display of sibling elements of the head <p> elements in the Help Modal
@@ -585,6 +616,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let currentNut = raisedNut;
             let currentNutWrapper = currentNut.parentElement;
             let sourceRod = currentNutWrapper.parentElement;
+
+            rodHoverOff(e);
 
             // Check if colors of neext match the nut to move - append to nutsToMove.
             let neighbourNutWrapper = currentNutWrapper.previousElementSibling;
