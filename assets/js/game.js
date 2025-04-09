@@ -470,10 +470,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (navigator.vibrate) {
                 isVibrationOn = !isVibrationOn;
                 runVibration(300);
-                console.log('Supported');
             } else {
                 alert('Vibration is not supported for your current browser');
-                console.log('Not supported');
                 this.querySelector('.toggle-slide').classList.remove('toggle-slide-on');
                 this.querySelector('.toggle-item').classList.remove('toggle-item-on');
                 this.querySelector('.toggle-text').classList.remove('toggle-text-on');
@@ -489,7 +487,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkVibrationSupport() {
         // .vibration-note
         if (!('vibrate' in navigator)) {
-            console.log("It cannot vibrate");
 
             let vibrationToggle = document.querySelector(".toggle-container.vibration");
             vibrationToggle.classList.add('disable');
@@ -540,8 +537,6 @@ document.addEventListener("DOMContentLoaded", function () {
             levelValueElement.innerText = userProgress[difficultyMode];
             gameMode = gameModeObject[difficultyMode];
             difficultyModeSelect.value = difficultyMode;
-            console.log("New score below");
-            console.log(userProgress.userScore);
 
         } else {
             userProgress = createUserProgress();
