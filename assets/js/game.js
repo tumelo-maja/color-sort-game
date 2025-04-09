@@ -408,8 +408,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function rodHoverOn(e) {
         let targetRod = e.target;
 
-        if (targetRod.querySelectorAll('.nut-wrap').length) {
-            const nutObjectTop = targetRod.lastElementChild.firstElementChild;
+        if (targetRod.querySelectorAll('.nut').length) {
+            const nutObjectTop = targetRod.lastElementChild;
             nutObjectTop.classList.add('nut-hover');
         }
     }
@@ -421,10 +421,10 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function rodHoverOff(e) {
         let targetRod = e.target;
-        console.log(targetRod.querySelectorAll('.nut-wrap').length)
+        console.log(targetRod.querySelectorAll('.nut').length)
 
-        if (targetRod.querySelectorAll('.nut-wrap').length) {
-            const nutObjectTop = targetRod.lastElementChild.firstElementChild;
+        if (targetRod.querySelectorAll('.nut').length) {
+            const nutObjectTop = targetRod.lastElementChild;
             nutObjectTop.classList.remove('nut-hover');
         }
     }    
@@ -609,29 +609,27 @@ document.addEventListener("DOMContentLoaded", function () {
     function rodClick(e) {
         const raisedNut = document.querySelector(".raise-nut");
         const rodElement = e.currentTarget;
-        const nutObjectTop = rodElement.lastElementChild.firstElementChild;
-        let rodChildrenCount = rodElement.querySelectorAll('.nut-wrap').length;
+        const nutObjectTop = rodElement.lastElementChild;
+        let rodChildrenCount = rodElement.querySelectorAll('.nut').length;
 
         if (raisedNut) {
             let currentNut = raisedNut;
-            let currentNutWrapper = currentNut.parentElement;
-            let sourceRod = currentNutWrapper.parentElement;
+            let sourceRod = currentNut.parentElement;
 
             rodHoverOff(e);
 
-            // Check if colors of neext match the nut to move - append to nutsToMove.
-            let neighbourNutWrapper = currentNutWrapper.previousElementSibling;
+            // Check if colors of next match the nut to move - append to nutsToMove.
+            let neighbourNut = currentNut.previousElementSibling;
             let neighbourNutColor = "";
 
-            if (!neighbourNutWrapper.classList.contains('nut-wrap')) {
+            if (!neighbourNut.classList.contains('nut')) {
                 neighbourNutColor = null;
             } else {
-                neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color");
+                neighbourNutColor = neighbourNut.getAttribute("data-color");
             }
 
             let currentNutColor = currentNut.getAttribute("data-color");
 
-            let nutWrappersToMove = [currentNutWrapper];
             let nutsToMove = [currentNut];
 
             const rodCapacity = parseInt(rodElement.getAttribute('data-capacity'));
@@ -639,18 +637,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
             while ((currentNutColor === neighbourNutColor) && (nutsToMove.length < availableSpace)) {
 
-                nutWrappersToMove.unshift(neighbourNutWrapper);
-                nutsToMove.unshift(neighbourNutWrapper.firstElementChild);
+                nutsToMove.unshift(neighbourNut);
 
-                currentNut = neighbourNutWrapper.firstElementChild;
-                currentNutWrapper = neighbourNutWrapper;
+                currentNut = neighbourNut;
 
-                neighbourNutWrapper = currentNutWrapper.previousElementSibling;
-                if (!neighbourNutWrapper.classList.contains('nut-wrap')) {
+                neighbourNut = currentNut.previousElementSibling;
+                if (!neighbourNut.classList.contains('nut')) {
                     break;
                 }
 
-                neighbourNutColor = neighbourNutWrapper.firstElementChild.getAttribute("data-color");
+                neighbourNutColor = neighbourNut.getAttribute("data-color");
                 currentNutColor = currentNut.getAttribute("data-color");
             }
 
@@ -660,7 +656,7 @@ document.addEventListener("DOMContentLoaded", function () {
             lastMoveHistory.targetRod = sourceRod;
             lastMoveHistory.raisedNut = nutsToMove.slice(-1)[0];
             lastMoveHistory.nutsToMove = nutsToMove;
-            lastMoveHistory.rodChildrenCount = sourceRod.querySelectorAll('.nut-wrap').length - nutsToMove.length;
+            lastMoveHistory.rodChildrenCount = sourceRod.querySelectorAll('.nut').length - nutsToMove.length;
 
             if (undoMoveButton.classList.contains('disable')) {
                 undoMoveButton.classList.remove('disable');
@@ -702,7 +698,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function setRaiseNutTransformY(nutObject, rodChildrenCount) {
         const anyNutMargin = getCssStyleValue(anyNut, 'margin-bottom');
-        const rodCapacity = parseInt(nutObject.parentElement.parentElement.getAttribute('data-capacity'));
+        const rodCapacity = parseInt(nutObject.parentElement.getAttribute('data-capacity'));
         const availableSpace = (rodCapacity - rodChildrenCount) * (anyNut.offsetHeight + anyNutMargin);
         const raiseValue = -availableSpace - verticalStep;
 
@@ -846,7 +842,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * @param {number} targetChildrenCount - Number of nuts currently in the target rod (used to determine final Y offset).
      */
     function setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
-        let sourceChildrenCount = sourceRod.querySelectorAll('.nut-wrap').length;
+        let sourceChildrenCount = sourceRod.querySelectorAll('.nut').length;
         const heighExistingChildren = (targetChildrenCount * (parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom)));
         for (let nut of nutsToMove) {
 
@@ -883,8 +879,8 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Runs the animation move the nut and check if rod(s) are completed
      * - calls 'setPositionalValues()' to calculate and set all required transform positions.
-     * - Adds the 'success-move' to each nut and wrapper elements
-     * - Has an event listener for 'animationend' to remove the 'success-move' class and append the nut and wrapper in the target rod
+     * - Adds the 'success-move' to each nut element
+     * - Has an event listener for 'animationend' to remove the 'success-move' class and append the nut to the target rod
      * - Checks if the target rod has been completed ie. has all nuts of the same color by calling 'checkRodCompletion()'
      * - Checks if all rods have been completed by calling checkGameCompletion()
      * - Checks if the remaining moves have not reached 0 before the game is won, if so then the game is lost, 'gameOverLoss()' is called
@@ -905,23 +901,19 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
 
                 nut.classList.add(animationName);
-                nut.parentElement.classList.add(animationName);
 
                 setRaiseNutTransformY(nut, targetChildrenCount + 1);
-                nut.parentElement.addEventListener("animationend", function handler() {
-                    nut.parentElement.style.animation = "";
+                nut.addEventListener("animationend", function handler() {
                     nut.style.animation = "";
                     soundEffects.startMove.play('onRodMove');
                     setTimeout(() => {
                         soundEffects.raise.play('kickStart');
                     }, 200);
 
-                    nut.parentElement.appendChild(nut);
-                    targetRod.appendChild(nut.parentElement);
+                    targetRod.appendChild(nut);
 
                     nut.classList.remove(animationName, "raise-nut");
-                    nut.parentElement.classList.remove(animationName);
-                    nut.parentElement.removeEventListener("animationend", handler);
+                    nut.removeEventListener("animationend", handler);
 
                     if (rodCapacity !== 1) {
                         checkRodCompletion(targetRod);
@@ -959,8 +951,7 @@ document.addEventListener("DOMContentLoaded", function () {
     */
     function moveNut(targetRod, raisedNut, nutsToMove, rodChildrenCount, moveType) {
 
-        const raisedNutWrapper = raisedNut.parentElement;
-        const sourceRod = raisedNutWrapper.parentElement;
+        const sourceRod = raisedNut.parentElement;
         const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
 
         if (moveType === 'reverse') {
@@ -968,7 +959,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (rodChildrenCount) {
-            const targetNut = targetRod.lastElementChild.firstElementChild;
+            const targetNut = targetRod.lastElementChild;
             if (targetRod === sourceRod) {
                 lowerNut(raisedNut);
                 return;
@@ -1303,8 +1294,8 @@ document.addEventListener("DOMContentLoaded", function () {
         gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
 
             let currentRod = document.getElementById(rodItem.name);
-            gameInitialState.nutsAndWrappers[rodIndex].forEach((wrapper, wrapperIndex) => {
-                currentRod.appendChild(wrapper.wrapper);
+            gameInitialState.nutsArray[rodIndex].forEach((nut) => {
+                currentRod.appendChild(nut.nut);
             });
         });
 
@@ -1313,53 +1304,48 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /** 
-     * Creates nut elements and their nut-wrapper containers based on color arrays.
+     * Creates nut elements based on color arrays.
      * 
      * - Adds '.nut' class to div elements and applied custom 'data-color' and specific color class for the nut elements.
-     * - Add '.nut-wrapper' class to a div wrapping the nut element.
-     * - An array of nut elements in their respective wrappers are returned.
+     * - An array of nut elements is returned.
      *
      * @param {string[]} nutsArray - Array of nut color names (strings).
-     * @returns {Array<{ name: string, wrapper: HTMLElement }>} An array of nut wrapper objects, each with a name and wrapper element.
+     * @returns {Array<{ name: string, nut: HTMLElement }>} An array of nut objects, each with a name and nut element.
      */
-    function createNutsAndWrappers(nutsArray) {
+    function createNutsArray(nutsArrayColors) {
 
-        let nutsAndWrappers = [];
-        nutsArray.forEach((nutColor, index) => {
+        let nutsArray = [];
+        nutsArrayColors.forEach((nutColor, index) => {
 
             let nutElement = document.createElement("div");
             nutElement.setAttribute("class", `nut ${nutColor}`);
             nutElement.setAttribute("data-color", nutColor);
 
-            let nutWrapperElement = document.createElement("div");
-            nutWrapperElement.setAttribute("class", "nut-wrap");
-
-            nutWrapperElement.appendChild(nutElement);
-            nutsAndWrappers.push({
+            nutsArray.push({
                 name: `rod${index}`,
-                wrapper: nutWrapperElement,
+                nut: nutElement,
             });
         });
-        return nutsAndWrappers;
+        return nutsArray;
     }
 
     /**
      * Generates new game and clear previous nuts
      * 
      * - Generates new nut colors by calling 'generateNutsWithColors()', result update 'gameInitialState' object
-     * - Updates 'gameInitialState' with a new array nut wrappers and their child nut elements.
+     * - Updates 'gameInitialState' with a new array of nut elements.
      * - calls 'addNutsToRods()' to place new game layout and nuts in the game area
      * - If the 'add extra rod' was disabled, it get re-enabled.
      * - the global 'nutStyle' variable is updated to be used in other functions
      */
     function generateNewGame() {
         gameInitialState.gameRodContainers = generateNutsWithColors();
-        let nutsAndWrappers = [];
+        let nutsArray = [];
         for (let rodItem of gameInitialState.gameRodContainers) {
-            let nutsAndWrapper = createNutsAndWrappers(rodItem.nuts);
-            nutsAndWrappers.push(nutsAndWrapper);
+            let nutElements = createNutsArray(rodItem.nuts);
+            nutsArray.push(nutElements);
         }
-        gameInitialState.nutsAndWrappers = nutsAndWrappers;
+        gameInitialState.nutsArray = nutsArray;
         addNutsToRods();
 
         if (extraRodButton.classList.contains('disable')) {
