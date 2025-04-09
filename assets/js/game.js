@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * - Shift + R: Reset the game
      * - Shift + N: Start a new game
      * 
-     *  @param {KeyboardEvent} e - keyboard event triggered by a key press.
+     *  @param {Event} e - keyboard event triggered by a key press.
      */
     function handleKeyboardPress(e) {
         let pressedKey = e.key.toLowerCase();
@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Make the top nut of the rod glow when hovered over
      * 
-     * @param {MouseEvent} e - mouse event triggered by mouse movements relative to rod elements.
+     * @param {Event} e - mouse enter event triggered when a cursor move into a rod element's bounds.
      */
     function rodHoverOn(e) {
         let targetRod = e.target;
@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Remove glow effect class from the top nut of the rod when mouse leaves the rod
      * 
-     * @param {MouseEvent} e - mouse event triggered by mouse movements relative to rod elements.
+     * @param {Event} e - mouse leave event triggered when a cursor move out of a rod element's bounds.
      */
     function rodHoverOff(e) {
         let targetRod=null;
@@ -442,6 +442,8 @@ document.addEventListener("DOMContentLoaded", function () {
      * when clicked: 
      * - the 'hidden-item' class of immediate sibling will be toggle to display/hide
      * - the arrow element's rotate class will be toggled.
+     * 
+     * @param {Event} e - click event triggered when help modal icon is clicked.
      */
     function toggleDisplayHelpModal(e) {
         const headElement = e.currentTarget;
@@ -612,6 +614,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * - the 'nutsToMove' array and other input arguments are passed to moveNut() which initiate the nut movement
      * - The position details of the move is added to lastMoveHistory object (global scope) to be access if undoLastMove() is called.
      *  
+     * @param {Event} e - click event triggered when a rod element is clicked.
      */
     function rodClick(e) {
         const raisedNut = document.querySelector(".raise-nut");
