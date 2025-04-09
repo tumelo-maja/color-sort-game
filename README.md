@@ -527,7 +527,6 @@ Color contrast between foreground and background in elements was check using <a 
 | -------------- | ------------------------- | ----------------------- |
 | darkest blue shade (body element background) against lightcyan colored text  | <img src="docs/contrast-checker/darkestblue-vs-lightcyan-initial-contrast-check-output.png" width="250px" height="350px"> | No further actions |
 | lightest blue shade (body element background) against lightcyan colored text  | <img src="docs/contrast-checker/lightestblue-vs-lightcyan-initial-contrast-check-output.png" width="250px" height="350px"> | No further actions |
-
 | blue shade (body element background) against yellow colored text  | <img src="docs/contrast-checker/blueshade-vs-yellow-initial-contrast-check-output.png" width="250px" height="350px"> | No further actions |
 | blue shade (button element background) against lightcyan colored icons  | <img src="docs/contrast-checker/control-buttons-initial-contrast-check-output.png" width="250px" height="350px"> | No further actions |
 | blue shade (body element background) against green colored icons  | <img src="docs/contrast-checker/modal-icons-initial-contrast-check-output.png" width="250px" height="350px"> | No further actions |
