@@ -485,13 +485,9 @@ The website's layout, responsiveness and sound effects were tested on the common
 | Page Tested | Screenshot of Errors | Solution Applied   | Screenshot of Clear Validator Output |  
 |------------ |------------          |------------        |------------                          |
 | index.html  |<img src="docs/validation-screenshots/index-initial-validator-results.png" width="800px" height="600px">          | No further changes required  | N/A      |    
-
 | game.html  |<img src="docs/validation-screenshots/game-initial-validator-results.png" width="800px" height="600px">          |**error:** Stray closing 'i' tags were removed <br><br>**info:** redundant forward slashes in self closing elements were removed |<img src="docs/validation-screenshots/game-final-validator-results.png" width="800px" height="500px">                         |  
-
 | style.css  |<img src="docs/validation-screenshots/styles-css-initial-validator-results.png" width="800px" height="500px">          |**error:** flex-grow property with value of 'auto' was removed <br><br>**warnings:** All warinings are due to the use of external vendors i.e. CSS prefixer       |<img src="docs/validation-screenshots/styles-css-final-validator-results.png" width="800px" height="500px">                      |    
-
 | index.js  |<img src="docs/validation-screenshots/index-js-initial-validator-results.png">         |**warnings:** Missing semicolon added        |<img src="docs/validation-screenshots/index-js-final-validator-results.png">                          |   
-
 | game.js  |<img src="docs/validation-screenshots/game-js-initial-validator-results.png"> <br> <img src="docs/validation-screenshots/game-js-initial-validator-results2.png">          |**Warnings:** <br> 1) Missing semicolons were added <br><br> 2) "Do not use 'new' for side effects" warning remains unresolved <br><br> **Undefined variables:** <br> 1) Undeclared variables 'userScore', 'rodYDifference' and 'rodXDifference' were declared <br><br> 2) Variables from external libraries were defined at the top script using the format: /*globals externalVar1, externalVa2 */        |<img src="docs/validation-screenshots/game-js-final-validator-results.png">                          |    
 
 ### Bugs
@@ -548,12 +544,6 @@ This section provides the steps to follow when deploying the project.
 Alternatively the site's live link can be found here - (https://tumelo-maja.github.io/color-sort-game/)
 
 ## Credits 
-Youtube video on using getBoundingClientRect() - (https://www.youtube.com/watch?v=MKpZadkuT-0)
-
-Link to Stackoverflow method to appendChild with animation - (https://stackoverflow.com/questions/52129197/how-to-appendchild-with-animation-in-javascript)
-
-link to using 'animate' in JS for keyframes  - (https://developer.mozilla.org/en-US/docs/Web/API/Element/animate)
-link to example of animate in JS - (https://stackoverflow.com/questions/59573722/how-can-i-set-a-css-keyframes-in-javascript)
 
 ### Game inspiration
 
@@ -608,3 +598,9 @@ This Nut Stacker project was inspired by similar games including 'Nut sort' by <
 - **<a href="https://ui.dev/amiresponsive" target="_blank" rel="noopener">Website mockup generator</a>** - used as to a mockup for the project site.
 
 - **<a href="https://codepen.io/sosuke/pen/Pjoqqp" target="_blank" rel="noopener">CSS filter generator</a>** - used to create custom-colored SVG icons using 'filter' css property.
+
+- **<a href="https://www.youtube.com/watch?v=MKpZadkuT-0" target="_blank" rel="noopener">using getBoundingClientRect (youtube)</a>** - used as guide to calculating relative distance between DOM elements which was used in nut animation.
+
+- **<a href="https://stackoverflow.com/questions/52129197/how-to-appendchild-with-animation-in-javascript" target="_blank" rel="noopener">Appending elements in animation</a>** - used as guide to append nuts to target rods during animation.
+
+- **<a href="https://stackoverflow.com/questions/59573722/how-can-i-set-a-css-keyframes-in-javascript" target="_blank" rel="noopener">Using keyframes for animation</a>** - used as guide to implementing animation positions when moving nuts.
