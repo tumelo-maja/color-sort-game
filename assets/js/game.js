@@ -420,12 +420,19 @@ document.addEventListener("DOMContentLoaded", function () {
      * @param {MouseEvent} e - mouse event triggered by mouse movements relative to rod elements.
      */
     function rodHoverOff(e) {
-        let targetRod = e.target;
-        console.log(targetRod.querySelectorAll('.nut').length)
+        let targetRod=null;
+        if (e instanceof Event) {
+            targetRod = e.target;
+        } else {
+            targetRod = e;
+        }
+        
+        let hoveredNuts= targetRod.querySelectorAll('.nut-hover');
+        if (hoveredNuts.length) {
 
-        if (targetRod.querySelectorAll('.nut').length) {
-            const nutObjectTop = targetRod.lastElementChild;
-            nutObjectTop.classList.remove('nut-hover');
+            hoveredNuts.forEach(nut => {
+                nut.classList.remove('nut-hover');
+            });
         }
     }    
 
@@ -616,7 +623,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let currentNut = raisedNut;
             let sourceRod = currentNut.parentElement;
 
-            rodHoverOff(e);
+            
 
             // Check if colors of next match the nut to move - append to nutsToMove.
             let neighbourNut = currentNut.previousElementSibling;
@@ -914,6 +921,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     nut.classList.remove(animationName, "raise-nut");
                     nut.removeEventListener("animationend", handler);
+                    rodHoverOff(targetRod);
 
                     if (rodCapacity !== 1) {
                         checkRodCompletion(targetRod);
@@ -1132,6 +1140,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (nutSameColor) {
 
                 targetRod.removeEventListener("click", rodClick);
+                targetRod.removeEventListener('mouseenter', rodHoverOn);
+                targetRod.removeEventListener('mouseleave', rodHoverOff);
                 const targetRodRect = targetRod.getBoundingClientRect();
                 const startX = (targetRodRect.left + targetRodRect.width / 2) / window.innerWidth;
                 const startY = (targetRodRect.top - 10) / window.innerHeight;
