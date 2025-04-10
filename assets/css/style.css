@@ -168,6 +168,8 @@ header {
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
   width: 100vw;
+  box-sizing: border-box;
+  border: 2px solid lightcyan;
 }
 
 h2 {
@@ -420,7 +422,6 @@ h2 {
 
 .nut-hover {
   box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.8);
-  /* background-color: red; */
 }
 
 .raise-nut {
@@ -499,7 +500,8 @@ h2 {
 }
 
 .game-controls .game-icons {
-  filter: invert(92%) sepia(10%) saturate(436%) hue-rotate(130deg) brightness(106%) contrast(106%);
+  filter: invert(92%) sepia(10%) saturate(436%) hue-rotate(130deg)
+    brightness(106%) contrast(106%);
   height: 30px;
   aspect-ratio: 1;
 }
@@ -622,7 +624,8 @@ h2 {
 }
 
 .head-area img {
-  filter: invert(97%) sepia(3%) saturate(6458%) hue-rotate(38deg) brightness(87%) contrast(93%);
+  filter: invert(97%) sepia(3%) saturate(6458%) hue-rotate(38deg)
+    brightness(87%) contrast(93%);
   width: 25px;
   aspect-ratio: 1;
 }
@@ -632,18 +635,6 @@ h2 {
   -webkit-animation: moveNutToTarget 1s ease-in-out forwards;
   animation: moveNutToTarget 1s ease-in-out forwards;
   --left: 1000px;
-}
-
-.reverse-move {
-  -webkit-animation: moveNutToTarget 1s ease-in-out forwards;
-  animation: moveNutToTarget 1s ease-in-out forwards;
-  animation-direction: reverse;
-}
-
-.test-move {
-  -webkit-transform: translateX(-30px);
-  -ms-transform: translateX(-30px);
-  transform: translateX(-30px);
 }
 
 .start-button {
@@ -713,7 +704,8 @@ h2 {
 }
 
 .game-score img {
-  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg)
+    brightness(107%) contrast(102%);
 }
 
 .game-score #scoreValue {
@@ -860,7 +852,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-.emoji-wrapper{
+.emoji-wrapper {
   background-color: #091152;
   border-radius: 50%;
   height: 41px;
@@ -874,11 +866,12 @@ h2 {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding: 1px ;
+  padding: 1px;
 }
 
 .game-emoji img {
-  filter: invert(60%) sepia(87%) saturate(1313%) hue-rotate(360deg) brightness(102%) contrast(105%);
+  filter: invert(60%) sepia(87%) saturate(1313%) hue-rotate(360deg)
+    brightness(102%) contrast(105%);
   height: 40px;
   width: 40px;
 }
@@ -953,8 +946,9 @@ h2 {
   right: 5px;
 }
 
-.close-icons{
-  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
+.close-icons {
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg)
+    brightness(107%) contrast(102%);
   height: 30px;
   width: 20px;
 }
@@ -1008,14 +1002,16 @@ h2 {
 }
 
 .arrow-icons {
-  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg)
+    brightness(107%) contrast(102%);
   height: 22px;
   aspect-ratio: 1;
   margin-right: 6px;
 }
 
 .arrow-icons.home {
-  filter: invert(94%) sepia(25%) saturate(393%) hue-rotate(147deg) brightness(104%) contrast(104%);
+  filter: invert(94%) sepia(25%) saturate(393%) hue-rotate(147deg)
+    brightness(104%) contrast(104%);
   height: 22px;
   aspect-ratio: 1;
   margin-right: 6px;
@@ -1028,9 +1024,10 @@ h2 {
 
 .coin-icons-help {
   margin-right: 8px;
-  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
-height:20px;
-aspect-ratio: 1;
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg)
+    brightness(107%) contrast(102%);
+  height: 20px;
+  aspect-ratio: 1;
 }
 
 .help-expanded p {
@@ -1050,34 +1047,39 @@ aspect-ratio: 1;
   margin-right: 12px;
   height: 25px;
   width: 25px;
-  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg) brightness(107%) contrast(102%);
+  filter: invert(85%) sepia(89%) saturate(528%) hue-rotate(2deg)
+    brightness(107%) contrast(102%);
 }
 
 .nut-icons {
   margin-right: 4px;
-  filter: invert(45%) sepia(97%) saturate(881%) hue-rotate(177deg) brightness(99%) contrast(89%);
+  filter: invert(45%) sepia(97%) saturate(881%) hue-rotate(177deg)
+    brightness(99%) contrast(89%);
   height: 25px;
   aspect-ratio: 1;
 }
 
 .text-icons {
-  filter: invert(100%) sepia(64%) saturate(1719%) hue-rotate(165deg) brightness(110%) contrast(112%);
+  filter: invert(100%) sepia(64%) saturate(1719%) hue-rotate(165deg)
+    brightness(110%) contrast(112%);
   height: 20px;
   aspect-ratio: 1;
 }
 
 .info-icons {
-  filter: invert(85%) sepia(12%) saturate(2104%) hue-rotate(34deg) brightness(85%) contrast(98%);
+  filter: invert(85%) sepia(12%) saturate(2104%) hue-rotate(34deg)
+    brightness(85%) contrast(98%);
   height: 25px;
   aspect-ratio: 1;
   margin-right: 8px;
 }
 
 .decrease-icons {
-  filter: invert(85%) sepia(12%) saturate(2104%) hue-rotate(34deg) brightness(85%) contrast(98%);
+  filter: invert(85%) sepia(12%) saturate(2104%) hue-rotate(34deg)
+    brightness(85%) contrast(98%);
   height: 30px;
   aspect-ratio: 1;
-  margin-right: 8px;  
+  margin-right: 8px;
 }
 
 .arrow-icons {
@@ -1090,19 +1092,20 @@ aspect-ratio: 1;
 }
 
 .game-icons-help {
-    background-color: #2f44e8;
-    border-radius: 50%;
-    padding: 2px;
-    height: 34px;
-    width: 34px;
-    display: inline-block;
-    justify-content: center;
-    box-sizing: border-box;
-    margin-right: 8px;  
-    text-align: center;
+  background-color: #2f44e8;
+  border-radius: 50%;
+  padding: 2px;
+  height: 34px;
+  width: 34px;
+  display: inline-block;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-right: 8px;
+  text-align: center;
 }
 .game-icons-help img {
-  filter: invert(92%) sepia(10%) saturate(436%) hue-rotate(130deg) brightness(106%) contrast(106%);
+  filter: invert(92%) sepia(10%) saturate(436%) hue-rotate(130deg)
+    brightness(106%) contrast(106%);
   height: 28px;
   aspect-ratio: 1;
 }
@@ -1312,15 +1315,17 @@ aspect-ratio: 1;
   color: #ffff00;
 }
 
-.toggle-text img{
+.toggle-text img {
   margin-right: 12px;
   height: 30px;
   aspect-ratio: 1;
-  filter: invert(77%) sepia(96%) saturate(120%) hue-rotate(168deg) brightness(108%) contrast(105%);
+  filter: invert(77%) sepia(96%) saturate(120%) hue-rotate(168deg)
+    brightness(108%) contrast(105%);
 }
 
-.toggle-text-on img{
-  filter: invert(85%) sepia(74%) saturate(1316%) hue-rotate(5deg) brightness(109%) contrast(103%);
+.toggle-text-on img {
+  filter: invert(85%) sepia(74%) saturate(1316%) hue-rotate(5deg)
+    brightness(109%) contrast(103%);
 }
 
 .home-link {
@@ -1349,7 +1354,9 @@ aspect-ratio: 1;
   margin-right: 12px;
   height: 20px;
   aspect-ratio: 1;
-  filter: invert(77%) sepia(96%) saturate(120%) hue-rotate(168deg) brightness(108%) contrast(105%);}
+  filter: invert(77%) sepia(96%) saturate(120%) hue-rotate(168deg)
+    brightness(108%) contrast(105%);
+}
 
 .remove-progress {
   width: 150px;
@@ -1359,14 +1366,15 @@ aspect-ratio: 1;
   padding: 2px;
   border-radius: 30px;
   text-transform: capitalize;
-  background-color: #ed2d2de2;
+  background-color: #a40e0e;
   color: lightcyan;
   border: 2px solid lightcyan;
 }
 
 .mobile {
-  display:flex;
+  display: flex;
 }
+
 /*--- Keyframes ---*/
 @keyframes moveNutToTarget {
   0% {
@@ -1394,9 +1402,9 @@ aspect-ratio: 1;
 
 /*---------- Breakpoint for medium screens (768px) and above */
 @media screen and (min-width: 768px) {
-.game-instructions.help-expanded {
-  width: 500px;
-}
+  .game-instructions.help-expanded {
+    width: 500px;
+  }
 
   .welcome-section p,
   h3 {
@@ -1422,10 +1430,6 @@ aspect-ratio: 1;
     width: 50px;
   }
 
-  .head-area i {
-    font-size: 1.8rem;
-  }
-
   .game-score {
     height: 40px;
     font-size: 1.1rem;
@@ -1435,6 +1439,6 @@ aspect-ratio: 1;
 /*---------- Breakpoint for laptop screens (992px) and above */
 @media screen and (min-width: 992px) {
   .mobile {
-    display:none;
+    display: none;
   }
 }
