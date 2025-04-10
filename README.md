@@ -224,7 +224,7 @@ Other goals:
 
   **Tasks:**
     - Implement HTML/CSS code to create an engaging gameplay layout
-    - Use the appropirate color contrast that pass the accessibility requirements
+    - Use the appropriate color contrast that pass the accessibility requirements
 
 
 - **Intuitive Game Controls (must-have)**
@@ -235,7 +235,7 @@ Other goals:
   **Acceptance Criteria:**
    - Users can click (tap) on an item and place it where they desire if permissible to game rules. 
    - Game provide visual feedback to indicate if the move was completed or not.
-   - Game control functionality is responsive on mobile and destop devices.
+   - Game control functionality is responsive on mobile and desktop devices.
 
   **Tasks:**
    - Implement JavaScript code to respond to user clicks/taps
@@ -504,7 +504,7 @@ The website's layout, responsiveness and sound effects were tested on the common
 |------------ |------------          |------------        |------------                          |
 | index.html  |<img src="docs/validation-screenshots/index-initial-validator-results.png" width="800px" height="600px">          | No further changes required  | N/A      |    
 | game.html  |<img src="docs/validation-screenshots/game-initial-validator-results.png" width="800px" height="600px">          |**error:** Stray closing 'i' tags were removed <br><br>**info:** redundant forward slashes in self closing elements were removed |<img src="docs/validation-screenshots/game-final-validator-results.png" width="800px" height="500px">                         |  
-| style.css  |<img src="docs/validation-screenshots/styles-css-initial-validator-results.png" width="800px" height="500px">          |**error:** flex-grow property with value of 'auto' was removed <br><br>**warnings:** All warinings are due to the use of external vendors i.e. CSS prefixer       |<img src="docs/validation-screenshots/styles-css-final-validator-results.png" width="800px" height="500px">                      |    
+| style.css  |<img src="docs/validation-screenshots/styles-css-initial-validator-results.png" width="800px" height="500px">          |**error:** flex-grow property with value of 'auto' was removed <br><br>**warnings:** All warnings are due to the use of external vendors i.e. CSS prefixer       |<img src="docs/validation-screenshots/styles-css-final-validator-results.png" width="800px" height="500px">                      |    
 | index.js  |<img src="docs/validation-screenshots/index-js-initial-validator-results.png">         |**warnings:** Missing semicolon added        |<img src="docs/validation-screenshots/index-js-final-validator-results.png">                          |   
 | game.js  |<img src="docs/validation-screenshots/game-js-initial-validator-results.png"> <br> <img src="docs/validation-screenshots/game-js-initial-validator-results2.png">          |**Warnings:** <br> 1) Missing semicolons were added <br><br> 2) "Do not use 'new' for side effects" warning remains unresolved <br><br> **Undefined variables:** <br> 1) Undeclared variables 'userScore', 'rodYDifference' and 'rodXDifference' were declared <br><br> 2) Variables from external libraries were defined at the top script using the format: /*globals externalVar1, externalVa2 */        |<img src="docs/validation-screenshots/game-js-final-validator-results.png">                          |    
 
