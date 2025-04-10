@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <main>
         <div class="game-container">
@@ -61,23 +62,24 @@
             <div class="game-controls">
                 <ul>
                     <li>
-                        <button id="undo-move" class="disable" title="Undo the last move">
+                        <button id="undo-move" class="disable" title="Undo the last move"
+                            aria-label="Undo the last move">
                             <img src="assets/icons/gfi-undo.svg" class="icon game-icons" alt="Undo button">
                         </button>
                     </li>
                     <li>
-                        <button id="add-rod" title="Add an extra rod">
+                        <button id="add-rod" title="Add an extra rod" aria-label="Add an extra rod">
                             <img src="assets/icons/gfi-add.svg" class="icon game-icons" alt="Extra rod button">
                         </button>
                     </li>
                     <li>
-                        <button id="game-reset" title="Reset game" class="reset">
+                        <button id="game-reset" title="Reset game" aria-label="Reset game" class="reset">
                             <img src="assets/icons/gfi-settings-backup-restore.svg" class="icon game-icons"
                                 alt="Reset game  button">
                         </button>
                     </li>
                     <li>
-                        <button id="new-game" title="Play a new game">
+                        <button id="new-game" title="Play a new game" aria-label="Play a new game">
                             <img src="assets/icons/gfi-splitscreen-vertical-add.svg" class="icon game-icons"
                                 alt="New game button">
                         </button>
@@ -91,7 +93,7 @@
     <div id="helpOptionsModal" class="modal-container">
         <div class="help-modal">
             <h2 class="modal-title">Help</h2>
-            <button class="help-close">
+            <button class="help-close" aria-label="close modal" title="close modal">
                 <img src="assets/icons/fa-xmark-solid.svg" class="icon close-icons" alt="close modal icon">
             </button>
             <div class="help-container">
@@ -234,9 +236,9 @@
             <h2 class="modal-title">Oops! You lost</h2>
             <p>You're out of moves</p>
             <div class="modal-buttons">
-                <button id="game-retry" title="Reset game" class="reset">Retry</button>
-                <button id="modal-new-game" title="Play a new game">New Game</button>
-                <button class="game-quit loss" title="Quit game and return to home page">Quit</button>
+                <button id="game-retry" title="Retry game" aria-label="Retry game" class="reset">Retry</button>
+                <button id="modal-new-game" title="Play a new game" aria-label="Play a new game">New Game</button>
+                <button class="game-quit loss" title="Quit game" aria-label="Quit game">Quit</button>
             </div>
         </div>
     </div>
@@ -259,8 +261,8 @@
             <p>You've sorted all the colors perfectly!</p>
             <p>Your score: <span id="pointsDisplay">0</span> points!</p>
             <div class="modal-buttons">
-                <button id="modal-continue-game" title="Play another game">Continue</button>
-                <button class="game-quit win" title="Quit game and return to home page">Quit</button>
+                <button id="modal-continue-game" title="Play another game" aria-label="Continue game">Continue</button>
+                <button class="game-quit win" title="Quit game" aria-label="Quit game">Quit</button>
             </div>
         </div>
     </div>
@@ -269,7 +271,7 @@
     <div id="settingsModalContainer" class="modal-container">
         <div class="settings-modal">
             <h2 class="modal-title">Settings</h2>
-            <button class="settings-close">
+            <button class="settings-close" aria-label="close modal">
                 <img src="assets/icons/fa-xmark-solid.svg" class="icon close-icons" alt="close modal icon">
             </button>
             <div class="toggle-group">
@@ -293,7 +295,7 @@
                     <span class="vibration-note">Not supported on your browser</span>
                 </div>
             </div>
-            <button class="remove-progress">Clear all progress</button>
+            <button class="remove-progress" aria-label="clear all progress">Clear all progress</button>
             <a aria-current="page" href="index.html" class="home-link" aria-label="Go to home page"
                 title="Go to home page">
                 <img src="assets/icons/fa-house-solid.svg" alt="home icon">
