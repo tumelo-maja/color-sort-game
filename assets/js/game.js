@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let nutStyle = null;
     let userProgress = {};
 
-
     // Declare nutColorsAll to store all color names and hex codes
     const nutColorsAll = {
         'yellow': '#f9b723',
@@ -210,8 +209,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalQuitWinGameButton = document.querySelector(".game-quit.win");
     const modalWinContainer = document.getElementById("gameOverWinModal");
     let pointsDisplayElement = document.getElementById("pointsDisplay");
-
-
 
     runGame();
 
