@@ -356,6 +356,9 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "index.html";
         });
 
+        // Listener for any clicks on body element
+        document.body.addEventListener('click',nonRodClick);
+
     }
 
     /**
@@ -723,6 +726,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 soundEffects.startMove.play('onRodMove');
             }, 100);
         }
+    }
+
+    /**
+     * Handles any clicks that are non .rod clicks
+     * - checks if the click is on a rod element
+     * - If there is a raise nut when the non .rod click occurs, raised nut will be lowered
+     * 
+     * @param {Event} e - click event triggered by any click on the body element.
+     */
+    function nonRodClick(e) {
+        if (!e.target.closest('.rod')) {
+            const raisedNut = document.querySelector(".raise-nut");
+            lowerNut(raisedNut);
+          }
     }
 
     /**
