@@ -15,10 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Declare movesbar element for displaying remaining moves as a 'life-bar'
     let movesBar = document.querySelector('.move-fill');
 
-    // Initilize variables when game page loads/ is reloaded.
-    let completedRods = 0; // initialize as 0
-    let gameInitialState = {}; // Var to store game state
-    const defaultVolume = 0.15; // volume of sounds effects
+    // Initialize variables when game page loads/ is reloaded.
+    let completedRods = 0; 
+    let gameInitialState = {}; 
+    const defaultVolume = 0.15; 
     const defaultDifficulty = 'easy';
     let difficultyMode = '';
     let gameMode = '';
@@ -225,10 +225,10 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function runGame() {
 
-        // function to add eventListeners to .rod elements
+        // Add eventListeners to .rod elements
         addRodEventListeners();
 
-        // function to add eventListeners to other page elements except .rod
+        // add eventListeners to non .rod elements
         addNonRodEventListener();
 
         // initialize odometer for the score element
@@ -240,10 +240,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // check browser support for vibration on mobile devices
         checkVibrationSupport();
 
-        // function to set/update user scores and levels on load
+        // set/update user scores and levels on load
         initializeUserProgress();
 
-        // function to create a game layout based on last played mode/ default setup
+        // create a game layout based on last played mode/ default setup
         generateNewGame();
 
     }
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Game control buttons (2) add extra rod
         extraRodButton.addEventListener('click', addExtraRod);
         // Game control buttons (3) reset
-        resetGameButton.addEventListener('click', resetGame);
+        resetGameButton.addEventListener('click', addNutsToRods);
         // Game control buttons (4) new game
         newGameButton.addEventListener('click', generateNewGame);
 
@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Game Loss modal buttons (1) retry
         modalRetryGameButton.addEventListener('click', function () {
             modalLossContainer.style.display = 'none';
-            resetGame();
+            addNutsToRods();
         });
 
         //Game Loss modal buttons (2) new game
@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (pressedKey === 'x' && e.shiftKey) {
             addExtraRod();
         } else if (pressedKey === 'r' && e.shiftKey) {
-            resetGame();
+            addNutsToRods();
         } else if (pressedKey === 'n' && e.shiftKey) {
             generateNewGame();
         } else {
@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Function to add event listeners to .rod elements
+     * Function to add event listeners to clicks on .rod elements
      * - rodClick callback function is passed for to handle 'click' events on any .rod element 
      */
     function addRodEventListeners() {
@@ -525,19 +525,18 @@ document.addEventListener("DOMContentLoaded", function () {
      * - If not supported, the vibration toggle will b disabled
      */
     function checkVibrationSupport() {
-        // .vibration-note
         if (!('vibrate' in navigator)) {
-
             let vibrationToggle = document.querySelector(".toggle-container.vibration");
             vibrationToggle.classList.add('disable');
             let vibrationNote = document.querySelector('.vibration-note');
             vibrationNote.style.display = 'inline-block';
-
         }
     }
 
     /**
      * Triggers vibration effect on mobile devices if enable and supported by the browser
+     * 
+     * @param {number} vibrationDuration - Duration of the vibration in milliseconds.
      */
     function runVibration(vibrationDuration) {
         if (navigator.vibrate && isVibrationOn) {
@@ -558,7 +557,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Initialize levels and scores using 'userPorgress' object stored on localStorage
+     * Initialize levels and scores using 'userProgress' object stored on localStorage
      * 
      * If 'userStorage' exist in localStorage the function will:
      * - retrieve the last played level, user score and difficulty mode
@@ -606,11 +605,11 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Handles click events on the rod elements.
      * - If there is no 'raised' nut, the top nut of the clicked rod will be raised by calling raiseNut().
-     * - If there is a 'rasied' nut:
+     * - If there is a 'raised' nut:
      * 
      * - Checks if immediate siblings of the raised nut have the same color
      * - Checks how much space there is in the target rod
-     * - Appends all imediate siblings of the same color to 'nutsToMove' array but not exceeding availableSpace in the target rod.
+     * - Appends all immediate siblings of the same color to 'nutsToMove' array but not exceeding availableSpace in the target rod.
      * - the 'nutsToMove' array and other input arguments are passed to moveNut() which initiate the nut movement
      * - The position details of the move is added to lastMoveHistory object (global scope) to be access if undoLastMove() is called.
      *  
@@ -625,10 +624,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (raisedNut) {
             let currentNut = raisedNut;
             let sourceRod = currentNut.parentElement;
-
             
-
-            // Check if colors of next match the nut to move - append to nutsToMove.
             let neighbourNut = currentNut.previousElementSibling;
             let neighbourNutColor = "";
 
@@ -639,7 +635,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             let currentNutColor = currentNut.getAttribute("data-color");
-
             let nutsToMove = [currentNut];
 
             const rodCapacity = parseInt(rodElement.getAttribute('data-capacity'));
@@ -648,10 +643,9 @@ document.addEventListener("DOMContentLoaded", function () {
             while ((currentNutColor === neighbourNutColor) && (nutsToMove.length < availableSpace)) {
 
                 nutsToMove.unshift(neighbourNut);
-
                 currentNut = neighbourNut;
-
                 neighbourNut = currentNut.previousElementSibling;
+
                 if (!neighbourNut.classList.contains('nut')) {
                     break;
                 }
@@ -671,9 +665,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (undoMoveButton.classList.contains('disable')) {
                 undoMoveButton.classList.remove('disable');
             }
-
         } else {
-
             if (rodChildrenCount) {
                 raiseNut(nutObjectTop, rodChildrenCount);
             }
@@ -859,19 +851,19 @@ document.addEventListener("DOMContentLoaded", function () {
             let heightOffset = parseFloat(nutStyle.height) - heighExistingChildren;
             setRaiseNutTransformY(nut, sourceChildrenCount);
 
-            // --- Calculate start position for animation --- //
+            // --- Calculate start position for animation
             const nutStartPosition = calculateNutStartPosition(nut);
 
-            // --- Calculate mid-way position through animation --- //
+            // --- Calculate mid-way position through animation
             const offsetPosition = calculateNutMidOffset(sourceRod, targetRod, nut);
 
-            // --- Calculate center of lid element --- //
+            // --- Calculate center of lid element
             const lidCenterPosition = calculateLidCenter(targetRod, sourceRod, nut);
 
-            // --- Calculate final position of nut movement --- //
+            // --- Calculate final position of nut movement
             const nutFinalPosition = calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount);
 
-            // --- Set CSS variables for the keyframe animations --- //
+            // --- Set CSS variables for the keyframe animations
             nut.style.setProperty("--raise-start-x", nutStartPosition.xValue + "px");
             nut.style.setProperty("--raise-start-y", nutStartPosition.yValue + "px");
             nut.style.setProperty("--raise-max-x", offsetPosition.xValue + "px");
@@ -904,7 +896,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function runAnimation(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
 
         const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
-        setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount); // Set the transform positions for the animation motion
+        setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount);
 
         const animationName = "success-move";
         nutsToMove.forEach((nut, index) => {
@@ -956,7 +948,6 @@ document.addEventListener("DOMContentLoaded", function () {
     * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
     * @param {HTMLElement} raisedNut - The nut element that is currently raised.
     * @param {HTMLElement[]} nutsToMove - An array of nut elements to move.
-    * @param {number} targetChildrenCount - The number of nuts currently in the rod.
     * @param {number} rodChildrenCount - Number of nuts currently in the target rod.
     * @param {string} moveType - The type of move, can be 'forward'(normal) or 'reverse'(undoLastMove).
     */
@@ -1081,7 +1072,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * @param {number} waitDuration - duration (in ms) to delay score update.
      */
     function gameLevelScoreUpdate(waitDuration) {
-        // level-value"
+
         let levelValueElement = document.getElementById('level-value');
         let levelValue = parseInt(levelValueElement.innerText);
         ++levelValue;
@@ -1170,7 +1161,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * - If they do not match (not equal), gameWon is set to 'false'
      * - the value of 'gameWon' is returned to the function that called 'checkGameCompletion()'
      * 
-     * @returns {boolean} `true` if the game is complete (when win conditions are met), otherwise `false`.
+     * @returns {boolean} `true` if the game is complete (i.e. when win conditions are met), otherwise `false`.
      */
     function checkGameCompletion() {
         let gameWon = false;
@@ -1222,7 +1213,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * - Uses the gameMode object (for mode type) to get the required colors and total nuts to generate subsets of nuts for each color
      * - Colors in the array are shuffled and checked that no more 2 nuts of the same color are immediate neighbors in the same rod.
      * -  'checkColorTriplicates()' is called to prevent a layout with completed rods at the start of the game.
-     * - Nut colors and corresponding rod are appened as objects to an array of 'rods'/containers.
+     * - Nut colors and corresponding rod are append as objects to an array of 'rods'/containers.
      * 
      * @returns {Array<{ name: string, nuts: string[] }>} An array of rod objects, each containing the name (e.g rod1) and an array of nut colors.    
      */
@@ -1364,7 +1355,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (extraRodButton.classList.contains('disable')) {
             extraRodButton.classList.remove('disable');
         }
-
         anyNut = document.querySelectorAll('.nut')[0];
         nutStyle = window.getComputedStyle(anyNut);
     }
@@ -1417,16 +1407,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     *  Resets the game layout to the previously saved 'gameInitialState' object
-     * 
-     * - calls 'addNutsToRods()' to reapply the initial nut element and rods layout. 
-     * - Allows user to retry/restart the same level with the same nut color arrangement.
-     */
-    function resetGame() {
-        addNutsToRods();
-    }
-
-    /**
      * Clears the current game layout by removing all rod-container and their descendants before resetting or generating new game
      * 
      * - Removes all elements in the game area
@@ -1471,7 +1451,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             userProgress.userScore = newScore;
-
             userProgress[difficultyMode] = parseInt(levelValueElement.textContent);
             userProgress.currentDifficulty = difficultyMode;
             userProgress.currentLevel = parseInt(levelValueElement.textContent);
