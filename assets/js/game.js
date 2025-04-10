@@ -7,7 +7,10 @@
  */
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Global variables for nut movements (px)
+    /**
+     * Declare global variables for DOM elements 
+     * and objects for game inputs and layout
+     */
     const verticalStep = 35;
     const verticalRaiseValue = 15;
     const horizontalStep = 40;
@@ -16,9 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let movesBar = document.querySelector('.move-fill');
 
     // Initialize variables when game page loads/ is reloaded.
-    let completedRods = 0; 
-    let gameInitialState = {}; 
-    const defaultVolume = 0.15; 
+    let completedRods = 0;
+    let gameInitialState = {};
+    const defaultVolume = 0.15;
     const defaultDifficulty = 'easy';
     let difficultyMode = '';
     let gameMode = '';
@@ -354,7 +357,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Listener for any clicks on body element
-        document.body.addEventListener('click',nonRodClick);
+        document.body.addEventListener('click', nonRodClick);
 
     }
 
@@ -370,7 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
             rod.addEventListener('mouseleave', rodHoverOff);
         }
     }
-    
+
     /**
      * Initialize levels and scores using 'userProgress' object stored on localStorage
      * 
@@ -428,7 +431,7 @@ document.addEventListener("DOMContentLoaded", function () {
         anyNut = document.querySelectorAll('.nut')[0];
         nutStyle = window.getComputedStyle(anyNut);
     }
-    
+
     /**
      * Places shuffled nuts and rods into their respective rod-containers (rows)
      * 
@@ -551,7 +554,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
         return containers;
-    }    
+    }
 
     /** 
      * Creates nut elements based on color arrays.
@@ -673,7 +676,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (raisedNut) {
             let currentNut = raisedNut;
             let sourceRod = currentNut.parentElement;
-            
+
             let neighbourNut = currentNut.previousElementSibling;
             let neighbourNutColor = "";
 
@@ -732,7 +735,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!e.target.closest('.rod')) {
             const raisedNut = document.querySelector(".raise-nut");
             lowerNut(raisedNut);
-          }
+        }
     }
 
     /**
@@ -755,21 +758,21 @@ document.addEventListener("DOMContentLoaded", function () {
      * @param {Event} e - mouse leave event triggered when a cursor move out of a rod element's bounds.
      */
     function rodHoverOff(e) {
-        let targetRod=null;
+        let targetRod = null;
         if (e instanceof Event) {
             targetRod = e.target;
         } else {
             targetRod = e;
         }
-        
-        let hoveredNuts= targetRod.querySelectorAll('.nut-hover');
+
+        let hoveredNuts = targetRod.querySelectorAll('.nut-hover');
         if (hoveredNuts.length) {
 
             hoveredNuts.forEach(nut => {
                 nut.classList.remove('nut-hover');
             });
         }
-    }    
+    }
 
     /**
      * Reverses the most recent move made by the user.
@@ -799,7 +802,7 @@ document.addEventListener("DOMContentLoaded", function () {
             extraRodElement.classList.remove('disable');
             extraRodButton.classList.add('disable');
         }
-    }    
+    }
 
     /**
      * Toggles display of sibling elements of the head <p> elements in the Help Modal
@@ -833,7 +836,7 @@ document.addEventListener("DOMContentLoaded", function () {
             soundEffects.startMove.play('onRodMove');
         }, 100);
         nutObject.classList.add("raise-nut");
-    }    
+    }
 
     /**
      * Calculates and sets the transformY value for the nut to be raised.
@@ -869,7 +872,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 100);
         }
     }
-    
+
     /**
     * Moves raised nut element from source rod to target rod if given conditions are met, else the raised nut is lowered by calling lowerNut()
     * - If the target rod is empty (not nuts), the raised nut(s) are moved without further checks 
@@ -920,7 +923,7 @@ document.addEventListener("DOMContentLoaded", function () {
             runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
         }
         updateMovesRemaining(moveType);
-    }    
+    }
 
     /**
      * Runs the animation move the nut and check if rod(s) are completed
@@ -1023,7 +1026,7 @@ document.addEventListener("DOMContentLoaded", function () {
             targetChildrenCount++;
             sourceChildrenCount--;
         }
-    }    
+    }
 
     /**
      * Calculates the starting position of the nut as the move animation begins (first position in nut movement).
