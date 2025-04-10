@@ -474,6 +474,10 @@ The website's layout, responsiveness and sound effects were tested on the common
 
 ### Bugs
 
+- **JS hint warning:** "Do not use 'new' for side effects" warning remains unresolved.
+- **Final nut position (extra rod):** For the small rod, the placement on the nut always overshoots below the nut. This is due to the relative position i.e top value from the getBoundingClientRect between the rods. This is more of an UX bug than functionality/UI and can be resolved in future releases. 
+- **Scroll on mobile device:** On an actual mobile device, the view port width and height has some scroll, i.e. the user has to scroll slightly up to have a full view of the control buttons. On devTools this is not occurring (tested on device: iPhone SE). This bug occurs despite the width of the body, main and game container being set to 100vw (width) and 100vh (height).
+
 ### Lighthouse Testing
 
 Lighthouse testing was performed for all pages (desktop and mobile views)
