@@ -362,35 +362,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * function to handle keyboard press events for game control
-     * 
-     * Specific key press combinations have different uses:
-     * - Shift + M: Toggle sound settings
-     * - Ctrl + Z: Undo last move
-     * - Shift + X: Add an extra rod
-     * - Shift + R: Reset the game
-     * - Shift + N: Start a new game
-     * 
-     *  @param {Event} e - keyboard event triggered by a key press.
-     */
-    function handleKeyboardPress(e) {
-        let pressedKey = e.key.toLowerCase();
-        if (pressedKey === 'm' && e.shiftKey) {
-            changeSoundSetting();
-        } else if (pressedKey === 'z' && e.ctrlKey) {
-            undoLastMove();
-        } else if (pressedKey === 'x' && e.shiftKey) {
-            addExtraRod();
-        } else if (pressedKey === 'r' && e.shiftKey) {
-            addNutsToRods();
-        } else if (pressedKey === 'n' && e.shiftKey) {
-            generateNewGame();
-        } else {
-            return;
-        }
-    }
-
-    /**
      * Function to add event listeners to clicks on .rod elements
      * - rodClick callback function is passed for to handle 'click' events on any .rod element 
      */
@@ -402,163 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
             rod.addEventListener('mouseleave', rodHoverOff);
         }
     }
-
-    /**
-     * Make the top nut of the rod glow when hovered over
-     * 
-     * @param {Event} e - mouse enter event triggered when a cursor move into a rod element's bounds.
-     */
-    function rodHoverOn(e) {
-        let targetRod = e.target;
-
-        if (targetRod.querySelectorAll('.nut').length) {
-            const nutObjectTop = targetRod.lastElementChild;
-            nutObjectTop.classList.add('nut-hover');
-        }
-    }
-
-    /**
-     * Remove glow effect class from the top nut of the rod when mouse leaves the rod
-     * 
-     * @param {Event} e - mouse leave event triggered when a cursor move out of a rod element's bounds.
-     */
-    function rodHoverOff(e) {
-        let targetRod=null;
-        if (e instanceof Event) {
-            targetRod = e.target;
-        } else {
-            targetRod = e;
-        }
-        
-        let hoveredNuts= targetRod.querySelectorAll('.nut-hover');
-        if (hoveredNuts.length) {
-
-            hoveredNuts.forEach(nut => {
-                nut.classList.remove('nut-hover');
-            });
-        }
-    }    
-
-    /**
-     * Toggles display of sibling elements of the head <p> elements in the Help Modal
-     * 
-     * when clicked: 
-     * - the 'hidden-item' class of immediate sibling will be toggle to display/hide
-     * - the arrow element's rotate class will be toggled.
-     * 
-     * @param {Event} e - click event triggered when help modal icon is clicked.
-     */
-    function toggleDisplayHelpModal(e) {
-        const headElement = e.currentTarget;
-        headElement.nextElementSibling.classList.toggle('hidden-item');
-        const arrowElement = headElement.querySelector(".arrow-icons");
-        arrowElement.classList.toggle('rotate');
-    }
-
-    /**
-     * Reverses the most recent move made by the user.
-     * - Checks if button is enabled (for shortcuts calls)
-     * - uses moves details for 'lastMoveHistory' object to call 'moveNut() to reverse the nut move'
-     * - Revert the moves by calling updateMovesRemaining()
-     * - disables the undo move button - single use per move
-     */
-    function undoLastMove() {
-        if (!undoMoveButton.classList.contains('disable')) {
-            let moveType = 'reverse';
-            moveNut(lastMoveHistory.targetRod, lastMoveHistory.raisedNut, lastMoveHistory.nutsToMove, lastMoveHistory.rodChildrenCount, moveType);
-            updateMovesRemaining(moveType);
-            undoMoveButton.classList.add('disable');
-        }
-    }
-
-    /**
-     * Extract the numerical digits displayed by an element animated using odometer instance
-     * - combines individual digits wrapped in '.odometer-value' spans into a complete number (user score). 
-     * 
-     * @param {HTMLElement} element - userScoreElement element containing Odometer digit spans.
-     * @returns {number} the numeric value currently displayed by the Odometer.
-     */
-    function getOdometerValue(element) {
-        let elementChildren = element.querySelectorAll('.odometer-value');
-        let stringDigits = '';
-        elementChildren.forEach(odometerSpan => {
-            stringDigits += odometerSpan.innerText;
-        });
-
-        return parseInt(stringDigits);
-    }
-
-    /**
-     * Toggles classes in child elements of the .toggle-container element (sound / vibration)
-     * 
-     * For the clicked container:
-     * - 'toggle-slide-on' class is toggled for the slider element 
-     * - 'toggle-item-on' class is toggled for the slider's parent element 
-     * - 'toggle-text-on' class is toggled for the text and icon elements 
-     * 
-     * - The corresponding setting setting is triggered depending on the class contained in the .toggle-container element
-     * - If it contains '.sound' class changeSoundSetting() is called;
-     * - else the function checks if vibration is supported on the current browser.
-     * - If vibration is not supported an alert will pop up to inform the user.
-     * - If vibration is supported, runVibration() is called and 'isVibrationOn' variable is reversed .
-     */
-    function changeToggleSettings() {
-        this.querySelector('.toggle-slide').classList.toggle('toggle-slide-on');
-        this.querySelector('.toggle-item').classList.toggle('toggle-item-on');
-        this.querySelector('.toggle-text').classList.toggle('toggle-text-on');
-
-        if (this.classList.contains('sound')) {
-            changeSoundSetting();
-        } else {
-            if (navigator.vibrate) {
-                isVibrationOn = !isVibrationOn;
-                runVibration(300);
-            } else {
-                alert('Vibration is not supported for your current browser');
-                this.querySelector('.toggle-slide').classList.remove('toggle-slide-on');
-                this.querySelector('.toggle-item').classList.remove('toggle-item-on');
-                this.querySelector('.toggle-text').classList.remove('toggle-text-on');
-            }
-
-        }
-    }
-
-    /**
-     * Checks if vibration is supported by the current browser.
-     * - If not supported, the vibration toggle will b disabled
-     */
-    function checkVibrationSupport() {
-        if (!('vibrate' in navigator)) {
-            let vibrationToggle = document.querySelector(".toggle-container.vibration");
-            vibrationToggle.classList.add('disable');
-            let vibrationNote = document.querySelector('.vibration-note');
-            vibrationNote.style.display = 'inline-block';
-        }
-    }
-
-    /**
-     * Triggers vibration effect on mobile devices if enable and supported by the browser
-     * 
-     * @param {number} vibrationDuration - Duration of the vibration in milliseconds.
-     */
-    function runVibration(vibrationDuration) {
-        if (navigator.vibrate && isVibrationOn) {
-            navigator.vibrate(vibrationDuration);
-        }
-    }
-
-    /**
-     * Function to toggle sound settings
-     * - Changes to the 'isGameMuted' to the opposite boolean
-     * - Passes the 'isGameMuted' variable to Howler.mute
-     * - Plays a short SFX clip to alert user sound settings have changed
-     */
-    function changeSoundSetting() {
-        isGameMuted = !isGameMuted;
-        Howler.mute(isGameMuted);
-        soundEffects.completeRod.play('rodWin');
-    }
-
+    
     /**
      * Initialize levels and scores using 'userProgress' object stored on localStorage
      * 
@@ -592,16 +407,250 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Activates the extra rod to be used if it is still inactive
-     * - This function runs once per level. 
-     * - After the rod becomes active, the 'extraRodButton' button will be disabled
+     * Generates new game and clear previous nuts
+     * 
+     * - Generates new nut colors by calling 'generateNutsWithColors()', result update 'gameInitialState' object
+     * - Updates 'gameInitialState' with a new array of nut elements.
+     * - calls 'addNutsToRods()' to place new game layout and nuts in the game area
+     * - If the 'add extra rod' was disabled, it get re-enabled.
+     * - the global 'nutStyle' variable is updated to be used in other functions
      */
-    function addExtraRod() {
-        if (!extraRodButton.classList.contains('disable')) {
+    function generateNewGame() {
+        gameInitialState.gameRodContainers = generateNutsWithColors();
+        let nutsArray = [];
+        for (let rodItem of gameInitialState.gameRodContainers) {
+            let nutElements = createNutsArray(rodItem.nuts);
+            nutsArray.push(nutElements);
+        }
+        gameInitialState.nutsArray = nutsArray;
+        addNutsToRods();
 
-            let extraRodElement = document.querySelector('.rod.extra');
-            extraRodElement.classList.remove('disable');
-            extraRodButton.classList.add('disable');
+        if (extraRodButton.classList.contains('disable')) {
+            extraRodButton.classList.remove('disable');
+        }
+        anyNut = document.querySelectorAll('.nut')[0];
+        nutStyle = window.getComputedStyle(anyNut);
+    }
+    
+    /**
+     * Places shuffled nuts and rods into their respective rod-containers (rows)
+     * 
+     * - calls 'clearGameLayout()' to clear/remove the current layout of nuts,rods and rod-containers
+     * - Calls 'generateGameLayout()' to generate the new game layout and save configurations in the 'gameInitialState' object
+     * - Calls 'addRodEventListeners()' to add event listeners to newly generated rod elements
+     * - layout configurations stored in 'gameInitialState' are used to append layout to the game area.
+     * - Total moves and total complete rods required to win are updated according to the game-mode specs.
+     */
+    function addNutsToRods() {
+
+        clearGameLayout();
+        generateGameLayout();
+        addRodEventListeners();
+
+        gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
+
+            let currentRod = document.getElementById(rodItem.name);
+            gameInitialState.nutsArray[rodIndex].forEach((nut) => {
+                currentRod.appendChild(nut.nut);
+            });
+        });
+
+        movesNumberElement.textContent = gameMode.maximumMoves;
+        totalRodsToWin = Object.values(gameMode.nutColors).length;
+    }
+
+    /**
+     * Clears the current game layout by removing all rod-container and their descendants before resetting or generating new game
+     * 
+     * - Removes all elements in the game area
+     * - Resets the moves counter to the game's maximum moves as given by 'gameMode' object
+     * - Removes any width styles that may have been applied to the move progress bar 'movesBar'
+     * - Resets the variable 'completedRods' to 0.
+     */
+    function clearGameLayout() {
+
+        let allContainers = gameAreaElement.querySelectorAll('.rod-container');
+        movesNumberElement.textContent = gameMode.maximumMoves;
+        movesBar.style = "";
+
+        completedRods = 0;
+        for (let container of allContainers) {
+            gameAreaElement.removeChild(container);
+        }
+    }
+
+    /**
+     * Generates and places rod-containers and rods elements on the game-area container
+     * 
+     * - Generates rod-containers according to details in the 'gameMode' object
+     * - Adds 'rod-container' class to the rod-container elements
+     * - Generate rod elements and adds '.rod' classes 
+     * - Sets 'id' and 'data-capacity' attributes on the rod elements
+     * - Class of 'extra' is added to the last rods which becomes the extra rod
+     * - All elements are appended to the game-area container.
+     */
+    function generateGameLayout() {
+
+        const totalRods = gameMode.rodsInContainers.reduce((a, b) => a + b, 0);
+        let rodNumber = 0;
+        for (let i = 0; i < gameMode.containers; i++) {
+
+            let containerElement = document.createElement("div");
+            containerElement.setAttribute("class", 'rod-container');
+
+            let rodsInContainer = gameMode.rodsInContainers[i];
+            for (let j = 0; j < rodsInContainer; j++) {
+
+                ++rodNumber;
+                let rodElement = document.createElement("div");
+                rodElement.setAttribute("id", `rod${rodNumber}`);
+
+                if (rodNumber === totalRods) {
+                    rodElement.setAttribute("class", 'rod extra disable');
+                    rodElement.setAttribute("data-capacity", "1");
+                } else {
+                    rodElement.setAttribute("class", 'rod');
+                    rodElement.setAttribute("data-capacity", `${gameMode.rodCapacity}`);
+                }
+
+                rodElement.setAttribute("data-row", `${i + 1}`);
+                rodElement.setAttribute("data-column", `${j + 1}`);
+
+                let lidElement = document.createElement("div");
+                lidElement.setAttribute("class", 'rod-lid');
+
+                rodElement.appendChild(lidElement);
+                containerElement.appendChild(rodElement);
+            }
+            gameAreaElement.appendChild(containerElement);
+        }
+    }
+
+    /**
+     * Generates randomized nut colors for a new game layout.
+     * 
+     * - Uses the gameMode object (for mode type) to get the required colors and total nuts to generate subsets of nuts for each color
+     * - Colors in the array are shuffled and checked that no more 2 nuts of the same color are immediate neighbors in the same rod.
+     * -  'checkColorTriplicates()' is called to prevent a layout with completed rods at the start of the game.
+     * - Nut colors and corresponding rod are append as objects to an array of 'rods'/containers.
+     * 
+     * @returns {Array<{ name: string, nuts: string[] }>} An array of rod objects, each containing the name (e.g rod1) and an array of nut colors.    
+     */
+    function generateNutsWithColors() {
+
+        let nutsColorArray = Array(gameMode.rodCapacity).fill(Object.keys(gameMode.nutColors)).flat();
+        shuffleColors(nutsColorArray);
+        while (!checkColorTriplicates(nutsColorArray)) {
+            shuffleColors(nutsColorArray);
+        }
+
+        let containers = [];
+        for (let i = 0; i < Object.keys(gameMode.nutColors).length; i++) {
+
+            let startIndex = i * gameMode.rodCapacity;
+            containers.push({
+                name: "rod" + (i + 1),
+                nuts: nutsColorArray.slice(startIndex, startIndex + gameMode.rodCapacity)
+            });
+        }
+        return containers;
+    }    
+
+    /** 
+     * Creates nut elements based on color arrays.
+     * 
+     * - Adds '.nut' class to div elements and applied custom 'data-color' and specific color class for the nut elements.
+     * - An array of nut elements is returned.
+     *
+     * @param {string[]} nutsArray - Array of nut color names (strings).
+     * @returns {Array<{ name: string, nut: HTMLElement }>} An array of nut objects, each with a name and nut element.
+     */
+    function createNutsArray(nutsArrayColors) {
+
+        let nutsArray = [];
+        nutsArrayColors.forEach((nutColor, index) => {
+
+            let nutElement = document.createElement("div");
+            nutElement.setAttribute("class", `nut ${nutColor}`);
+            nutElement.setAttribute("data-color", nutColor);
+
+            nutsArray.push({
+                name: `rod${index}`,
+                nut: nutElement,
+            });
+        });
+        return nutsArray;
+    }
+
+    /**
+     * Shuffles the array nut colors to get a random mix for the game
+     * - Ensure each game is generated with randomly distributed colors
+     *
+     * @param {string[]} colorArray - An array of nut colors to be shuffled.
+     * @returns {string[]} An array of nut colors with its elements shuffled randomly.
+     */
+    function shuffleColors(colorArray) {
+        let shuffledColorArray = colorArray;
+        for (let i = shuffledColorArray.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let tempColor = shuffledColorArray[i];
+            shuffledColorArray[i] = shuffledColorArray[j];
+            shuffledColorArray[j] = tempColor;
+        }
+        return shuffledColorArray;
+    }
+
+    /**
+     * Checks if the shuffled nut color array does not have more than 2 like colors as immediate siblings within a rod
+     * 
+     * - If there are more than 2 adjacent nuts of the same color, it returns `false`
+     * - Else it returns `true` if there were no adjacent triplicates found in all rods
+     *
+     * @param {string[]} shuffledNutsColorArray - The shuffled array of nut colors.
+     * @returns {boolean} `true` if all rods pass the validation, else returns `false` if any rod has >2 adjacent nuts of the same color. 
+     */
+    function checkColorTriplicates(shuffledNutsColorArray) {
+        for (let i = 0; i < shuffledNutsColorArray.length; i += 4) {
+            const rodGroup = shuffledNutsColorArray.slice(i, i + 4);
+            let occurrenceCount = 1;
+            for (let j = 1; j < rodGroup.length; j++) {
+                if (rodGroup[j] === rodGroup[j - 1]) {
+                    occurrenceCount++;
+                    if (occurrenceCount > 2) return false;
+                } else {
+                    occurrenceCount = 1;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * function to handle keyboard press events for game control
+     * 
+     * Specific key press combinations have different uses:
+     * - Shift + M: Toggle sound settings
+     * - Ctrl + Z: Undo last move
+     * - Shift + X: Add an extra rod
+     * - Shift + R: Reset the game
+     * - Shift + N: Start a new game
+     * 
+     *  @param {Event} e - keyboard event triggered by a key press.
+     */
+    function handleKeyboardPress(e) {
+        let pressedKey = e.key.toLowerCase();
+        if (pressedKey === 'm' && e.shiftKey) {
+            changeSoundSetting();
+        } else if (pressedKey === 'z' && e.ctrlKey) {
+            undoLastMove();
+        } else if (pressedKey === 'x' && e.shiftKey) {
+            addExtraRod();
+        } else if (pressedKey === 'r' && e.shiftKey) {
+            addNutsToRods();
+        } else if (pressedKey === 'n' && e.shiftKey) {
+            generateNewGame();
+        } else {
+            return;
         }
     }
 
@@ -676,6 +725,102 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
+     * Handles any clicks that are non .rod clicks
+     * - checks if the click is on a rod element
+     * - If there is a raise nut when the non .rod click occurs, raised nut will be lowered
+     * 
+     * @param {Event} e - click event triggered by any click on the body element.
+     */
+    function nonRodClick(e) {
+        if (!e.target.closest('.rod')) {
+            const raisedNut = document.querySelector(".raise-nut");
+            lowerNut(raisedNut);
+          }
+    }
+
+    /**
+     * Make the top nut of the rod glow when hovered over
+     * 
+     * @param {Event} e - mouse enter event triggered when a cursor move into a rod element's bounds.
+     */
+    function rodHoverOn(e) {
+        let targetRod = e.target;
+
+        if (targetRod.querySelectorAll('.nut').length) {
+            const nutObjectTop = targetRod.lastElementChild;
+            nutObjectTop.classList.add('nut-hover');
+        }
+    }
+
+    /**
+     * Remove glow effect class from the top nut of the rod when mouse leaves the rod
+     * 
+     * @param {Event} e - mouse leave event triggered when a cursor move out of a rod element's bounds.
+     */
+    function rodHoverOff(e) {
+        let targetRod=null;
+        if (e instanceof Event) {
+            targetRod = e.target;
+        } else {
+            targetRod = e;
+        }
+        
+        let hoveredNuts= targetRod.querySelectorAll('.nut-hover');
+        if (hoveredNuts.length) {
+
+            hoveredNuts.forEach(nut => {
+                nut.classList.remove('nut-hover');
+            });
+        }
+    }    
+
+    /**
+     * Reverses the most recent move made by the user.
+     * - Checks if button is enabled (for shortcuts calls)
+     * - uses moves details for 'lastMoveHistory' object to call 'moveNut() to reverse the nut move'
+     * - Revert the moves by calling updateMovesRemaining()
+     * - disables the undo move button - single use per move
+     */
+    function undoLastMove() {
+        if (!undoMoveButton.classList.contains('disable')) {
+            let moveType = 'reverse';
+            moveNut(lastMoveHistory.targetRod, lastMoveHistory.raisedNut, lastMoveHistory.nutsToMove, lastMoveHistory.rodChildrenCount, moveType);
+            updateMovesRemaining(moveType);
+            undoMoveButton.classList.add('disable');
+        }
+    }
+
+    /**
+     * Activates the extra rod to be used if it is still inactive
+     * - This function runs once per level. 
+     * - After the rod becomes active, the 'extraRodButton' button will be disabled
+     */
+    function addExtraRod() {
+        if (!extraRodButton.classList.contains('disable')) {
+
+            let extraRodElement = document.querySelector('.rod.extra');
+            extraRodElement.classList.remove('disable');
+            extraRodButton.classList.add('disable');
+        }
+    }    
+
+    /**
+     * Toggles display of sibling elements of the head <p> elements in the Help Modal
+     * 
+     * when clicked: 
+     * - the 'hidden-item' class of immediate sibling will be toggle to display/hide
+     * - the arrow element's rotate class will be toggled.
+     * 
+     * @param {Event} e - click event triggered when help modal icon is clicked.
+     */
+    function toggleDisplayHelpModal(e) {
+        const headElement = e.currentTarget;
+        headElement.nextElementSibling.classList.toggle('hidden-item');
+        const arrowElement = headElement.querySelector(".arrow-icons");
+        arrowElement.classList.toggle('rotate');
+    }
+
+    /**
      * Raises the top nut above the rod when clicked
      * - calls setRaiseNutTransformY() which calculate the transformY values to ensure the nut rises to the top of the rod
      * - Could include sound effects in enabled
@@ -691,7 +836,7 @@ document.addEventListener("DOMContentLoaded", function () {
             soundEffects.startMove.play('onRodMove');
         }, 100);
         nutObject.classList.add("raise-nut");
-    }
+    }    
 
     /**
      * Calculates and sets the transformY value for the nut to be raised.
@@ -727,33 +872,161 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 100);
         }
     }
+    
+    /**
+    * Moves raised nut element from source rod to target rod if given conditions are met, else the raised nut is lowered by calling lowerNut()
+    * - If the target rod is empty (not nuts), the raised nut(s) are moved without further checks 
+    * - If target and source rods are the same, move fails.
+    * - If the target rod has no more space to accommodate the nut(s) being moved, move fails.
+    * - If the top nut in the target and raised nut to not have the same color, move fails.
+    * - If all conditions are met, the move passes and the animation is rub by calling runAnimation().
+    * - After the animation has been completed, updateMovesRemaining() is called passing the 'moveType' arguments.
+    * - If the moveType='reverse' (ie. called by undoLastMove()), the move runs without checks
+    * 
+    * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
+    * @param {HTMLElement} raisedNut - The nut element that is currently raised.
+    * @param {HTMLElement[]} nutsToMove - An array of nut elements to move.
+    * @param {number} rodChildrenCount - Number of nuts currently in the target rod.
+    * @param {string} moveType - The type of move, can be 'forward'(normal) or 'reverse'(undoLastMove).
+    */
+    function moveNut(targetRod, raisedNut, nutsToMove, rodChildrenCount, moveType) {
+
+        const sourceRod = raisedNut.parentElement;
+        const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
+
+        if (moveType === 'reverse') {
+            runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
+        }
+
+        if (rodChildrenCount) {
+            const targetNut = targetRod.lastElementChild;
+            if (targetRod === sourceRod) {
+                lowerNut(raisedNut);
+                return;
+            }
+
+            const isSpaceAvailable = rodChildrenCount < rodCapacity;
+            if (!isSpaceAvailable) {
+                lowerNut(raisedNut);
+                return;
+            }
+
+            const targetNutColor = targetNut.getAttribute("data-color");
+            const raisedNutColor = raisedNut.getAttribute("data-color");
+            const isColorMatch = raisedNutColor === targetNutColor;
+            if (!isColorMatch) {
+                lowerNut(raisedNut);
+                return;
+            }
+            runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
+        } else {
+            runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
+        }
+        updateMovesRemaining(moveType);
+    }    
 
     /**
-     * Handles any clicks that are non .rod clicks
-     * - checks if the click is on a rod element
-     * - If there is a raise nut when the non .rod click occurs, raised nut will be lowered
-     * 
-     * @param {Event} e - click event triggered by any click on the body element.
+     * Runs the animation move the nut and check if rod(s) are completed
+     * - calls 'setPositionalValues()' to calculate and set all required transform positions.
+     * - Adds the 'success-move' to each nut element
+     * - Has an event listener for 'animationend' to remove the 'success-move' class and append the nut to the target rod
+     * - Checks if the target rod has been completed ie. has all nuts of the same color by calling 'checkRodCompletion()'
+     * - Checks if all rods have been completed by calling checkGameCompletion()
+     * - Checks if the remaining moves have not reached 0 before the game is won, if so then the game is lost, 'gameOverLoss()' is called
+     * - For aesthetic purposes, there is a delay in the animation between each nut and subsequent sibling nuts 
+     *
+     * @param {HTMLElement} sourceRod - The rod element the nut(s) are being moved from.
+     * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
+     * @param {HTMLElement[]} nutsToMove - An array of nut elements to move.
+     * @param {number} targetChildrenCount - The number of nuts currently in the target rod (used for positioning).
      */
-    function nonRodClick(e) {
-        if (!e.target.closest('.rod')) {
-            const raisedNut = document.querySelector(".raise-nut");
-            lowerNut(raisedNut);
-          }
+    function runAnimation(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
+
+        const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
+        setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount);
+
+        const animationName = "success-move";
+        nutsToMove.forEach((nut, index) => {
+            setTimeout(() => {
+
+                nut.classList.add(animationName);
+
+                setRaiseNutTransformY(nut, targetChildrenCount + 1);
+                nut.addEventListener("animationend", function handler() {
+                    nut.style.animation = "";
+                    soundEffects.startMove.play('onRodMove');
+                    setTimeout(() => {
+                        soundEffects.raise.play('kickStart');
+                    }, 200);
+
+                    targetRod.appendChild(nut);
+
+                    nut.classList.remove(animationName, "raise-nut");
+                    nut.removeEventListener("animationend", handler);
+                    rodHoverOff(targetRod);
+
+                    if (rodCapacity !== 1) {
+                        checkRodCompletion(targetRod);
+                        let isGameComplete = checkGameCompletion();
+
+                        if (!isGameComplete) {
+                            if (userMoves < 1) {
+                                setTimeout(() => {
+                                    gameOverLoss();
+                                }, 300);
+                            }
+                        }
+                    }
+                });
+            }, index * 100);
+        });
     }
 
     /**
-     * Function to return the CSS value of a attribute from a UI element with CSS attributes. 
-     * - Made to clear the code and make it readable
-     * 
-     * @param {HTMLElement} object - The element from which to get the css style (e.g div).
-     * @param {string} attribute - The CSS property name (e.g. 'height').
-     * @returns {number} The numeric value of the requested CSS property (units not included).
+     * Calculates and sets the CSS custom properties to animate motion of the nut(s) from source rod to target rod.
+     * - calculates the four animation positions for each nut i.e. starting, 'midpoint', lid-center and final positions
+     * - Use a loop to iterate and apply position property ensuring nut do not overlaps in their relative positions
+     * - target/source children variables are updated and used to offset the trailing nuts (if more than 1 nut is being moved)
+     *
+     * @param {HTMLElement} sourceRod - The rod element the nut(s) are being moved from.
+     * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
+     * @param {HTMLElement[]} nutsToMove - Array of nut elements to be animated.
+     * @param {number} targetChildrenCount - Number of nuts currently in the target rod (used to determine final Y offset).
      */
-    function getCssStyleValue(object, attribute) {
-        const attributeValue = parseFloat(getComputedStyle(object).getPropertyValue(attribute));
-        return attributeValue;
-    }
+    function setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
+        let sourceChildrenCount = sourceRod.querySelectorAll('.nut').length;
+        const heighExistingChildren = (targetChildrenCount * (parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom)));
+        for (let nut of nutsToMove) {
+
+            let heightOffset = parseFloat(nutStyle.height) - heighExistingChildren;
+            setRaiseNutTransformY(nut, sourceChildrenCount);
+
+            // --- Calculate start position for animation
+            const nutStartPosition = calculateNutStartPosition(nut);
+
+            // --- Calculate mid-way position through animation
+            const offsetPosition = calculateNutMidOffset(sourceRod, targetRod, nut);
+
+            // --- Calculate center of lid element
+            const lidCenterPosition = calculateLidCenter(targetRod, sourceRod, nut);
+
+            // --- Calculate final position of nut movement
+            const nutFinalPosition = calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount);
+
+            // --- Set CSS variables for the keyframe animations
+            nut.style.setProperty("--raise-start-x", nutStartPosition.xValue + "px");
+            nut.style.setProperty("--raise-start-y", nutStartPosition.yValue + "px");
+            nut.style.setProperty("--raise-max-x", offsetPosition.xValue + "px");
+            nut.style.setProperty("--raise-max-y", offsetPosition.yValue + "px");
+            nut.style.setProperty('--lid-position-y', lidCenterPosition.yValue + 'px');
+            nut.style.setProperty('--lid-position-x', lidCenterPosition.xValue + 'px');
+            nut.style.setProperty("--target-position-x", nutFinalPosition.xValue + "px");
+            nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue + heightOffset) + "px");
+
+            targetChildrenCount++;
+            sourceChildrenCount--;
+        }
+    }    
 
     /**
      * Calculates the starting position of the nut as the move animation begins (first position in nut movement).
@@ -850,161 +1123,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Calculates and sets the CSS custom properties to animate motion of the nut(s) from source rod to target rod.
-     * - calculates the four animation positions for each nut i.e. starting, 'midpoint', lid-center and final positions
-     * - Use a loop to iterate and apply position property ensuring nut do not overlaps in their relative positions
-     * - target/source children variables are updated and used to offset the trailing nuts (if more than 1 nut is being moved)
-     *
-     * @param {HTMLElement} sourceRod - The rod element the nut(s) are being moved from.
-     * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
-     * @param {HTMLElement[]} nutsToMove - Array of nut elements to be animated.
-     * @param {number} targetChildrenCount - Number of nuts currently in the target rod (used to determine final Y offset).
-     */
-    function setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
-        let sourceChildrenCount = sourceRod.querySelectorAll('.nut').length;
-        const heighExistingChildren = (targetChildrenCount * (parseFloat(nutStyle.height) + parseFloat(nutStyle.marginBottom)));
-        for (let nut of nutsToMove) {
-
-            let heightOffset = parseFloat(nutStyle.height) - heighExistingChildren;
-            setRaiseNutTransformY(nut, sourceChildrenCount);
-
-            // --- Calculate start position for animation
-            const nutStartPosition = calculateNutStartPosition(nut);
-
-            // --- Calculate mid-way position through animation
-            const offsetPosition = calculateNutMidOffset(sourceRod, targetRod, nut);
-
-            // --- Calculate center of lid element
-            const lidCenterPosition = calculateLidCenter(targetRod, sourceRod, nut);
-
-            // --- Calculate final position of nut movement
-            const nutFinalPosition = calculateNutFinalPosition(sourceRod, targetRod, targetChildrenCount);
-
-            // --- Set CSS variables for the keyframe animations
-            nut.style.setProperty("--raise-start-x", nutStartPosition.xValue + "px");
-            nut.style.setProperty("--raise-start-y", nutStartPosition.yValue + "px");
-            nut.style.setProperty("--raise-max-x", offsetPosition.xValue + "px");
-            nut.style.setProperty("--raise-max-y", offsetPosition.yValue + "px");
-            nut.style.setProperty('--lid-position-y', lidCenterPosition.yValue + 'px');
-            nut.style.setProperty('--lid-position-x', lidCenterPosition.xValue + 'px');
-            nut.style.setProperty("--target-position-x", nutFinalPosition.xValue + "px");
-            nut.style.setProperty("--target-position-y", Math.ceil(nutFinalPosition.yValue + heightOffset) + "px");
-
-            targetChildrenCount++;
-            sourceChildrenCount--;
-        }
-    }
-
-    /**
-     * Runs the animation move the nut and check if rod(s) are completed
-     * - calls 'setPositionalValues()' to calculate and set all required transform positions.
-     * - Adds the 'success-move' to each nut element
-     * - Has an event listener for 'animationend' to remove the 'success-move' class and append the nut to the target rod
-     * - Checks if the target rod has been completed ie. has all nuts of the same color by calling 'checkRodCompletion()'
-     * - Checks if all rods have been completed by calling checkGameCompletion()
-     * - Checks if the remaining moves have not reached 0 before the game is won, if so then the game is lost, 'gameOverLoss()' is called
-     * - For aesthetic purposes, there is a delay in the animation between each nut and subsequent sibling nuts 
-     *
-     * @param {HTMLElement} sourceRod - The rod element the nut(s) are being moved from.
-     * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
-     * @param {HTMLElement[]} nutsToMove - An array of nut elements to move.
-     * @param {number} targetChildrenCount - The number of nuts currently in the target rod (used for positioning).
-     */
-    function runAnimation(sourceRod, targetRod, nutsToMove, targetChildrenCount) {
-
-        const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
-        setPositionalValues(sourceRod, targetRod, nutsToMove, targetChildrenCount);
-
-        const animationName = "success-move";
-        nutsToMove.forEach((nut, index) => {
-            setTimeout(() => {
-
-                nut.classList.add(animationName);
-
-                setRaiseNutTransformY(nut, targetChildrenCount + 1);
-                nut.addEventListener("animationend", function handler() {
-                    nut.style.animation = "";
-                    soundEffects.startMove.play('onRodMove');
-                    setTimeout(() => {
-                        soundEffects.raise.play('kickStart');
-                    }, 200);
-
-                    targetRod.appendChild(nut);
-
-                    nut.classList.remove(animationName, "raise-nut");
-                    nut.removeEventListener("animationend", handler);
-                    rodHoverOff(targetRod);
-
-                    if (rodCapacity !== 1) {
-                        checkRodCompletion(targetRod);
-                        let isGameComplete = checkGameCompletion();
-
-                        if (!isGameComplete) {
-                            if (userMoves < 1) {
-                                setTimeout(() => {
-                                    gameOverLoss();
-                                }, 300);
-                            }
-                        }
-                    }
-                });
-            }, index * 100);
-        });
-    }
-
-    /**
-    * Moves raised nut element from source rod to target rod if given conditions are met, else the raised nut is lowered by calling lowerNut()
-    * - If the target rod is empty (not nuts), the raised nut(s) are moved without further checks 
-    * - If target and source rods are the same, move fails.
-    * - If the target rod has no more space to accommodate the nut(s) being moved, move fails.
-    * - If the top nut in the target and raised nut to not have the same color, move fails.
-    * - If all conditions are met, the move passes and the animation is rub by calling runAnimation().
-    * - After the animation has been completed, updateMovesRemaining() is called passing the 'moveType' arguments.
-    * - If the moveType='reverse' (ie. called by undoLastMove()), the move runs without checks
-    * 
-    * @param {HTMLElement} targetRod - The rod element the nut(s) are being moved to.
-    * @param {HTMLElement} raisedNut - The nut element that is currently raised.
-    * @param {HTMLElement[]} nutsToMove - An array of nut elements to move.
-    * @param {number} rodChildrenCount - Number of nuts currently in the target rod.
-    * @param {string} moveType - The type of move, can be 'forward'(normal) or 'reverse'(undoLastMove).
-    */
-    function moveNut(targetRod, raisedNut, nutsToMove, rodChildrenCount, moveType) {
-
-        const sourceRod = raisedNut.parentElement;
-        const rodCapacity = parseInt(targetRod.getAttribute('data-capacity'));
-
-        if (moveType === 'reverse') {
-            runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
-        }
-
-        if (rodChildrenCount) {
-            const targetNut = targetRod.lastElementChild;
-            if (targetRod === sourceRod) {
-                lowerNut(raisedNut);
-                return;
-            }
-
-            const isSpaceAvailable = rodChildrenCount < rodCapacity;
-            if (!isSpaceAvailable) {
-                lowerNut(raisedNut);
-                return;
-            }
-
-            const targetNutColor = targetNut.getAttribute("data-color");
-            const raisedNutColor = raisedNut.getAttribute("data-color");
-            const isColorMatch = raisedNutColor === targetNutColor;
-            if (!isColorMatch) {
-                lowerNut(raisedNut);
-                return;
-            }
-            runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
-        } else {
-            runAnimation(sourceRod, targetRod, nutsToMove, rodChildrenCount);
-        }
-        updateMovesRemaining(moveType);
-    }
-
-    /**
      * Updates the number of moves remaining and adjust the width of the movesBar element
      * - derives width increments based on number of moves for the given game mode
      * - If moveType= 'forward', moves and bard width are decreased
@@ -1034,49 +1152,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Displays the modal for game loss 
-     * - May include sound effects if they are enabled
-     */
-    function gameOverLoss() {
-        modalLossContainer.style.display = 'flex';
-        soundEffects.gameLoss.play();
-    }
-
-    /**
-     * Displays the modal for game win
+     * Extract the numerical digits displayed by an element animated using odometer instance
+     * - combines individual digits wrapped in '.odometer-value' spans into a complete number (user score). 
      * 
-     * - calculate position to display confetti animations
-     * - calls confettiAnimation() for confetti animations
-     * - May include sound effects if they are enabled
-     * - Displays earned points calculated by calculatePointsWon()
+     * @param {HTMLElement} element - userScoreElement element containing Odometer digit spans.
+     * @returns {number} the numeric value currently displayed by the Odometer.
      */
-    function gameOverWin() {
+    function getOdometerValue(element) {
+        let elementChildren = element.querySelectorAll('.odometer-value');
+        let stringDigits = '';
+        elementChildren.forEach(odometerSpan => {
+            stringDigits += odometerSpan.innerText;
+        });
 
-        modalWinContainer.style.display = 'flex';
-        const winModalRect = modalWinContainer.querySelector('.game-modal').getBoundingClientRect();
-        const leftStartX = (winModalRect.left) / window.innerWidth;
-        const rightStartX = (winModalRect.left + winModalRect.width) / window.innerWidth;
-        const startY = (winModalRect.top + winModalRect.height / 2) / window.innerHeight;
-
-        let startVelocity = 50;
-        let spread = 90;
-        let particleSize = 1;
-        let ticks = 150;
-
-        setTimeout(() => {
-            confettiAnimation(leftStartX, startY, Object.values(nutColorsAll), particleSize, 45, spread = spread, startVelocity = startVelocity, ticks = ticks);
-            confettiAnimation(rightStartX, startY, Object.values(nutColorsAll), particleSize, 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
-        }, 500);
-
-        setTimeout(() => {
-            soundEffects.gameWin.play();
-        }, 200);
-
-        setTimeout(() => {
-            soundEffects.collectPoints.play();
-        }, 2500);
-
-        pointsDisplayElement.innerHTML = calculatePointsWon();
+        return parseInt(stringDigits);
     }
 
     /**
@@ -1194,252 +1283,119 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Runs the confetti animation with the specs (location, colors etc.) given by input arguments
-     * 
-     * - This is used when a rod has been completed or when the game is won.
-     * - It uses external library imported in the game.html
-     * - The input arguments were added in provide more control on how the animation is run. 
-     *
-     * @param {number} startX - Horizontal origin for the confetti (0 to 1, relative to screen width).
-     * @param {number} startY - Vertical origin for the confetti (0 to 1, relative to screen height).
-     * @param {string[]} nutColor - Array of hex colors for the confetti particles.
-     * @param {number} particleSize - Scalar value to adjust particle size.
-     * @param {number} angle - Direction of the confetti burst in degrees.(default=90)
-     * @param {number} spread - Spread angle of the burst (how wide the particles scatter).(default=55)
-     * @param {number} startVelocity - Initial speed of the particles.(default=10)
-     * @param {number} ticks - How many times the confetti will move before disappearing.(default=50)
+     * Displays the modal for game loss 
+     * - May include sound effects if they are enabled
      */
-    function confettiAnimation(startX, startY, nutColor, particleSize, angle = 90, spread = 55, startVelocity = 10, ticks = 50) {
-
-        confetti({
-            particleCount: 50,
-            angle: angle,
-            spread: spread,
-            origin: { x: startX, y: startY },
-            ticks: ticks,
-            colors: nutColor,
-            shapes: ['circle'],
-            scalar: particleSize,
-            startVelocity: startVelocity
-        });
+    function gameOverLoss() {
+        modalLossContainer.style.display = 'flex';
+        soundEffects.gameLoss.play();
     }
 
     /**
-     * Generates randomized nut colors for a new game layout.
+     * Displays the modal for game win
      * 
-     * - Uses the gameMode object (for mode type) to get the required colors and total nuts to generate subsets of nuts for each color
-     * - Colors in the array are shuffled and checked that no more 2 nuts of the same color are immediate neighbors in the same rod.
-     * -  'checkColorTriplicates()' is called to prevent a layout with completed rods at the start of the game.
-     * - Nut colors and corresponding rod are append as objects to an array of 'rods'/containers.
-     * 
-     * @returns {Array<{ name: string, nuts: string[] }>} An array of rod objects, each containing the name (e.g rod1) and an array of nut colors.    
+     * - calculate position to display confetti animations
+     * - calls confettiAnimation() for confetti animations
+     * - May include sound effects if they are enabled
+     * - Displays earned points calculated by calculatePointsWon()
      */
-    function generateNutsWithColors() {
+    function gameOverWin() {
 
-        let nutsColorArray = Array(gameMode.rodCapacity).fill(Object.keys(gameMode.nutColors)).flat();
-        shuffleColors(nutsColorArray);
-        while (!checkColorTriplicates(nutsColorArray)) {
-            shuffleColors(nutsColorArray);
-        }
+        modalWinContainer.style.display = 'flex';
+        const winModalRect = modalWinContainer.querySelector('.game-modal').getBoundingClientRect();
+        const leftStartX = (winModalRect.left) / window.innerWidth;
+        const rightStartX = (winModalRect.left + winModalRect.width) / window.innerWidth;
+        const startY = (winModalRect.top + winModalRect.height / 2) / window.innerHeight;
 
-        let containers = [];
-        for (let i = 0; i < Object.keys(gameMode.nutColors).length; i++) {
+        let startVelocity = 50;
+        let spread = 90;
+        let particleSize = 1;
+        let ticks = 150;
 
-            let startIndex = i * gameMode.rodCapacity;
-            containers.push({
-                name: "rod" + (i + 1),
-                nuts: nutsColorArray.slice(startIndex, startIndex + gameMode.rodCapacity)
-            });
-        }
-        return containers;
+        setTimeout(() => {
+            confettiAnimation(leftStartX, startY, Object.values(nutColorsAll), particleSize, 45, spread = spread, startVelocity = startVelocity, ticks = ticks);
+            confettiAnimation(rightStartX, startY, Object.values(nutColorsAll), particleSize, 120, spread = spread, startVelocity = startVelocity, ticks = ticks);
+        }, 500);
+
+        setTimeout(() => {
+            soundEffects.gameWin.play();
+        }, 200);
+
+        setTimeout(() => {
+            soundEffects.collectPoints.play();
+        }, 2500);
+
+        pointsDisplayElement.innerHTML = calculatePointsWon();
     }
 
     /**
-     * Shuffles the array nut colors to get a random mix for the game
-     * - Ensure each game is generated with randomly distributed colors
-     *
-     * @param {string[]} colorArray - An array of nut colors to be shuffled.
-     * @returns {string[]} An array of nut colors with its elements shuffled randomly.
-     */
-    function shuffleColors(colorArray) {
-        let shuffledColorArray = colorArray;
-        for (let i = shuffledColorArray.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1));
-            let tempColor = shuffledColorArray[i];
-            shuffledColorArray[i] = shuffledColorArray[j];
-            shuffledColorArray[j] = tempColor;
-        }
-        return shuffledColorArray;
-    }
-
-    /**
-     * Checks if the shuffled nut color array does not have more than 2 like colors as immediate siblings within a rod
+     * Toggles classes in child elements of the .toggle-container element (sound / vibration)
      * 
-     * - If there are more than 2 adjacent nuts of the same color, it returns `false`
-     * - Else it returns `true` if there were no adjacent triplicates found in all rods
-     *
-     * @param {string[]} shuffledNutsColorArray - The shuffled array of nut colors.
-     * @returns {boolean} `true` if all rods pass the validation, else returns `false` if any rod has >2 adjacent nuts of the same color. 
+     * For the clicked container:
+     * - 'toggle-slide-on' class is toggled for the slider element 
+     * - 'toggle-item-on' class is toggled for the slider's parent element 
+     * - 'toggle-text-on' class is toggled for the text and icon elements 
+     * 
+     * - The corresponding setting setting is triggered depending on the class contained in the .toggle-container element
+     * - If it contains '.sound' class changeSoundSetting() is called;
+     * - else the function checks if vibration is supported on the current browser.
+     * - If vibration is not supported an alert will pop up to inform the user.
+     * - If vibration is supported, runVibration() is called and 'isVibrationOn' variable is reversed .
      */
-    function checkColorTriplicates(shuffledNutsColorArray) {
-        for (let i = 0; i < shuffledNutsColorArray.length; i += 4) {
-            const rodGroup = shuffledNutsColorArray.slice(i, i + 4);
-            let occurrenceCount = 1;
-            for (let j = 1; j < rodGroup.length; j++) {
-                if (rodGroup[j] === rodGroup[j - 1]) {
-                    occurrenceCount++;
-                    if (occurrenceCount > 2) return false;
-                } else {
-                    occurrenceCount = 1;
-                }
+    function changeToggleSettings() {
+        this.querySelector('.toggle-slide').classList.toggle('toggle-slide-on');
+        this.querySelector('.toggle-item').classList.toggle('toggle-item-on');
+        this.querySelector('.toggle-text').classList.toggle('toggle-text-on');
+
+        if (this.classList.contains('sound')) {
+            changeSoundSetting();
+        } else {
+            if (navigator.vibrate) {
+                isVibrationOn = !isVibrationOn;
+                runVibration(300);
+            } else {
+                alert('Vibration is not supported for your current browser');
+                this.querySelector('.toggle-slide').classList.remove('toggle-slide-on');
+                this.querySelector('.toggle-item').classList.remove('toggle-item-on');
+                this.querySelector('.toggle-text').classList.remove('toggle-text-on');
             }
-        }
-        return true;
-    }
 
-    /**
-     * Places shuffled nuts and rods into their respective rod-containers (rows)
-     * 
-     * - calls 'clearGameLayout()' to clear/remove the current layout of nuts,rods and rod-containers
-     * - Calls 'generateGameLayout()' to generate the new game layout and save configurations in the 'gameInitialState' object
-     * - Calls 'addRodEventListeners()' to add event listeners to newly generated rod elements
-     * - layout configurations stored in 'gameInitialState' are used to append layout to the game area.
-     * - Total moves and total complete rods required to win are updated according to the game-mode specs.
-     */
-    function addNutsToRods() {
-
-        clearGameLayout();
-        generateGameLayout();
-        addRodEventListeners();
-
-        gameInitialState.gameRodContainers.forEach((rodItem, rodIndex) => {
-
-            let currentRod = document.getElementById(rodItem.name);
-            gameInitialState.nutsArray[rodIndex].forEach((nut) => {
-                currentRod.appendChild(nut.nut);
-            });
-        });
-
-        movesNumberElement.textContent = gameMode.maximumMoves;
-        totalRodsToWin = Object.values(gameMode.nutColors).length;
-    }
-
-    /** 
-     * Creates nut elements based on color arrays.
-     * 
-     * - Adds '.nut' class to div elements and applied custom 'data-color' and specific color class for the nut elements.
-     * - An array of nut elements is returned.
-     *
-     * @param {string[]} nutsArray - Array of nut color names (strings).
-     * @returns {Array<{ name: string, nut: HTMLElement }>} An array of nut objects, each with a name and nut element.
-     */
-    function createNutsArray(nutsArrayColors) {
-
-        let nutsArray = [];
-        nutsArrayColors.forEach((nutColor, index) => {
-
-            let nutElement = document.createElement("div");
-            nutElement.setAttribute("class", `nut ${nutColor}`);
-            nutElement.setAttribute("data-color", nutColor);
-
-            nutsArray.push({
-                name: `rod${index}`,
-                nut: nutElement,
-            });
-        });
-        return nutsArray;
-    }
-
-    /**
-     * Generates new game and clear previous nuts
-     * 
-     * - Generates new nut colors by calling 'generateNutsWithColors()', result update 'gameInitialState' object
-     * - Updates 'gameInitialState' with a new array of nut elements.
-     * - calls 'addNutsToRods()' to place new game layout and nuts in the game area
-     * - If the 'add extra rod' was disabled, it get re-enabled.
-     * - the global 'nutStyle' variable is updated to be used in other functions
-     */
-    function generateNewGame() {
-        gameInitialState.gameRodContainers = generateNutsWithColors();
-        let nutsArray = [];
-        for (let rodItem of gameInitialState.gameRodContainers) {
-            let nutElements = createNutsArray(rodItem.nuts);
-            nutsArray.push(nutElements);
-        }
-        gameInitialState.nutsArray = nutsArray;
-        addNutsToRods();
-
-        if (extraRodButton.classList.contains('disable')) {
-            extraRodButton.classList.remove('disable');
-        }
-        anyNut = document.querySelectorAll('.nut')[0];
-        nutStyle = window.getComputedStyle(anyNut);
-    }
-
-    /**
-     * Generates and places rod-containers and rods elements on the game-area container
-     * 
-     * - Generates rod-containers according to details in the 'gameMode' object
-     * - Adds 'rod-container' class to the rod-container elements
-     * - Generate rod elements and adds '.rod' classes 
-     * - Sets 'id' and 'data-capacity' attributes on the rod elements
-     * - Class of 'extra' is added to the last rods which becomes the extra rod
-     * - All elements are appended to the game-area container.
-     */
-    function generateGameLayout() {
-
-        const totalRods = gameMode.rodsInContainers.reduce((a, b) => a + b, 0);
-        let rodNumber = 0;
-        for (let i = 0; i < gameMode.containers; i++) {
-
-            let containerElement = document.createElement("div");
-            containerElement.setAttribute("class", 'rod-container');
-
-            let rodsInContainer = gameMode.rodsInContainers[i];
-            for (let j = 0; j < rodsInContainer; j++) {
-
-                ++rodNumber;
-                let rodElement = document.createElement("div");
-                rodElement.setAttribute("id", `rod${rodNumber}`);
-
-                if (rodNumber === totalRods) {
-                    rodElement.setAttribute("class", 'rod extra disable');
-                    rodElement.setAttribute("data-capacity", "1");
-                } else {
-                    rodElement.setAttribute("class", 'rod');
-                    rodElement.setAttribute("data-capacity", `${gameMode.rodCapacity}`);
-                }
-
-                rodElement.setAttribute("data-row", `${i + 1}`);
-                rodElement.setAttribute("data-column", `${j + 1}`);
-
-                let lidElement = document.createElement("div");
-                lidElement.setAttribute("class", 'rod-lid');
-
-                rodElement.appendChild(lidElement);
-                containerElement.appendChild(rodElement);
-            }
-            gameAreaElement.appendChild(containerElement);
         }
     }
 
     /**
-     * Clears the current game layout by removing all rod-container and their descendants before resetting or generating new game
-     * 
-     * - Removes all elements in the game area
-     * - Resets the moves counter to the game's maximum moves as given by 'gameMode' object
-     * - Removes any width styles that may have been applied to the move progress bar 'movesBar'
-     * - Resets the variable 'completedRods' to 0.
+     * Function to toggle sound settings
+     * - Changes to the 'isGameMuted' to the opposite boolean
+     * - Passes the 'isGameMuted' variable to Howler.mute
+     * - Plays a short SFX clip to alert user sound settings have changed
      */
-    function clearGameLayout() {
+    function changeSoundSetting() {
+        isGameMuted = !isGameMuted;
+        Howler.mute(isGameMuted);
+        soundEffects.completeRod.play('rodWin');
+    }
 
-        let allContainers = gameAreaElement.querySelectorAll('.rod-container');
-        movesNumberElement.textContent = gameMode.maximumMoves;
-        movesBar.style = "";
+    /**
+     * Checks if vibration is supported by the current browser.
+     * - If not supported, the vibration toggle will b disabled
+     */
+    function checkVibrationSupport() {
+        if (!('vibrate' in navigator)) {
+            let vibrationToggle = document.querySelector(".toggle-container.vibration");
+            vibrationToggle.classList.add('disable');
+            let vibrationNote = document.querySelector('.vibration-note');
+            vibrationNote.style.display = 'inline-block';
+        }
+    }
 
-        completedRods = 0;
-        for (let container of allContainers) {
-            gameAreaElement.removeChild(container);
+    /**
+     * Triggers vibration effect on mobile devices if enable and supported by the browser
+     * 
+     * @param {number} vibrationDuration - Duration of the vibration in milliseconds.
+     */
+    function runVibration(vibrationDuration) {
+        if (navigator.vibrate && isVibrationOn) {
+            navigator.vibrate(vibrationDuration);
         }
     }
 
@@ -1517,5 +1473,49 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         localStorage.setItem("userProgress", JSON.stringify(userProgress));
         return userProgress;
+    }
+
+    /**
+     * Function to return the CSS value of a attribute from a UI element with CSS attributes. 
+     * - Made to clear the code and make it readable
+     * 
+     * @param {HTMLElement} object - The element from which to get the css style (e.g div).
+     * @param {string} attribute - The CSS property name (e.g. 'height').
+     * @returns {number} The numeric value of the requested CSS property (units not included).
+     */
+    function getCssStyleValue(object, attribute) {
+        const attributeValue = parseFloat(getComputedStyle(object).getPropertyValue(attribute));
+        return attributeValue;
+    }
+
+    /**
+     * Runs the confetti animation with the specs (location, colors etc.) given by input arguments
+     * 
+     * - This is used when a rod has been completed or when the game is won.
+     * - It uses external library imported in the game.html
+     * - The input arguments were added in provide more control on how the animation is run. 
+     *
+     * @param {number} startX - Horizontal origin for the confetti (0 to 1, relative to screen width).
+     * @param {number} startY - Vertical origin for the confetti (0 to 1, relative to screen height).
+     * @param {string[]} nutColor - Array of hex colors for the confetti particles.
+     * @param {number} particleSize - Scalar value to adjust particle size.
+     * @param {number} angle - Direction of the confetti burst in degrees.(default=90)
+     * @param {number} spread - Spread angle of the burst (how wide the particles scatter).(default=55)
+     * @param {number} startVelocity - Initial speed of the particles.(default=10)
+     * @param {number} ticks - How many times the confetti will move before disappearing.(default=50)
+     */
+    function confettiAnimation(startX, startY, nutColor, particleSize, angle = 90, spread = 55, startVelocity = 10, ticks = 50) {
+
+        confetti({
+            particleCount: 50,
+            angle: angle,
+            spread: spread,
+            origin: { x: startX, y: startY },
+            ticks: ticks,
+            colors: nutColor,
+            shapes: ['circle'],
+            scalar: particleSize,
+            startVelocity: startVelocity
+        });
     }
 });
