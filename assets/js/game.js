@@ -866,10 +866,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function lowerNut(nutObject) {
         if (nutObject) {
             nutObject.classList.remove("raise-nut");
-            soundEffects.raise.play('kickStart');
+            soundEffects.startMove.play('onRodMove');
             setTimeout(() => {
-                soundEffects.startMove.play('onRodMove');
-            }, 100);
+                soundEffects.raise.play('kickStart');
+            }, 200);
         }
     }
 
